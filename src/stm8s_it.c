@@ -28,14 +28,10 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_it.h"
 
-/* Private typedef -----------------------------------------------------------*/
-/* Private define ------------------------------------------------------------*/
-/* Private macro -------------------------------------------------------------*/
-/* Private variables ---------------------------------------------------------*/
-//extern volatile u16 TIM4_tout;
+
 extern uint16_t overflow_count_tim1;
 extern uint16_t overflow_count_tim2;
-//extern volatile uint16_t overflow_count_tim4;
+//extern uint16_t overflow_count_tim4;
 extern unsigned int freq;
 extern unsigned int cap;
 extern unsigned int SAMP_RES;
@@ -494,14 +490,12 @@ INTERRUPT_HANDLER(TIM6_UPD_OVF_TRG_IRQHandler, 23)
   /* Cleat Interrupt Pending bit */
   //TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
 	
-	
-	//if(overflow_count_tim4 != 0) 
-	//overflow_count_tim4++;
-	//TIM4_ClearFlag(TIM4_FLAG_UPDATE);
-	//TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+#ifdef TIM4_DELAY_2
+	overflow_count_tim4++;
 	//GPIO_WriteReverse(GPIOD, GPIO_PIN_0);
-	//TIM4_ClearFlag(TIM4_FLAG_UPDATE);
-	//TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+	TIM4_ClearFlag(TIM4_FLAG_UPDATE);
+	TIM4_ClearITPendingBit(TIM4_IT_UPDATE);
+#endif
 }
 #endif /*STM8S903*/
 

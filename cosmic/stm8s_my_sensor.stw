@@ -6,3 +6,7 @@ Keyword=ST7Workspace-V0.7
 [Project0]
 Filename=stm8s_my_sensor.stp
 Dependencies=
+[Options]
+ActiveProject=stm8s_my_sensor
+ActiveConfig=Debug
+AddSortedElements=1

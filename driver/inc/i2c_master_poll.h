@@ -27,7 +27,7 @@
 // ************************** I2C Configuration Variables **************************
 
 /* definition of fast or default standard mode (bus speed up to 400 or 100 kHz) */
-//#define FAST_I2C_MODE
+#define FAST_I2C_MODE
 
 /* definition of 10-bit or default 7-bit slave address */
 //#define TEN_BITS_ADDRESS

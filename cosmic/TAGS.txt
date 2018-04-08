@@ -4,72 +4,7 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
-AD7747_ADDRESS	..\driver\inc\ad7747.h	20;"	macro
-AD7747_CAPDAC_DACEN	..\driver\inc\ad7747.h	88;"	macro
-AD7747_CAPDAC_DACP	..\driver\inc\ad7747.h	89;"	macro
-AD7747_CAPSETUP_CACHOP	..\driver\inc\ad7747.h	56;"	macro
-AD7747_CAPSETUP_CAPDIFF	..\driver\inc\ad7747.h	55;"	macro
-AD7747_CAPSETUP_CAPEN	..\driver\inc\ad7747.h	53;"	macro
-AD7747_CAPSETUP_CIN2	..\driver\inc\ad7747.h	54;"	macro
-AD7747_CONF_CAPFS	..\driver\inc\ad7747.h	79;"	macro
-AD7747_CONF_MODE_CONT_CONV	..\driver\inc\ad7747.h	81;"	macro
-AD7747_CONF_MODE_GAIN_CAL	..\driver\inc\ad7747.h	85;"	macro
-AD7747_CONF_MODE_IDLE	..\driver\inc\ad7747.h	80;"	macro
-AD7747_CONF_MODE_OFFS_CAL	..\driver\inc\ad7747.h	84;"	macro
-AD7747_CONF_MODE_PWRDN	..\driver\inc\ad7747.h	83;"	macro
-AD7747_CONF_MODE_SINGLE_CONV	..\driver\inc\ad7747.h	82;"	macro
-AD7747_CONF_VTFS	..\driver\inc\ad7747.h	78;"	macro
-AD7747_EXCSETUP_CLKCTRL	..\driver\inc\ad7747.h	69;"	macro
-AD7747_EXCSETUP_EXCA	..\driver\inc\ad7747.h	73;"	macro
-AD7747_EXCSETUP_EXCB	..\driver\inc\ad7747.h	71;"	macro
-AD7747_EXCSETUP_EXCLVL	..\driver\inc\ad7747.h	75;"	macro
-AD7747_EXCSETUP_EXCON	..\driver\inc\ad7747.h	70;"	macro
-AD7747_EXCSETUP_NEXCA	..\driver\inc\ad7747.h	74;"	macro
-AD7747_EXCSETUP_NEXCB	..\driver\inc\ad7747.h	72;"	macro
-AD7747_GetCapData	..\driver\inc\ad7747.h	114;"	prototype	signature:(void)
-AD7747_GetCapData	..\driver\src\ad7747.c	132;"	function	signature:(void)
-AD7747_GetVTData	..\driver\inc\ad7747.h	111;"	prototype	signature:(void)
-AD7747_GetVTData	..\driver\src\ad7747.c	104;"	function	signature:(void)
-AD7747_Init	..\driver\inc\ad7747.h	96;"	prototype	signature:(void)
-AD7747_Init	..\driver\src\ad7747.c	21;"	function	signature:(void)
-AD7747_REG_CAPDACA	..\driver\inc\ad7747.h	37;"	macro
-AD7747_REG_CAPDACB	..\driver\inc\ad7747.h	38;"	macro
-AD7747_REG_CAP_DATA_HIGH	..\driver\inc\ad7747.h	27;"	macro
-AD7747_REG_CAP_DATA_LOW	..\driver\inc\ad7747.h	29;"	macro
-AD7747_REG_CAP_DATA_MID	..\driver\inc\ad7747.h	28;"	macro
-AD7747_REG_CAP_GAINH	..\driver\inc\ad7747.h	41;"	macro
-AD7747_REG_CAP_GAINL	..\driver\inc\ad7747.h	42;"	macro
-AD7747_REG_CAP_OFFH	..\driver\inc\ad7747.h	39;"	macro
-AD7747_REG_CAP_OFFL	..\driver\inc\ad7747.h	40;"	macro
-AD7747_REG_CAP_SETUP	..\driver\inc\ad7747.h	33;"	macro
-AD7747_REG_CFG	..\driver\inc\ad7747.h	36;"	macro
-AD7747_REG_EXC_SETUP	..\driver\inc\ad7747.h	35;"	macro
-AD7747_REG_STATUS	..\driver\inc\ad7747.h	26;"	macro
-AD7747_REG_VOLT_GAINH	..\driver\inc\ad7747.h	43;"	macro
-AD7747_REG_VOLT_GAINL	..\driver\inc\ad7747.h	44;"	macro
-AD7747_REG_VT_DATA_HIGH	..\driver\inc\ad7747.h	30;"	macro
-AD7747_REG_VT_DATA_LOW	..\driver\inc\ad7747.h	32;"	macro
-AD7747_REG_VT_DATA_MID	..\driver\inc\ad7747.h	31;"	macro
-AD7747_REG_VT_SETUP	..\driver\inc\ad7747.h	34;"	macro
-AD7747_RESET_CMD	..\driver\inc\ad7747.h	23;"	macro
-AD7747_Read	..\driver\inc\ad7747.h	104;"	prototype	signature:(unsigned char subAddr, unsigned char* dataBuffer, unsigned char bytesNumber)
-AD7747_Read	..\driver\src\ad7747.c	68;"	function	signature:(unsigned char subAddr, unsigned char* dataBuffer, unsigned char bytesNumber)
-AD7747_Reset	..\driver\inc\ad7747.h	108;"	prototype	signature:(void)
-AD7747_Reset	..\driver\src\ad7747.c	87;"	function	signature:(void)
-AD7747_STATUS_EXCERR	..\driver\inc\ad7747.h	47;"	macro
-AD7747_STATUS_RDY	..\driver\inc\ad7747.h	48;"	macro
-AD7747_STATUS_RDYCAP	..\driver\inc\ad7747.h	50;"	macro
-AD7747_STATUS_RDYVT	..\driver\inc\ad7747.h	49;"	macro
-AD7747_VTSETUP_EXTREF	..\driver\inc\ad7747.h	64;"	macro
-AD7747_VTSETUP_VTCHOP	..\driver\inc\ad7747.h	66;"	macro
-AD7747_VTSETUP_VTEN	..\driver\inc\ad7747.h	59;"	macro
-AD7747_VTSETUP_VTMD_EXT_TEMP	..\driver\inc\ad7747.h	61;"	macro
-AD7747_VTSETUP_VTMD_EXT_VIN	..\driver\inc\ad7747.h	63;"	macro
-AD7747_VTSETUP_VTMD_INT_TEMP	..\driver\inc\ad7747.h	60;"	macro
-AD7747_VTSETUP_VTMD_VDD_MON	..\driver\inc\ad7747.h	62;"	macro
-AD7747_VTSETUP_VTSHORT	..\driver\inc\ad7747.h	65;"	macro
-AD7747_Write	..\driver\inc\ad7747.h	99;"	prototype	signature:(unsigned char subAddr, unsigned char* dataBuffer, unsigned char bytesNumber)
-AD7747_Write	..\driver\src\ad7747.c	40;"	function	signature:(unsigned char subAddr, unsigned char* dataBuffer, unsigned char bytesNumber)
+AD7747_addr	..\src\main.c	51;"	variable
 ADC1	..\libs\inc\stm8s.h	2602;"	macro
 ADC1_ALIGN_LEFT	..\libs\inc\stm8s_adc1.h	70;"	enumerator	enum:__anon16
 ADC1_ALIGN_RIGHT	..\libs\inc\stm8s_adc1.h	71;"	enumerator	enum:__anon16
@@ -571,8 +506,8 @@ CLK_ClockSwitchCmd	..\libs\inc\stm8s_clk.h	357;"	prototype	signature:(Functional
 CLK_ClockSwitchCmd	..\libs\src\stm8s_clk.c	213;"	function	signature:(FunctionalState NewState)
 CLK_ClockSwitchConfig	..\libs\inc\stm8s_clk.h	361;"	prototype	signature:(CLK_SwitchMode_TypeDef CLK_SwitchMode, CLK_Source_TypeDef CLK_NewClock, FunctionalState ITState, CLK_CurrentClockState_TypeDef CLK_CurrentClockState)
 CLK_ClockSwitchConfig	..\libs\src\stm8s_clk.c	309;"	function	signature:(CLK_SwitchMode_TypeDef CLK_SwitchMode, CLK_Source_TypeDef CLK_NewClock, FunctionalState ITState, CLK_CurrentClockState_TypeDef CLK_CurrentClockState)
-CLK_Config	..\src\main.c	117;"	function	file:	signature:(void)
-CLK_Config	..\src\main.c	35;"	prototype	file:	signature:(void)
+CLK_Config	..\src\main.c	135;"	function	file:	signature:(void)
+CLK_Config	..\src\main.c	37;"	prototype	file:	signature:(void)
 CLK_CurrentClockState_TypeDef	..\libs\inc\stm8s_clk.h	56;"	typedef	typeref:enum:__anon25
 CLK_DeInit	..\libs\inc\stm8s_clk.h	352;"	prototype	signature:(void)
 CLK_DeInit	..\libs\src\stm8s_clk.c	72;"	function	signature:(void)
@@ -889,9 +824,6 @@ EXTI_TLISENSITIVITY_RISE_ONLY	..\libs\inc\stm8s_exti.h	56;"	enumerator	enum:__an
 EXTI_TLISensitivity_TypeDef	..\libs\inc\stm8s_exti.h	57;"	typedef	typeref:enum:__anon36
 EXTI_TypeDef	..\libs\inc\stm8s.h	1473;"	typedef	typeref:struct:EXTI_struct
 EXTI_struct	..\libs\inc\stm8s.h	1468;"	struct
-ErrProc	..\driver\inc\i2c_master_poll.h	47;"	prototype	signature:(void)
-ErrProc	..\driver\src\i2c_master_poll.c	238;"	function	signature:(void)
-ErrProc	..\src\stm8s_it.c	46;"	prototype	file:	signature:(void)
 ErrorStatus	..\libs\inc\stm8s.h	237;"	typedef	typeref:enum:__anon4
 F0R1	..\libs\inc\stm8s.h	2225;"	member	struct:__anon5::__anon6::__anon9
 F0R2	..\libs\inc\stm8s.h	2226;"	member	struct:__anon5::__anon6::__anon9
@@ -945,6 +877,7 @@ FALSE	..\libs\inc\stm8s.h	230;"	enumerator	enum:__anon1
 FAR	..\libs\inc\stm8s.h	121;"	macro
 FAR	..\libs\inc\stm8s.h	127;"	macro
 FAR	..\libs\inc\stm8s.h	141;"	macro
+FAST_I2C_MODE	..\src\main.c	17;"	macro	file:
 FCR1	..\libs\inc\stm8s.h	2297;"	member	struct:__anon5::__anon6::__anon12
 FCR2	..\libs\inc\stm8s.h	2298;"	member	struct:__anon5::__anon6::__anon12
 FCR3	..\libs\inc\stm8s.h	2299;"	member	struct:__anon5::__anon6::__anon12
@@ -1092,9 +1025,9 @@ Filter45	..\libs\inc\stm8s.h	2284;"	member	union:__anon5::__anon6	typeref:struct
 FlagStatus	..\libs\inc\stm8s.h	232;"	typedef	typeref:enum:__anon2
 FunctionalState	..\libs\inc\stm8s.h	234;"	typedef	typeref:enum:__anon3
 GCR	..\libs\inc\stm8s.h	2519;"	member	struct:CFG_struct
-GETCHAR_PROTOTYPE	..\src\main.c	20;"	macro	file:
-GETCHAR_PROTOTYPE	..\src\main.c	23;"	macro	file:
-GETCHAR_PROTOTYPE	..\src\main.c	26;"	macro	file:
+GETCHAR_PROTOTYPE	..\src\main.c	22;"	macro	file:
+GETCHAR_PROTOTYPE	..\src\main.c	25;"	macro	file:
+GETCHAR_PROTOTYPE	..\src\main.c	28;"	macro	file:
 GPIOA	..\libs\inc\stm8s.h	2626;"	macro
 GPIOA_BaseAddress	..\libs\inc\stm8s.h	2556;"	macro
 GPIOB	..\libs\inc\stm8s.h	2628;"	macro
@@ -1115,8 +1048,8 @@ GPIOI	..\libs\inc\stm8s.h	2646;"	macro
 GPIOI_BaseAddress	..\libs\inc\stm8s.h	2564;"	macro
 GPIO_CR1_RESET_VALUE	..\libs\inc\stm8s.h	280;"	macro
 GPIO_CR2_RESET_VALUE	..\libs\inc\stm8s.h	281;"	macro
-GPIO_Config	..\src\main.c	155;"	function	file:	signature:(void)
-GPIO_Config	..\src\main.c	37;"	prototype	file:	signature:(void)
+GPIO_Config	..\src\main.c	173;"	function	file:	signature:(void)
+GPIO_Config	..\src\main.c	39;"	prototype	file:	signature:(void)
 GPIO_DDR_RESET_VALUE	..\libs\inc\stm8s.h	279;"	macro
 GPIO_DeInit	..\libs\inc\stm8s_gpio.h	139;"	prototype	signature:(GPIO_TypeDef* GPIOx)
 GPIO_DeInit	..\libs\src\stm8s_gpio.c	53;"	function	signature:(GPIO_TypeDef* GPIOx)
@@ -1211,6 +1144,8 @@ I2C_ClearITPendingBit	..\libs\inc\stm8s_i2c.h	622;"	prototype	signature:(I2C_ITP
 I2C_ClearITPendingBit	..\libs\src\stm8s_i2c.c	871;"	function	signature:(I2C_ITPendingBit_TypeDef I2C_ITPendingBit)
 I2C_Cmd	..\libs\inc\stm8s_i2c.h	509;"	prototype	signature:(FunctionalState NewState)
 I2C_Cmd	..\libs\src\stm8s_i2c.c	202;"	function	signature:(FunctionalState NewState)
+I2C_Config	..\src\main.c	223;"	function	file:	signature:(void)
+I2C_Config	..\src\main.c	44;"	prototype	file:	signature:(void)
 I2C_DIRECTION_RX	..\libs\inc\stm8s_i2c.h	87;"	enumerator	enum:__anon50
 I2C_DIRECTION_TX	..\libs\inc\stm8s_i2c.h	86;"	enumerator	enum:__anon50
 I2C_DR_DR	..\libs\inc\stm8s.h	1388;"	macro
@@ -1300,8 +1235,6 @@ I2C_MAX_FAST_FREQ	..\libs\inc\stm8s_i2c.h	336;"	macro
 I2C_MAX_INPUT_FREQ	..\libs\inc\stm8s_i2c.h	338;"	macro
 I2C_MAX_INPUT_FREQ	..\libs\inc\stm8s_i2c.h	340;"	macro
 I2C_MAX_STANDARD_FREQ	..\libs\inc\stm8s_i2c.h	335;"	macro
-I2C_Master_Init	..\driver\inc\i2c_master_poll.h	43;"	prototype	signature:(void)
-I2C_Master_Init	..\driver\src\i2c_master_poll.c	30;"	function	signature:(void)
 I2C_OARH_ADD	..\libs\inc\stm8s.h	1386;"	macro
 I2C_OARH_ADDCONF	..\libs\inc\stm8s.h	1385;"	macro
 I2C_OARH_ADDMODE	..\libs\inc\stm8s.h	1384;"	macro
@@ -1309,8 +1242,6 @@ I2C_OARH_RESET_VALUE	..\libs\inc\stm8s.h	1351;"	macro
 I2C_OARL_ADD	..\libs\inc\stm8s.h	1381;"	macro
 I2C_OARL_ADD0	..\libs\inc\stm8s.h	1382;"	macro
 I2C_OARL_RESET_VALUE	..\libs\inc\stm8s.h	1350;"	macro
-I2C_ReadRegister	..\driver\inc\i2c_master_poll.h	45;"	prototype	signature:(u8 u8_regAddr, u8 u8_NumByteToRead, u8 *u8_ReadBuffer)
-I2C_ReadRegister	..\driver\src\i2c_master_poll.c	60;"	function	signature:(u8 u8_regAddr, u8 u8_NumByteToRead, u8 *u8_DataBuffer)
 I2C_ReceiveData	..\libs\inc\stm8s_i2c.h	518;"	prototype	signature:(void)
 I2C_ReceiveData	..\libs\src\stm8s_i2c.c	427;"	function	signature:(void)
 I2C_SR1_ADD10	..\libs\inc\stm8s.h	1393;"	macro
@@ -1343,8 +1274,6 @@ I2C_StretchClockCmd	..\libs\src\stm8s_i2c.c	320;"	function	signature:(Functional
 I2C_TRISER_RESET_VALUE	..\libs\inc\stm8s.h	1359;"	macro
 I2C_TRISER_TRISE	..\libs\inc\stm8s.h	1419;"	macro
 I2C_TypeDef	..\libs\inc\stm8s.h	1341;"	typedef	typeref:struct:I2C_struct
-I2C_WriteRegister	..\driver\inc\i2c_master_poll.h	46;"	prototype	signature:(u8 u8_regAddr, u8 u8_NumByteToWrite, u8 *u8_DataBuffer)
-I2C_WriteRegister	..\driver\src\i2c_master_poll.c	184;"	function	signature:(u8 u8_regAddr, u8 u8_NumByteToWrite, u8 *u8_DataBuffer)
 I2C_struct	..\libs\inc\stm8s.h	1323;"	struct
 IAPSR	..\libs\inc\stm8s.h	1516;"	member	struct:FLASH_struct
 ICKR	..\libs\inc\stm8s.h	505;"	member	struct:CLK_struct
@@ -1365,7 +1294,7 @@ INTERRUPT_HANDLER	..\libs\inc\stm8s.h	2759;"	macro
 INTERRUPT_HANDLER_TRAP	..\libs\inc\stm8s.h	2748;"	macro
 INTERRUPT_HANDLER_TRAP	..\libs\inc\stm8s.h	2753;"	macro
 INTERRUPT_HANDLER_TRAP	..\libs\inc\stm8s.h	2762;"	macro
-INTERRUPT_HANDLER_TRAP	..\src\stm8s_it.c	72;"	function
+INTERRUPT_HANDLER_TRAP	..\src\stm8s_it.c	68;"	function
 IN_RAM	..\libs\inc\stm8s.h	170;"	macro
 IN_RAM	..\libs\inc\stm8s.h	172;"	macro
 IN_RAM	..\libs\inc\stm8s.h	174;"	macro
@@ -1723,9 +1652,9 @@ PSCRH	..\libs\inc\stm8s.h	625;"	member	struct:TIM1_struct
 PSCRL	..\libs\inc\stm8s.h	626;"	member	struct:TIM1_struct
 PSR	..\libs\inc\stm8s.h	2178;"	member	struct:__anon5
 PUKR	..\libs\inc\stm8s.h	1519;"	member	struct:FLASH_struct
-PUTCHAR_PROTOTYPE	..\src\main.c	19;"	macro	file:
-PUTCHAR_PROTOTYPE	..\src\main.c	22;"	macro	file:
-PUTCHAR_PROTOTYPE	..\src\main.c	25;"	macro	file:
+PUTCHAR_PROTOTYPE	..\src\main.c	21;"	macro	file:
+PUTCHAR_PROTOTYPE	..\src\main.c	24;"	macro	file:
+PUTCHAR_PROTOTYPE	..\src\main.c	27;"	macro	file:
 Page	..\libs\inc\stm8s.h	2322;"	member	struct:__anon5	typeref:union:__anon5::__anon6
 PointerAttr	..\libs\inc\stm8s.h	155;"	macro
 PointerAttr	..\libs\inc\stm8s.h	159;"	macro
@@ -1782,9 +1711,8 @@ S32_MAX	..\libs\inc\stm8s.h	246;"	macro
 S32_MIN	..\libs\inc\stm8s.h	247;"	macro
 S8_MAX	..\libs\inc\stm8s.h	240;"	macro
 S8_MIN	..\libs\inc\stm8s.h	241;"	macro
-SAMP_RES	..\src\main.c	51;"	variable
+SAMP_RES	..\src\main.c	55;"	variable
 SET	..\libs\inc\stm8s.h	232;"	enumerator	enum:__anon2
-SLAVE_ADDRESS	..\driver\inc\i2c_master_poll.h	38;"	macro
 SMCR	..\libs\inc\stm8s.h	1120;"	member	struct:TIM5_struct
 SMCR	..\libs\inc\stm8s.h	1259;"	member	struct:TIM6_struct
 SMCR	..\libs\inc\stm8s.h	611;"	member	struct:TIM1_struct
@@ -2065,8 +1993,8 @@ TIM1_ClearITPendingBit	..\libs\inc\stm8s_tim1.h	610;"	prototype	signature:(TIM1_
 TIM1_ClearITPendingBit	..\libs\src\stm8s_tim1.c	2149;"	function	signature:(TIM1_IT_TypeDef TIM1_IT)
 TIM1_Cmd	..\libs\inc\stm8s_tim1.h	536;"	prototype	signature:(FunctionalState NewState)
 TIM1_Cmd	..\libs\src\stm8s_tim1.c	561;"	function	signature:(FunctionalState NewState)
-TIM1_Config	..\src\main.c	184;"	function	file:	signature:(void)
-TIM1_Config	..\src\main.c	38;"	prototype	file:	signature:(void)
+TIM1_Config	..\src\main.c	204;"	function	file:	signature:(void)
+TIM1_Config	..\src\main.c	40;"	prototype	file:	signature:(void)
 TIM1_CounterModeConfig	..\libs\inc\stm8s_tim1.h	564;"	prototype	signature:(TIM1_CounterMode_TypeDef TIM1_CounterMode)
 TIM1_CounterModeConfig	..\libs\src\stm8s_tim1.c	1048;"	function	signature:(TIM1_CounterMode_TypeDef TIM1_CounterMode)
 TIM1_CounterMode_TypeDef	..\libs\inc\stm8s_tim1.h	113;"	typedef	typeref:enum:__anon73
@@ -2444,8 +2372,8 @@ TIM2_ClearITPendingBit	..\libs\inc\stm8s_tim2.h	329;"	prototype	signature:(TIM2_
 TIM2_ClearITPendingBit	..\libs\src\stm8s_tim2.c	1156;"	function	signature:(TIM2_IT_TypeDef TIM2_IT)
 TIM2_Cmd	..\libs\inc\stm8s_tim2.h	292;"	prototype	signature:(FunctionalState NewState)
 TIM2_Cmd	..\libs\src\stm8s_tim2.c	339;"	function	signature:(FunctionalState NewState)
-TIM2_Config	..\src\main.c	195;"	function	file:	signature:(void)
-TIM2_Config	..\src\main.c	39;"	prototype	file:	signature:(void)
+TIM2_Config	..\src\main.c	215;"	function	file:	signature:(void)
+TIM2_Config	..\src\main.c	41;"	prototype	file:	signature:(void)
 TIM2_DeInit	..\libs\inc\stm8s_tim2.h	285;"	prototype	signature:(void)
 TIM2_DeInit	..\libs\src\stm8s_tim2.c	52;"	function	signature:(void)
 TIM2_EGR_CC1G	..\libs\inc\stm8s.h	905;"	macro
@@ -2696,6 +2624,8 @@ TIM4_ClearITPendingBit	..\libs\inc\stm8s_tim4.h	155;"	prototype	signature:(TIM4_
 TIM4_ClearITPendingBit	..\libs\src\stm8s_tim4.c	391;"	function	signature:(TIM4_IT_TypeDef TIM4_IT)
 TIM4_Cmd	..\libs\inc\stm8s_tim4.h	140;"	prototype	signature:(FunctionalState NewState)
 TIM4_Cmd	..\libs\src\stm8s_tim4.c	81;"	function	signature:(FunctionalState NewState)
+TIM4_Config	..\src\main.c	188;"	function	file:	signature:(void)
+TIM4_Config	..\src\main.c	43;"	prototype	file:	signature:(void)
 TIM4_DeInit	..\libs\inc\stm8s_tim4.h	138;"	prototype	signature:(void)
 TIM4_DeInit	..\libs\src\stm8s_tim4.c	49;"	function	signature:(void)
 TIM4_EGR_RESET_VALUE	..\libs\inc\stm8s.h	1076;"	macro
@@ -2720,8 +2650,6 @@ TIM4_ITConfig	..\libs\inc\stm8s_tim4.h	141;"	prototype	signature:(TIM4_IT_TypeDe
 TIM4_ITConfig	..\libs\src\stm8s_tim4.c	107;"	function	signature:(TIM4_IT_TypeDef TIM4_IT, FunctionalState NewState)
 TIM4_IT_TypeDef	..\libs\inc\stm8s_tim4.h	121;"	typedef	typeref:enum:__anon122
 TIM4_IT_UPDATE	..\libs\inc\stm8s_tim4.h	120;"	enumerator	enum:__anon122
-TIM4_Init	..\driver\inc\i2c_master_poll.h	44;"	prototype	signature:(void)
-TIM4_Init	..\driver\src\i2c_master_poll.c	255;"	function	signature:(void)
 TIM4_OPMODE_REPETITIVE	..\libs\inc\stm8s_tim4.h	73;"	enumerator	enum:__anon117
 TIM4_OPMODE_SINGLE	..\libs\inc\stm8s_tim4.h	72;"	enumerator	enum:__anon117
 TIM4_OPMode_TypeDef	..\libs\inc\stm8s_tim4.h	74;"	typedef	typeref:enum:__anon117
@@ -2761,7 +2689,6 @@ TIM4_UpdateRequestConfig	..\libs\inc\stm8s_tim4.h	143;"	prototype	signature:(TIM
 TIM4_UpdateRequestConfig	..\libs\src\stm8s_tim4.c	155;"	function	signature:(TIM4_UpdateSource_TypeDef TIM4_UpdateSource)
 TIM4_UpdateSource_TypeDef	..\libs\inc\stm8s_tim4.h	94;"	typedef	typeref:enum:__anon119
 TIM4_struct	..\libs\inc\stm8s.h	1053;"	struct
-TIM4_tout	..\src\main.c	46;"	variable
 TIM5	..\libs\inc\stm8s.h	2695;"	macro
 TIM5_ARRH_ARR	..\libs\inc\stm8s.h	1233;"	macro
 TIM5_ARRH_RESET_VALUE	..\libs\inc\stm8s.h	1162;"	macro
@@ -2938,8 +2865,8 @@ UART1_ClearITPendingBit	..\libs\inc\stm8s_uart1.h	371;"	prototype	signature:(UAR
 UART1_ClearITPendingBit	..\libs\src\stm8s_uart1.c	775;"	function	signature:(UART1_IT_TypeDef UART1_IT)
 UART1_Cmd	..\libs\inc\stm8s_uart1.h	349;"	prototype	signature:(FunctionalState NewState)
 UART1_Cmd	..\libs\src\stm8s_uart1.c	184;"	function	signature:(FunctionalState NewState)
-UART1_Config	..\src\main.c	148;"	function	file:	signature:(void)
-UART1_Config	..\src\main.c	36;"	prototype	file:	signature:(void)
+UART1_Config	..\src\main.c	166;"	function	file:	signature:(void)
+UART1_Config	..\src\main.c	38;"	prototype	file:	signature:(void)
 UART1_DeInit	..\libs\inc\stm8s_uart1.h	345;"	prototype	signature:(void)
 UART1_DeInit	..\libs\src\stm8s_uart1.c	53;"	function	signature:(void)
 UART1_FLAG_FE	..\libs\inc\stm8s_uart1.h	125;"	enumerator	enum:__anon131
@@ -2996,7 +2923,7 @@ UART1_Mode_TypeDef	..\libs\inc\stm8s_uart1.h	114;"	typedef	typeref:enum:__anon13
 UART1_PARITY_EVEN	..\libs\inc\stm8s_uart1.h	82;"	enumerator	enum:__anon127
 UART1_PARITY_NO	..\libs\inc\stm8s_uart1.h	81;"	enumerator	enum:__anon127
 UART1_PARITY_ODD	..\libs\inc\stm8s_uart1.h	83;"	enumerator	enum:__anon127
-UART1_PRINT	..\src\main.c	15;"	macro	file:
+UART1_PRINT	..\src\main.c	16;"	macro	file:
 UART1_PSCR_RESET_VALUE	..\libs\inc\stm8s.h	1791;"	macro
 UART1_Parity_TypeDef	..\libs\inc\stm8s_uart1.h	84;"	typedef	typeref:enum:__anon127
 UART1_RX_IRQHandler	..\inc\stm8s_it.h	85;"	prototype	signature:(void)
@@ -3262,14 +3189,12 @@ WWDG_WR_MSB	..\libs\inc\stm8s.h	1654;"	macro
 WWDG_WR_RESET_VALUE	..\libs\inc\stm8s.h	1640;"	macro
 WWDG_WR_W	..\libs\inc\stm8s.h	1655;"	macro
 WWDG_struct	..\libs\inc\stm8s.h	1628;"	struct
-_AD7747_H_	..\driver\inc\ad7747.h	10;"	macro
 _COSMIC_	..\libs\inc\stm8s.h	82;"	macro
 _IAR_	..\libs\inc\stm8s.h	86;"	macro
 _INLINE	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	13;"	macro
 _INLINE	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	15;"	macro
 _RAISONANCE_	..\libs\inc\stm8s.h	84;"	macro
 __I	..\libs\inc\stm8s.h	205;"	macro
-__I2C_OPT_H	..\driver\inc\i2c_master_poll.h	22;"	macro
 __IO	..\libs\inc\stm8s.h	207;"	macro
 __MODSL0__	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\modsl0.h	8;"	macro
 __O	..\libs\inc\stm8s.h	206;"	macro
@@ -3304,13 +3229,11 @@ __STRING__	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hst
 _stext	..\inc\stm8s_it.h	40;"	prototype	signature:(void)
 _vectab	..\src\stm8_interrupt_vector.c	14;"	variable
 assert_failed	..\inc\stm8s_conf.h	105;"	prototype	signature:(uint8_t* file, uint32_t line)
-assert_failed	..\src\main.c	241;"	function	signature:(uint8_t* file, uint32_t line)
+assert_failed	..\src\main.c	268;"	function	signature:(uint8_t* file, uint32_t line)
 assert_param	..\inc\stm8s_conf.h	103;"	macro
 assert_param	..\inc\stm8s_conf.h	107;"	macro
 bool	..\libs\inc\stm8s.h	230;"	typedef	typeref:enum:__anon1
-cap	..\src\main.c	60;"	variable
-dead_time	..\driver\inc\i2c_master_poll.h	50;"	macro
-delay	..\driver\inc\i2c_master_poll.h	51;"	macro
+cap	..\src\main.c	64;"	variable
 disableInterrupts	..\libs\inc\stm8s.h	2716;"	macro
 disableInterrupts	..\libs\inc\stm8s.h	2725;"	macro
 disableInterrupts	..\libs\inc\stm8s.h	2735;"	macro
@@ -3318,7 +3241,7 @@ eepera	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\s
 enableInterrupts	..\libs\inc\stm8s.h	2715;"	macro
 enableInterrupts	..\libs\inc\stm8s.h	2724;"	macro
 enableInterrupts	..\libs\inc\stm8s.h	2734;"	macro
-freq	..\src\main.c	59;"	variable
+freq	..\src\main.c	63;"	variable
 getchar	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	15;"	prototype	signature:(void)
 gets	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	16;"	prototype	signature:(char *s)
 halt	..\libs\inc\stm8s.h	2722;"	macro
@@ -3331,17 +3254,21 @@ interrupt_handler	..\src\stm8_interrupt_vector.c	11;"	member	struct:interrupt_ve
 interrupt_handler_t	..\src\stm8_interrupt_vector.c	7;"	typedef	file:
 interrupt_instruction	..\src\stm8_interrupt_vector.c	10;"	member	struct:interrupt_vector	file:
 interrupt_vector	..\src\stm8_interrupt_vector.c	9;"	struct	file:
-main	..\src\main.c	67;"	function	signature:(void)
+main	..\src\main.c	71;"	function	signature:(void)
 memchr	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	34;"	prototype	signature:(void *s, char c, unsigned int n)
 memcmp	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	28;"	prototype	signature:(void *s1, void *s2, unsigned int n)
 memcpy	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	35;"	prototype	signature:(void *s1, void *s2, unsigned int n)
 memmove	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	36;"	prototype	signature:(void *s1, void *s2, unsigned int n)
 memset	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	37;"	prototype	signature:(void *s, char c, unsigned int n)
+msDelay	..\src\main.c	198;"	function	signature:(uint16_t msTime)
+msDelay	..\src\main.c	58;"	prototype	file:	signature:(uint16_t msTime)
+msTime	..\src\main.c	57;"	variable
 nop	..\libs\inc\stm8s.h	2719;"	macro
 nop	..\libs\inc\stm8s.h	2728;"	macro
 nop	..\libs\inc\stm8s.h	2738;"	macro
-overflow_count_tim1	..\src\main.c	56;"	variable
-overflow_count_tim2	..\src\main.c	57;"	variable
+overflow_count_tim1	..\src\main.c	60;"	variable
+overflow_count_tim2	..\src\main.c	61;"	variable
+overflow_count_tim4	..\src\main.c	62;"	variable
 printf	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	17;"	prototype	signature:(char *format, ...)
 putchar	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	18;"	prototype	signature:(char c)
 puts	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	19;"	prototype	signature:(char *s)
@@ -3352,7 +3279,6 @@ s16	..\libs\inc\stm8s.h	222;"	typedef
 s32	..\libs\inc\stm8s.h	221;"	typedef
 s8	..\libs\inc\stm8s.h	223;"	typedef
 scanf	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h	20;"	prototype	signature:(char *format, ...)
-set_tout_ms	..\driver\inc\i2c_master_poll.h	53;"	macro
 sim	..\libs\inc\stm8s.h	2718;"	macro
 sim	..\libs\inc\stm8s.h	2727;"	macro
 sim	..\libs\inc\stm8s.h	2737;"	macro
@@ -3372,7 +3298,6 @@ strpbrk	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\
 strrchr	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	26;"	prototype	signature:(char *s, char c)
 strspn	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	33;"	prototype	signature:(char *s1, char *s2)
 strstr	..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h	27;"	prototype	signature:(char *s1, char *s2)
-tout	..\driver\inc\i2c_master_poll.h	52;"	macro
 trap	..\libs\inc\stm8s.h	2720;"	macro
 trap	..\libs\inc\stm8s.h	2729;"	macro
 trap	..\libs\inc\stm8s.h	2739;"	macro

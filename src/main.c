@@ -10,6 +10,7 @@
 #include <string.h>
 #include "stm8s.h"
 #include "i2c_master_poll.h"
+//#include "ad7747.h"
 #include "stdio.h"
 
 #define UART1_PRINT
@@ -39,23 +40,24 @@ static void TIM1_Config(void); // Input capture - channel 2
 static void TIM2_Config(void); // Set sample resolution
 //void TIM3_Config(void); // Test freq output
 //static void TIM4_Config(void); // Delay function
+static void I2C_Config(void);
+//void AD7747_write(unsigned char cmd);
+//unsigned int AD7747_read_word(void);
 
-/* Private functions ---------------------------------------------------------*/
-/* Public functions ----------------------------------------------------------*/
-/* Public variables ----------------------------------------------------------*/
 volatile u16 TIM4_tout;
-//u8 dataBuf[8]= {0x0};
+u8 dataBuf[8]= {0x0};
+//unsigned int data = 12;
+//u8 AD7747_addr = 0x48;
 
 // Define sample resolution (Hz) = 5Hz
 // Min = 0.5Hz
 extern unsigned int SAMP_RES = 5;
 
-//uint16_t msTime = 0;
-//void msDelay(uint16_t msTime);
-
 extern uint16_t overflow_count_tim1 = 0;
 extern uint16_t overflow_count_tim2 = 0;
-//extern volatile uint16_t overflow_count_tim4 = 0;
+//extern uint16_t overflow_count_tim4 = 0;
+//uint16_t msTime = 0;
+//void msDelay(uint16_t msTime);
 extern unsigned int freq = 0;
 extern unsigned int cap = 0;
 
@@ -69,9 +71,14 @@ void main(void)
 	CLK_Config();
 	GPIO_Config();
 	UART1_Config();
-	
 	TIM4_Init();
 	I2C_Master_Init();
+	//TIM4_Config();
+	//I2C_Config();
+	
+	
+	//printf("AD7747 Init = %s\n", AD7747_Init());
+//	printf("AD7747 = 0x%x\n", AD7747_read_word());
 	
 	TIM2_Config(); // Input capture - channel 2
 	TIM1_Config(); // Set sample resolution
@@ -80,32 +87,47 @@ void main(void)
 	// Enable all interrupts  
 	enableInterrupts();
 	
-	//msDelay(500);
+	delay(1000);
+	//msDelay(1000);
 
   while (1)
   {
-    //set_tout_ms(10);
-/*
+
+		set_tout_ms(10);
+
     if(tout()) 
 		{
 			memset(dataBuf, 0, 8);
 			
       set_tout_ms(10);
-      I2C_ReadRegister(0x09, 1, &dataBuf[0]);
-			I2C_ReadRegister(0x0a, 1, &dataBuf[1]);
-			I2C_ReadRegister(0x0b, 1, &dataBuf[2]);
-			I2C_ReadRegister(0x0c, 1, &dataBuf[3]);
-			I2C_ReadRegister(0x0d, 1, &dataBuf[4]);
-			I2C_ReadRegister(0x00, 1, &dataBuf[5]);
+      I2C_ReadRegister(0x00, 1, &dataBuf[0]);
+			I2C_ReadRegister(0x07, 1, &dataBuf[1]);
+			I2C_ReadRegister(0x0A, 1, &dataBuf[2]);
+			I2C_ReadRegister(0x0B, 1, &dataBuf[3]);
+			I2C_ReadRegister(0x0C, 1, &dataBuf[4]);
+			//I2C_ReadRegister(0x00, 1, &dataBuf[5]);
     }
-
-    delay(10);
-*/
-		printf("Detected Freq = %d Hz\n", freq-3);
-		printf("Cap value = %d pF\n", cap);
-		//GPIO_WriteReverse(GPIOD, GPIO_PIN_0);
-		//msDelay(1000);
+		
+		printf("AD7747 Status 		0x00 = 0x%02x\n", (int)dataBuf[0]);
+		printf("AD7747 Cap Setup 	0x07 = 0x%02x\n", (int)dataBuf[1]);
+		printf("AD7747 Config 		0x0A = 0x%02x\n", (int)dataBuf[2]);
+		printf("AD7747 Cap DAC A 	0x0B = 0x%02x\n", (int)dataBuf[3]);
+		printf("AD7747 Cap DAC B 	0x0C = 0x%02x\n", (int)dataBuf[4]);
+		delay(10);
+		printf("\nDetected 555 Freq = %d Hz\n", freq-3);
+		printf("555 Cap value = %d pF\n\n", cap);
+		GPIO_WriteReverse(GPIOD, GPIO_PIN_2);
+		//memset(dataBuf, 0, 8);
+		//I2C_ReadRegister(0x01, 1, &dataBuf[0]);
+		//I2C_ReadRegister(0x02, 1, &dataBuf[1]);
+		//I2C_ReadRegister(0x03, 1, &dataBuf[2]);
+		//data = AD7747_read_word();
+		//printf("AD7747 = 0x%x\n", (int)AD7747_read_word());
+		//printf("AD7747 = 0x%x\n", (int)dataBuf[1]);
+		//printf("AD7747 = 0x%x\n", (int)dataBuf[2]);
+		
 		delay(1000);
+		//msDelay(1000);
   }
 }
 
@@ -135,9 +157,9 @@ static void CLK_Config(void)
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, ENABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER3, ENABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER4, ENABLE);
-
+	CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, ENABLE);
+	
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
-	CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, DISABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
 	CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
 	
@@ -154,16 +176,20 @@ static void UART1_Config(void)
 
 static void GPIO_Config(void)
 {
-	//GPIO_DeInit(GPIOD);
+	GPIO_DeInit(GPIOD);
 	//GPIO_DeInit(GPIOE);
 	GPIO_DeInit(GPIOC);
+	GPIO_DeInit(GPIOB);
 	//GPIO_Init(GPIOD, GPIO_PIN_0, GPIO_MODE_OUT_PP_LOW_FAST);
-	//GPIO_Init(GPIOD, GPIO_PIN_2, GPIO_MODE_OUT_PP_LOW_FAST);
+	GPIO_Init(GPIOD, GPIO_PIN_2, GPIO_MODE_OUT_PP_LOW_FAST);
 	//GPIO_Init(GPIOE, GPIO_PIN_0, GPIO_MODE_OUT_PP_LOW_FAST);
 	//GPIO_Init(GPIOD, GPIO_PIN_3, GPIO_MODE_OUT_PP_LOW_FAST);
 	GPIO_Init(GPIOC, GPIO_PIN_6, GPIO_MODE_IN_FL_NO_IT);
+	GPIO_Init(GPIOB, GPIO_PIN_4, GPIO_MODE_OUT_OD_HIZ_FAST);
+	GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_OUT_OD_HIZ_FAST);
 }
-/*
+
+#ifdef TIM4_DELAY_2
 static void TIM4_Config(void)
 {	
 	TIM4_DeInit();
@@ -179,7 +205,14 @@ void msDelay(uint16_t msTime)
 	while (msTime != (overflow_count_tim4 - 1));
 	overflow_count_tim4 = 0;
 }
-*/
+
+static void I2C_Config(void)
+{
+	I2C_DeInit();
+	I2C_Init(100000, AD7747_addr, I2C_DUTYCYCLE_2, I2C_ACK_CURR, I2C_ADDMODE_7BIT, (CLK_GetClockFreq() / 16000000));
+	I2C_Cmd(ENABLE);
+}
+#endif
 
 static void TIM1_Config(void)
 {	
@@ -203,7 +236,7 @@ static void TIM2_Config(void)
 #ifdef UART1_PRINT
 PUTCHAR_PROTOTYPE
 {
-  /* Write a character to the UART2 */
+  /* Write a character to the UART1 */
   UART1_SendData8(c);
   /* Loop until the end of transmission */
   while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);

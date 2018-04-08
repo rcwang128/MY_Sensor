@@ -28,9 +28,9 @@
 * See also 		  : None
 *******************************************************************************/
 void I2C_Master_Init(void) {
-  GPIOE->ODR |= 6;                //define SDA, SCL outputs, HiZ, Open drain, Fast
-  GPIOE->DDR |= 6;
-  GPIOE->CR2 |= 6;
+  //GPIOE->ODR |= 6;                //define SDA, SCL outputs, HiZ, Open drain, Fast
+  //GPIOE->DDR |= 6;
+  //GPIOE->CR2 |= 6;
 
 #ifdef FAST_I2C_MODE
   I2C->FREQR = 16;               // input clock to I2C - 16MHz 
