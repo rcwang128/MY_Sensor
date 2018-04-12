@@ -222,7 +222,7 @@ String.6.0=2010,12,3,14,49,2
 [Root.Device_Drivers]
 ElemType=Folder
 PathName=Device_Drivers
-Child=Root.Device_Drivers...\driver\src\i2c_master_poll.c
+Child=Root.Device_Drivers...\driver\src\ad7747.c
 Next=Root.Source Files
 Config.0=Root.Device_Drivers.Config.0
 Config.1=Root.Device_Drivers.Config.1
@@ -292,6 +292,11 @@ String.3.0=
 String.4.0=
 String.5.0=
 String.6.0=2010,12,3,14,49,2
+
+[Root.Device_Drivers...\driver\src\ad7747.c]
+ElemType=File
+PathName=..\driver\src\ad7747.c
+Next=Root.Device_Drivers...\driver\src\i2c_master_poll.c
 
 [Root.Device_Drivers...\driver\src\i2c_master_poll.c]
 ElemType=File

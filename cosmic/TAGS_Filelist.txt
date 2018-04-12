@@ -1,3 +1,5 @@
+..\driver\src\ad7747.c
+..\driver\src\i2c_master_poll.c
 ..\src\main.c
 ..\src\stm8s_it.c
 ..\src\stm8_interrupt_vector.c
@@ -21,6 +23,8 @@
 ..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\modsl0.h
 ..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\stdio.h
 ..\..\..\..\..\..\program files (x86)\cosmic\fse_compilers\cxstm8\hstm8\string.h
+..\driver\inc\ad7747.h
+..\driver\inc\i2c_master_poll.h
 ..\inc\stm8s_conf.h
 ..\inc\stm8s_it.h
 ..\libs\inc\stm8s.h

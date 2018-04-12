@@ -1,3579 +1,4240 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.11.10 - 06 Jul 2017
    3                     ; Generator (Limited) V4.4.7 - 05 Oct 2017
-   4                     ; Optimizer V4.4.7 - 05 Oct 2017
-  49                     ; 58 void TIM1_DeInit(void)
-  49                     ; 59 {
-  51                     .text:	section	.text,new
-  52  0000               _TIM1_DeInit:
-  56                     ; 60   TIM1->CR1  = TIM1_CR1_RESET_VALUE;
-  58  0000 725f5250      	clr	21072
-  59                     ; 61   TIM1->CR2  = TIM1_CR2_RESET_VALUE;
-  61  0004 725f5251      	clr	21073
-  62                     ; 62   TIM1->SMCR = TIM1_SMCR_RESET_VALUE;
-  64  0008 725f5252      	clr	21074
-  65                     ; 63   TIM1->ETR  = TIM1_ETR_RESET_VALUE;
-  67  000c 725f5253      	clr	21075
-  68                     ; 64   TIM1->IER  = TIM1_IER_RESET_VALUE;
-  70  0010 725f5254      	clr	21076
-  71                     ; 65   TIM1->SR2  = TIM1_SR2_RESET_VALUE;
-  73  0014 725f5256      	clr	21078
-  74                     ; 67   TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
-  76  0018 725f525c      	clr	21084
-  77                     ; 68   TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
-  79  001c 725f525d      	clr	21085
-  80                     ; 70   TIM1->CCMR1 = 0x01;
-  82  0020 35015258      	mov	21080,#1
-  83                     ; 71   TIM1->CCMR2 = 0x01;
-  85  0024 35015259      	mov	21081,#1
-  86                     ; 72   TIM1->CCMR3 = 0x01;
-  88  0028 3501525a      	mov	21082,#1
-  89                     ; 73   TIM1->CCMR4 = 0x01;
-  91  002c 3501525b      	mov	21083,#1
-  92                     ; 75   TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
-  94  0030 725f525c      	clr	21084
-  95                     ; 76   TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
-  97  0034 725f525d      	clr	21085
-  98                     ; 77   TIM1->CCMR1 = TIM1_CCMR1_RESET_VALUE;
- 100  0038 725f5258      	clr	21080
- 101                     ; 78   TIM1->CCMR2 = TIM1_CCMR2_RESET_VALUE;
- 103  003c 725f5259      	clr	21081
- 104                     ; 79   TIM1->CCMR3 = TIM1_CCMR3_RESET_VALUE;
- 106  0040 725f525a      	clr	21082
- 107                     ; 80   TIM1->CCMR4 = TIM1_CCMR4_RESET_VALUE;
- 109  0044 725f525b      	clr	21083
- 110                     ; 81   TIM1->CNTRH = TIM1_CNTRH_RESET_VALUE;
- 112  0048 725f525e      	clr	21086
- 113                     ; 82   TIM1->CNTRL = TIM1_CNTRL_RESET_VALUE;
- 115  004c 725f525f      	clr	21087
- 116                     ; 83   TIM1->PSCRH = TIM1_PSCRH_RESET_VALUE;
- 118  0050 725f5260      	clr	21088
- 119                     ; 84   TIM1->PSCRL = TIM1_PSCRL_RESET_VALUE;
- 121  0054 725f5261      	clr	21089
- 122                     ; 85   TIM1->ARRH  = TIM1_ARRH_RESET_VALUE;
- 124  0058 35ff5262      	mov	21090,#255
- 125                     ; 86   TIM1->ARRL  = TIM1_ARRL_RESET_VALUE;
- 127  005c 35ff5263      	mov	21091,#255
- 128                     ; 87   TIM1->CCR1H = TIM1_CCR1H_RESET_VALUE;
- 130  0060 725f5265      	clr	21093
- 131                     ; 88   TIM1->CCR1L = TIM1_CCR1L_RESET_VALUE;
- 133  0064 725f5266      	clr	21094
- 134                     ; 89   TIM1->CCR2H = TIM1_CCR2H_RESET_VALUE;
- 136  0068 725f5267      	clr	21095
- 137                     ; 90   TIM1->CCR2L = TIM1_CCR2L_RESET_VALUE;
- 139  006c 725f5268      	clr	21096
- 140                     ; 91   TIM1->CCR3H = TIM1_CCR3H_RESET_VALUE;
- 142  0070 725f5269      	clr	21097
- 143                     ; 92   TIM1->CCR3L = TIM1_CCR3L_RESET_VALUE;
- 145  0074 725f526a      	clr	21098
- 146                     ; 93   TIM1->CCR4H = TIM1_CCR4H_RESET_VALUE;
- 148  0078 725f526b      	clr	21099
- 149                     ; 94   TIM1->CCR4L = TIM1_CCR4L_RESET_VALUE;
- 151  007c 725f526c      	clr	21100
- 152                     ; 95   TIM1->OISR  = TIM1_OISR_RESET_VALUE;
- 154  0080 725f526f      	clr	21103
- 155                     ; 96   TIM1->EGR   = 0x01; /* TIM1_EGR_UG */
- 157  0084 35015257      	mov	21079,#1
- 158                     ; 97   TIM1->DTR   = TIM1_DTR_RESET_VALUE;
- 160  0088 725f526e      	clr	21102
- 161                     ; 98   TIM1->BKR   = TIM1_BKR_RESET_VALUE;
- 163  008c 725f526d      	clr	21101
- 164                     ; 99   TIM1->RCR   = TIM1_RCR_RESET_VALUE;
- 166  0090 725f5264      	clr	21092
- 167                     ; 100   TIM1->SR1   = TIM1_SR1_RESET_VALUE;
- 169  0094 725f5255      	clr	21077
- 170                     ; 101 }
- 173  0098 81            	ret	
- 277                     ; 111 void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
- 277                     ; 112                        TIM1_CounterMode_TypeDef TIM1_CounterMode,
- 277                     ; 113                        uint16_t TIM1_Period,
- 277                     ; 114                        uint8_t TIM1_RepetitionCounter)
- 277                     ; 115 {
- 278                     .text:	section	.text,new
- 279  0000               _TIM1_TimeBaseInit:
- 281  0000 89            	pushw	x
- 282       00000000      OFST:	set	0
- 285                     ; 117   assert_param(IS_TIM1_COUNTER_MODE_OK(TIM1_CounterMode));
- 287  0001 7b05          	ld	a,(OFST+5,sp)
- 288  0003 271e          	jreq	L41
- 289  0005 a110          	cp	a,#16
- 290  0007 271a          	jreq	L41
- 291  0009 a120          	cp	a,#32
- 292  000b 2716          	jreq	L41
- 293  000d a140          	cp	a,#64
- 294  000f 2712          	jreq	L41
- 295  0011 a160          	cp	a,#96
- 296  0013 270e          	jreq	L41
- 297  0015 ae0075        	ldw	x,#117
- 298  0018 89            	pushw	x
- 299  0019 5f            	clrw	x
- 300  001a 89            	pushw	x
- 301  001b ae0000        	ldw	x,#L37
- 302  001e cd0000        	call	_assert_failed
- 304  0021 5b04          	addw	sp,#4
- 305  0023               L41:
- 306                     ; 120   TIM1->ARRH = (uint8_t)(TIM1_Period >> 8);
- 308  0023 7b06          	ld	a,(OFST+6,sp)
- 309  0025 c75262        	ld	21090,a
- 310                     ; 121   TIM1->ARRL = (uint8_t)(TIM1_Period);
- 312  0028 7b07          	ld	a,(OFST+7,sp)
- 313  002a c75263        	ld	21091,a
- 314                     ; 124   TIM1->PSCRH = (uint8_t)(TIM1_Prescaler >> 8);
- 316  002d 7b01          	ld	a,(OFST+1,sp)
- 317  002f c75260        	ld	21088,a
- 318                     ; 125   TIM1->PSCRL = (uint8_t)(TIM1_Prescaler);
- 320  0032 7b02          	ld	a,(OFST+2,sp)
- 321  0034 c75261        	ld	21089,a
- 322                     ; 128   TIM1->CR1 = (uint8_t)((uint8_t)(TIM1->CR1 & (uint8_t)(~(TIM1_CR1_CMS | TIM1_CR1_DIR)))
- 322                     ; 129                         | (uint8_t)(TIM1_CounterMode));
- 324  0037 c65250        	ld	a,21072
- 325  003a a48f          	and	a,#143
- 326  003c 1a05          	or	a,(OFST+5,sp)
- 327  003e c75250        	ld	21072,a
- 328                     ; 132   TIM1->RCR = TIM1_RepetitionCounter;
- 330  0041 7b08          	ld	a,(OFST+8,sp)
- 331  0043 c75264        	ld	21092,a
- 332                     ; 133 }
- 335  0046 85            	popw	x
- 336  0047 81            	ret	
- 620                     ; 154 void TIM1_OC1Init(TIM1_OCMode_TypeDef TIM1_OCMode,
- 620                     ; 155                   TIM1_OutputState_TypeDef TIM1_OutputState,
- 620                     ; 156                   TIM1_OutputNState_TypeDef TIM1_OutputNState,
- 620                     ; 157                   uint16_t TIM1_Pulse,
- 620                     ; 158                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
- 620                     ; 159                   TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity,
- 620                     ; 160                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState,
- 620                     ; 161                   TIM1_OCNIdleState_TypeDef TIM1_OCNIdleState)
- 620                     ; 162 {
- 621                     .text:	section	.text,new
- 622  0000               _TIM1_OC1Init:
- 624  0000 89            	pushw	x
- 625  0001 5203          	subw	sp,#3
- 626       00000003      OFST:	set	3
- 629                     ; 164   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
- 631  0003 9e            	ld	a,xh
- 632  0004 4d            	tnz	a
- 633  0005 271f          	jreq	L62
- 634  0007 9e            	ld	a,xh
- 635  0008 a110          	cp	a,#16
- 636  000a 271a          	jreq	L62
- 637  000c 9e            	ld	a,xh
- 638  000d a120          	cp	a,#32
- 639  000f 2715          	jreq	L62
- 640  0011 9e            	ld	a,xh
- 641  0012 a130          	cp	a,#48
- 642  0014 2710          	jreq	L62
- 643  0016 9e            	ld	a,xh
- 644  0017 a160          	cp	a,#96
- 645  0019 270b          	jreq	L62
- 646  001b 9e            	ld	a,xh
- 647  001c a170          	cp	a,#112
- 648  001e 2706          	jreq	L62
- 649  0020 ae00a4        	ldw	x,#164
- 650  0023 cd00d6        	call	LC001
- 651  0026               L62:
- 652                     ; 165   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
- 654  0026 7b05          	ld	a,(OFST+2,sp)
- 655  0028 270a          	jreq	L63
- 656  002a a111          	cp	a,#17
- 657  002c 2706          	jreq	L63
- 658  002e ae00a5        	ldw	x,#165
- 659  0031 cd00d6        	call	LC001
- 660  0034               L63:
- 661                     ; 166   assert_param(IS_TIM1_OUTPUTN_STATE_OK(TIM1_OutputNState));
- 663  0034 7b08          	ld	a,(OFST+5,sp)
- 664  0036 270a          	jreq	L64
- 665  0038 a144          	cp	a,#68
- 666  003a 2706          	jreq	L64
- 667  003c ae00a6        	ldw	x,#166
- 668  003f cd00d6        	call	LC001
- 669  0042               L64:
- 670                     ; 167   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
- 672  0042 7b0b          	ld	a,(OFST+8,sp)
- 673  0044 270a          	jreq	L65
- 674  0046 a122          	cp	a,#34
- 675  0048 2706          	jreq	L65
- 676  004a ae00a7        	ldw	x,#167
- 677  004d cd00d6        	call	LC001
- 678  0050               L65:
- 679                     ; 168   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
- 681  0050 7b0c          	ld	a,(OFST+9,sp)
- 682  0052 2709          	jreq	L66
- 683  0054 a188          	cp	a,#136
- 684  0056 2705          	jreq	L66
- 685  0058 ae00a8        	ldw	x,#168
- 686  005b ad79          	call	LC001
- 687  005d               L66:
- 688                     ; 169   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
- 690  005d 7b0d          	ld	a,(OFST+10,sp)
- 691  005f a155          	cp	a,#85
- 692  0061 2709          	jreq	L67
- 693  0063 7b0d          	ld	a,(OFST+10,sp)
- 694  0065 2705          	jreq	L67
- 695  0067 ae00a9        	ldw	x,#169
- 696  006a ad6a          	call	LC001
- 697  006c               L67:
- 698                     ; 170   assert_param(IS_TIM1_OCNIDLE_STATE_OK(TIM1_OCNIdleState));
- 700  006c 7b0e          	ld	a,(OFST+11,sp)
- 701  006e a12a          	cp	a,#42
- 702  0070 2709          	jreq	L601
- 703  0072 7b0e          	ld	a,(OFST+11,sp)
- 704  0074 2705          	jreq	L601
- 705  0076 ae00aa        	ldw	x,#170
- 706  0079 ad5b          	call	LC001
- 707  007b               L601:
- 708                     ; 174   TIM1->CCER1 &= (uint8_t)(~( TIM1_CCER1_CC1E | TIM1_CCER1_CC1NE 
- 708                     ; 175                              | TIM1_CCER1_CC1P | TIM1_CCER1_CC1NP));
- 710  007b c6525c        	ld	a,21084
- 711  007e a4f0          	and	a,#240
- 712  0080 c7525c        	ld	21084,a
- 713                     ; 178   TIM1->CCER1 |= (uint8_t)((uint8_t)((uint8_t)(TIM1_OutputState & TIM1_CCER1_CC1E)
- 713                     ; 179                                      | (uint8_t)(TIM1_OutputNState & TIM1_CCER1_CC1NE))
- 713                     ; 180                            | (uint8_t)( (uint8_t)(TIM1_OCPolarity  & TIM1_CCER1_CC1P)
- 713                     ; 181                                        | (uint8_t)(TIM1_OCNPolarity & TIM1_CCER1_CC1NP)));
- 715  0083 7b0c          	ld	a,(OFST+9,sp)
- 716  0085 a408          	and	a,#8
- 717  0087 6b03          	ld	(OFST+0,sp),a
- 719  0089 7b0b          	ld	a,(OFST+8,sp)
- 720  008b a402          	and	a,#2
- 721  008d 1a03          	or	a,(OFST+0,sp)
- 722  008f 6b02          	ld	(OFST-1,sp),a
- 724  0091 7b08          	ld	a,(OFST+5,sp)
- 725  0093 a404          	and	a,#4
- 726  0095 6b01          	ld	(OFST-2,sp),a
- 728  0097 7b05          	ld	a,(OFST+2,sp)
- 729  0099 a401          	and	a,#1
- 730  009b 1a01          	or	a,(OFST-2,sp)
- 731  009d 1a02          	or	a,(OFST-1,sp)
- 732  009f ca525c        	or	a,21084
- 733  00a2 c7525c        	ld	21084,a
- 734                     ; 184   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_OCM)) | 
- 734                     ; 185                           (uint8_t)TIM1_OCMode);
- 736  00a5 c65258        	ld	a,21080
- 737  00a8 a48f          	and	a,#143
- 738  00aa 1a04          	or	a,(OFST+1,sp)
- 739  00ac c75258        	ld	21080,a
- 740                     ; 188   TIM1->OISR &= (uint8_t)(~(TIM1_OISR_OIS1 | TIM1_OISR_OIS1N));
- 742  00af c6526f        	ld	a,21103
- 743  00b2 a4fc          	and	a,#252
- 744  00b4 c7526f        	ld	21103,a
- 745                     ; 190   TIM1->OISR |= (uint8_t)((uint8_t)( TIM1_OCIdleState & TIM1_OISR_OIS1 ) | 
- 745                     ; 191                           (uint8_t)( TIM1_OCNIdleState & TIM1_OISR_OIS1N ));
- 747  00b7 7b0e          	ld	a,(OFST+11,sp)
- 748  00b9 a402          	and	a,#2
- 749  00bb 6b03          	ld	(OFST+0,sp),a
- 751  00bd 7b0d          	ld	a,(OFST+10,sp)
- 752  00bf a401          	and	a,#1
- 753  00c1 1a03          	or	a,(OFST+0,sp)
- 754  00c3 ca526f        	or	a,21103
- 755  00c6 c7526f        	ld	21103,a
- 756                     ; 194   TIM1->CCR1H = (uint8_t)(TIM1_Pulse >> 8);
- 758  00c9 7b09          	ld	a,(OFST+6,sp)
- 759  00cb c75265        	ld	21093,a
- 760                     ; 195   TIM1->CCR1L = (uint8_t)(TIM1_Pulse);
- 762  00ce 7b0a          	ld	a,(OFST+7,sp)
- 763  00d0 c75266        	ld	21094,a
- 764                     ; 196 }
- 767  00d3 5b05          	addw	sp,#5
- 768  00d5 81            	ret	
- 769  00d6               LC001:
- 770  00d6 89            	pushw	x
- 771  00d7 5f            	clrw	x
- 772  00d8 89            	pushw	x
- 773  00d9 ae0000        	ldw	x,#L37
- 774  00dc cd0000        	call	_assert_failed
- 776  00df 5b04          	addw	sp,#4
- 777  00e1 81            	ret	
- 880                     ; 217 void TIM1_OC2Init(TIM1_OCMode_TypeDef TIM1_OCMode,
- 880                     ; 218                   TIM1_OutputState_TypeDef TIM1_OutputState,
- 880                     ; 219                   TIM1_OutputNState_TypeDef TIM1_OutputNState,
- 880                     ; 220                   uint16_t TIM1_Pulse,
- 880                     ; 221                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
- 880                     ; 222                   TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity,
- 880                     ; 223                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState,
- 880                     ; 224                   TIM1_OCNIdleState_TypeDef TIM1_OCNIdleState)
- 880                     ; 225 {
- 881                     .text:	section	.text,new
- 882  0000               _TIM1_OC2Init:
- 884  0000 89            	pushw	x
- 885  0001 5203          	subw	sp,#3
- 886       00000003      OFST:	set	3
- 889                     ; 227   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
- 891  0003 9e            	ld	a,xh
- 892  0004 4d            	tnz	a
- 893  0005 271f          	jreq	L021
- 894  0007 9e            	ld	a,xh
- 895  0008 a110          	cp	a,#16
- 896  000a 271a          	jreq	L021
- 897  000c 9e            	ld	a,xh
- 898  000d a120          	cp	a,#32
- 899  000f 2715          	jreq	L021
- 900  0011 9e            	ld	a,xh
- 901  0012 a130          	cp	a,#48
- 902  0014 2710          	jreq	L021
- 903  0016 9e            	ld	a,xh
- 904  0017 a160          	cp	a,#96
- 905  0019 270b          	jreq	L021
- 906  001b 9e            	ld	a,xh
- 907  001c a170          	cp	a,#112
- 908  001e 2706          	jreq	L021
- 909  0020 ae00e3        	ldw	x,#227
- 910  0023 cd00d6        	call	LC002
- 911  0026               L021:
- 912                     ; 228   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
- 914  0026 7b05          	ld	a,(OFST+2,sp)
- 915  0028 270a          	jreq	L031
- 916  002a a111          	cp	a,#17
- 917  002c 2706          	jreq	L031
- 918  002e ae00e4        	ldw	x,#228
- 919  0031 cd00d6        	call	LC002
- 920  0034               L031:
- 921                     ; 229   assert_param(IS_TIM1_OUTPUTN_STATE_OK(TIM1_OutputNState));
- 923  0034 7b08          	ld	a,(OFST+5,sp)
- 924  0036 270a          	jreq	L041
- 925  0038 a144          	cp	a,#68
- 926  003a 2706          	jreq	L041
- 927  003c ae00e5        	ldw	x,#229
- 928  003f cd00d6        	call	LC002
- 929  0042               L041:
- 930                     ; 230   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
- 932  0042 7b0b          	ld	a,(OFST+8,sp)
- 933  0044 270a          	jreq	L051
- 934  0046 a122          	cp	a,#34
- 935  0048 2706          	jreq	L051
- 936  004a ae00e6        	ldw	x,#230
- 937  004d cd00d6        	call	LC002
- 938  0050               L051:
- 939                     ; 231   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
- 941  0050 7b0c          	ld	a,(OFST+9,sp)
- 942  0052 2709          	jreq	L061
- 943  0054 a188          	cp	a,#136
- 944  0056 2705          	jreq	L061
- 945  0058 ae00e7        	ldw	x,#231
- 946  005b ad79          	call	LC002
- 947  005d               L061:
- 948                     ; 232   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
- 950  005d 7b0d          	ld	a,(OFST+10,sp)
- 951  005f a155          	cp	a,#85
- 952  0061 2709          	jreq	L071
- 953  0063 7b0d          	ld	a,(OFST+10,sp)
- 954  0065 2705          	jreq	L071
- 955  0067 ae00e8        	ldw	x,#232
- 956  006a ad6a          	call	LC002
- 957  006c               L071:
- 958                     ; 233   assert_param(IS_TIM1_OCNIDLE_STATE_OK(TIM1_OCNIdleState));
- 960  006c 7b0e          	ld	a,(OFST+11,sp)
- 961  006e a12a          	cp	a,#42
- 962  0070 2709          	jreq	L002
- 963  0072 7b0e          	ld	a,(OFST+11,sp)
- 964  0074 2705          	jreq	L002
- 965  0076 ae00e9        	ldw	x,#233
- 966  0079 ad5b          	call	LC002
- 967  007b               L002:
- 968                     ; 237   TIM1->CCER1 &= (uint8_t)(~( TIM1_CCER1_CC2E | TIM1_CCER1_CC2NE | 
- 968                     ; 238                              TIM1_CCER1_CC2P | TIM1_CCER1_CC2NP));
- 970  007b c6525c        	ld	a,21084
- 971  007e a40f          	and	a,#15
- 972  0080 c7525c        	ld	21084,a
- 973                     ; 242   TIM1->CCER1 |= (uint8_t)((uint8_t)((uint8_t)(TIM1_OutputState & TIM1_CCER1_CC2E  ) | 
- 973                     ; 243                                      (uint8_t)(TIM1_OutputNState & TIM1_CCER1_CC2NE )) | 
- 973                     ; 244                            (uint8_t)((uint8_t)(TIM1_OCPolarity  & TIM1_CCER1_CC2P  ) | 
- 973                     ; 245                                      (uint8_t)(TIM1_OCNPolarity & TIM1_CCER1_CC2NP )));
- 975  0083 7b0c          	ld	a,(OFST+9,sp)
- 976  0085 a480          	and	a,#128
- 977  0087 6b03          	ld	(OFST+0,sp),a
- 979  0089 7b0b          	ld	a,(OFST+8,sp)
- 980  008b a420          	and	a,#32
- 981  008d 1a03          	or	a,(OFST+0,sp)
- 982  008f 6b02          	ld	(OFST-1,sp),a
- 984  0091 7b08          	ld	a,(OFST+5,sp)
- 985  0093 a440          	and	a,#64
- 986  0095 6b01          	ld	(OFST-2,sp),a
- 988  0097 7b05          	ld	a,(OFST+2,sp)
- 989  0099 a410          	and	a,#16
- 990  009b 1a01          	or	a,(OFST-2,sp)
- 991  009d 1a02          	or	a,(OFST-1,sp)
- 992  009f ca525c        	or	a,21084
- 993  00a2 c7525c        	ld	21084,a
- 994                     ; 248   TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_OCM)) | 
- 994                     ; 249                           (uint8_t)TIM1_OCMode);
- 996  00a5 c65259        	ld	a,21081
- 997  00a8 a48f          	and	a,#143
- 998  00aa 1a04          	or	a,(OFST+1,sp)
- 999  00ac c75259        	ld	21081,a
-1000                     ; 252   TIM1->OISR &= (uint8_t)(~(TIM1_OISR_OIS2 | TIM1_OISR_OIS2N));
-1002  00af c6526f        	ld	a,21103
-1003  00b2 a4f3          	and	a,#243
-1004  00b4 c7526f        	ld	21103,a
-1005                     ; 254   TIM1->OISR |= (uint8_t)((uint8_t)(TIM1_OISR_OIS2 & TIM1_OCIdleState) | 
-1005                     ; 255                           (uint8_t)(TIM1_OISR_OIS2N & TIM1_OCNIdleState));
-1007  00b7 7b0e          	ld	a,(OFST+11,sp)
-1008  00b9 a408          	and	a,#8
-1009  00bb 6b03          	ld	(OFST+0,sp),a
-1011  00bd 7b0d          	ld	a,(OFST+10,sp)
-1012  00bf a404          	and	a,#4
-1013  00c1 1a03          	or	a,(OFST+0,sp)
-1014  00c3 ca526f        	or	a,21103
-1015  00c6 c7526f        	ld	21103,a
-1016                     ; 258   TIM1->CCR2H = (uint8_t)(TIM1_Pulse >> 8);
-1018  00c9 7b09          	ld	a,(OFST+6,sp)
-1019  00cb c75267        	ld	21095,a
-1020                     ; 259   TIM1->CCR2L = (uint8_t)(TIM1_Pulse);
-1022  00ce 7b0a          	ld	a,(OFST+7,sp)
-1023  00d0 c75268        	ld	21096,a
-1024                     ; 260 }
-1027  00d3 5b05          	addw	sp,#5
-1028  00d5 81            	ret	
-1029  00d6               LC002:
-1030  00d6 89            	pushw	x
-1031  00d7 5f            	clrw	x
-1032  00d8 89            	pushw	x
-1033  00d9 ae0000        	ldw	x,#L37
-1034  00dc cd0000        	call	_assert_failed
-1036  00df 5b04          	addw	sp,#4
-1037  00e1 81            	ret	
-1140                     ; 281 void TIM1_OC3Init(TIM1_OCMode_TypeDef TIM1_OCMode,
-1140                     ; 282                   TIM1_OutputState_TypeDef TIM1_OutputState,
-1140                     ; 283                   TIM1_OutputNState_TypeDef TIM1_OutputNState,
-1140                     ; 284                   uint16_t TIM1_Pulse,
-1140                     ; 285                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
-1140                     ; 286                   TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity,
-1140                     ; 287                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState,
-1140                     ; 288                   TIM1_OCNIdleState_TypeDef TIM1_OCNIdleState)
-1140                     ; 289 {
-1141                     .text:	section	.text,new
-1142  0000               _TIM1_OC3Init:
-1144  0000 89            	pushw	x
-1145  0001 5203          	subw	sp,#3
-1146       00000003      OFST:	set	3
-1149                     ; 291   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
-1151  0003 9e            	ld	a,xh
-1152  0004 4d            	tnz	a
-1153  0005 271f          	jreq	L212
-1154  0007 9e            	ld	a,xh
-1155  0008 a110          	cp	a,#16
-1156  000a 271a          	jreq	L212
-1157  000c 9e            	ld	a,xh
-1158  000d a120          	cp	a,#32
-1159  000f 2715          	jreq	L212
-1160  0011 9e            	ld	a,xh
-1161  0012 a130          	cp	a,#48
-1162  0014 2710          	jreq	L212
-1163  0016 9e            	ld	a,xh
-1164  0017 a160          	cp	a,#96
-1165  0019 270b          	jreq	L212
-1166  001b 9e            	ld	a,xh
-1167  001c a170          	cp	a,#112
-1168  001e 2706          	jreq	L212
-1169  0020 ae0123        	ldw	x,#291
-1170  0023 cd00d6        	call	LC003
-1171  0026               L212:
-1172                     ; 292   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
-1174  0026 7b05          	ld	a,(OFST+2,sp)
-1175  0028 270a          	jreq	L222
-1176  002a a111          	cp	a,#17
-1177  002c 2706          	jreq	L222
-1178  002e ae0124        	ldw	x,#292
-1179  0031 cd00d6        	call	LC003
-1180  0034               L222:
-1181                     ; 293   assert_param(IS_TIM1_OUTPUTN_STATE_OK(TIM1_OutputNState));
-1183  0034 7b08          	ld	a,(OFST+5,sp)
-1184  0036 270a          	jreq	L232
-1185  0038 a144          	cp	a,#68
-1186  003a 2706          	jreq	L232
-1187  003c ae0125        	ldw	x,#293
-1188  003f cd00d6        	call	LC003
-1189  0042               L232:
-1190                     ; 294   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
-1192  0042 7b0b          	ld	a,(OFST+8,sp)
-1193  0044 270a          	jreq	L242
-1194  0046 a122          	cp	a,#34
-1195  0048 2706          	jreq	L242
-1196  004a ae0126        	ldw	x,#294
-1197  004d cd00d6        	call	LC003
-1198  0050               L242:
-1199                     ; 295   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
-1201  0050 7b0c          	ld	a,(OFST+9,sp)
-1202  0052 2709          	jreq	L252
-1203  0054 a188          	cp	a,#136
-1204  0056 2705          	jreq	L252
-1205  0058 ae0127        	ldw	x,#295
-1206  005b ad79          	call	LC003
-1207  005d               L252:
-1208                     ; 296   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
-1210  005d 7b0d          	ld	a,(OFST+10,sp)
-1211  005f a155          	cp	a,#85
-1212  0061 2709          	jreq	L262
-1213  0063 7b0d          	ld	a,(OFST+10,sp)
-1214  0065 2705          	jreq	L262
-1215  0067 ae0128        	ldw	x,#296
-1216  006a ad6a          	call	LC003
-1217  006c               L262:
-1218                     ; 297   assert_param(IS_TIM1_OCNIDLE_STATE_OK(TIM1_OCNIdleState));
-1220  006c 7b0e          	ld	a,(OFST+11,sp)
-1221  006e a12a          	cp	a,#42
-1222  0070 2709          	jreq	L272
-1223  0072 7b0e          	ld	a,(OFST+11,sp)
-1224  0074 2705          	jreq	L272
-1225  0076 ae0129        	ldw	x,#297
-1226  0079 ad5b          	call	LC003
-1227  007b               L272:
-1228                     ; 301   TIM1->CCER2 &= (uint8_t)(~( TIM1_CCER2_CC3E | TIM1_CCER2_CC3NE | 
-1228                     ; 302                              TIM1_CCER2_CC3P | TIM1_CCER2_CC3NP));
-1230  007b c6525d        	ld	a,21085
-1231  007e a4f0          	and	a,#240
-1232  0080 c7525d        	ld	21085,a
-1233                     ; 305   TIM1->CCER2 |= (uint8_t)((uint8_t)((uint8_t)(TIM1_OutputState  & TIM1_CCER2_CC3E   ) |
-1233                     ; 306                                      (uint8_t)(TIM1_OutputNState & TIM1_CCER2_CC3NE  )) | 
-1233                     ; 307                            (uint8_t)((uint8_t)(TIM1_OCPolarity   & TIM1_CCER2_CC3P   ) | 
-1233                     ; 308                                      (uint8_t)(TIM1_OCNPolarity  & TIM1_CCER2_CC3NP  )));
-1235  0083 7b0c          	ld	a,(OFST+9,sp)
-1236  0085 a408          	and	a,#8
-1237  0087 6b03          	ld	(OFST+0,sp),a
-1239  0089 7b0b          	ld	a,(OFST+8,sp)
-1240  008b a402          	and	a,#2
-1241  008d 1a03          	or	a,(OFST+0,sp)
-1242  008f 6b02          	ld	(OFST-1,sp),a
-1244  0091 7b08          	ld	a,(OFST+5,sp)
-1245  0093 a404          	and	a,#4
-1246  0095 6b01          	ld	(OFST-2,sp),a
-1248  0097 7b05          	ld	a,(OFST+2,sp)
-1249  0099 a401          	and	a,#1
-1250  009b 1a01          	or	a,(OFST-2,sp)
-1251  009d 1a02          	or	a,(OFST-1,sp)
-1252  009f ca525d        	or	a,21085
-1253  00a2 c7525d        	ld	21085,a
-1254                     ; 311   TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_OCM)) | 
-1254                     ; 312                           (uint8_t)TIM1_OCMode);
-1256  00a5 c6525a        	ld	a,21082
-1257  00a8 a48f          	and	a,#143
-1258  00aa 1a04          	or	a,(OFST+1,sp)
-1259  00ac c7525a        	ld	21082,a
-1260                     ; 315   TIM1->OISR &= (uint8_t)(~(TIM1_OISR_OIS3 | TIM1_OISR_OIS3N));
-1262  00af c6526f        	ld	a,21103
-1263  00b2 a4cf          	and	a,#207
-1264  00b4 c7526f        	ld	21103,a
-1265                     ; 317   TIM1->OISR |= (uint8_t)((uint8_t)(TIM1_OISR_OIS3 & TIM1_OCIdleState) | 
-1265                     ; 318                           (uint8_t)(TIM1_OISR_OIS3N & TIM1_OCNIdleState));
-1267  00b7 7b0e          	ld	a,(OFST+11,sp)
-1268  00b9 a420          	and	a,#32
-1269  00bb 6b03          	ld	(OFST+0,sp),a
-1271  00bd 7b0d          	ld	a,(OFST+10,sp)
-1272  00bf a410          	and	a,#16
-1273  00c1 1a03          	or	a,(OFST+0,sp)
-1274  00c3 ca526f        	or	a,21103
-1275  00c6 c7526f        	ld	21103,a
-1276                     ; 321   TIM1->CCR3H = (uint8_t)(TIM1_Pulse >> 8);
-1278  00c9 7b09          	ld	a,(OFST+6,sp)
-1279  00cb c75269        	ld	21097,a
-1280                     ; 322   TIM1->CCR3L = (uint8_t)(TIM1_Pulse);
-1282  00ce 7b0a          	ld	a,(OFST+7,sp)
-1283  00d0 c7526a        	ld	21098,a
-1284                     ; 323 }
-1287  00d3 5b05          	addw	sp,#5
-1288  00d5 81            	ret	
-1289  00d6               LC003:
-1290  00d6 89            	pushw	x
-1291  00d7 5f            	clrw	x
-1292  00d8 89            	pushw	x
-1293  00d9 ae0000        	ldw	x,#L37
-1294  00dc cd0000        	call	_assert_failed
-1296  00df 5b04          	addw	sp,#4
-1297  00e1 81            	ret	
-1370                     ; 338 void TIM1_OC4Init(TIM1_OCMode_TypeDef TIM1_OCMode,
-1370                     ; 339                   TIM1_OutputState_TypeDef TIM1_OutputState,
-1370                     ; 340                   uint16_t TIM1_Pulse,
-1370                     ; 341                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
-1370                     ; 342                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState)
-1370                     ; 343 {
-1371                     .text:	section	.text,new
-1372  0000               _TIM1_OC4Init:
-1374  0000 89            	pushw	x
-1375  0001 88            	push	a
-1376       00000001      OFST:	set	1
-1379                     ; 345   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
-1381  0002 9e            	ld	a,xh
-1382  0003 4d            	tnz	a
-1383  0004 271e          	jreq	L403
-1384  0006 9e            	ld	a,xh
-1385  0007 a110          	cp	a,#16
-1386  0009 2719          	jreq	L403
-1387  000b 9e            	ld	a,xh
-1388  000c a120          	cp	a,#32
-1389  000e 2714          	jreq	L403
-1390  0010 9e            	ld	a,xh
-1391  0011 a130          	cp	a,#48
-1392  0013 270f          	jreq	L403
-1393  0015 9e            	ld	a,xh
-1394  0016 a160          	cp	a,#96
-1395  0018 270a          	jreq	L403
-1396  001a 9e            	ld	a,xh
-1397  001b a170          	cp	a,#112
-1398  001d 2705          	jreq	L403
-1399  001f ae0159        	ldw	x,#345
-1400  0022 ad6c          	call	LC004
-1401  0024               L403:
-1402                     ; 346   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
-1404  0024 7b03          	ld	a,(OFST+2,sp)
-1405  0026 2709          	jreq	L413
-1406  0028 a111          	cp	a,#17
-1407  002a 2705          	jreq	L413
-1408  002c ae015a        	ldw	x,#346
-1409  002f ad5f          	call	LC004
-1410  0031               L413:
-1411                     ; 347   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
-1413  0031 7b08          	ld	a,(OFST+7,sp)
-1414  0033 2709          	jreq	L423
-1415  0035 a122          	cp	a,#34
-1416  0037 2705          	jreq	L423
-1417  0039 ae015b        	ldw	x,#347
-1418  003c ad52          	call	LC004
-1419  003e               L423:
-1420                     ; 348   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
-1422  003e 7b09          	ld	a,(OFST+8,sp)
-1423  0040 a155          	cp	a,#85
-1424  0042 2709          	jreq	L433
-1425  0044 7b09          	ld	a,(OFST+8,sp)
-1426  0046 2705          	jreq	L433
-1427  0048 ae015c        	ldw	x,#348
-1428  004b ad43          	call	LC004
-1429  004d               L433:
-1430                     ; 351   TIM1->CCER2 &= (uint8_t)(~(TIM1_CCER2_CC4E | TIM1_CCER2_CC4P));
-1432  004d c6525d        	ld	a,21085
-1433  0050 a4cf          	and	a,#207
-1434  0052 c7525d        	ld	21085,a
-1435                     ; 353   TIM1->CCER2 |= (uint8_t)((uint8_t)(TIM1_OutputState & TIM1_CCER2_CC4E ) |  
-1435                     ; 354                            (uint8_t)(TIM1_OCPolarity  & TIM1_CCER2_CC4P ));
-1437  0055 7b08          	ld	a,(OFST+7,sp)
-1438  0057 a420          	and	a,#32
-1439  0059 6b01          	ld	(OFST+0,sp),a
-1441  005b 7b03          	ld	a,(OFST+2,sp)
-1442  005d a410          	and	a,#16
-1443  005f 1a01          	or	a,(OFST+0,sp)
-1444  0061 ca525d        	or	a,21085
-1445  0064 c7525d        	ld	21085,a
-1446                     ; 357   TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_OCM)) | 
-1446                     ; 358                           TIM1_OCMode);
-1448  0067 c6525b        	ld	a,21083
-1449  006a a48f          	and	a,#143
-1450  006c 1a02          	or	a,(OFST+1,sp)
-1451  006e c7525b        	ld	21083,a
-1452                     ; 361   if (TIM1_OCIdleState != TIM1_OCIDLESTATE_RESET)
-1454  0071 7b09          	ld	a,(OFST+8,sp)
-1455  0073 270a          	jreq	L124
-1456                     ; 363     TIM1->OISR |= (uint8_t)(~TIM1_CCER2_CC4P);
-1458  0075 c6526f        	ld	a,21103
-1459  0078 aadf          	or	a,#223
-1460  007a c7526f        	ld	21103,a
-1462  007d 2004          	jra	L324
-1463  007f               L124:
-1464                     ; 367     TIM1->OISR &= (uint8_t)(~TIM1_OISR_OIS4);
-1466  007f 721d526f      	bres	21103,#6
-1467  0083               L324:
-1468                     ; 371   TIM1->CCR4H = (uint8_t)(TIM1_Pulse >> 8);
-1470  0083 7b06          	ld	a,(OFST+5,sp)
-1471  0085 c7526b        	ld	21099,a
-1472                     ; 372   TIM1->CCR4L = (uint8_t)(TIM1_Pulse);
-1474  0088 7b07          	ld	a,(OFST+6,sp)
-1475  008a c7526c        	ld	21100,a
-1476                     ; 373 }
-1479  008d 5b03          	addw	sp,#3
-1480  008f 81            	ret	
-1481  0090               LC004:
-1482  0090 89            	pushw	x
-1483  0091 5f            	clrw	x
-1484  0092 89            	pushw	x
-1485  0093 ae0000        	ldw	x,#L37
-1486  0096 cd0000        	call	_assert_failed
-1488  0099 5b04          	addw	sp,#4
-1489  009b 81            	ret	
-1693                     ; 388 void TIM1_BDTRConfig(TIM1_OSSIState_TypeDef TIM1_OSSIState,
-1693                     ; 389                      TIM1_LockLevel_TypeDef TIM1_LockLevel,
-1693                     ; 390                      uint8_t TIM1_DeadTime,
-1693                     ; 391                      TIM1_BreakState_TypeDef TIM1_Break,
-1693                     ; 392                      TIM1_BreakPolarity_TypeDef TIM1_BreakPolarity,
-1693                     ; 393                      TIM1_AutomaticOutput_TypeDef TIM1_AutomaticOutput)
-1693                     ; 394 {
-1694                     .text:	section	.text,new
-1695  0000               _TIM1_BDTRConfig:
-1697  0000 89            	pushw	x
-1698  0001 88            	push	a
-1699       00000001      OFST:	set	1
-1702                     ; 396   assert_param(IS_TIM1_OSSI_STATE_OK(TIM1_OSSIState));
-1704  0002 9e            	ld	a,xh
-1705  0003 a104          	cp	a,#4
-1706  0005 2709          	jreq	L643
-1707  0007 9e            	ld	a,xh
-1708  0008 4d            	tnz	a
-1709  0009 2705          	jreq	L643
-1710  000b ae018c        	ldw	x,#396
-1711  000e ad59          	call	LC005
-1712  0010               L643:
-1713                     ; 397   assert_param(IS_TIM1_LOCK_LEVEL_OK(TIM1_LockLevel));
-1715  0010 7b03          	ld	a,(OFST+2,sp)
-1716  0012 2711          	jreq	L653
-1717  0014 a101          	cp	a,#1
-1718  0016 270d          	jreq	L653
-1719  0018 a102          	cp	a,#2
-1720  001a 2709          	jreq	L653
-1721  001c a103          	cp	a,#3
-1722  001e 2705          	jreq	L653
-1723  0020 ae018d        	ldw	x,#397
-1724  0023 ad44          	call	LC005
-1725  0025               L653:
-1726                     ; 398   assert_param(IS_TIM1_BREAK_STATE_OK(TIM1_Break));
-1728  0025 7b07          	ld	a,(OFST+6,sp)
-1729  0027 a110          	cp	a,#16
-1730  0029 2709          	jreq	L663
-1731  002b 7b07          	ld	a,(OFST+6,sp)
-1732  002d 2705          	jreq	L663
-1733  002f ae018e        	ldw	x,#398
-1734  0032 ad35          	call	LC005
-1735  0034               L663:
-1736                     ; 399   assert_param(IS_TIM1_BREAK_POLARITY_OK(TIM1_BreakPolarity));
-1738  0034 7b08          	ld	a,(OFST+7,sp)
-1739  0036 2709          	jreq	L673
-1740  0038 a120          	cp	a,#32
-1741  003a 2705          	jreq	L673
-1742  003c ae018f        	ldw	x,#399
-1743  003f ad28          	call	LC005
-1744  0041               L673:
-1745                     ; 400   assert_param(IS_TIM1_AUTOMATIC_OUTPUT_STATE_OK(TIM1_AutomaticOutput));
-1747  0041 7b09          	ld	a,(OFST+8,sp)
-1748  0043 a140          	cp	a,#64
-1749  0045 2709          	jreq	L604
-1750  0047 7b09          	ld	a,(OFST+8,sp)
-1751  0049 2705          	jreq	L604
-1752  004b ae0190        	ldw	x,#400
-1753  004e ad19          	call	LC005
-1754  0050               L604:
-1755                     ; 402   TIM1->DTR = (uint8_t)(TIM1_DeadTime);
-1757  0050 7b06          	ld	a,(OFST+5,sp)
-1758  0052 c7526e        	ld	21102,a
-1759                     ; 406   TIM1->BKR  =  (uint8_t)((uint8_t)(TIM1_OSSIState | (uint8_t)TIM1_LockLevel)  | 
-1759                     ; 407                           (uint8_t)((uint8_t)(TIM1_Break | (uint8_t)TIM1_BreakPolarity)  | 
-1759                     ; 408                           (uint8_t)TIM1_AutomaticOutput));
-1761  0055 7b07          	ld	a,(OFST+6,sp)
-1762  0057 1a08          	or	a,(OFST+7,sp)
-1763  0059 1a09          	or	a,(OFST+8,sp)
-1764  005b 6b01          	ld	(OFST+0,sp),a
-1766  005d 7b02          	ld	a,(OFST+1,sp)
-1767  005f 1a03          	or	a,(OFST+2,sp)
-1768  0061 1a01          	or	a,(OFST+0,sp)
-1769  0063 c7526d        	ld	21101,a
-1770                     ; 409 }
-1773  0066 5b03          	addw	sp,#3
-1774  0068 81            	ret	
-1775  0069               LC005:
-1776  0069 89            	pushw	x
-1777  006a 5f            	clrw	x
-1778  006b 89            	pushw	x
-1779  006c ae0000        	ldw	x,#L37
-1780  006f cd0000        	call	_assert_failed
-1782  0072 5b04          	addw	sp,#4
-1783  0074 81            	ret	
-1984                     ; 423 void TIM1_ICInit(TIM1_Channel_TypeDef TIM1_Channel,
-1984                     ; 424                  TIM1_ICPolarity_TypeDef TIM1_ICPolarity,
-1984                     ; 425                  TIM1_ICSelection_TypeDef TIM1_ICSelection,
-1984                     ; 426                  TIM1_ICPSC_TypeDef TIM1_ICPrescaler,
-1984                     ; 427                  uint8_t TIM1_ICFilter)
-1984                     ; 428 {
-1985                     .text:	section	.text,new
-1986  0000               _TIM1_ICInit:
-1988  0000 89            	pushw	x
-1989       00000000      OFST:	set	0
-1992                     ; 430   assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
-1994  0001 9e            	ld	a,xh
-1995  0002 4d            	tnz	a
-1996  0003 2714          	jreq	L024
-1997  0005 9e            	ld	a,xh
-1998  0006 4a            	dec	a
-1999  0007 2710          	jreq	L024
-2000  0009 9e            	ld	a,xh
-2001  000a a102          	cp	a,#2
-2002  000c 270b          	jreq	L024
-2003  000e 9e            	ld	a,xh
-2004  000f a103          	cp	a,#3
-2005  0011 2706          	jreq	L024
-2006  0013 ae01ae        	ldw	x,#430
-2007  0016 cd00b5        	call	LC006
-2008  0019               L024:
-2009                     ; 431   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
-2011  0019 7b02          	ld	a,(OFST+2,sp)
-2012  001b 2709          	jreq	L034
-2013  001d 4a            	dec	a
-2014  001e 2706          	jreq	L034
-2015  0020 ae01af        	ldw	x,#431
-2016  0023 cd00b5        	call	LC006
-2017  0026               L034:
-2018                     ; 432   assert_param(IS_TIM1_IC_SELECTION_OK(TIM1_ICSelection));
-2020  0026 7b05          	ld	a,(OFST+5,sp)
-2021  0028 a101          	cp	a,#1
-2022  002a 270d          	jreq	L044
-2023  002c a102          	cp	a,#2
-2024  002e 2709          	jreq	L044
-2025  0030 a103          	cp	a,#3
-2026  0032 2705          	jreq	L044
-2027  0034 ae01b0        	ldw	x,#432
-2028  0037 ad7c          	call	LC006
-2029  0039               L044:
-2030                     ; 433   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_ICPrescaler));
-2032  0039 7b06          	ld	a,(OFST+6,sp)
-2033  003b 2711          	jreq	L054
-2034  003d a104          	cp	a,#4
-2035  003f 270d          	jreq	L054
-2036  0041 a108          	cp	a,#8
-2037  0043 2709          	jreq	L054
-2038  0045 a10c          	cp	a,#12
-2039  0047 2705          	jreq	L054
-2040  0049 ae01b1        	ldw	x,#433
-2041  004c ad67          	call	LC006
-2042  004e               L054:
-2043                     ; 434   assert_param(IS_TIM1_IC_FILTER_OK(TIM1_ICFilter));
-2045  004e 7b07          	ld	a,(OFST+7,sp)
-2046  0050 a110          	cp	a,#16
-2047  0052 2505          	jrult	L654
-2048  0054 ae01b2        	ldw	x,#434
-2049  0057 ad5c          	call	LC006
-2050  0059               L654:
-2051                     ; 436   if (TIM1_Channel == TIM1_CHANNEL_1)
-2053  0059 7b01          	ld	a,(OFST+1,sp)
-2054  005b 2614          	jrne	L746
-2055                     ; 439     TI1_Config((uint8_t)TIM1_ICPolarity,
-2055                     ; 440                (uint8_t)TIM1_ICSelection,
-2055                     ; 441                (uint8_t)TIM1_ICFilter);
-2057  005d 7b07          	ld	a,(OFST+7,sp)
-2058  005f 88            	push	a
-2059  0060 7b06          	ld	a,(OFST+6,sp)
-2060  0062 97            	ld	xl,a
-2061  0063 7b03          	ld	a,(OFST+3,sp)
-2062  0065 95            	ld	xh,a
-2063  0066 cd0000        	call	L3_TI1_Config
-2065  0069 84            	pop	a
-2066                     ; 443     TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
-2068  006a 7b06          	ld	a,(OFST+6,sp)
-2069  006c cd0000        	call	_TIM1_SetIC1Prescaler
-2072  006f 2042          	jra	L156
-2073  0071               L746:
-2074                     ; 445   else if (TIM1_Channel == TIM1_CHANNEL_2)
-2076  0071 a101          	cp	a,#1
-2077  0073 2614          	jrne	L356
-2078                     ; 448     TI2_Config((uint8_t)TIM1_ICPolarity,
-2078                     ; 449                (uint8_t)TIM1_ICSelection,
-2078                     ; 450                (uint8_t)TIM1_ICFilter);
-2080  0075 7b07          	ld	a,(OFST+7,sp)
-2081  0077 88            	push	a
-2082  0078 7b06          	ld	a,(OFST+6,sp)
-2083  007a 97            	ld	xl,a
-2084  007b 7b03          	ld	a,(OFST+3,sp)
-2085  007d 95            	ld	xh,a
-2086  007e cd0000        	call	L5_TI2_Config
-2088  0081 84            	pop	a
-2089                     ; 452     TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
-2091  0082 7b06          	ld	a,(OFST+6,sp)
-2092  0084 cd0000        	call	_TIM1_SetIC2Prescaler
-2095  0087 202a          	jra	L156
-2096  0089               L356:
-2097                     ; 454   else if (TIM1_Channel == TIM1_CHANNEL_3)
-2099  0089 a102          	cp	a,#2
-2100  008b 2614          	jrne	L756
-2101                     ; 457     TI3_Config((uint8_t)TIM1_ICPolarity,
-2101                     ; 458                (uint8_t)TIM1_ICSelection,
-2101                     ; 459                (uint8_t)TIM1_ICFilter);
-2103  008d 7b07          	ld	a,(OFST+7,sp)
-2104  008f 88            	push	a
-2105  0090 7b06          	ld	a,(OFST+6,sp)
-2106  0092 97            	ld	xl,a
-2107  0093 7b03          	ld	a,(OFST+3,sp)
-2108  0095 95            	ld	xh,a
-2109  0096 cd0000        	call	L7_TI3_Config
-2111  0099 84            	pop	a
-2112                     ; 461     TIM1_SetIC3Prescaler(TIM1_ICPrescaler);
-2114  009a 7b06          	ld	a,(OFST+6,sp)
-2115  009c cd0000        	call	_TIM1_SetIC3Prescaler
-2118  009f 2012          	jra	L156
-2119  00a1               L756:
-2120                     ; 466     TI4_Config((uint8_t)TIM1_ICPolarity,
-2120                     ; 467                (uint8_t)TIM1_ICSelection,
-2120                     ; 468                (uint8_t)TIM1_ICFilter);
-2122  00a1 7b07          	ld	a,(OFST+7,sp)
-2123  00a3 88            	push	a
-2124  00a4 7b06          	ld	a,(OFST+6,sp)
-2125  00a6 97            	ld	xl,a
-2126  00a7 7b03          	ld	a,(OFST+3,sp)
-2127  00a9 95            	ld	xh,a
-2128  00aa cd0000        	call	L11_TI4_Config
-2130  00ad 84            	pop	a
-2131                     ; 470     TIM1_SetIC4Prescaler(TIM1_ICPrescaler);
-2133  00ae 7b06          	ld	a,(OFST+6,sp)
-2134  00b0 cd0000        	call	_TIM1_SetIC4Prescaler
-2136  00b3               L156:
-2137                     ; 472 }
-2140  00b3 85            	popw	x
-2141  00b4 81            	ret	
-2142  00b5               LC006:
-2143  00b5 89            	pushw	x
-2144  00b6 5f            	clrw	x
-2145  00b7 89            	pushw	x
-2146  00b8 ae0000        	ldw	x,#L37
-2147  00bb cd0000        	call	_assert_failed
-2149  00be 5b04          	addw	sp,#4
-2150  00c0 81            	ret	
-2241                     ; 488 void TIM1_PWMIConfig(TIM1_Channel_TypeDef TIM1_Channel,
-2241                     ; 489                      TIM1_ICPolarity_TypeDef TIM1_ICPolarity,
-2241                     ; 490                      TIM1_ICSelection_TypeDef TIM1_ICSelection,
-2241                     ; 491                      TIM1_ICPSC_TypeDef TIM1_ICPrescaler,
-2241                     ; 492                      uint8_t TIM1_ICFilter)
-2241                     ; 493 {
-2242                     .text:	section	.text,new
-2243  0000               _TIM1_PWMIConfig:
-2245  0000 89            	pushw	x
-2246  0001 89            	pushw	x
-2247       00000002      OFST:	set	2
-2250                     ; 494   uint8_t icpolarity = TIM1_ICPOLARITY_RISING;
-2252                     ; 495   uint8_t icselection = TIM1_ICSELECTION_DIRECTTI;
-2254                     ; 498   assert_param(IS_TIM1_PWMI_CHANNEL_OK(TIM1_Channel));
-2256  0002 9e            	ld	a,xh
-2257  0003 4d            	tnz	a
-2258  0004 270a          	jreq	L015
-2259  0006 9e            	ld	a,xh
-2260  0007 4a            	dec	a
-2261  0008 2706          	jreq	L015
-2262  000a ae01f2        	ldw	x,#498
-2263  000d cd00ac        	call	LC007
-2264  0010               L015:
-2265                     ; 499   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
-2267  0010 7b04          	ld	a,(OFST+2,sp)
-2268  0012 2709          	jreq	L025
-2269  0014 4a            	dec	a
-2270  0015 2706          	jreq	L025
-2271  0017 ae01f3        	ldw	x,#499
-2272  001a cd00ac        	call	LC007
-2273  001d               L025:
-2274                     ; 500   assert_param(IS_TIM1_IC_SELECTION_OK(TIM1_ICSelection));
-2276  001d 7b07          	ld	a,(OFST+5,sp)
-2277  001f a101          	cp	a,#1
-2278  0021 270d          	jreq	L035
-2279  0023 a102          	cp	a,#2
-2280  0025 2709          	jreq	L035
-2281  0027 a103          	cp	a,#3
-2282  0029 2705          	jreq	L035
-2283  002b ae01f4        	ldw	x,#500
-2284  002e ad7c          	call	LC007
-2285  0030               L035:
-2286                     ; 501   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_ICPrescaler));
-2288  0030 7b08          	ld	a,(OFST+6,sp)
-2289  0032 2711          	jreq	L045
-2290  0034 a104          	cp	a,#4
-2291  0036 270d          	jreq	L045
-2292  0038 a108          	cp	a,#8
-2293  003a 2709          	jreq	L045
-2294  003c a10c          	cp	a,#12
-2295  003e 2705          	jreq	L045
-2296  0040 ae01f5        	ldw	x,#501
-2297  0043 ad67          	call	LC007
-2298  0045               L045:
-2299                     ; 504   if (TIM1_ICPolarity != TIM1_ICPOLARITY_FALLING)
-2301  0045 7b04          	ld	a,(OFST+2,sp)
-2302  0047 4a            	dec	a
-2303  0048 2702          	jreq	L327
-2304                     ; 506     icpolarity = TIM1_ICPOLARITY_FALLING;
-2306  004a a601          	ld	a,#1
-2308  004c               L327:
-2309                     ; 510     icpolarity = TIM1_ICPOLARITY_RISING;
-2311  004c 6b01          	ld	(OFST-1,sp),a
-2313                     ; 514   if (TIM1_ICSelection == TIM1_ICSELECTION_DIRECTTI)
-2315  004e 7b07          	ld	a,(OFST+5,sp)
-2316  0050 4a            	dec	a
-2317  0051 2604          	jrne	L727
-2318                     ; 516     icselection = TIM1_ICSELECTION_INDIRECTTI;
-2320  0053 a602          	ld	a,#2
-2322  0055 2002          	jra	L137
-2323  0057               L727:
-2324                     ; 520     icselection = TIM1_ICSELECTION_DIRECTTI;
-2326  0057 a601          	ld	a,#1
-2327  0059               L137:
-2328  0059 6b02          	ld	(OFST+0,sp),a
-2330                     ; 523   if (TIM1_Channel == TIM1_CHANNEL_1)
-2332  005b 7b03          	ld	a,(OFST+1,sp)
-2333  005d 2626          	jrne	L337
-2334                     ; 526     TI1_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSelection,
-2334                     ; 527                (uint8_t)TIM1_ICFilter);
-2336  005f 7b09          	ld	a,(OFST+7,sp)
-2337  0061 88            	push	a
-2338  0062 7b08          	ld	a,(OFST+6,sp)
-2339  0064 97            	ld	xl,a
-2340  0065 7b05          	ld	a,(OFST+3,sp)
-2341  0067 95            	ld	xh,a
-2342  0068 cd0000        	call	L3_TI1_Config
-2344  006b 84            	pop	a
-2345                     ; 530     TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
-2347  006c 7b08          	ld	a,(OFST+6,sp)
-2348  006e cd0000        	call	_TIM1_SetIC1Prescaler
-2350                     ; 533     TI2_Config(icpolarity, icselection, TIM1_ICFilter);
-2352  0071 7b09          	ld	a,(OFST+7,sp)
-2353  0073 88            	push	a
-2354  0074 7b03          	ld	a,(OFST+1,sp)
-2355  0076 97            	ld	xl,a
-2356  0077 7b02          	ld	a,(OFST+0,sp)
-2357  0079 95            	ld	xh,a
-2358  007a cd0000        	call	L5_TI2_Config
-2360  007d 84            	pop	a
-2361                     ; 536     TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
-2363  007e 7b08          	ld	a,(OFST+6,sp)
-2364  0080 cd0000        	call	_TIM1_SetIC2Prescaler
-2367  0083 2024          	jra	L537
-2368  0085               L337:
-2369                     ; 541     TI2_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSelection,
-2369                     ; 542                (uint8_t)TIM1_ICFilter);
-2371  0085 7b09          	ld	a,(OFST+7,sp)
-2372  0087 88            	push	a
-2373  0088 7b08          	ld	a,(OFST+6,sp)
-2374  008a 97            	ld	xl,a
-2375  008b 7b05          	ld	a,(OFST+3,sp)
-2376  008d 95            	ld	xh,a
-2377  008e cd0000        	call	L5_TI2_Config
-2379  0091 84            	pop	a
-2380                     ; 545     TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
-2382  0092 7b08          	ld	a,(OFST+6,sp)
-2383  0094 cd0000        	call	_TIM1_SetIC2Prescaler
-2385                     ; 548     TI1_Config(icpolarity, icselection, TIM1_ICFilter);
-2387  0097 7b09          	ld	a,(OFST+7,sp)
-2388  0099 88            	push	a
-2389  009a 7b03          	ld	a,(OFST+1,sp)
-2390  009c 97            	ld	xl,a
-2391  009d 7b02          	ld	a,(OFST+0,sp)
-2392  009f 95            	ld	xh,a
-2393  00a0 cd0000        	call	L3_TI1_Config
-2395  00a3 84            	pop	a
-2396                     ; 551     TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
-2398  00a4 7b08          	ld	a,(OFST+6,sp)
-2399  00a6 cd0000        	call	_TIM1_SetIC1Prescaler
-2401  00a9               L537:
-2402                     ; 553 }
-2405  00a9 5b04          	addw	sp,#4
-2406  00ab 81            	ret	
-2407  00ac               LC007:
-2408  00ac 89            	pushw	x
-2409  00ad 5f            	clrw	x
-2410  00ae 89            	pushw	x
-2411  00af ae0000        	ldw	x,#L37
-2412  00b2 cd0000        	call	_assert_failed
-2414  00b5 5b04          	addw	sp,#4
-2415  00b7 81            	ret	
-2471                     ; 561 void TIM1_Cmd(FunctionalState NewState)
-2471                     ; 562 {
-2472                     .text:	section	.text,new
-2473  0000               _TIM1_Cmd:
-2475  0000 88            	push	a
-2476       00000000      OFST:	set	0
-2479                     ; 564   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-2481  0001 4d            	tnz	a
-2482  0002 2711          	jreq	L275
-2483  0004 4a            	dec	a
-2484  0005 270e          	jreq	L275
-2485  0007 ae0234        	ldw	x,#564
-2486  000a 89            	pushw	x
-2487  000b 5f            	clrw	x
-2488  000c 89            	pushw	x
-2489  000d ae0000        	ldw	x,#L37
-2490  0010 cd0000        	call	_assert_failed
-2492  0013 5b04          	addw	sp,#4
-2493  0015               L275:
-2494                     ; 567   if (NewState != DISABLE)
-2496  0015 7b01          	ld	a,(OFST+1,sp)
-2497  0017 2706          	jreq	L567
-2498                     ; 569     TIM1->CR1 |= TIM1_CR1_CEN;
-2500  0019 72105250      	bset	21072,#0
-2502  001d 2004          	jra	L767
-2503  001f               L567:
-2504                     ; 573     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_CEN);
-2506  001f 72115250      	bres	21072,#0
-2507  0023               L767:
-2508                     ; 575 }
-2511  0023 84            	pop	a
-2512  0024 81            	ret	
-2549                     ; 583 void TIM1_CtrlPWMOutputs(FunctionalState NewState)
-2549                     ; 584 {
-2550                     .text:	section	.text,new
-2551  0000               _TIM1_CtrlPWMOutputs:
-2553  0000 88            	push	a
-2554       00000000      OFST:	set	0
-2557                     ; 586   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-2559  0001 4d            	tnz	a
-2560  0002 2711          	jreq	L406
-2561  0004 4a            	dec	a
-2562  0005 270e          	jreq	L406
-2563  0007 ae024a        	ldw	x,#586
-2564  000a 89            	pushw	x
-2565  000b 5f            	clrw	x
-2566  000c 89            	pushw	x
-2567  000d ae0000        	ldw	x,#L37
-2568  0010 cd0000        	call	_assert_failed
-2570  0013 5b04          	addw	sp,#4
-2571  0015               L406:
-2572                     ; 590   if (NewState != DISABLE)
-2574  0015 7b01          	ld	a,(OFST+1,sp)
-2575  0017 2706          	jreq	L7001
-2576                     ; 592     TIM1->BKR |= TIM1_BKR_MOE;
-2578  0019 721e526d      	bset	21101,#7
-2580  001d 2004          	jra	L1101
-2581  001f               L7001:
-2582                     ; 596     TIM1->BKR &= (uint8_t)(~TIM1_BKR_MOE);
-2584  001f 721f526d      	bres	21101,#7
-2585  0023               L1101:
-2586                     ; 598 }
-2589  0023 84            	pop	a
-2590  0024 81            	ret	
-2698                     ; 617 void TIM1_ITConfig(TIM1_IT_TypeDef  TIM1_IT, FunctionalState NewState)
-2698                     ; 618 {
-2699                     .text:	section	.text,new
-2700  0000               _TIM1_ITConfig:
-2702  0000 89            	pushw	x
-2703       00000000      OFST:	set	0
-2706                     ; 620   assert_param(IS_TIM1_IT_OK(TIM1_IT));
-2708  0001 9e            	ld	a,xh
-2709  0002 4d            	tnz	a
-2710  0003 2605          	jrne	L416
-2711  0005 ae026c        	ldw	x,#620
-2712  0008 ad22          	call	LC008
-2713  000a               L416:
-2714                     ; 621   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-2716  000a 7b02          	ld	a,(OFST+2,sp)
-2717  000c 2708          	jreq	L426
-2718  000e 4a            	dec	a
-2719  000f 2705          	jreq	L426
-2720  0011 ae026d        	ldw	x,#621
-2721  0014 ad16          	call	LC008
-2722  0016               L426:
-2723                     ; 623   if (NewState != DISABLE)
-2725  0016 7b02          	ld	a,(OFST+2,sp)
-2726  0018 2707          	jreq	L1601
-2727                     ; 626     TIM1->IER |= (uint8_t)TIM1_IT;
-2729  001a c65254        	ld	a,21076
-2730  001d 1a01          	or	a,(OFST+1,sp)
-2732  001f 2006          	jra	L3601
-2733  0021               L1601:
-2734                     ; 631     TIM1->IER &= (uint8_t)(~(uint8_t)TIM1_IT);
-2736  0021 7b01          	ld	a,(OFST+1,sp)
-2737  0023 43            	cpl	a
-2738  0024 c45254        	and	a,21076
-2739  0027               L3601:
-2740  0027 c75254        	ld	21076,a
-2741                     ; 633 }
-2744  002a 85            	popw	x
-2745  002b 81            	ret	
-2746  002c               LC008:
-2747  002c 89            	pushw	x
-2748  002d 5f            	clrw	x
-2749  002e 89            	pushw	x
-2750  002f ae0000        	ldw	x,#L37
-2751  0032 cd0000        	call	_assert_failed
-2753  0035 5b04          	addw	sp,#4
-2754  0037 81            	ret	
-2778                     ; 640 void TIM1_InternalClockConfig(void)
-2778                     ; 641 {
-2779                     .text:	section	.text,new
-2780  0000               _TIM1_InternalClockConfig:
-2784                     ; 643   TIM1->SMCR &= (uint8_t)(~TIM1_SMCR_SMS);
-2786  0000 c65252        	ld	a,21074
-2787  0003 a4f8          	and	a,#248
-2788  0005 c75252        	ld	21074,a
-2789                     ; 644 }
-2792  0008 81            	ret	
-2908                     ; 662 void TIM1_ETRClockMode1Config(TIM1_ExtTRGPSC_TypeDef TIM1_ExtTRGPrescaler,
-2908                     ; 663                               TIM1_ExtTRGPolarity_TypeDef TIM1_ExtTRGPolarity,
-2908                     ; 664                               uint8_t ExtTRGFilter)
-2908                     ; 665 {
-2909                     .text:	section	.text,new
-2910  0000               _TIM1_ETRClockMode1Config:
-2912  0000 89            	pushw	x
-2913       00000000      OFST:	set	0
-2916                     ; 667   assert_param(IS_TIM1_EXT_PRESCALER_OK(TIM1_ExtTRGPrescaler));
-2918  0001 9e            	ld	a,xh
-2919  0002 4d            	tnz	a
-2920  0003 2714          	jreq	L046
-2921  0005 9e            	ld	a,xh
-2922  0006 a110          	cp	a,#16
-2923  0008 270f          	jreq	L046
-2924  000a 9e            	ld	a,xh
-2925  000b a120          	cp	a,#32
-2926  000d 270a          	jreq	L046
-2927  000f 9e            	ld	a,xh
-2928  0010 a130          	cp	a,#48
-2929  0012 2705          	jreq	L046
-2930  0014 ae029b        	ldw	x,#667
-2931  0017 ad26          	call	LC009
-2932  0019               L046:
-2933                     ; 668   assert_param(IS_TIM1_EXT_POLARITY_OK(TIM1_ExtTRGPolarity));
-2935  0019 7b02          	ld	a,(OFST+2,sp)
-2936  001b a180          	cp	a,#128
-2937  001d 2709          	jreq	L056
-2938  001f 7b02          	ld	a,(OFST+2,sp)
-2939  0021 2705          	jreq	L056
-2940  0023 ae029c        	ldw	x,#668
-2941  0026 ad17          	call	LC009
-2942  0028               L056:
-2943                     ; 671   TIM1_ETRConfig(TIM1_ExtTRGPrescaler, TIM1_ExtTRGPolarity, ExtTRGFilter);
-2945  0028 7b05          	ld	a,(OFST+5,sp)
-2946  002a 88            	push	a
-2947  002b 7b03          	ld	a,(OFST+3,sp)
-2948  002d 97            	ld	xl,a
-2949  002e 7b02          	ld	a,(OFST+2,sp)
-2950  0030 95            	ld	xh,a
-2951  0031 cd0000        	call	_TIM1_ETRConfig
-2953  0034 84            	pop	a
-2954                     ; 674   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(~(uint8_t)(TIM1_SMCR_SMS | TIM1_SMCR_TS )))
-2954                     ; 675                          | (uint8_t)((uint8_t)TIM1_SLAVEMODE_EXTERNAL1 | TIM1_TS_ETRF ));
-2956  0035 c65252        	ld	a,21074
-2957  0038 aa77          	or	a,#119
-2958  003a c75252        	ld	21074,a
-2959                     ; 676 }
-2962  003d 85            	popw	x
-2963  003e 81            	ret	
-2964  003f               LC009:
-2965  003f 89            	pushw	x
-2966  0040 5f            	clrw	x
-2967  0041 89            	pushw	x
-2968  0042 ae0000        	ldw	x,#L37
-2969  0045 cd0000        	call	_assert_failed
-2971  0048 5b04          	addw	sp,#4
-2972  004a 81            	ret	
-3029                     ; 694 void TIM1_ETRClockMode2Config(TIM1_ExtTRGPSC_TypeDef TIM1_ExtTRGPrescaler,
-3029                     ; 695                               TIM1_ExtTRGPolarity_TypeDef TIM1_ExtTRGPolarity,
-3029                     ; 696                               uint8_t ExtTRGFilter)
-3029                     ; 697 {
-3030                     .text:	section	.text,new
-3031  0000               _TIM1_ETRClockMode2Config:
-3033  0000 89            	pushw	x
-3034       00000000      OFST:	set	0
-3037                     ; 699   assert_param(IS_TIM1_EXT_PRESCALER_OK(TIM1_ExtTRGPrescaler));
-3039  0001 9e            	ld	a,xh
-3040  0002 4d            	tnz	a
-3041  0003 2714          	jreq	L466
-3042  0005 9e            	ld	a,xh
-3043  0006 a110          	cp	a,#16
-3044  0008 270f          	jreq	L466
-3045  000a 9e            	ld	a,xh
-3046  000b a120          	cp	a,#32
-3047  000d 270a          	jreq	L466
-3048  000f 9e            	ld	a,xh
-3049  0010 a130          	cp	a,#48
-3050  0012 2705          	jreq	L466
-3051  0014 ae02bb        	ldw	x,#699
-3052  0017 ad22          	call	LC010
-3053  0019               L466:
-3054                     ; 700   assert_param(IS_TIM1_EXT_POLARITY_OK(TIM1_ExtTRGPolarity));
-3056  0019 7b02          	ld	a,(OFST+2,sp)
-3057  001b a180          	cp	a,#128
-3058  001d 2709          	jreq	L476
-3059  001f 7b02          	ld	a,(OFST+2,sp)
-3060  0021 2705          	jreq	L476
-3061  0023 ae02bc        	ldw	x,#700
-3062  0026 ad13          	call	LC010
-3063  0028               L476:
-3064                     ; 703   TIM1_ETRConfig(TIM1_ExtTRGPrescaler, TIM1_ExtTRGPolarity, ExtTRGFilter);
-3066  0028 7b05          	ld	a,(OFST+5,sp)
-3067  002a 88            	push	a
-3068  002b 7b03          	ld	a,(OFST+3,sp)
-3069  002d 97            	ld	xl,a
-3070  002e 7b02          	ld	a,(OFST+2,sp)
-3071  0030 95            	ld	xh,a
-3072  0031 cd0000        	call	_TIM1_ETRConfig
-3074  0034 721c5253      	bset	21075,#6
-3075                     ; 706   TIM1->ETR |= TIM1_ETR_ECE;
-3077                     ; 707 }
-3080  0038 5b03          	addw	sp,#3
-3081  003a 81            	ret	
-3082  003b               LC010:
-3083  003b 89            	pushw	x
-3084  003c 5f            	clrw	x
-3085  003d 89            	pushw	x
-3086  003e ae0000        	ldw	x,#L37
-3087  0041 cd0000        	call	_assert_failed
-3089  0044 5b04          	addw	sp,#4
-3090  0046 81            	ret	
-3145                     ; 725 void TIM1_ETRConfig(TIM1_ExtTRGPSC_TypeDef TIM1_ExtTRGPrescaler,
-3145                     ; 726                     TIM1_ExtTRGPolarity_TypeDef TIM1_ExtTRGPolarity,
-3145                     ; 727                     uint8_t ExtTRGFilter)
-3145                     ; 728 {
-3146                     .text:	section	.text,new
-3147  0000               _TIM1_ETRConfig:
-3149  0000 89            	pushw	x
-3150       00000000      OFST:	set	0
-3153                     ; 730   assert_param(IS_TIM1_EXT_TRG_FILTER_OK(ExtTRGFilter));
-3155  0001 7b05          	ld	a,(OFST+5,sp)
-3156  0003 a110          	cp	a,#16
-3157  0005 250e          	jrult	L607
-3158  0007 ae02da        	ldw	x,#730
-3159  000a 89            	pushw	x
-3160  000b 5f            	clrw	x
-3161  000c 89            	pushw	x
-3162  000d ae0000        	ldw	x,#L37
-3163  0010 cd0000        	call	_assert_failed
-3165  0013 5b04          	addw	sp,#4
-3166  0015               L607:
-3167                     ; 732   TIM1->ETR |= (uint8_t)((uint8_t)(TIM1_ExtTRGPrescaler | (uint8_t)TIM1_ExtTRGPolarity )|
-3167                     ; 733                          (uint8_t)ExtTRGFilter );
-3169  0015 7b01          	ld	a,(OFST+1,sp)
-3170  0017 1a02          	or	a,(OFST+2,sp)
-3171  0019 1a05          	or	a,(OFST+5,sp)
-3172  001b ca5253        	or	a,21075
-3173  001e c75253        	ld	21075,a
-3174                     ; 734 }
-3177  0021 85            	popw	x
-3178  0022 81            	ret	
-3266                     ; 751 void TIM1_TIxExternalClockConfig(TIM1_TIxExternalCLK1Source_TypeDef TIM1_TIxExternalCLKSource,
-3266                     ; 752                                  TIM1_ICPolarity_TypeDef TIM1_ICPolarity,
-3266                     ; 753                                  uint8_t ICFilter)
-3266                     ; 754 {
-3267                     .text:	section	.text,new
-3268  0000               _TIM1_TIxExternalClockConfig:
-3270  0000 89            	pushw	x
-3271       00000000      OFST:	set	0
-3274                     ; 756   assert_param(IS_TIM1_TIXCLK_SOURCE_OK(TIM1_TIxExternalCLKSource));
-3276  0001 9e            	ld	a,xh
-3277  0002 a140          	cp	a,#64
-3278  0004 270f          	jreq	L027
-3279  0006 9e            	ld	a,xh
-3280  0007 a160          	cp	a,#96
-3281  0009 270a          	jreq	L027
-3282  000b 9e            	ld	a,xh
-3283  000c a150          	cp	a,#80
-3284  000e 2705          	jreq	L027
-3285  0010 ae02f4        	ldw	x,#756
-3286  0013 ad47          	call	LC011
-3287  0015               L027:
-3288                     ; 757   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
-3290  0015 7b02          	ld	a,(OFST+2,sp)
-3291  0017 2708          	jreq	L037
-3292  0019 4a            	dec	a
-3293  001a 2705          	jreq	L037
-3294  001c ae02f5        	ldw	x,#757
-3295  001f ad3b          	call	LC011
-3296  0021               L037:
-3297                     ; 758   assert_param(IS_TIM1_IC_FILTER_OK(ICFilter));
-3299  0021 7b05          	ld	a,(OFST+5,sp)
-3300  0023 a110          	cp	a,#16
-3301  0025 2505          	jrult	L637
-3302  0027 ae02f6        	ldw	x,#758
-3303  002a ad30          	call	LC011
-3304  002c               L637:
-3305                     ; 761   if (TIM1_TIxExternalCLKSource == TIM1_TIXEXTERNALCLK1SOURCE_TI2)
-3307  002c 7b01          	ld	a,(OFST+1,sp)
-3308  002e a160          	cp	a,#96
-3309  0030 260e          	jrne	L3521
-3310                     ; 763     TI2_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSELECTION_DIRECTTI, (uint8_t)ICFilter);
-3312  0032 7b05          	ld	a,(OFST+5,sp)
-3313  0034 88            	push	a
-3314  0035 7b03          	ld	a,(OFST+3,sp)
-3315  0037 ae0001        	ldw	x,#1
-3316  003a 95            	ld	xh,a
-3317  003b cd0000        	call	L5_TI2_Config
-3320  003e 200c          	jra	L5521
-3321  0040               L3521:
-3322                     ; 767     TI1_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSELECTION_DIRECTTI, (uint8_t)ICFilter);
-3324  0040 7b05          	ld	a,(OFST+5,sp)
-3325  0042 88            	push	a
-3326  0043 7b03          	ld	a,(OFST+3,sp)
-3327  0045 ae0001        	ldw	x,#1
-3328  0048 95            	ld	xh,a
-3329  0049 cd0000        	call	L3_TI1_Config
-3331  004c               L5521:
-3332  004c 84            	pop	a
-3333                     ; 771   TIM1_SelectInputTrigger((TIM1_TS_TypeDef)TIM1_TIxExternalCLKSource);
-3335  004d 7b01          	ld	a,(OFST+1,sp)
-3336  004f cd0000        	call	_TIM1_SelectInputTrigger
-3338                     ; 774   TIM1->SMCR |= (uint8_t)(TIM1_SLAVEMODE_EXTERNAL1);
-3340  0052 c65252        	ld	a,21074
-3341  0055 aa07          	or	a,#7
-3342  0057 c75252        	ld	21074,a
-3343                     ; 775 }
-3346  005a 85            	popw	x
-3347  005b 81            	ret	
-3348  005c               LC011:
-3349  005c 89            	pushw	x
-3350  005d 5f            	clrw	x
-3351  005e 89            	pushw	x
-3352  005f ae0000        	ldw	x,#L37
-3353  0062 cd0000        	call	_assert_failed
-3355  0065 5b04          	addw	sp,#4
-3356  0067 81            	ret	
-3442                     ; 787 void TIM1_SelectInputTrigger(TIM1_TS_TypeDef TIM1_InputTriggerSource)
-3442                     ; 788 {
-3443                     .text:	section	.text,new
-3444  0000               _TIM1_SelectInputTrigger:
-3446  0000 88            	push	a
-3447       00000000      OFST:	set	0
-3450                     ; 790   assert_param(IS_TIM1_TRIGGER_SELECTION_OK(TIM1_InputTriggerSource));
-3452  0001 a140          	cp	a,#64
-3453  0003 2721          	jreq	L657
-3454  0005 a150          	cp	a,#80
-3455  0007 271d          	jreq	L657
-3456  0009 a160          	cp	a,#96
-3457  000b 2719          	jreq	L657
-3458  000d a170          	cp	a,#112
-3459  000f 2715          	jreq	L657
-3460  0011 a130          	cp	a,#48
-3461  0013 2711          	jreq	L657
-3462  0015 4d            	tnz	a
-3463  0016 270e          	jreq	L657
-3464  0018 ae0316        	ldw	x,#790
-3465  001b 89            	pushw	x
-3466  001c 5f            	clrw	x
-3467  001d 89            	pushw	x
-3468  001e ae0000        	ldw	x,#L37
-3469  0021 cd0000        	call	_assert_failed
-3471  0024 5b04          	addw	sp,#4
-3472  0026               L657:
-3473                     ; 793   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(~TIM1_SMCR_TS)) | (uint8_t)TIM1_InputTriggerSource);
-3475  0026 c65252        	ld	a,21074
-3476  0029 a48f          	and	a,#143
-3477  002b 1a01          	or	a,(OFST+1,sp)
-3478  002d c75252        	ld	21074,a
-3479                     ; 794 }
-3482  0030 84            	pop	a
-3483  0031 81            	ret	
-3520                     ; 803 void TIM1_UpdateDisableConfig(FunctionalState NewState)
-3520                     ; 804 {
-3521                     .text:	section	.text,new
-3522  0000               _TIM1_UpdateDisableConfig:
-3524  0000 88            	push	a
-3525       00000000      OFST:	set	0
-3528                     ; 806   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-3530  0001 4d            	tnz	a
-3531  0002 2711          	jreq	L077
-3532  0004 4a            	dec	a
-3533  0005 270e          	jreq	L077
-3534  0007 ae0326        	ldw	x,#806
-3535  000a 89            	pushw	x
-3536  000b 5f            	clrw	x
-3537  000c 89            	pushw	x
-3538  000d ae0000        	ldw	x,#L37
-3539  0010 cd0000        	call	_assert_failed
-3541  0013 5b04          	addw	sp,#4
-3542  0015               L077:
-3543                     ; 809   if (NewState != DISABLE)
-3545  0015 7b01          	ld	a,(OFST+1,sp)
-3546  0017 2706          	jreq	L3331
-3547                     ; 811     TIM1->CR1 |= TIM1_CR1_UDIS;
-3549  0019 72125250      	bset	21072,#1
-3551  001d 2004          	jra	L5331
-3552  001f               L3331:
-3553                     ; 815     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_UDIS);
-3555  001f 72135250      	bres	21072,#1
-3556  0023               L5331:
-3557                     ; 817 }
-3560  0023 84            	pop	a
-3561  0024 81            	ret	
-3620                     ; 827 void TIM1_UpdateRequestConfig(TIM1_UpdateSource_TypeDef TIM1_UpdateSource)
-3620                     ; 828 {
-3621                     .text:	section	.text,new
-3622  0000               _TIM1_UpdateRequestConfig:
-3624  0000 88            	push	a
-3625       00000000      OFST:	set	0
-3628                     ; 830   assert_param(IS_TIM1_UPDATE_SOURCE_OK(TIM1_UpdateSource));
-3630  0001 4d            	tnz	a
-3631  0002 2711          	jreq	L2001
-3632  0004 4a            	dec	a
-3633  0005 270e          	jreq	L2001
-3634  0007 ae033e        	ldw	x,#830
-3635  000a 89            	pushw	x
-3636  000b 5f            	clrw	x
-3637  000c 89            	pushw	x
-3638  000d ae0000        	ldw	x,#L37
-3639  0010 cd0000        	call	_assert_failed
-3641  0013 5b04          	addw	sp,#4
-3642  0015               L2001:
-3643                     ; 833   if (TIM1_UpdateSource != TIM1_UPDATESOURCE_GLOBAL)
-3645  0015 7b01          	ld	a,(OFST+1,sp)
-3646  0017 2706          	jreq	L5631
-3647                     ; 835     TIM1->CR1 |= TIM1_CR1_URS;
-3649  0019 72145250      	bset	21072,#2
-3651  001d 2004          	jra	L7631
-3652  001f               L5631:
-3653                     ; 839     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_URS);
-3655  001f 72155250      	bres	21072,#2
-3656  0023               L7631:
-3657                     ; 841 }
-3660  0023 84            	pop	a
-3661  0024 81            	ret	
-3698                     ; 849 void TIM1_SelectHallSensor(FunctionalState NewState)
-3698                     ; 850 {
-3699                     .text:	section	.text,new
-3700  0000               _TIM1_SelectHallSensor:
-3702  0000 88            	push	a
-3703       00000000      OFST:	set	0
-3706                     ; 852   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-3708  0001 4d            	tnz	a
-3709  0002 2711          	jreq	L4101
-3710  0004 4a            	dec	a
-3711  0005 270e          	jreq	L4101
-3712  0007 ae0354        	ldw	x,#852
-3713  000a 89            	pushw	x
-3714  000b 5f            	clrw	x
-3715  000c 89            	pushw	x
-3716  000d ae0000        	ldw	x,#L37
-3717  0010 cd0000        	call	_assert_failed
-3719  0013 5b04          	addw	sp,#4
-3720  0015               L4101:
-3721                     ; 855   if (NewState != DISABLE)
-3723  0015 7b01          	ld	a,(OFST+1,sp)
-3724  0017 2706          	jreq	L7041
-3725                     ; 857     TIM1->CR2 |= TIM1_CR2_TI1S;
-3727  0019 721e5251      	bset	21073,#7
-3729  001d 2004          	jra	L1141
-3730  001f               L7041:
-3731                     ; 861     TIM1->CR2 &= (uint8_t)(~TIM1_CR2_TI1S);
-3733  001f 721f5251      	bres	21073,#7
-3734  0023               L1141:
-3735                     ; 863 }
-3738  0023 84            	pop	a
-3739  0024 81            	ret	
-3797                     ; 873 void TIM1_SelectOnePulseMode(TIM1_OPMode_TypeDef TIM1_OPMode)
-3797                     ; 874 {
-3798                     .text:	section	.text,new
-3799  0000               _TIM1_SelectOnePulseMode:
-3801  0000 88            	push	a
-3802       00000000      OFST:	set	0
-3805                     ; 876   assert_param(IS_TIM1_OPM_MODE_OK(TIM1_OPMode));
-3807  0001 a101          	cp	a,#1
-3808  0003 2711          	jreq	L6201
-3809  0005 4d            	tnz	a
-3810  0006 270e          	jreq	L6201
-3811  0008 ae036c        	ldw	x,#876
-3812  000b 89            	pushw	x
-3813  000c 5f            	clrw	x
-3814  000d 89            	pushw	x
-3815  000e ae0000        	ldw	x,#L37
-3816  0011 cd0000        	call	_assert_failed
-3818  0014 5b04          	addw	sp,#4
-3819  0016               L6201:
-3820                     ; 879   if (TIM1_OPMode != TIM1_OPMODE_REPETITIVE)
-3822  0016 7b01          	ld	a,(OFST+1,sp)
-3823  0018 2706          	jreq	L1441
-3824                     ; 881     TIM1->CR1 |= TIM1_CR1_OPM;
-3826  001a 72165250      	bset	21072,#3
-3828  001e 2004          	jra	L3441
-3829  0020               L1441:
-3830                     ; 885     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_OPM);
-3832  0020 72175250      	bres	21072,#3
-3833  0024               L3441:
-3834                     ; 888 }
-3837  0024 84            	pop	a
-3838  0025 81            	ret	
-3937                     ; 903 void TIM1_SelectOutputTrigger(TIM1_TRGOSource_TypeDef TIM1_TRGOSource)
-3937                     ; 904 {
-3938                     .text:	section	.text,new
-3939  0000               _TIM1_SelectOutputTrigger:
-3941  0000 88            	push	a
-3942       00000000      OFST:	set	0
-3945                     ; 906   assert_param(IS_TIM1_TRGO_SOURCE_OK(TIM1_TRGOSource));
-3947  0001 4d            	tnz	a
-3948  0002 2726          	jreq	L0401
-3949  0004 a110          	cp	a,#16
-3950  0006 2722          	jreq	L0401
-3951  0008 a120          	cp	a,#32
-3952  000a 271e          	jreq	L0401
-3953  000c a130          	cp	a,#48
-3954  000e 271a          	jreq	L0401
-3955  0010 a140          	cp	a,#64
-3956  0012 2716          	jreq	L0401
-3957  0014 a150          	cp	a,#80
-3958  0016 2712          	jreq	L0401
-3959  0018 a160          	cp	a,#96
-3960  001a 270e          	jreq	L0401
-3961  001c ae038a        	ldw	x,#906
-3962  001f 89            	pushw	x
-3963  0020 5f            	clrw	x
-3964  0021 89            	pushw	x
-3965  0022 ae0000        	ldw	x,#L37
-3966  0025 cd0000        	call	_assert_failed
-3968  0028 5b04          	addw	sp,#4
-3969  002a               L0401:
-3970                     ; 909   TIM1->CR2 = (uint8_t)((uint8_t)(TIM1->CR2 & (uint8_t)(~TIM1_CR2_MMS)) | 
-3970                     ; 910                         (uint8_t) TIM1_TRGOSource);
-3972  002a c65251        	ld	a,21073
-3973  002d a48f          	and	a,#143
-3974  002f 1a01          	or	a,(OFST+1,sp)
-3975  0031 c75251        	ld	21073,a
-3976                     ; 911 }
-3979  0034 84            	pop	a
-3980  0035 81            	ret	
-4055                     ; 923 void TIM1_SelectSlaveMode(TIM1_SlaveMode_TypeDef TIM1_SlaveMode)
-4055                     ; 924 {
-4056                     .text:	section	.text,new
-4057  0000               _TIM1_SelectSlaveMode:
-4059  0000 88            	push	a
-4060       00000000      OFST:	set	0
-4063                     ; 926   assert_param(IS_TIM1_SLAVE_MODE_OK(TIM1_SlaveMode));
-4065  0001 a104          	cp	a,#4
-4066  0003 271a          	jreq	L2501
-4067  0005 a105          	cp	a,#5
-4068  0007 2716          	jreq	L2501
-4069  0009 a106          	cp	a,#6
-4070  000b 2712          	jreq	L2501
-4071  000d a107          	cp	a,#7
-4072  000f 270e          	jreq	L2501
-4073  0011 ae039e        	ldw	x,#926
-4074  0014 89            	pushw	x
-4075  0015 5f            	clrw	x
-4076  0016 89            	pushw	x
-4077  0017 ae0000        	ldw	x,#L37
-4078  001a cd0000        	call	_assert_failed
-4080  001d 5b04          	addw	sp,#4
-4081  001f               L2501:
-4082                     ; 929   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(~TIM1_SMCR_SMS)) |
-4082                     ; 930                          (uint8_t)TIM1_SlaveMode);
-4084  001f c65252        	ld	a,21074
-4085  0022 a4f8          	and	a,#248
-4086  0024 1a01          	or	a,(OFST+1,sp)
-4087  0026 c75252        	ld	21074,a
-4088                     ; 931 }
-4091  0029 84            	pop	a
-4092  002a 81            	ret	
-4129                     ; 939 void TIM1_SelectMasterSlaveMode(FunctionalState NewState)
-4129                     ; 940 {
-4130                     .text:	section	.text,new
-4131  0000               _TIM1_SelectMasterSlaveMode:
-4133  0000 88            	push	a
-4134       00000000      OFST:	set	0
-4137                     ; 942   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-4139  0001 4d            	tnz	a
-4140  0002 2711          	jreq	L4601
-4141  0004 4a            	dec	a
-4142  0005 270e          	jreq	L4601
-4143  0007 ae03ae        	ldw	x,#942
-4144  000a 89            	pushw	x
-4145  000b 5f            	clrw	x
-4146  000c 89            	pushw	x
-4147  000d ae0000        	ldw	x,#L37
-4148  0010 cd0000        	call	_assert_failed
-4150  0013 5b04          	addw	sp,#4
-4151  0015               L4601:
-4152                     ; 945   if (NewState != DISABLE)
-4154  0015 7b01          	ld	a,(OFST+1,sp)
-4155  0017 2706          	jreq	L5551
-4156                     ; 947     TIM1->SMCR |= TIM1_SMCR_MSM;
-4158  0019 721e5252      	bset	21074,#7
-4160  001d 2004          	jra	L7551
-4161  001f               L5551:
-4162                     ; 951     TIM1->SMCR &= (uint8_t)(~TIM1_SMCR_MSM);
-4164  001f 721f5252      	bres	21074,#7
-4165  0023               L7551:
-4166                     ; 953 }
-4169  0023 84            	pop	a
-4170  0024 81            	ret	
-4257                     ; 975 void TIM1_EncoderInterfaceConfig(TIM1_EncoderMode_TypeDef TIM1_EncoderMode,
-4257                     ; 976                                  TIM1_ICPolarity_TypeDef TIM1_IC1Polarity,
-4257                     ; 977                                  TIM1_ICPolarity_TypeDef TIM1_IC2Polarity)
-4257                     ; 978 {
-4258                     .text:	section	.text,new
-4259  0000               _TIM1_EncoderInterfaceConfig:
-4261  0000 89            	pushw	x
-4262       00000000      OFST:	set	0
-4265                     ; 980   assert_param(IS_TIM1_ENCODER_MODE_OK(TIM1_EncoderMode));
-4267  0001 9e            	ld	a,xh
-4268  0002 4a            	dec	a
-4269  0003 270f          	jreq	L6701
-4270  0005 9e            	ld	a,xh
-4271  0006 a102          	cp	a,#2
-4272  0008 270a          	jreq	L6701
-4273  000a 9e            	ld	a,xh
-4274  000b a103          	cp	a,#3
-4275  000d 2705          	jreq	L6701
-4276  000f ae03d4        	ldw	x,#980
-4277  0012 ad54          	call	LC012
-4278  0014               L6701:
-4279                     ; 981   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_IC1Polarity));
-4281  0014 7b02          	ld	a,(OFST+2,sp)
-4282  0016 2708          	jreq	L6011
-4283  0018 4a            	dec	a
-4284  0019 2705          	jreq	L6011
-4285  001b ae03d5        	ldw	x,#981
-4286  001e ad48          	call	LC012
-4287  0020               L6011:
-4288                     ; 982   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_IC2Polarity));
-4290  0020 7b05          	ld	a,(OFST+5,sp)
-4291  0022 2708          	jreq	L6111
-4292  0024 4a            	dec	a
-4293  0025 2705          	jreq	L6111
-4294  0027 ae03d6        	ldw	x,#982
-4295  002a ad3c          	call	LC012
-4296  002c               L6111:
-4297                     ; 985   if (TIM1_IC1Polarity != TIM1_ICPOLARITY_RISING)
-4299  002c 7b02          	ld	a,(OFST+2,sp)
-4300  002e 2706          	jreq	L1261
-4301                     ; 987     TIM1->CCER1 |= TIM1_CCER1_CC1P;
-4303  0030 7212525c      	bset	21084,#1
-4305  0034 2004          	jra	L3261
-4306  0036               L1261:
-4307                     ; 991     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
-4309  0036 7213525c      	bres	21084,#1
-4310  003a               L3261:
-4311                     ; 994   if (TIM1_IC2Polarity != TIM1_ICPOLARITY_RISING)
-4313  003a 7b05          	ld	a,(OFST+5,sp)
-4314  003c 2706          	jreq	L5261
-4315                     ; 996     TIM1->CCER1 |= TIM1_CCER1_CC2P;
-4317  003e 721a525c      	bset	21084,#5
-4319  0042 2004          	jra	L7261
-4320  0044               L5261:
-4321                     ; 1000     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
-4323  0044 721b525c      	bres	21084,#5
-4324  0048               L7261:
-4325                     ; 1003   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(TIM1_SMCR_MSM | TIM1_SMCR_TS))
-4325                     ; 1004                          | (uint8_t) TIM1_EncoderMode);
-4327  0048 c65252        	ld	a,21074
-4328  004b a4f0          	and	a,#240
-4329  004d 1a01          	or	a,(OFST+1,sp)
-4330  004f c75252        	ld	21074,a
-4331                     ; 1007   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_CCxS)) 
-4331                     ; 1008                           | (uint8_t) CCMR_TIxDirect_Set);
-4333  0052 c65258        	ld	a,21080
-4334  0055 a4fc          	and	a,#252
-4335  0057 aa01          	or	a,#1
-4336  0059 c75258        	ld	21080,a
-4337                     ; 1009   TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_CCxS))
-4337                     ; 1010                           | (uint8_t) CCMR_TIxDirect_Set);
-4339  005c c65259        	ld	a,21081
-4340  005f a4fc          	and	a,#252
-4341  0061 aa01          	or	a,#1
-4342  0063 c75259        	ld	21081,a
-4343                     ; 1011 }
-4346  0066 85            	popw	x
-4347  0067 81            	ret	
-4348  0068               LC012:
-4349  0068 89            	pushw	x
-4350  0069 5f            	clrw	x
-4351  006a 89            	pushw	x
-4352  006b ae0000        	ldw	x,#L37
-4353  006e cd0000        	call	_assert_failed
-4355  0071 5b04          	addw	sp,#4
-4356  0073 81            	ret	
-4422                     ; 1023 void TIM1_PrescalerConfig(uint16_t Prescaler,
-4422                     ; 1024                           TIM1_PSCReloadMode_TypeDef TIM1_PSCReloadMode)
-4422                     ; 1025 {
-4423                     .text:	section	.text,new
-4424  0000               _TIM1_PrescalerConfig:
-4426  0000 89            	pushw	x
-4427       00000000      OFST:	set	0
-4430                     ; 1027   assert_param(IS_TIM1_PRESCALER_RELOAD_OK(TIM1_PSCReloadMode));
-4432  0001 7b05          	ld	a,(OFST+5,sp)
-4433  0003 2711          	jreq	L0311
-4434  0005 4a            	dec	a
-4435  0006 270e          	jreq	L0311
-4436  0008 ae0403        	ldw	x,#1027
-4437  000b 89            	pushw	x
-4438  000c 5f            	clrw	x
-4439  000d 89            	pushw	x
-4440  000e ae0000        	ldw	x,#L37
-4441  0011 cd0000        	call	_assert_failed
-4443  0014 5b04          	addw	sp,#4
-4444  0016               L0311:
-4445                     ; 1030   TIM1->PSCRH = (uint8_t)(Prescaler >> 8);
-4447  0016 7b01          	ld	a,(OFST+1,sp)
-4448  0018 c75260        	ld	21088,a
-4449                     ; 1031   TIM1->PSCRL = (uint8_t)(Prescaler);
-4451  001b 7b02          	ld	a,(OFST+2,sp)
-4452  001d c75261        	ld	21089,a
-4453                     ; 1034   TIM1->EGR = (uint8_t)TIM1_PSCReloadMode;
-4455  0020 7b05          	ld	a,(OFST+5,sp)
-4456  0022 c75257        	ld	21079,a
-4457                     ; 1035 }
-4460  0025 85            	popw	x
-4461  0026 81            	ret	
-4498                     ; 1048 void TIM1_CounterModeConfig(TIM1_CounterMode_TypeDef TIM1_CounterMode)
-4498                     ; 1049 {
-4499                     .text:	section	.text,new
-4500  0000               _TIM1_CounterModeConfig:
-4502  0000 88            	push	a
-4503       00000000      OFST:	set	0
-4506                     ; 1051   assert_param(IS_TIM1_COUNTER_MODE_OK(TIM1_CounterMode));
-4508  0001 4d            	tnz	a
-4509  0002 271e          	jreq	L2411
-4510  0004 a110          	cp	a,#16
-4511  0006 271a          	jreq	L2411
-4512  0008 a120          	cp	a,#32
-4513  000a 2716          	jreq	L2411
-4514  000c a140          	cp	a,#64
-4515  000e 2712          	jreq	L2411
-4516  0010 a160          	cp	a,#96
-4517  0012 270e          	jreq	L2411
-4518  0014 ae041b        	ldw	x,#1051
-4519  0017 89            	pushw	x
-4520  0018 5f            	clrw	x
-4521  0019 89            	pushw	x
-4522  001a ae0000        	ldw	x,#L37
-4523  001d cd0000        	call	_assert_failed
-4525  0020 5b04          	addw	sp,#4
-4526  0022               L2411:
-4527                     ; 1055   TIM1->CR1 = (uint8_t)((uint8_t)(TIM1->CR1 & (uint8_t)((uint8_t)(~TIM1_CR1_CMS) & (uint8_t)(~TIM1_CR1_DIR)))
-4527                     ; 1056                         | (uint8_t)TIM1_CounterMode);
-4529  0022 c65250        	ld	a,21072
-4530  0025 a48f          	and	a,#143
-4531  0027 1a01          	or	a,(OFST+1,sp)
-4532  0029 c75250        	ld	21072,a
-4533                     ; 1057 }
-4536  002c 84            	pop	a
-4537  002d 81            	ret	
-4596                     ; 1067 void TIM1_ForcedOC1Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
-4596                     ; 1068 {
-4597                     .text:	section	.text,new
-4598  0000               _TIM1_ForcedOC1Config:
-4600  0000 88            	push	a
-4601       00000000      OFST:	set	0
-4604                     ; 1070   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
-4606  0001 a150          	cp	a,#80
-4607  0003 2712          	jreq	L4511
-4608  0005 a140          	cp	a,#64
-4609  0007 270e          	jreq	L4511
-4610  0009 ae042e        	ldw	x,#1070
-4611  000c 89            	pushw	x
-4612  000d 5f            	clrw	x
+  45                     ; 58 void TIM1_DeInit(void)
+  45                     ; 59 {
+  47                     .text:	section	.text,new
+  48  0000               _TIM1_DeInit:
+  52                     ; 60   TIM1->CR1  = TIM1_CR1_RESET_VALUE;
+  54  0000 725f5250      	clr	21072
+  55                     ; 61   TIM1->CR2  = TIM1_CR2_RESET_VALUE;
+  57  0004 725f5251      	clr	21073
+  58                     ; 62   TIM1->SMCR = TIM1_SMCR_RESET_VALUE;
+  60  0008 725f5252      	clr	21074
+  61                     ; 63   TIM1->ETR  = TIM1_ETR_RESET_VALUE;
+  63  000c 725f5253      	clr	21075
+  64                     ; 64   TIM1->IER  = TIM1_IER_RESET_VALUE;
+  66  0010 725f5254      	clr	21076
+  67                     ; 65   TIM1->SR2  = TIM1_SR2_RESET_VALUE;
+  69  0014 725f5256      	clr	21078
+  70                     ; 67   TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
+  72  0018 725f525c      	clr	21084
+  73                     ; 68   TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
+  75  001c 725f525d      	clr	21085
+  76                     ; 70   TIM1->CCMR1 = 0x01;
+  78  0020 35015258      	mov	21080,#1
+  79                     ; 71   TIM1->CCMR2 = 0x01;
+  81  0024 35015259      	mov	21081,#1
+  82                     ; 72   TIM1->CCMR3 = 0x01;
+  84  0028 3501525a      	mov	21082,#1
+  85                     ; 73   TIM1->CCMR4 = 0x01;
+  87  002c 3501525b      	mov	21083,#1
+  88                     ; 75   TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
+  90  0030 725f525c      	clr	21084
+  91                     ; 76   TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
+  93  0034 725f525d      	clr	21085
+  94                     ; 77   TIM1->CCMR1 = TIM1_CCMR1_RESET_VALUE;
+  96  0038 725f5258      	clr	21080
+  97                     ; 78   TIM1->CCMR2 = TIM1_CCMR2_RESET_VALUE;
+  99  003c 725f5259      	clr	21081
+ 100                     ; 79   TIM1->CCMR3 = TIM1_CCMR3_RESET_VALUE;
+ 102  0040 725f525a      	clr	21082
+ 103                     ; 80   TIM1->CCMR4 = TIM1_CCMR4_RESET_VALUE;
+ 105  0044 725f525b      	clr	21083
+ 106                     ; 81   TIM1->CNTRH = TIM1_CNTRH_RESET_VALUE;
+ 108  0048 725f525e      	clr	21086
+ 109                     ; 82   TIM1->CNTRL = TIM1_CNTRL_RESET_VALUE;
+ 111  004c 725f525f      	clr	21087
+ 112                     ; 83   TIM1->PSCRH = TIM1_PSCRH_RESET_VALUE;
+ 114  0050 725f5260      	clr	21088
+ 115                     ; 84   TIM1->PSCRL = TIM1_PSCRL_RESET_VALUE;
+ 117  0054 725f5261      	clr	21089
+ 118                     ; 85   TIM1->ARRH  = TIM1_ARRH_RESET_VALUE;
+ 120  0058 35ff5262      	mov	21090,#255
+ 121                     ; 86   TIM1->ARRL  = TIM1_ARRL_RESET_VALUE;
+ 123  005c 35ff5263      	mov	21091,#255
+ 124                     ; 87   TIM1->CCR1H = TIM1_CCR1H_RESET_VALUE;
+ 126  0060 725f5265      	clr	21093
+ 127                     ; 88   TIM1->CCR1L = TIM1_CCR1L_RESET_VALUE;
+ 129  0064 725f5266      	clr	21094
+ 130                     ; 89   TIM1->CCR2H = TIM1_CCR2H_RESET_VALUE;
+ 132  0068 725f5267      	clr	21095
+ 133                     ; 90   TIM1->CCR2L = TIM1_CCR2L_RESET_VALUE;
+ 135  006c 725f5268      	clr	21096
+ 136                     ; 91   TIM1->CCR3H = TIM1_CCR3H_RESET_VALUE;
+ 138  0070 725f5269      	clr	21097
+ 139                     ; 92   TIM1->CCR3L = TIM1_CCR3L_RESET_VALUE;
+ 141  0074 725f526a      	clr	21098
+ 142                     ; 93   TIM1->CCR4H = TIM1_CCR4H_RESET_VALUE;
+ 144  0078 725f526b      	clr	21099
+ 145                     ; 94   TIM1->CCR4L = TIM1_CCR4L_RESET_VALUE;
+ 147  007c 725f526c      	clr	21100
+ 148                     ; 95   TIM1->OISR  = TIM1_OISR_RESET_VALUE;
+ 150  0080 725f526f      	clr	21103
+ 151                     ; 96   TIM1->EGR   = 0x01; /* TIM1_EGR_UG */
+ 153  0084 35015257      	mov	21079,#1
+ 154                     ; 97   TIM1->DTR   = TIM1_DTR_RESET_VALUE;
+ 156  0088 725f526e      	clr	21102
+ 157                     ; 98   TIM1->BKR   = TIM1_BKR_RESET_VALUE;
+ 159  008c 725f526d      	clr	21101
+ 160                     ; 99   TIM1->RCR   = TIM1_RCR_RESET_VALUE;
+ 162  0090 725f5264      	clr	21092
+ 163                     ; 100   TIM1->SR1   = TIM1_SR1_RESET_VALUE;
+ 165  0094 725f5255      	clr	21077
+ 166                     ; 101 }
+ 169  0098 81            	ret
+ 273                     ; 111 void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
+ 273                     ; 112                        TIM1_CounterMode_TypeDef TIM1_CounterMode,
+ 273                     ; 113                        uint16_t TIM1_Period,
+ 273                     ; 114                        uint8_t TIM1_RepetitionCounter)
+ 273                     ; 115 {
+ 274                     .text:	section	.text,new
+ 275  0000               _TIM1_TimeBaseInit:
+ 277  0000 89            	pushw	x
+ 278       00000000      OFST:	set	0
+ 281                     ; 117   assert_param(IS_TIM1_COUNTER_MODE_OK(TIM1_CounterMode));
+ 283  0001 0d05          	tnz	(OFST+5,sp)
+ 284  0003 2718          	jreq	L21
+ 285  0005 7b05          	ld	a,(OFST+5,sp)
+ 286  0007 a110          	cp	a,#16
+ 287  0009 2712          	jreq	L21
+ 288  000b 7b05          	ld	a,(OFST+5,sp)
+ 289  000d a120          	cp	a,#32
+ 290  000f 270c          	jreq	L21
+ 291  0011 7b05          	ld	a,(OFST+5,sp)
+ 292  0013 a140          	cp	a,#64
+ 293  0015 2706          	jreq	L21
+ 294  0017 7b05          	ld	a,(OFST+5,sp)
+ 295  0019 a160          	cp	a,#96
+ 296  001b 2603          	jrne	L01
+ 297  001d               L21:
+ 298  001d 4f            	clr	a
+ 299  001e 2010          	jra	L41
+ 300  0020               L01:
+ 301  0020 ae0075        	ldw	x,#117
+ 302  0023 89            	pushw	x
+ 303  0024 ae0000        	ldw	x,#0
+ 304  0027 89            	pushw	x
+ 305  0028 ae0000        	ldw	x,#L37
+ 306  002b cd0000        	call	_assert_failed
+ 308  002e 5b04          	addw	sp,#4
+ 309  0030               L41:
+ 310                     ; 120   TIM1->ARRH = (uint8_t)(TIM1_Period >> 8);
+ 312  0030 7b06          	ld	a,(OFST+6,sp)
+ 313  0032 c75262        	ld	21090,a
+ 314                     ; 121   TIM1->ARRL = (uint8_t)(TIM1_Period);
+ 316  0035 7b07          	ld	a,(OFST+7,sp)
+ 317  0037 c75263        	ld	21091,a
+ 318                     ; 124   TIM1->PSCRH = (uint8_t)(TIM1_Prescaler >> 8);
+ 320  003a 7b01          	ld	a,(OFST+1,sp)
+ 321  003c c75260        	ld	21088,a
+ 322                     ; 125   TIM1->PSCRL = (uint8_t)(TIM1_Prescaler);
+ 324  003f 7b02          	ld	a,(OFST+2,sp)
+ 325  0041 c75261        	ld	21089,a
+ 326                     ; 128   TIM1->CR1 = (uint8_t)((uint8_t)(TIM1->CR1 & (uint8_t)(~(TIM1_CR1_CMS | TIM1_CR1_DIR)))
+ 326                     ; 129                         | (uint8_t)(TIM1_CounterMode));
+ 328  0044 c65250        	ld	a,21072
+ 329  0047 a48f          	and	a,#143
+ 330  0049 1a05          	or	a,(OFST+5,sp)
+ 331  004b c75250        	ld	21072,a
+ 332                     ; 132   TIM1->RCR = TIM1_RepetitionCounter;
+ 334  004e 7b08          	ld	a,(OFST+8,sp)
+ 335  0050 c75264        	ld	21092,a
+ 336                     ; 133 }
+ 339  0053 85            	popw	x
+ 340  0054 81            	ret
+ 624                     ; 154 void TIM1_OC1Init(TIM1_OCMode_TypeDef TIM1_OCMode,
+ 624                     ; 155                   TIM1_OutputState_TypeDef TIM1_OutputState,
+ 624                     ; 156                   TIM1_OutputNState_TypeDef TIM1_OutputNState,
+ 624                     ; 157                   uint16_t TIM1_Pulse,
+ 624                     ; 158                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
+ 624                     ; 159                   TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity,
+ 624                     ; 160                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState,
+ 624                     ; 161                   TIM1_OCNIdleState_TypeDef TIM1_OCNIdleState)
+ 624                     ; 162 {
+ 625                     .text:	section	.text,new
+ 626  0000               _TIM1_OC1Init:
+ 628  0000 89            	pushw	x
+ 629  0001 5203          	subw	sp,#3
+ 630       00000003      OFST:	set	3
+ 633                     ; 164   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
+ 635  0003 9e            	ld	a,xh
+ 636  0004 4d            	tnz	a
+ 637  0005 2719          	jreq	L22
+ 638  0007 9e            	ld	a,xh
+ 639  0008 a110          	cp	a,#16
+ 640  000a 2714          	jreq	L22
+ 641  000c 9e            	ld	a,xh
+ 642  000d a120          	cp	a,#32
+ 643  000f 270f          	jreq	L22
+ 644  0011 9e            	ld	a,xh
+ 645  0012 a130          	cp	a,#48
+ 646  0014 270a          	jreq	L22
+ 647  0016 9e            	ld	a,xh
+ 648  0017 a160          	cp	a,#96
+ 649  0019 2705          	jreq	L22
+ 650  001b 9e            	ld	a,xh
+ 651  001c a170          	cp	a,#112
+ 652  001e 2603          	jrne	L02
+ 653  0020               L22:
+ 654  0020 4f            	clr	a
+ 655  0021 2010          	jra	L42
+ 656  0023               L02:
+ 657  0023 ae00a4        	ldw	x,#164
+ 658  0026 89            	pushw	x
+ 659  0027 ae0000        	ldw	x,#0
+ 660  002a 89            	pushw	x
+ 661  002b ae0000        	ldw	x,#L37
+ 662  002e cd0000        	call	_assert_failed
+ 664  0031 5b04          	addw	sp,#4
+ 665  0033               L42:
+ 666                     ; 165   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
+ 668  0033 0d05          	tnz	(OFST+2,sp)
+ 669  0035 2706          	jreq	L03
+ 670  0037 7b05          	ld	a,(OFST+2,sp)
+ 671  0039 a111          	cp	a,#17
+ 672  003b 2603          	jrne	L62
+ 673  003d               L03:
+ 674  003d 4f            	clr	a
+ 675  003e 2010          	jra	L23
+ 676  0040               L62:
+ 677  0040 ae00a5        	ldw	x,#165
+ 678  0043 89            	pushw	x
+ 679  0044 ae0000        	ldw	x,#0
+ 680  0047 89            	pushw	x
+ 681  0048 ae0000        	ldw	x,#L37
+ 682  004b cd0000        	call	_assert_failed
+ 684  004e 5b04          	addw	sp,#4
+ 685  0050               L23:
+ 686                     ; 166   assert_param(IS_TIM1_OUTPUTN_STATE_OK(TIM1_OutputNState));
+ 688  0050 0d08          	tnz	(OFST+5,sp)
+ 689  0052 2706          	jreq	L63
+ 690  0054 7b08          	ld	a,(OFST+5,sp)
+ 691  0056 a144          	cp	a,#68
+ 692  0058 2603          	jrne	L43
+ 693  005a               L63:
+ 694  005a 4f            	clr	a
+ 695  005b 2010          	jra	L04
+ 696  005d               L43:
+ 697  005d ae00a6        	ldw	x,#166
+ 698  0060 89            	pushw	x
+ 699  0061 ae0000        	ldw	x,#0
+ 700  0064 89            	pushw	x
+ 701  0065 ae0000        	ldw	x,#L37
+ 702  0068 cd0000        	call	_assert_failed
+ 704  006b 5b04          	addw	sp,#4
+ 705  006d               L04:
+ 706                     ; 167   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+ 708  006d 0d0b          	tnz	(OFST+8,sp)
+ 709  006f 2706          	jreq	L44
+ 710  0071 7b0b          	ld	a,(OFST+8,sp)
+ 711  0073 a122          	cp	a,#34
+ 712  0075 2603          	jrne	L24
+ 713  0077               L44:
+ 714  0077 4f            	clr	a
+ 715  0078 2010          	jra	L64
+ 716  007a               L24:
+ 717  007a ae00a7        	ldw	x,#167
+ 718  007d 89            	pushw	x
+ 719  007e ae0000        	ldw	x,#0
+ 720  0081 89            	pushw	x
+ 721  0082 ae0000        	ldw	x,#L37
+ 722  0085 cd0000        	call	_assert_failed
+ 724  0088 5b04          	addw	sp,#4
+ 725  008a               L64:
+ 726                     ; 168   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
+ 728  008a 0d0c          	tnz	(OFST+9,sp)
+ 729  008c 2706          	jreq	L25
+ 730  008e 7b0c          	ld	a,(OFST+9,sp)
+ 731  0090 a188          	cp	a,#136
+ 732  0092 2603          	jrne	L05
+ 733  0094               L25:
+ 734  0094 4f            	clr	a
+ 735  0095 2010          	jra	L45
+ 736  0097               L05:
+ 737  0097 ae00a8        	ldw	x,#168
+ 738  009a 89            	pushw	x
+ 739  009b ae0000        	ldw	x,#0
+ 740  009e 89            	pushw	x
+ 741  009f ae0000        	ldw	x,#L37
+ 742  00a2 cd0000        	call	_assert_failed
+ 744  00a5 5b04          	addw	sp,#4
+ 745  00a7               L45:
+ 746                     ; 169   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
+ 748  00a7 7b0d          	ld	a,(OFST+10,sp)
+ 749  00a9 a155          	cp	a,#85
+ 750  00ab 2704          	jreq	L06
+ 751  00ad 0d0d          	tnz	(OFST+10,sp)
+ 752  00af 2603          	jrne	L65
+ 753  00b1               L06:
+ 754  00b1 4f            	clr	a
+ 755  00b2 2010          	jra	L26
+ 756  00b4               L65:
+ 757  00b4 ae00a9        	ldw	x,#169
+ 758  00b7 89            	pushw	x
+ 759  00b8 ae0000        	ldw	x,#0
+ 760  00bb 89            	pushw	x
+ 761  00bc ae0000        	ldw	x,#L37
+ 762  00bf cd0000        	call	_assert_failed
+ 764  00c2 5b04          	addw	sp,#4
+ 765  00c4               L26:
+ 766                     ; 170   assert_param(IS_TIM1_OCNIDLE_STATE_OK(TIM1_OCNIdleState));
+ 768  00c4 7b0e          	ld	a,(OFST+11,sp)
+ 769  00c6 a12a          	cp	a,#42
+ 770  00c8 2704          	jreq	L66
+ 771  00ca 0d0e          	tnz	(OFST+11,sp)
+ 772  00cc 2603          	jrne	L46
+ 773  00ce               L66:
+ 774  00ce 4f            	clr	a
+ 775  00cf 2010          	jra	L07
+ 776  00d1               L46:
+ 777  00d1 ae00aa        	ldw	x,#170
+ 778  00d4 89            	pushw	x
+ 779  00d5 ae0000        	ldw	x,#0
+ 780  00d8 89            	pushw	x
+ 781  00d9 ae0000        	ldw	x,#L37
+ 782  00dc cd0000        	call	_assert_failed
+ 784  00df 5b04          	addw	sp,#4
+ 785  00e1               L07:
+ 786                     ; 174   TIM1->CCER1 &= (uint8_t)(~( TIM1_CCER1_CC1E | TIM1_CCER1_CC1NE 
+ 786                     ; 175                              | TIM1_CCER1_CC1P | TIM1_CCER1_CC1NP));
+ 788  00e1 c6525c        	ld	a,21084
+ 789  00e4 a4f0          	and	a,#240
+ 790  00e6 c7525c        	ld	21084,a
+ 791                     ; 178   TIM1->CCER1 |= (uint8_t)((uint8_t)((uint8_t)(TIM1_OutputState & TIM1_CCER1_CC1E)
+ 791                     ; 179                                      | (uint8_t)(TIM1_OutputNState & TIM1_CCER1_CC1NE))
+ 791                     ; 180                            | (uint8_t)( (uint8_t)(TIM1_OCPolarity  & TIM1_CCER1_CC1P)
+ 791                     ; 181                                        | (uint8_t)(TIM1_OCNPolarity & TIM1_CCER1_CC1NP)));
+ 793  00e9 7b0c          	ld	a,(OFST+9,sp)
+ 794  00eb a408          	and	a,#8
+ 795  00ed 6b03          	ld	(OFST+0,sp),a
+ 797  00ef 7b0b          	ld	a,(OFST+8,sp)
+ 798  00f1 a402          	and	a,#2
+ 799  00f3 1a03          	or	a,(OFST+0,sp)
+ 800  00f5 6b02          	ld	(OFST-1,sp),a
+ 802  00f7 7b08          	ld	a,(OFST+5,sp)
+ 803  00f9 a404          	and	a,#4
+ 804  00fb 6b01          	ld	(OFST-2,sp),a
+ 806  00fd 7b05          	ld	a,(OFST+2,sp)
+ 807  00ff a401          	and	a,#1
+ 808  0101 1a01          	or	a,(OFST-2,sp)
+ 809  0103 1a02          	or	a,(OFST-1,sp)
+ 810  0105 ca525c        	or	a,21084
+ 811  0108 c7525c        	ld	21084,a
+ 812                     ; 184   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_OCM)) | 
+ 812                     ; 185                           (uint8_t)TIM1_OCMode);
+ 814  010b c65258        	ld	a,21080
+ 815  010e a48f          	and	a,#143
+ 816  0110 1a04          	or	a,(OFST+1,sp)
+ 817  0112 c75258        	ld	21080,a
+ 818                     ; 188   TIM1->OISR &= (uint8_t)(~(TIM1_OISR_OIS1 | TIM1_OISR_OIS1N));
+ 820  0115 c6526f        	ld	a,21103
+ 821  0118 a4fc          	and	a,#252
+ 822  011a c7526f        	ld	21103,a
+ 823                     ; 190   TIM1->OISR |= (uint8_t)((uint8_t)( TIM1_OCIdleState & TIM1_OISR_OIS1 ) | 
+ 823                     ; 191                           (uint8_t)( TIM1_OCNIdleState & TIM1_OISR_OIS1N ));
+ 825  011d 7b0e          	ld	a,(OFST+11,sp)
+ 826  011f a402          	and	a,#2
+ 827  0121 6b03          	ld	(OFST+0,sp),a
+ 829  0123 7b0d          	ld	a,(OFST+10,sp)
+ 830  0125 a401          	and	a,#1
+ 831  0127 1a03          	or	a,(OFST+0,sp)
+ 832  0129 ca526f        	or	a,21103
+ 833  012c c7526f        	ld	21103,a
+ 834                     ; 194   TIM1->CCR1H = (uint8_t)(TIM1_Pulse >> 8);
+ 836  012f 7b09          	ld	a,(OFST+6,sp)
+ 837  0131 c75265        	ld	21093,a
+ 838                     ; 195   TIM1->CCR1L = (uint8_t)(TIM1_Pulse);
+ 840  0134 7b0a          	ld	a,(OFST+7,sp)
+ 841  0136 c75266        	ld	21094,a
+ 842                     ; 196 }
+ 845  0139 5b05          	addw	sp,#5
+ 846  013b 81            	ret
+ 949                     ; 217 void TIM1_OC2Init(TIM1_OCMode_TypeDef TIM1_OCMode,
+ 949                     ; 218                   TIM1_OutputState_TypeDef TIM1_OutputState,
+ 949                     ; 219                   TIM1_OutputNState_TypeDef TIM1_OutputNState,
+ 949                     ; 220                   uint16_t TIM1_Pulse,
+ 949                     ; 221                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
+ 949                     ; 222                   TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity,
+ 949                     ; 223                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState,
+ 949                     ; 224                   TIM1_OCNIdleState_TypeDef TIM1_OCNIdleState)
+ 949                     ; 225 {
+ 950                     .text:	section	.text,new
+ 951  0000               _TIM1_OC2Init:
+ 953  0000 89            	pushw	x
+ 954  0001 5203          	subw	sp,#3
+ 955       00000003      OFST:	set	3
+ 958                     ; 227   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
+ 960  0003 9e            	ld	a,xh
+ 961  0004 4d            	tnz	a
+ 962  0005 2719          	jreq	L67
+ 963  0007 9e            	ld	a,xh
+ 964  0008 a110          	cp	a,#16
+ 965  000a 2714          	jreq	L67
+ 966  000c 9e            	ld	a,xh
+ 967  000d a120          	cp	a,#32
+ 968  000f 270f          	jreq	L67
+ 969  0011 9e            	ld	a,xh
+ 970  0012 a130          	cp	a,#48
+ 971  0014 270a          	jreq	L67
+ 972  0016 9e            	ld	a,xh
+ 973  0017 a160          	cp	a,#96
+ 974  0019 2705          	jreq	L67
+ 975  001b 9e            	ld	a,xh
+ 976  001c a170          	cp	a,#112
+ 977  001e 2603          	jrne	L47
+ 978  0020               L67:
+ 979  0020 4f            	clr	a
+ 980  0021 2010          	jra	L001
+ 981  0023               L47:
+ 982  0023 ae00e3        	ldw	x,#227
+ 983  0026 89            	pushw	x
+ 984  0027 ae0000        	ldw	x,#0
+ 985  002a 89            	pushw	x
+ 986  002b ae0000        	ldw	x,#L37
+ 987  002e cd0000        	call	_assert_failed
+ 989  0031 5b04          	addw	sp,#4
+ 990  0033               L001:
+ 991                     ; 228   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
+ 993  0033 0d05          	tnz	(OFST+2,sp)
+ 994  0035 2706          	jreq	L401
+ 995  0037 7b05          	ld	a,(OFST+2,sp)
+ 996  0039 a111          	cp	a,#17
+ 997  003b 2603          	jrne	L201
+ 998  003d               L401:
+ 999  003d 4f            	clr	a
+1000  003e 2010          	jra	L601
+1001  0040               L201:
+1002  0040 ae00e4        	ldw	x,#228
+1003  0043 89            	pushw	x
+1004  0044 ae0000        	ldw	x,#0
+1005  0047 89            	pushw	x
+1006  0048 ae0000        	ldw	x,#L37
+1007  004b cd0000        	call	_assert_failed
+1009  004e 5b04          	addw	sp,#4
+1010  0050               L601:
+1011                     ; 229   assert_param(IS_TIM1_OUTPUTN_STATE_OK(TIM1_OutputNState));
+1013  0050 0d08          	tnz	(OFST+5,sp)
+1014  0052 2706          	jreq	L211
+1015  0054 7b08          	ld	a,(OFST+5,sp)
+1016  0056 a144          	cp	a,#68
+1017  0058 2603          	jrne	L011
+1018  005a               L211:
+1019  005a 4f            	clr	a
+1020  005b 2010          	jra	L411
+1021  005d               L011:
+1022  005d ae00e5        	ldw	x,#229
+1023  0060 89            	pushw	x
+1024  0061 ae0000        	ldw	x,#0
+1025  0064 89            	pushw	x
+1026  0065 ae0000        	ldw	x,#L37
+1027  0068 cd0000        	call	_assert_failed
+1029  006b 5b04          	addw	sp,#4
+1030  006d               L411:
+1031                     ; 230   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+1033  006d 0d0b          	tnz	(OFST+8,sp)
+1034  006f 2706          	jreq	L021
+1035  0071 7b0b          	ld	a,(OFST+8,sp)
+1036  0073 a122          	cp	a,#34
+1037  0075 2603          	jrne	L611
+1038  0077               L021:
+1039  0077 4f            	clr	a
+1040  0078 2010          	jra	L221
+1041  007a               L611:
+1042  007a ae00e6        	ldw	x,#230
+1043  007d 89            	pushw	x
+1044  007e ae0000        	ldw	x,#0
+1045  0081 89            	pushw	x
+1046  0082 ae0000        	ldw	x,#L37
+1047  0085 cd0000        	call	_assert_failed
+1049  0088 5b04          	addw	sp,#4
+1050  008a               L221:
+1051                     ; 231   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
+1053  008a 0d0c          	tnz	(OFST+9,sp)
+1054  008c 2706          	jreq	L621
+1055  008e 7b0c          	ld	a,(OFST+9,sp)
+1056  0090 a188          	cp	a,#136
+1057  0092 2603          	jrne	L421
+1058  0094               L621:
+1059  0094 4f            	clr	a
+1060  0095 2010          	jra	L031
+1061  0097               L421:
+1062  0097 ae00e7        	ldw	x,#231
+1063  009a 89            	pushw	x
+1064  009b ae0000        	ldw	x,#0
+1065  009e 89            	pushw	x
+1066  009f ae0000        	ldw	x,#L37
+1067  00a2 cd0000        	call	_assert_failed
+1069  00a5 5b04          	addw	sp,#4
+1070  00a7               L031:
+1071                     ; 232   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
+1073  00a7 7b0d          	ld	a,(OFST+10,sp)
+1074  00a9 a155          	cp	a,#85
+1075  00ab 2704          	jreq	L431
+1076  00ad 0d0d          	tnz	(OFST+10,sp)
+1077  00af 2603          	jrne	L231
+1078  00b1               L431:
+1079  00b1 4f            	clr	a
+1080  00b2 2010          	jra	L631
+1081  00b4               L231:
+1082  00b4 ae00e8        	ldw	x,#232
+1083  00b7 89            	pushw	x
+1084  00b8 ae0000        	ldw	x,#0
+1085  00bb 89            	pushw	x
+1086  00bc ae0000        	ldw	x,#L37
+1087  00bf cd0000        	call	_assert_failed
+1089  00c2 5b04          	addw	sp,#4
+1090  00c4               L631:
+1091                     ; 233   assert_param(IS_TIM1_OCNIDLE_STATE_OK(TIM1_OCNIdleState));
+1093  00c4 7b0e          	ld	a,(OFST+11,sp)
+1094  00c6 a12a          	cp	a,#42
+1095  00c8 2704          	jreq	L241
+1096  00ca 0d0e          	tnz	(OFST+11,sp)
+1097  00cc 2603          	jrne	L041
+1098  00ce               L241:
+1099  00ce 4f            	clr	a
+1100  00cf 2010          	jra	L441
+1101  00d1               L041:
+1102  00d1 ae00e9        	ldw	x,#233
+1103  00d4 89            	pushw	x
+1104  00d5 ae0000        	ldw	x,#0
+1105  00d8 89            	pushw	x
+1106  00d9 ae0000        	ldw	x,#L37
+1107  00dc cd0000        	call	_assert_failed
+1109  00df 5b04          	addw	sp,#4
+1110  00e1               L441:
+1111                     ; 237   TIM1->CCER1 &= (uint8_t)(~( TIM1_CCER1_CC2E | TIM1_CCER1_CC2NE | 
+1111                     ; 238                              TIM1_CCER1_CC2P | TIM1_CCER1_CC2NP));
+1113  00e1 c6525c        	ld	a,21084
+1114  00e4 a40f          	and	a,#15
+1115  00e6 c7525c        	ld	21084,a
+1116                     ; 242   TIM1->CCER1 |= (uint8_t)((uint8_t)((uint8_t)(TIM1_OutputState & TIM1_CCER1_CC2E  ) | 
+1116                     ; 243                                      (uint8_t)(TIM1_OutputNState & TIM1_CCER1_CC2NE )) | 
+1116                     ; 244                            (uint8_t)((uint8_t)(TIM1_OCPolarity  & TIM1_CCER1_CC2P  ) | 
+1116                     ; 245                                      (uint8_t)(TIM1_OCNPolarity & TIM1_CCER1_CC2NP )));
+1118  00e9 7b0c          	ld	a,(OFST+9,sp)
+1119  00eb a480          	and	a,#128
+1120  00ed 6b03          	ld	(OFST+0,sp),a
+1122  00ef 7b0b          	ld	a,(OFST+8,sp)
+1123  00f1 a420          	and	a,#32
+1124  00f3 1a03          	or	a,(OFST+0,sp)
+1125  00f5 6b02          	ld	(OFST-1,sp),a
+1127  00f7 7b08          	ld	a,(OFST+5,sp)
+1128  00f9 a440          	and	a,#64
+1129  00fb 6b01          	ld	(OFST-2,sp),a
+1131  00fd 7b05          	ld	a,(OFST+2,sp)
+1132  00ff a410          	and	a,#16
+1133  0101 1a01          	or	a,(OFST-2,sp)
+1134  0103 1a02          	or	a,(OFST-1,sp)
+1135  0105 ca525c        	or	a,21084
+1136  0108 c7525c        	ld	21084,a
+1137                     ; 248   TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_OCM)) | 
+1137                     ; 249                           (uint8_t)TIM1_OCMode);
+1139  010b c65259        	ld	a,21081
+1140  010e a48f          	and	a,#143
+1141  0110 1a04          	or	a,(OFST+1,sp)
+1142  0112 c75259        	ld	21081,a
+1143                     ; 252   TIM1->OISR &= (uint8_t)(~(TIM1_OISR_OIS2 | TIM1_OISR_OIS2N));
+1145  0115 c6526f        	ld	a,21103
+1146  0118 a4f3          	and	a,#243
+1147  011a c7526f        	ld	21103,a
+1148                     ; 254   TIM1->OISR |= (uint8_t)((uint8_t)(TIM1_OISR_OIS2 & TIM1_OCIdleState) | 
+1148                     ; 255                           (uint8_t)(TIM1_OISR_OIS2N & TIM1_OCNIdleState));
+1150  011d 7b0e          	ld	a,(OFST+11,sp)
+1151  011f a408          	and	a,#8
+1152  0121 6b03          	ld	(OFST+0,sp),a
+1154  0123 7b0d          	ld	a,(OFST+10,sp)
+1155  0125 a404          	and	a,#4
+1156  0127 1a03          	or	a,(OFST+0,sp)
+1157  0129 ca526f        	or	a,21103
+1158  012c c7526f        	ld	21103,a
+1159                     ; 258   TIM1->CCR2H = (uint8_t)(TIM1_Pulse >> 8);
+1161  012f 7b09          	ld	a,(OFST+6,sp)
+1162  0131 c75267        	ld	21095,a
+1163                     ; 259   TIM1->CCR2L = (uint8_t)(TIM1_Pulse);
+1165  0134 7b0a          	ld	a,(OFST+7,sp)
+1166  0136 c75268        	ld	21096,a
+1167                     ; 260 }
+1170  0139 5b05          	addw	sp,#5
+1171  013b 81            	ret
+1274                     ; 281 void TIM1_OC3Init(TIM1_OCMode_TypeDef TIM1_OCMode,
+1274                     ; 282                   TIM1_OutputState_TypeDef TIM1_OutputState,
+1274                     ; 283                   TIM1_OutputNState_TypeDef TIM1_OutputNState,
+1274                     ; 284                   uint16_t TIM1_Pulse,
+1274                     ; 285                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
+1274                     ; 286                   TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity,
+1274                     ; 287                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState,
+1274                     ; 288                   TIM1_OCNIdleState_TypeDef TIM1_OCNIdleState)
+1274                     ; 289 {
+1275                     .text:	section	.text,new
+1276  0000               _TIM1_OC3Init:
+1278  0000 89            	pushw	x
+1279  0001 5203          	subw	sp,#3
+1280       00000003      OFST:	set	3
+1283                     ; 291   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
+1285  0003 9e            	ld	a,xh
+1286  0004 4d            	tnz	a
+1287  0005 2719          	jreq	L251
+1288  0007 9e            	ld	a,xh
+1289  0008 a110          	cp	a,#16
+1290  000a 2714          	jreq	L251
+1291  000c 9e            	ld	a,xh
+1292  000d a120          	cp	a,#32
+1293  000f 270f          	jreq	L251
+1294  0011 9e            	ld	a,xh
+1295  0012 a130          	cp	a,#48
+1296  0014 270a          	jreq	L251
+1297  0016 9e            	ld	a,xh
+1298  0017 a160          	cp	a,#96
+1299  0019 2705          	jreq	L251
+1300  001b 9e            	ld	a,xh
+1301  001c a170          	cp	a,#112
+1302  001e 2603          	jrne	L051
+1303  0020               L251:
+1304  0020 4f            	clr	a
+1305  0021 2010          	jra	L451
+1306  0023               L051:
+1307  0023 ae0123        	ldw	x,#291
+1308  0026 89            	pushw	x
+1309  0027 ae0000        	ldw	x,#0
+1310  002a 89            	pushw	x
+1311  002b ae0000        	ldw	x,#L37
+1312  002e cd0000        	call	_assert_failed
+1314  0031 5b04          	addw	sp,#4
+1315  0033               L451:
+1316                     ; 292   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
+1318  0033 0d05          	tnz	(OFST+2,sp)
+1319  0035 2706          	jreq	L061
+1320  0037 7b05          	ld	a,(OFST+2,sp)
+1321  0039 a111          	cp	a,#17
+1322  003b 2603          	jrne	L651
+1323  003d               L061:
+1324  003d 4f            	clr	a
+1325  003e 2010          	jra	L261
+1326  0040               L651:
+1327  0040 ae0124        	ldw	x,#292
+1328  0043 89            	pushw	x
+1329  0044 ae0000        	ldw	x,#0
+1330  0047 89            	pushw	x
+1331  0048 ae0000        	ldw	x,#L37
+1332  004b cd0000        	call	_assert_failed
+1334  004e 5b04          	addw	sp,#4
+1335  0050               L261:
+1336                     ; 293   assert_param(IS_TIM1_OUTPUTN_STATE_OK(TIM1_OutputNState));
+1338  0050 0d08          	tnz	(OFST+5,sp)
+1339  0052 2706          	jreq	L661
+1340  0054 7b08          	ld	a,(OFST+5,sp)
+1341  0056 a144          	cp	a,#68
+1342  0058 2603          	jrne	L461
+1343  005a               L661:
+1344  005a 4f            	clr	a
+1345  005b 2010          	jra	L071
+1346  005d               L461:
+1347  005d ae0125        	ldw	x,#293
+1348  0060 89            	pushw	x
+1349  0061 ae0000        	ldw	x,#0
+1350  0064 89            	pushw	x
+1351  0065 ae0000        	ldw	x,#L37
+1352  0068 cd0000        	call	_assert_failed
+1354  006b 5b04          	addw	sp,#4
+1355  006d               L071:
+1356                     ; 294   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+1358  006d 0d0b          	tnz	(OFST+8,sp)
+1359  006f 2706          	jreq	L471
+1360  0071 7b0b          	ld	a,(OFST+8,sp)
+1361  0073 a122          	cp	a,#34
+1362  0075 2603          	jrne	L271
+1363  0077               L471:
+1364  0077 4f            	clr	a
+1365  0078 2010          	jra	L671
+1366  007a               L271:
+1367  007a ae0126        	ldw	x,#294
+1368  007d 89            	pushw	x
+1369  007e ae0000        	ldw	x,#0
+1370  0081 89            	pushw	x
+1371  0082 ae0000        	ldw	x,#L37
+1372  0085 cd0000        	call	_assert_failed
+1374  0088 5b04          	addw	sp,#4
+1375  008a               L671:
+1376                     ; 295   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
+1378  008a 0d0c          	tnz	(OFST+9,sp)
+1379  008c 2706          	jreq	L202
+1380  008e 7b0c          	ld	a,(OFST+9,sp)
+1381  0090 a188          	cp	a,#136
+1382  0092 2603          	jrne	L002
+1383  0094               L202:
+1384  0094 4f            	clr	a
+1385  0095 2010          	jra	L402
+1386  0097               L002:
+1387  0097 ae0127        	ldw	x,#295
+1388  009a 89            	pushw	x
+1389  009b ae0000        	ldw	x,#0
+1390  009e 89            	pushw	x
+1391  009f ae0000        	ldw	x,#L37
+1392  00a2 cd0000        	call	_assert_failed
+1394  00a5 5b04          	addw	sp,#4
+1395  00a7               L402:
+1396                     ; 296   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
+1398  00a7 7b0d          	ld	a,(OFST+10,sp)
+1399  00a9 a155          	cp	a,#85
+1400  00ab 2704          	jreq	L012
+1401  00ad 0d0d          	tnz	(OFST+10,sp)
+1402  00af 2603          	jrne	L602
+1403  00b1               L012:
+1404  00b1 4f            	clr	a
+1405  00b2 2010          	jra	L212
+1406  00b4               L602:
+1407  00b4 ae0128        	ldw	x,#296
+1408  00b7 89            	pushw	x
+1409  00b8 ae0000        	ldw	x,#0
+1410  00bb 89            	pushw	x
+1411  00bc ae0000        	ldw	x,#L37
+1412  00bf cd0000        	call	_assert_failed
+1414  00c2 5b04          	addw	sp,#4
+1415  00c4               L212:
+1416                     ; 297   assert_param(IS_TIM1_OCNIDLE_STATE_OK(TIM1_OCNIdleState));
+1418  00c4 7b0e          	ld	a,(OFST+11,sp)
+1419  00c6 a12a          	cp	a,#42
+1420  00c8 2704          	jreq	L612
+1421  00ca 0d0e          	tnz	(OFST+11,sp)
+1422  00cc 2603          	jrne	L412
+1423  00ce               L612:
+1424  00ce 4f            	clr	a
+1425  00cf 2010          	jra	L022
+1426  00d1               L412:
+1427  00d1 ae0129        	ldw	x,#297
+1428  00d4 89            	pushw	x
+1429  00d5 ae0000        	ldw	x,#0
+1430  00d8 89            	pushw	x
+1431  00d9 ae0000        	ldw	x,#L37
+1432  00dc cd0000        	call	_assert_failed
+1434  00df 5b04          	addw	sp,#4
+1435  00e1               L022:
+1436                     ; 301   TIM1->CCER2 &= (uint8_t)(~( TIM1_CCER2_CC3E | TIM1_CCER2_CC3NE | 
+1436                     ; 302                              TIM1_CCER2_CC3P | TIM1_CCER2_CC3NP));
+1438  00e1 c6525d        	ld	a,21085
+1439  00e4 a4f0          	and	a,#240
+1440  00e6 c7525d        	ld	21085,a
+1441                     ; 305   TIM1->CCER2 |= (uint8_t)((uint8_t)((uint8_t)(TIM1_OutputState  & TIM1_CCER2_CC3E   ) |
+1441                     ; 306                                      (uint8_t)(TIM1_OutputNState & TIM1_CCER2_CC3NE  )) | 
+1441                     ; 307                            (uint8_t)((uint8_t)(TIM1_OCPolarity   & TIM1_CCER2_CC3P   ) | 
+1441                     ; 308                                      (uint8_t)(TIM1_OCNPolarity  & TIM1_CCER2_CC3NP  )));
+1443  00e9 7b0c          	ld	a,(OFST+9,sp)
+1444  00eb a408          	and	a,#8
+1445  00ed 6b03          	ld	(OFST+0,sp),a
+1447  00ef 7b0b          	ld	a,(OFST+8,sp)
+1448  00f1 a402          	and	a,#2
+1449  00f3 1a03          	or	a,(OFST+0,sp)
+1450  00f5 6b02          	ld	(OFST-1,sp),a
+1452  00f7 7b08          	ld	a,(OFST+5,sp)
+1453  00f9 a404          	and	a,#4
+1454  00fb 6b01          	ld	(OFST-2,sp),a
+1456  00fd 7b05          	ld	a,(OFST+2,sp)
+1457  00ff a401          	and	a,#1
+1458  0101 1a01          	or	a,(OFST-2,sp)
+1459  0103 1a02          	or	a,(OFST-1,sp)
+1460  0105 ca525d        	or	a,21085
+1461  0108 c7525d        	ld	21085,a
+1462                     ; 311   TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_OCM)) | 
+1462                     ; 312                           (uint8_t)TIM1_OCMode);
+1464  010b c6525a        	ld	a,21082
+1465  010e a48f          	and	a,#143
+1466  0110 1a04          	or	a,(OFST+1,sp)
+1467  0112 c7525a        	ld	21082,a
+1468                     ; 315   TIM1->OISR &= (uint8_t)(~(TIM1_OISR_OIS3 | TIM1_OISR_OIS3N));
+1470  0115 c6526f        	ld	a,21103
+1471  0118 a4cf          	and	a,#207
+1472  011a c7526f        	ld	21103,a
+1473                     ; 317   TIM1->OISR |= (uint8_t)((uint8_t)(TIM1_OISR_OIS3 & TIM1_OCIdleState) | 
+1473                     ; 318                           (uint8_t)(TIM1_OISR_OIS3N & TIM1_OCNIdleState));
+1475  011d 7b0e          	ld	a,(OFST+11,sp)
+1476  011f a420          	and	a,#32
+1477  0121 6b03          	ld	(OFST+0,sp),a
+1479  0123 7b0d          	ld	a,(OFST+10,sp)
+1480  0125 a410          	and	a,#16
+1481  0127 1a03          	or	a,(OFST+0,sp)
+1482  0129 ca526f        	or	a,21103
+1483  012c c7526f        	ld	21103,a
+1484                     ; 321   TIM1->CCR3H = (uint8_t)(TIM1_Pulse >> 8);
+1486  012f 7b09          	ld	a,(OFST+6,sp)
+1487  0131 c75269        	ld	21097,a
+1488                     ; 322   TIM1->CCR3L = (uint8_t)(TIM1_Pulse);
+1490  0134 7b0a          	ld	a,(OFST+7,sp)
+1491  0136 c7526a        	ld	21098,a
+1492                     ; 323 }
+1495  0139 5b05          	addw	sp,#5
+1496  013b 81            	ret
+1569                     ; 338 void TIM1_OC4Init(TIM1_OCMode_TypeDef TIM1_OCMode,
+1569                     ; 339                   TIM1_OutputState_TypeDef TIM1_OutputState,
+1569                     ; 340                   uint16_t TIM1_Pulse,
+1569                     ; 341                   TIM1_OCPolarity_TypeDef TIM1_OCPolarity,
+1569                     ; 342                   TIM1_OCIdleState_TypeDef TIM1_OCIdleState)
+1569                     ; 343 {
+1570                     .text:	section	.text,new
+1571  0000               _TIM1_OC4Init:
+1573  0000 89            	pushw	x
+1574  0001 88            	push	a
+1575       00000001      OFST:	set	1
+1578                     ; 345   assert_param(IS_TIM1_OC_MODE_OK(TIM1_OCMode));
+1580  0002 9e            	ld	a,xh
+1581  0003 4d            	tnz	a
+1582  0004 2719          	jreq	L622
+1583  0006 9e            	ld	a,xh
+1584  0007 a110          	cp	a,#16
+1585  0009 2714          	jreq	L622
+1586  000b 9e            	ld	a,xh
+1587  000c a120          	cp	a,#32
+1588  000e 270f          	jreq	L622
+1589  0010 9e            	ld	a,xh
+1590  0011 a130          	cp	a,#48
+1591  0013 270a          	jreq	L622
+1592  0015 9e            	ld	a,xh
+1593  0016 a160          	cp	a,#96
+1594  0018 2705          	jreq	L622
+1595  001a 9e            	ld	a,xh
+1596  001b a170          	cp	a,#112
+1597  001d 2603          	jrne	L422
+1598  001f               L622:
+1599  001f 4f            	clr	a
+1600  0020 2010          	jra	L032
+1601  0022               L422:
+1602  0022 ae0159        	ldw	x,#345
+1603  0025 89            	pushw	x
+1604  0026 ae0000        	ldw	x,#0
+1605  0029 89            	pushw	x
+1606  002a ae0000        	ldw	x,#L37
+1607  002d cd0000        	call	_assert_failed
+1609  0030 5b04          	addw	sp,#4
+1610  0032               L032:
+1611                     ; 346   assert_param(IS_TIM1_OUTPUT_STATE_OK(TIM1_OutputState));
+1613  0032 0d03          	tnz	(OFST+2,sp)
+1614  0034 2706          	jreq	L432
+1615  0036 7b03          	ld	a,(OFST+2,sp)
+1616  0038 a111          	cp	a,#17
+1617  003a 2603          	jrne	L232
+1618  003c               L432:
+1619  003c 4f            	clr	a
+1620  003d 2010          	jra	L632
+1621  003f               L232:
+1622  003f ae015a        	ldw	x,#346
+1623  0042 89            	pushw	x
+1624  0043 ae0000        	ldw	x,#0
+1625  0046 89            	pushw	x
+1626  0047 ae0000        	ldw	x,#L37
+1627  004a cd0000        	call	_assert_failed
+1629  004d 5b04          	addw	sp,#4
+1630  004f               L632:
+1631                     ; 347   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+1633  004f 0d08          	tnz	(OFST+7,sp)
+1634  0051 2706          	jreq	L242
+1635  0053 7b08          	ld	a,(OFST+7,sp)
+1636  0055 a122          	cp	a,#34
+1637  0057 2603          	jrne	L042
+1638  0059               L242:
+1639  0059 4f            	clr	a
+1640  005a 2010          	jra	L442
+1641  005c               L042:
+1642  005c ae015b        	ldw	x,#347
+1643  005f 89            	pushw	x
+1644  0060 ae0000        	ldw	x,#0
+1645  0063 89            	pushw	x
+1646  0064 ae0000        	ldw	x,#L37
+1647  0067 cd0000        	call	_assert_failed
+1649  006a 5b04          	addw	sp,#4
+1650  006c               L442:
+1651                     ; 348   assert_param(IS_TIM1_OCIDLE_STATE_OK(TIM1_OCIdleState));
+1653  006c 7b09          	ld	a,(OFST+8,sp)
+1654  006e a155          	cp	a,#85
+1655  0070 2704          	jreq	L052
+1656  0072 0d09          	tnz	(OFST+8,sp)
+1657  0074 2603          	jrne	L642
+1658  0076               L052:
+1659  0076 4f            	clr	a
+1660  0077 2010          	jra	L252
+1661  0079               L642:
+1662  0079 ae015c        	ldw	x,#348
+1663  007c 89            	pushw	x
+1664  007d ae0000        	ldw	x,#0
+1665  0080 89            	pushw	x
+1666  0081 ae0000        	ldw	x,#L37
+1667  0084 cd0000        	call	_assert_failed
+1669  0087 5b04          	addw	sp,#4
+1670  0089               L252:
+1671                     ; 351   TIM1->CCER2 &= (uint8_t)(~(TIM1_CCER2_CC4E | TIM1_CCER2_CC4P));
+1673  0089 c6525d        	ld	a,21085
+1674  008c a4cf          	and	a,#207
+1675  008e c7525d        	ld	21085,a
+1676                     ; 353   TIM1->CCER2 |= (uint8_t)((uint8_t)(TIM1_OutputState & TIM1_CCER2_CC4E ) |  
+1676                     ; 354                            (uint8_t)(TIM1_OCPolarity  & TIM1_CCER2_CC4P ));
+1678  0091 7b08          	ld	a,(OFST+7,sp)
+1679  0093 a420          	and	a,#32
+1680  0095 6b01          	ld	(OFST+0,sp),a
+1682  0097 7b03          	ld	a,(OFST+2,sp)
+1683  0099 a410          	and	a,#16
+1684  009b 1a01          	or	a,(OFST+0,sp)
+1685  009d ca525d        	or	a,21085
+1686  00a0 c7525d        	ld	21085,a
+1687                     ; 357   TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_OCM)) | 
+1687                     ; 358                           TIM1_OCMode);
+1689  00a3 c6525b        	ld	a,21083
+1690  00a6 a48f          	and	a,#143
+1691  00a8 1a02          	or	a,(OFST+1,sp)
+1692  00aa c7525b        	ld	21083,a
+1693                     ; 361   if (TIM1_OCIdleState != TIM1_OCIDLESTATE_RESET)
+1695  00ad 0d09          	tnz	(OFST+8,sp)
+1696  00af 270a          	jreq	L124
+1697                     ; 363     TIM1->OISR |= (uint8_t)(~TIM1_CCER2_CC4P);
+1699  00b1 c6526f        	ld	a,21103
+1700  00b4 aadf          	or	a,#223
+1701  00b6 c7526f        	ld	21103,a
+1703  00b9 2004          	jra	L324
+1704  00bb               L124:
+1705                     ; 367     TIM1->OISR &= (uint8_t)(~TIM1_OISR_OIS4);
+1707  00bb 721d526f      	bres	21103,#6
+1708  00bf               L324:
+1709                     ; 371   TIM1->CCR4H = (uint8_t)(TIM1_Pulse >> 8);
+1711  00bf 7b06          	ld	a,(OFST+5,sp)
+1712  00c1 c7526b        	ld	21099,a
+1713                     ; 372   TIM1->CCR4L = (uint8_t)(TIM1_Pulse);
+1715  00c4 7b07          	ld	a,(OFST+6,sp)
+1716  00c6 c7526c        	ld	21100,a
+1717                     ; 373 }
+1720  00c9 5b03          	addw	sp,#3
+1721  00cb 81            	ret
+1925                     ; 388 void TIM1_BDTRConfig(TIM1_OSSIState_TypeDef TIM1_OSSIState,
+1925                     ; 389                      TIM1_LockLevel_TypeDef TIM1_LockLevel,
+1925                     ; 390                      uint8_t TIM1_DeadTime,
+1925                     ; 391                      TIM1_BreakState_TypeDef TIM1_Break,
+1925                     ; 392                      TIM1_BreakPolarity_TypeDef TIM1_BreakPolarity,
+1925                     ; 393                      TIM1_AutomaticOutput_TypeDef TIM1_AutomaticOutput)
+1925                     ; 394 {
+1926                     .text:	section	.text,new
+1927  0000               _TIM1_BDTRConfig:
+1929  0000 89            	pushw	x
+1930  0001 88            	push	a
+1931       00000001      OFST:	set	1
+1934                     ; 396   assert_param(IS_TIM1_OSSI_STATE_OK(TIM1_OSSIState));
+1936  0002 9e            	ld	a,xh
+1937  0003 a104          	cp	a,#4
+1938  0005 2704          	jreq	L062
+1939  0007 9e            	ld	a,xh
+1940  0008 4d            	tnz	a
+1941  0009 2603          	jrne	L652
+1942  000b               L062:
+1943  000b 4f            	clr	a
+1944  000c 2010          	jra	L262
+1945  000e               L652:
+1946  000e ae018c        	ldw	x,#396
+1947  0011 89            	pushw	x
+1948  0012 ae0000        	ldw	x,#0
+1949  0015 89            	pushw	x
+1950  0016 ae0000        	ldw	x,#L37
+1951  0019 cd0000        	call	_assert_failed
+1953  001c 5b04          	addw	sp,#4
+1954  001e               L262:
+1955                     ; 397   assert_param(IS_TIM1_LOCK_LEVEL_OK(TIM1_LockLevel));
+1957  001e 0d03          	tnz	(OFST+2,sp)
+1958  0020 2712          	jreq	L662
+1959  0022 7b03          	ld	a,(OFST+2,sp)
+1960  0024 a101          	cp	a,#1
+1961  0026 270c          	jreq	L662
+1962  0028 7b03          	ld	a,(OFST+2,sp)
+1963  002a a102          	cp	a,#2
+1964  002c 2706          	jreq	L662
+1965  002e 7b03          	ld	a,(OFST+2,sp)
+1966  0030 a103          	cp	a,#3
+1967  0032 2603          	jrne	L462
+1968  0034               L662:
+1969  0034 4f            	clr	a
+1970  0035 2010          	jra	L072
+1971  0037               L462:
+1972  0037 ae018d        	ldw	x,#397
+1973  003a 89            	pushw	x
+1974  003b ae0000        	ldw	x,#0
+1975  003e 89            	pushw	x
+1976  003f ae0000        	ldw	x,#L37
+1977  0042 cd0000        	call	_assert_failed
+1979  0045 5b04          	addw	sp,#4
+1980  0047               L072:
+1981                     ; 398   assert_param(IS_TIM1_BREAK_STATE_OK(TIM1_Break));
+1983  0047 7b07          	ld	a,(OFST+6,sp)
+1984  0049 a110          	cp	a,#16
+1985  004b 2704          	jreq	L472
+1986  004d 0d07          	tnz	(OFST+6,sp)
+1987  004f 2603          	jrne	L272
+1988  0051               L472:
+1989  0051 4f            	clr	a
+1990  0052 2010          	jra	L672
+1991  0054               L272:
+1992  0054 ae018e        	ldw	x,#398
+1993  0057 89            	pushw	x
+1994  0058 ae0000        	ldw	x,#0
+1995  005b 89            	pushw	x
+1996  005c ae0000        	ldw	x,#L37
+1997  005f cd0000        	call	_assert_failed
+1999  0062 5b04          	addw	sp,#4
+2000  0064               L672:
+2001                     ; 399   assert_param(IS_TIM1_BREAK_POLARITY_OK(TIM1_BreakPolarity));
+2003  0064 0d08          	tnz	(OFST+7,sp)
+2004  0066 2706          	jreq	L203
+2005  0068 7b08          	ld	a,(OFST+7,sp)
+2006  006a a120          	cp	a,#32
+2007  006c 2603          	jrne	L003
+2008  006e               L203:
+2009  006e 4f            	clr	a
+2010  006f 2010          	jra	L403
+2011  0071               L003:
+2012  0071 ae018f        	ldw	x,#399
+2013  0074 89            	pushw	x
+2014  0075 ae0000        	ldw	x,#0
+2015  0078 89            	pushw	x
+2016  0079 ae0000        	ldw	x,#L37
+2017  007c cd0000        	call	_assert_failed
+2019  007f 5b04          	addw	sp,#4
+2020  0081               L403:
+2021                     ; 400   assert_param(IS_TIM1_AUTOMATIC_OUTPUT_STATE_OK(TIM1_AutomaticOutput));
+2023  0081 7b09          	ld	a,(OFST+8,sp)
+2024  0083 a140          	cp	a,#64
+2025  0085 2704          	jreq	L013
+2026  0087 0d09          	tnz	(OFST+8,sp)
+2027  0089 2603          	jrne	L603
+2028  008b               L013:
+2029  008b 4f            	clr	a
+2030  008c 2010          	jra	L213
+2031  008e               L603:
+2032  008e ae0190        	ldw	x,#400
+2033  0091 89            	pushw	x
+2034  0092 ae0000        	ldw	x,#0
+2035  0095 89            	pushw	x
+2036  0096 ae0000        	ldw	x,#L37
+2037  0099 cd0000        	call	_assert_failed
+2039  009c 5b04          	addw	sp,#4
+2040  009e               L213:
+2041                     ; 402   TIM1->DTR = (uint8_t)(TIM1_DeadTime);
+2043  009e 7b06          	ld	a,(OFST+5,sp)
+2044  00a0 c7526e        	ld	21102,a
+2045                     ; 406   TIM1->BKR  =  (uint8_t)((uint8_t)(TIM1_OSSIState | (uint8_t)TIM1_LockLevel)  | 
+2045                     ; 407                           (uint8_t)((uint8_t)(TIM1_Break | (uint8_t)TIM1_BreakPolarity)  | 
+2045                     ; 408                           (uint8_t)TIM1_AutomaticOutput));
+2047  00a3 7b07          	ld	a,(OFST+6,sp)
+2048  00a5 1a08          	or	a,(OFST+7,sp)
+2049  00a7 1a09          	or	a,(OFST+8,sp)
+2050  00a9 6b01          	ld	(OFST+0,sp),a
+2052  00ab 7b02          	ld	a,(OFST+1,sp)
+2053  00ad 1a03          	or	a,(OFST+2,sp)
+2054  00af 1a01          	or	a,(OFST+0,sp)
+2055  00b1 c7526d        	ld	21101,a
+2056                     ; 409 }
+2059  00b4 5b03          	addw	sp,#3
+2060  00b6 81            	ret
+2261                     ; 423 void TIM1_ICInit(TIM1_Channel_TypeDef TIM1_Channel,
+2261                     ; 424                  TIM1_ICPolarity_TypeDef TIM1_ICPolarity,
+2261                     ; 425                  TIM1_ICSelection_TypeDef TIM1_ICSelection,
+2261                     ; 426                  TIM1_ICPSC_TypeDef TIM1_ICPrescaler,
+2261                     ; 427                  uint8_t TIM1_ICFilter)
+2261                     ; 428 {
+2262                     .text:	section	.text,new
+2263  0000               _TIM1_ICInit:
+2265  0000 89            	pushw	x
+2266       00000000      OFST:	set	0
+2269                     ; 430   assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
+2271  0001 9e            	ld	a,xh
+2272  0002 4d            	tnz	a
+2273  0003 270f          	jreq	L023
+2274  0005 9e            	ld	a,xh
+2275  0006 a101          	cp	a,#1
+2276  0008 270a          	jreq	L023
+2277  000a 9e            	ld	a,xh
+2278  000b a102          	cp	a,#2
+2279  000d 2705          	jreq	L023
+2280  000f 9e            	ld	a,xh
+2281  0010 a103          	cp	a,#3
+2282  0012 2603          	jrne	L613
+2283  0014               L023:
+2284  0014 4f            	clr	a
+2285  0015 2010          	jra	L223
+2286  0017               L613:
+2287  0017 ae01ae        	ldw	x,#430
+2288  001a 89            	pushw	x
+2289  001b ae0000        	ldw	x,#0
+2290  001e 89            	pushw	x
+2291  001f ae0000        	ldw	x,#L37
+2292  0022 cd0000        	call	_assert_failed
+2294  0025 5b04          	addw	sp,#4
+2295  0027               L223:
+2296                     ; 431   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
+2298  0027 0d02          	tnz	(OFST+2,sp)
+2299  0029 2706          	jreq	L623
+2300  002b 7b02          	ld	a,(OFST+2,sp)
+2301  002d a101          	cp	a,#1
+2302  002f 2603          	jrne	L423
+2303  0031               L623:
+2304  0031 4f            	clr	a
+2305  0032 2010          	jra	L033
+2306  0034               L423:
+2307  0034 ae01af        	ldw	x,#431
+2308  0037 89            	pushw	x
+2309  0038 ae0000        	ldw	x,#0
+2310  003b 89            	pushw	x
+2311  003c ae0000        	ldw	x,#L37
+2312  003f cd0000        	call	_assert_failed
+2314  0042 5b04          	addw	sp,#4
+2315  0044               L033:
+2316                     ; 432   assert_param(IS_TIM1_IC_SELECTION_OK(TIM1_ICSelection));
+2318  0044 7b05          	ld	a,(OFST+5,sp)
+2319  0046 a101          	cp	a,#1
+2320  0048 270c          	jreq	L433
+2321  004a 7b05          	ld	a,(OFST+5,sp)
+2322  004c a102          	cp	a,#2
+2323  004e 2706          	jreq	L433
+2324  0050 7b05          	ld	a,(OFST+5,sp)
+2325  0052 a103          	cp	a,#3
+2326  0054 2603          	jrne	L233
+2327  0056               L433:
+2328  0056 4f            	clr	a
+2329  0057 2010          	jra	L633
+2330  0059               L233:
+2331  0059 ae01b0        	ldw	x,#432
+2332  005c 89            	pushw	x
+2333  005d ae0000        	ldw	x,#0
+2334  0060 89            	pushw	x
+2335  0061 ae0000        	ldw	x,#L37
+2336  0064 cd0000        	call	_assert_failed
+2338  0067 5b04          	addw	sp,#4
+2339  0069               L633:
+2340                     ; 433   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_ICPrescaler));
+2342  0069 0d06          	tnz	(OFST+6,sp)
+2343  006b 2712          	jreq	L243
+2344  006d 7b06          	ld	a,(OFST+6,sp)
+2345  006f a104          	cp	a,#4
+2346  0071 270c          	jreq	L243
+2347  0073 7b06          	ld	a,(OFST+6,sp)
+2348  0075 a108          	cp	a,#8
+2349  0077 2706          	jreq	L243
+2350  0079 7b06          	ld	a,(OFST+6,sp)
+2351  007b a10c          	cp	a,#12
+2352  007d 2603          	jrne	L043
+2353  007f               L243:
+2354  007f 4f            	clr	a
+2355  0080 2010          	jra	L443
+2356  0082               L043:
+2357  0082 ae01b1        	ldw	x,#433
+2358  0085 89            	pushw	x
+2359  0086 ae0000        	ldw	x,#0
+2360  0089 89            	pushw	x
+2361  008a ae0000        	ldw	x,#L37
+2362  008d cd0000        	call	_assert_failed
+2364  0090 5b04          	addw	sp,#4
+2365  0092               L443:
+2366                     ; 434   assert_param(IS_TIM1_IC_FILTER_OK(TIM1_ICFilter));
+2368  0092 7b07          	ld	a,(OFST+7,sp)
+2369  0094 a110          	cp	a,#16
+2370  0096 2403          	jruge	L643
+2371  0098 4f            	clr	a
+2372  0099 2010          	jra	L053
+2373  009b               L643:
+2374  009b ae01b2        	ldw	x,#434
+2375  009e 89            	pushw	x
+2376  009f ae0000        	ldw	x,#0
+2377  00a2 89            	pushw	x
+2378  00a3 ae0000        	ldw	x,#L37
+2379  00a6 cd0000        	call	_assert_failed
+2381  00a9 5b04          	addw	sp,#4
+2382  00ab               L053:
+2383                     ; 436   if (TIM1_Channel == TIM1_CHANNEL_1)
+2385  00ab 0d01          	tnz	(OFST+1,sp)
+2386  00ad 2614          	jrne	L746
+2387                     ; 439     TI1_Config((uint8_t)TIM1_ICPolarity,
+2387                     ; 440                (uint8_t)TIM1_ICSelection,
+2387                     ; 441                (uint8_t)TIM1_ICFilter);
+2389  00af 7b07          	ld	a,(OFST+7,sp)
+2390  00b1 88            	push	a
+2391  00b2 7b06          	ld	a,(OFST+6,sp)
+2392  00b4 97            	ld	xl,a
+2393  00b5 7b03          	ld	a,(OFST+3,sp)
+2394  00b7 95            	ld	xh,a
+2395  00b8 cd0000        	call	L3_TI1_Config
+2397  00bb 84            	pop	a
+2398                     ; 443     TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
+2400  00bc 7b06          	ld	a,(OFST+6,sp)
+2401  00be cd0000        	call	_TIM1_SetIC1Prescaler
+2404  00c1 2046          	jra	L156
+2405  00c3               L746:
+2406                     ; 445   else if (TIM1_Channel == TIM1_CHANNEL_2)
+2408  00c3 7b01          	ld	a,(OFST+1,sp)
+2409  00c5 a101          	cp	a,#1
+2410  00c7 2614          	jrne	L356
+2411                     ; 448     TI2_Config((uint8_t)TIM1_ICPolarity,
+2411                     ; 449                (uint8_t)TIM1_ICSelection,
+2411                     ; 450                (uint8_t)TIM1_ICFilter);
+2413  00c9 7b07          	ld	a,(OFST+7,sp)
+2414  00cb 88            	push	a
+2415  00cc 7b06          	ld	a,(OFST+6,sp)
+2416  00ce 97            	ld	xl,a
+2417  00cf 7b03          	ld	a,(OFST+3,sp)
+2418  00d1 95            	ld	xh,a
+2419  00d2 cd0000        	call	L5_TI2_Config
+2421  00d5 84            	pop	a
+2422                     ; 452     TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
+2424  00d6 7b06          	ld	a,(OFST+6,sp)
+2425  00d8 cd0000        	call	_TIM1_SetIC2Prescaler
+2428  00db 202c          	jra	L156
+2429  00dd               L356:
+2430                     ; 454   else if (TIM1_Channel == TIM1_CHANNEL_3)
+2432  00dd 7b01          	ld	a,(OFST+1,sp)
+2433  00df a102          	cp	a,#2
+2434  00e1 2614          	jrne	L756
+2435                     ; 457     TI3_Config((uint8_t)TIM1_ICPolarity,
+2435                     ; 458                (uint8_t)TIM1_ICSelection,
+2435                     ; 459                (uint8_t)TIM1_ICFilter);
+2437  00e3 7b07          	ld	a,(OFST+7,sp)
+2438  00e5 88            	push	a
+2439  00e6 7b06          	ld	a,(OFST+6,sp)
+2440  00e8 97            	ld	xl,a
+2441  00e9 7b03          	ld	a,(OFST+3,sp)
+2442  00eb 95            	ld	xh,a
+2443  00ec cd0000        	call	L7_TI3_Config
+2445  00ef 84            	pop	a
+2446                     ; 461     TIM1_SetIC3Prescaler(TIM1_ICPrescaler);
+2448  00f0 7b06          	ld	a,(OFST+6,sp)
+2449  00f2 cd0000        	call	_TIM1_SetIC3Prescaler
+2452  00f5 2012          	jra	L156
+2453  00f7               L756:
+2454                     ; 466     TI4_Config((uint8_t)TIM1_ICPolarity,
+2454                     ; 467                (uint8_t)TIM1_ICSelection,
+2454                     ; 468                (uint8_t)TIM1_ICFilter);
+2456  00f7 7b07          	ld	a,(OFST+7,sp)
+2457  00f9 88            	push	a
+2458  00fa 7b06          	ld	a,(OFST+6,sp)
+2459  00fc 97            	ld	xl,a
+2460  00fd 7b03          	ld	a,(OFST+3,sp)
+2461  00ff 95            	ld	xh,a
+2462  0100 cd0000        	call	L11_TI4_Config
+2464  0103 84            	pop	a
+2465                     ; 470     TIM1_SetIC4Prescaler(TIM1_ICPrescaler);
+2467  0104 7b06          	ld	a,(OFST+6,sp)
+2468  0106 cd0000        	call	_TIM1_SetIC4Prescaler
+2470  0109               L156:
+2471                     ; 472 }
+2474  0109 85            	popw	x
+2475  010a 81            	ret
+2566                     ; 488 void TIM1_PWMIConfig(TIM1_Channel_TypeDef TIM1_Channel,
+2566                     ; 489                      TIM1_ICPolarity_TypeDef TIM1_ICPolarity,
+2566                     ; 490                      TIM1_ICSelection_TypeDef TIM1_ICSelection,
+2566                     ; 491                      TIM1_ICPSC_TypeDef TIM1_ICPrescaler,
+2566                     ; 492                      uint8_t TIM1_ICFilter)
+2566                     ; 493 {
+2567                     .text:	section	.text,new
+2568  0000               _TIM1_PWMIConfig:
+2570  0000 89            	pushw	x
+2571  0001 89            	pushw	x
+2572       00000002      OFST:	set	2
+2575                     ; 494   uint8_t icpolarity = TIM1_ICPOLARITY_RISING;
+2577                     ; 495   uint8_t icselection = TIM1_ICSELECTION_DIRECTTI;
+2579                     ; 498   assert_param(IS_TIM1_PWMI_CHANNEL_OK(TIM1_Channel));
+2581  0002 9e            	ld	a,xh
+2582  0003 4d            	tnz	a
+2583  0004 2705          	jreq	L653
+2584  0006 9e            	ld	a,xh
+2585  0007 a101          	cp	a,#1
+2586  0009 2603          	jrne	L453
+2587  000b               L653:
+2588  000b 4f            	clr	a
+2589  000c 2010          	jra	L063
+2590  000e               L453:
+2591  000e ae01f2        	ldw	x,#498
+2592  0011 89            	pushw	x
+2593  0012 ae0000        	ldw	x,#0
+2594  0015 89            	pushw	x
+2595  0016 ae0000        	ldw	x,#L37
+2596  0019 cd0000        	call	_assert_failed
+2598  001c 5b04          	addw	sp,#4
+2599  001e               L063:
+2600                     ; 499   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
+2602  001e 0d04          	tnz	(OFST+2,sp)
+2603  0020 2706          	jreq	L463
+2604  0022 7b04          	ld	a,(OFST+2,sp)
+2605  0024 a101          	cp	a,#1
+2606  0026 2603          	jrne	L263
+2607  0028               L463:
+2608  0028 4f            	clr	a
+2609  0029 2010          	jra	L663
+2610  002b               L263:
+2611  002b ae01f3        	ldw	x,#499
+2612  002e 89            	pushw	x
+2613  002f ae0000        	ldw	x,#0
+2614  0032 89            	pushw	x
+2615  0033 ae0000        	ldw	x,#L37
+2616  0036 cd0000        	call	_assert_failed
+2618  0039 5b04          	addw	sp,#4
+2619  003b               L663:
+2620                     ; 500   assert_param(IS_TIM1_IC_SELECTION_OK(TIM1_ICSelection));
+2622  003b 7b07          	ld	a,(OFST+5,sp)
+2623  003d a101          	cp	a,#1
+2624  003f 270c          	jreq	L273
+2625  0041 7b07          	ld	a,(OFST+5,sp)
+2626  0043 a102          	cp	a,#2
+2627  0045 2706          	jreq	L273
+2628  0047 7b07          	ld	a,(OFST+5,sp)
+2629  0049 a103          	cp	a,#3
+2630  004b 2603          	jrne	L073
+2631  004d               L273:
+2632  004d 4f            	clr	a
+2633  004e 2010          	jra	L473
+2634  0050               L073:
+2635  0050 ae01f4        	ldw	x,#500
+2636  0053 89            	pushw	x
+2637  0054 ae0000        	ldw	x,#0
+2638  0057 89            	pushw	x
+2639  0058 ae0000        	ldw	x,#L37
+2640  005b cd0000        	call	_assert_failed
+2642  005e 5b04          	addw	sp,#4
+2643  0060               L473:
+2644                     ; 501   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_ICPrescaler));
+2646  0060 0d08          	tnz	(OFST+6,sp)
+2647  0062 2712          	jreq	L004
+2648  0064 7b08          	ld	a,(OFST+6,sp)
+2649  0066 a104          	cp	a,#4
+2650  0068 270c          	jreq	L004
+2651  006a 7b08          	ld	a,(OFST+6,sp)
+2652  006c a108          	cp	a,#8
+2653  006e 2706          	jreq	L004
+2654  0070 7b08          	ld	a,(OFST+6,sp)
+2655  0072 a10c          	cp	a,#12
+2656  0074 2603          	jrne	L673
+2657  0076               L004:
+2658  0076 4f            	clr	a
+2659  0077 2010          	jra	L204
+2660  0079               L673:
+2661  0079 ae01f5        	ldw	x,#501
+2662  007c 89            	pushw	x
+2663  007d ae0000        	ldw	x,#0
+2664  0080 89            	pushw	x
+2665  0081 ae0000        	ldw	x,#L37
+2666  0084 cd0000        	call	_assert_failed
+2668  0087 5b04          	addw	sp,#4
+2669  0089               L204:
+2670                     ; 504   if (TIM1_ICPolarity != TIM1_ICPOLARITY_FALLING)
+2672  0089 7b04          	ld	a,(OFST+2,sp)
+2673  008b a101          	cp	a,#1
+2674  008d 2706          	jreq	L327
+2675                     ; 506     icpolarity = TIM1_ICPOLARITY_FALLING;
+2677  008f a601          	ld	a,#1
+2678  0091 6b01          	ld	(OFST-1,sp),a
+2681  0093 2002          	jra	L527
+2682  0095               L327:
+2683                     ; 510     icpolarity = TIM1_ICPOLARITY_RISING;
+2685  0095 0f01          	clr	(OFST-1,sp)
+2687  0097               L527:
+2688                     ; 514   if (TIM1_ICSelection == TIM1_ICSELECTION_DIRECTTI)
+2690  0097 7b07          	ld	a,(OFST+5,sp)
+2691  0099 a101          	cp	a,#1
+2692  009b 2606          	jrne	L727
+2693                     ; 516     icselection = TIM1_ICSELECTION_INDIRECTTI;
+2695  009d a602          	ld	a,#2
+2696  009f 6b02          	ld	(OFST+0,sp),a
+2699  00a1 2004          	jra	L137
+2700  00a3               L727:
+2701                     ; 520     icselection = TIM1_ICSELECTION_DIRECTTI;
+2703  00a3 a601          	ld	a,#1
+2704  00a5 6b02          	ld	(OFST+0,sp),a
+2706  00a7               L137:
+2707                     ; 523   if (TIM1_Channel == TIM1_CHANNEL_1)
+2709  00a7 0d03          	tnz	(OFST+1,sp)
+2710  00a9 2626          	jrne	L337
+2711                     ; 526     TI1_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSelection,
+2711                     ; 527                (uint8_t)TIM1_ICFilter);
+2713  00ab 7b09          	ld	a,(OFST+7,sp)
+2714  00ad 88            	push	a
+2715  00ae 7b08          	ld	a,(OFST+6,sp)
+2716  00b0 97            	ld	xl,a
+2717  00b1 7b05          	ld	a,(OFST+3,sp)
+2718  00b3 95            	ld	xh,a
+2719  00b4 cd0000        	call	L3_TI1_Config
+2721  00b7 84            	pop	a
+2722                     ; 530     TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
+2724  00b8 7b08          	ld	a,(OFST+6,sp)
+2725  00ba cd0000        	call	_TIM1_SetIC1Prescaler
+2727                     ; 533     TI2_Config(icpolarity, icselection, TIM1_ICFilter);
+2729  00bd 7b09          	ld	a,(OFST+7,sp)
+2730  00bf 88            	push	a
+2731  00c0 7b03          	ld	a,(OFST+1,sp)
+2732  00c2 97            	ld	xl,a
+2733  00c3 7b02          	ld	a,(OFST+0,sp)
+2734  00c5 95            	ld	xh,a
+2735  00c6 cd0000        	call	L5_TI2_Config
+2737  00c9 84            	pop	a
+2738                     ; 536     TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
+2740  00ca 7b08          	ld	a,(OFST+6,sp)
+2741  00cc cd0000        	call	_TIM1_SetIC2Prescaler
+2744  00cf 2024          	jra	L537
+2745  00d1               L337:
+2746                     ; 541     TI2_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSelection,
+2746                     ; 542                (uint8_t)TIM1_ICFilter);
+2748  00d1 7b09          	ld	a,(OFST+7,sp)
+2749  00d3 88            	push	a
+2750  00d4 7b08          	ld	a,(OFST+6,sp)
+2751  00d6 97            	ld	xl,a
+2752  00d7 7b05          	ld	a,(OFST+3,sp)
+2753  00d9 95            	ld	xh,a
+2754  00da cd0000        	call	L5_TI2_Config
+2756  00dd 84            	pop	a
+2757                     ; 545     TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
+2759  00de 7b08          	ld	a,(OFST+6,sp)
+2760  00e0 cd0000        	call	_TIM1_SetIC2Prescaler
+2762                     ; 548     TI1_Config(icpolarity, icselection, TIM1_ICFilter);
+2764  00e3 7b09          	ld	a,(OFST+7,sp)
+2765  00e5 88            	push	a
+2766  00e6 7b03          	ld	a,(OFST+1,sp)
+2767  00e8 97            	ld	xl,a
+2768  00e9 7b02          	ld	a,(OFST+0,sp)
+2769  00eb 95            	ld	xh,a
+2770  00ec cd0000        	call	L3_TI1_Config
+2772  00ef 84            	pop	a
+2773                     ; 551     TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
+2775  00f0 7b08          	ld	a,(OFST+6,sp)
+2776  00f2 cd0000        	call	_TIM1_SetIC1Prescaler
+2778  00f5               L537:
+2779                     ; 553 }
+2782  00f5 5b04          	addw	sp,#4
+2783  00f7 81            	ret
+2839                     ; 561 void TIM1_Cmd(FunctionalState NewState)
+2839                     ; 562 {
+2840                     .text:	section	.text,new
+2841  0000               _TIM1_Cmd:
+2843  0000 88            	push	a
+2844       00000000      OFST:	set	0
+2847                     ; 564   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+2849  0001 4d            	tnz	a
+2850  0002 2704          	jreq	L014
+2851  0004 a101          	cp	a,#1
+2852  0006 2603          	jrne	L604
+2853  0008               L014:
+2854  0008 4f            	clr	a
+2855  0009 2010          	jra	L214
+2856  000b               L604:
+2857  000b ae0234        	ldw	x,#564
+2858  000e 89            	pushw	x
+2859  000f ae0000        	ldw	x,#0
+2860  0012 89            	pushw	x
+2861  0013 ae0000        	ldw	x,#L37
+2862  0016 cd0000        	call	_assert_failed
+2864  0019 5b04          	addw	sp,#4
+2865  001b               L214:
+2866                     ; 567   if (NewState != DISABLE)
+2868  001b 0d01          	tnz	(OFST+1,sp)
+2869  001d 2706          	jreq	L567
+2870                     ; 569     TIM1->CR1 |= TIM1_CR1_CEN;
+2872  001f 72105250      	bset	21072,#0
+2874  0023 2004          	jra	L767
+2875  0025               L567:
+2876                     ; 573     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_CEN);
+2878  0025 72115250      	bres	21072,#0
+2879  0029               L767:
+2880                     ; 575 }
+2883  0029 84            	pop	a
+2884  002a 81            	ret
+2921                     ; 583 void TIM1_CtrlPWMOutputs(FunctionalState NewState)
+2921                     ; 584 {
+2922                     .text:	section	.text,new
+2923  0000               _TIM1_CtrlPWMOutputs:
+2925  0000 88            	push	a
+2926       00000000      OFST:	set	0
+2929                     ; 586   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+2931  0001 4d            	tnz	a
+2932  0002 2704          	jreq	L024
+2933  0004 a101          	cp	a,#1
+2934  0006 2603          	jrne	L614
+2935  0008               L024:
+2936  0008 4f            	clr	a
+2937  0009 2010          	jra	L224
+2938  000b               L614:
+2939  000b ae024a        	ldw	x,#586
+2940  000e 89            	pushw	x
+2941  000f ae0000        	ldw	x,#0
+2942  0012 89            	pushw	x
+2943  0013 ae0000        	ldw	x,#L37
+2944  0016 cd0000        	call	_assert_failed
+2946  0019 5b04          	addw	sp,#4
+2947  001b               L224:
+2948                     ; 590   if (NewState != DISABLE)
+2950  001b 0d01          	tnz	(OFST+1,sp)
+2951  001d 2706          	jreq	L7001
+2952                     ; 592     TIM1->BKR |= TIM1_BKR_MOE;
+2954  001f 721e526d      	bset	21101,#7
+2956  0023 2004          	jra	L1101
+2957  0025               L7001:
+2958                     ; 596     TIM1->BKR &= (uint8_t)(~TIM1_BKR_MOE);
+2960  0025 721f526d      	bres	21101,#7
+2961  0029               L1101:
+2962                     ; 598 }
+2965  0029 84            	pop	a
+2966  002a 81            	ret
+3074                     ; 617 void TIM1_ITConfig(TIM1_IT_TypeDef  TIM1_IT, FunctionalState NewState)
+3074                     ; 618 {
+3075                     .text:	section	.text,new
+3076  0000               _TIM1_ITConfig:
+3078  0000 89            	pushw	x
+3079       00000000      OFST:	set	0
+3082                     ; 620   assert_param(IS_TIM1_IT_OK(TIM1_IT));
+3084  0001 9e            	ld	a,xh
+3085  0002 4d            	tnz	a
+3086  0003 2703          	jreq	L624
+3087  0005 4f            	clr	a
+3088  0006 2010          	jra	L034
+3089  0008               L624:
+3090  0008 ae026c        	ldw	x,#620
+3091  000b 89            	pushw	x
+3092  000c ae0000        	ldw	x,#0
+3093  000f 89            	pushw	x
+3094  0010 ae0000        	ldw	x,#L37
+3095  0013 cd0000        	call	_assert_failed
+3097  0016 5b04          	addw	sp,#4
+3098  0018               L034:
+3099                     ; 621   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+3101  0018 0d02          	tnz	(OFST+2,sp)
+3102  001a 2706          	jreq	L434
+3103  001c 7b02          	ld	a,(OFST+2,sp)
+3104  001e a101          	cp	a,#1
+3105  0020 2603          	jrne	L234
+3106  0022               L434:
+3107  0022 4f            	clr	a
+3108  0023 2010          	jra	L634
+3109  0025               L234:
+3110  0025 ae026d        	ldw	x,#621
+3111  0028 89            	pushw	x
+3112  0029 ae0000        	ldw	x,#0
+3113  002c 89            	pushw	x
+3114  002d ae0000        	ldw	x,#L37
+3115  0030 cd0000        	call	_assert_failed
+3117  0033 5b04          	addw	sp,#4
+3118  0035               L634:
+3119                     ; 623   if (NewState != DISABLE)
+3121  0035 0d02          	tnz	(OFST+2,sp)
+3122  0037 270a          	jreq	L1601
+3123                     ; 626     TIM1->IER |= (uint8_t)TIM1_IT;
+3125  0039 c65254        	ld	a,21076
+3126  003c 1a01          	or	a,(OFST+1,sp)
+3127  003e c75254        	ld	21076,a
+3129  0041 2009          	jra	L3601
+3130  0043               L1601:
+3131                     ; 631     TIM1->IER &= (uint8_t)(~(uint8_t)TIM1_IT);
+3133  0043 7b01          	ld	a,(OFST+1,sp)
+3134  0045 43            	cpl	a
+3135  0046 c45254        	and	a,21076
+3136  0049 c75254        	ld	21076,a
+3137  004c               L3601:
+3138                     ; 633 }
+3141  004c 85            	popw	x
+3142  004d 81            	ret
+3166                     ; 640 void TIM1_InternalClockConfig(void)
+3166                     ; 641 {
+3167                     .text:	section	.text,new
+3168  0000               _TIM1_InternalClockConfig:
+3172                     ; 643   TIM1->SMCR &= (uint8_t)(~TIM1_SMCR_SMS);
+3174  0000 c65252        	ld	a,21074
+3175  0003 a4f8          	and	a,#248
+3176  0005 c75252        	ld	21074,a
+3177                     ; 644 }
+3180  0008 81            	ret
+3296                     ; 662 void TIM1_ETRClockMode1Config(TIM1_ExtTRGPSC_TypeDef TIM1_ExtTRGPrescaler,
+3296                     ; 663                               TIM1_ExtTRGPolarity_TypeDef TIM1_ExtTRGPolarity,
+3296                     ; 664                               uint8_t ExtTRGFilter)
+3296                     ; 665 {
+3297                     .text:	section	.text,new
+3298  0000               _TIM1_ETRClockMode1Config:
+3300  0000 89            	pushw	x
+3301       00000000      OFST:	set	0
+3304                     ; 667   assert_param(IS_TIM1_EXT_PRESCALER_OK(TIM1_ExtTRGPrescaler));
+3306  0001 9e            	ld	a,xh
+3307  0002 4d            	tnz	a
+3308  0003 270f          	jreq	L644
+3309  0005 9e            	ld	a,xh
+3310  0006 a110          	cp	a,#16
+3311  0008 270a          	jreq	L644
+3312  000a 9e            	ld	a,xh
+3313  000b a120          	cp	a,#32
+3314  000d 2705          	jreq	L644
+3315  000f 9e            	ld	a,xh
+3316  0010 a130          	cp	a,#48
+3317  0012 2603          	jrne	L444
+3318  0014               L644:
+3319  0014 4f            	clr	a
+3320  0015 2010          	jra	L054
+3321  0017               L444:
+3322  0017 ae029b        	ldw	x,#667
+3323  001a 89            	pushw	x
+3324  001b ae0000        	ldw	x,#0
+3325  001e 89            	pushw	x
+3326  001f ae0000        	ldw	x,#L37
+3327  0022 cd0000        	call	_assert_failed
+3329  0025 5b04          	addw	sp,#4
+3330  0027               L054:
+3331                     ; 668   assert_param(IS_TIM1_EXT_POLARITY_OK(TIM1_ExtTRGPolarity));
+3333  0027 7b02          	ld	a,(OFST+2,sp)
+3334  0029 a180          	cp	a,#128
+3335  002b 2704          	jreq	L454
+3336  002d 0d02          	tnz	(OFST+2,sp)
+3337  002f 2603          	jrne	L254
+3338  0031               L454:
+3339  0031 4f            	clr	a
+3340  0032 2010          	jra	L654
+3341  0034               L254:
+3342  0034 ae029c        	ldw	x,#668
+3343  0037 89            	pushw	x
+3344  0038 ae0000        	ldw	x,#0
+3345  003b 89            	pushw	x
+3346  003c ae0000        	ldw	x,#L37
+3347  003f cd0000        	call	_assert_failed
+3349  0042 5b04          	addw	sp,#4
+3350  0044               L654:
+3351                     ; 671   TIM1_ETRConfig(TIM1_ExtTRGPrescaler, TIM1_ExtTRGPolarity, ExtTRGFilter);
+3353  0044 7b05          	ld	a,(OFST+5,sp)
+3354  0046 88            	push	a
+3355  0047 7b03          	ld	a,(OFST+3,sp)
+3356  0049 97            	ld	xl,a
+3357  004a 7b02          	ld	a,(OFST+2,sp)
+3358  004c 95            	ld	xh,a
+3359  004d cd0000        	call	_TIM1_ETRConfig
+3361  0050 84            	pop	a
+3362                     ; 674   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(~(uint8_t)(TIM1_SMCR_SMS | TIM1_SMCR_TS )))
+3362                     ; 675                          | (uint8_t)((uint8_t)TIM1_SLAVEMODE_EXTERNAL1 | TIM1_TS_ETRF ));
+3364  0051 c65252        	ld	a,21074
+3365  0054 a488          	and	a,#136
+3366  0056 aa77          	or	a,#119
+3367  0058 c75252        	ld	21074,a
+3368                     ; 676 }
+3371  005b 85            	popw	x
+3372  005c 81            	ret
+3429                     ; 694 void TIM1_ETRClockMode2Config(TIM1_ExtTRGPSC_TypeDef TIM1_ExtTRGPrescaler,
+3429                     ; 695                               TIM1_ExtTRGPolarity_TypeDef TIM1_ExtTRGPolarity,
+3429                     ; 696                               uint8_t ExtTRGFilter)
+3429                     ; 697 {
+3430                     .text:	section	.text,new
+3431  0000               _TIM1_ETRClockMode2Config:
+3433  0000 89            	pushw	x
+3434       00000000      OFST:	set	0
+3437                     ; 699   assert_param(IS_TIM1_EXT_PRESCALER_OK(TIM1_ExtTRGPrescaler));
+3439  0001 9e            	ld	a,xh
+3440  0002 4d            	tnz	a
+3441  0003 270f          	jreq	L464
+3442  0005 9e            	ld	a,xh
+3443  0006 a110          	cp	a,#16
+3444  0008 270a          	jreq	L464
+3445  000a 9e            	ld	a,xh
+3446  000b a120          	cp	a,#32
+3447  000d 2705          	jreq	L464
+3448  000f 9e            	ld	a,xh
+3449  0010 a130          	cp	a,#48
+3450  0012 2603          	jrne	L264
+3451  0014               L464:
+3452  0014 4f            	clr	a
+3453  0015 2010          	jra	L664
+3454  0017               L264:
+3455  0017 ae02bb        	ldw	x,#699
+3456  001a 89            	pushw	x
+3457  001b ae0000        	ldw	x,#0
+3458  001e 89            	pushw	x
+3459  001f ae0000        	ldw	x,#L37
+3460  0022 cd0000        	call	_assert_failed
+3462  0025 5b04          	addw	sp,#4
+3463  0027               L664:
+3464                     ; 700   assert_param(IS_TIM1_EXT_POLARITY_OK(TIM1_ExtTRGPolarity));
+3466  0027 7b02          	ld	a,(OFST+2,sp)
+3467  0029 a180          	cp	a,#128
+3468  002b 2704          	jreq	L274
+3469  002d 0d02          	tnz	(OFST+2,sp)
+3470  002f 2603          	jrne	L074
+3471  0031               L274:
+3472  0031 4f            	clr	a
+3473  0032 2010          	jra	L474
+3474  0034               L074:
+3475  0034 ae02bc        	ldw	x,#700
+3476  0037 89            	pushw	x
+3477  0038 ae0000        	ldw	x,#0
+3478  003b 89            	pushw	x
+3479  003c ae0000        	ldw	x,#L37
+3480  003f cd0000        	call	_assert_failed
+3482  0042 5b04          	addw	sp,#4
+3483  0044               L474:
+3484                     ; 703   TIM1_ETRConfig(TIM1_ExtTRGPrescaler, TIM1_ExtTRGPolarity, ExtTRGFilter);
+3486  0044 7b05          	ld	a,(OFST+5,sp)
+3487  0046 88            	push	a
+3488  0047 7b03          	ld	a,(OFST+3,sp)
+3489  0049 97            	ld	xl,a
+3490  004a 7b02          	ld	a,(OFST+2,sp)
+3491  004c 95            	ld	xh,a
+3492  004d cd0000        	call	_TIM1_ETRConfig
+3494  0050 84            	pop	a
+3495                     ; 706   TIM1->ETR |= TIM1_ETR_ECE;
+3497  0051 721c5253      	bset	21075,#6
+3498                     ; 707 }
+3501  0055 85            	popw	x
+3502  0056 81            	ret
+3557                     ; 725 void TIM1_ETRConfig(TIM1_ExtTRGPSC_TypeDef TIM1_ExtTRGPrescaler,
+3557                     ; 726                     TIM1_ExtTRGPolarity_TypeDef TIM1_ExtTRGPolarity,
+3557                     ; 727                     uint8_t ExtTRGFilter)
+3557                     ; 728 {
+3558                     .text:	section	.text,new
+3559  0000               _TIM1_ETRConfig:
+3561  0000 89            	pushw	x
+3562       00000000      OFST:	set	0
+3565                     ; 730   assert_param(IS_TIM1_EXT_TRG_FILTER_OK(ExtTRGFilter));
+3567  0001 7b05          	ld	a,(OFST+5,sp)
+3568  0003 a110          	cp	a,#16
+3569  0005 2403          	jruge	L005
+3570  0007 4f            	clr	a
+3571  0008 2010          	jra	L205
+3572  000a               L005:
+3573  000a ae02da        	ldw	x,#730
+3574  000d 89            	pushw	x
+3575  000e ae0000        	ldw	x,#0
+3576  0011 89            	pushw	x
+3577  0012 ae0000        	ldw	x,#L37
+3578  0015 cd0000        	call	_assert_failed
+3580  0018 5b04          	addw	sp,#4
+3581  001a               L205:
+3582                     ; 732   TIM1->ETR |= (uint8_t)((uint8_t)(TIM1_ExtTRGPrescaler | (uint8_t)TIM1_ExtTRGPolarity )|
+3582                     ; 733                          (uint8_t)ExtTRGFilter );
+3584  001a 7b01          	ld	a,(OFST+1,sp)
+3585  001c 1a02          	or	a,(OFST+2,sp)
+3586  001e 1a05          	or	a,(OFST+5,sp)
+3587  0020 ca5253        	or	a,21075
+3588  0023 c75253        	ld	21075,a
+3589                     ; 734 }
+3592  0026 85            	popw	x
+3593  0027 81            	ret
+3681                     ; 751 void TIM1_TIxExternalClockConfig(TIM1_TIxExternalCLK1Source_TypeDef TIM1_TIxExternalCLKSource,
+3681                     ; 752                                  TIM1_ICPolarity_TypeDef TIM1_ICPolarity,
+3681                     ; 753                                  uint8_t ICFilter)
+3681                     ; 754 {
+3682                     .text:	section	.text,new
+3683  0000               _TIM1_TIxExternalClockConfig:
+3685  0000 89            	pushw	x
+3686       00000000      OFST:	set	0
+3689                     ; 756   assert_param(IS_TIM1_TIXCLK_SOURCE_OK(TIM1_TIxExternalCLKSource));
+3691  0001 9e            	ld	a,xh
+3692  0002 a140          	cp	a,#64
+3693  0004 270a          	jreq	L015
+3694  0006 9e            	ld	a,xh
+3695  0007 a160          	cp	a,#96
+3696  0009 2705          	jreq	L015
+3697  000b 9e            	ld	a,xh
+3698  000c a150          	cp	a,#80
+3699  000e 2603          	jrne	L605
+3700  0010               L015:
+3701  0010 4f            	clr	a
+3702  0011 2010          	jra	L215
+3703  0013               L605:
+3704  0013 ae02f4        	ldw	x,#756
+3705  0016 89            	pushw	x
+3706  0017 ae0000        	ldw	x,#0
+3707  001a 89            	pushw	x
+3708  001b ae0000        	ldw	x,#L37
+3709  001e cd0000        	call	_assert_failed
+3711  0021 5b04          	addw	sp,#4
+3712  0023               L215:
+3713                     ; 757   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
+3715  0023 0d02          	tnz	(OFST+2,sp)
+3716  0025 2706          	jreq	L615
+3717  0027 7b02          	ld	a,(OFST+2,sp)
+3718  0029 a101          	cp	a,#1
+3719  002b 2603          	jrne	L415
+3720  002d               L615:
+3721  002d 4f            	clr	a
+3722  002e 2010          	jra	L025
+3723  0030               L415:
+3724  0030 ae02f5        	ldw	x,#757
+3725  0033 89            	pushw	x
+3726  0034 ae0000        	ldw	x,#0
+3727  0037 89            	pushw	x
+3728  0038 ae0000        	ldw	x,#L37
+3729  003b cd0000        	call	_assert_failed
+3731  003e 5b04          	addw	sp,#4
+3732  0040               L025:
+3733                     ; 758   assert_param(IS_TIM1_IC_FILTER_OK(ICFilter));
+3735  0040 7b05          	ld	a,(OFST+5,sp)
+3736  0042 a110          	cp	a,#16
+3737  0044 2403          	jruge	L225
+3738  0046 4f            	clr	a
+3739  0047 2010          	jra	L425
+3740  0049               L225:
+3741  0049 ae02f6        	ldw	x,#758
+3742  004c 89            	pushw	x
+3743  004d ae0000        	ldw	x,#0
+3744  0050 89            	pushw	x
+3745  0051 ae0000        	ldw	x,#L37
+3746  0054 cd0000        	call	_assert_failed
+3748  0057 5b04          	addw	sp,#4
+3749  0059               L425:
+3750                     ; 761   if (TIM1_TIxExternalCLKSource == TIM1_TIXEXTERNALCLK1SOURCE_TI2)
+3752  0059 7b01          	ld	a,(OFST+1,sp)
+3753  005b a160          	cp	a,#96
+3754  005d 260f          	jrne	L3521
+3755                     ; 763     TI2_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSELECTION_DIRECTTI, (uint8_t)ICFilter);
+3757  005f 7b05          	ld	a,(OFST+5,sp)
+3758  0061 88            	push	a
+3759  0062 7b03          	ld	a,(OFST+3,sp)
+3760  0064 ae0001        	ldw	x,#1
+3761  0067 95            	ld	xh,a
+3762  0068 cd0000        	call	L5_TI2_Config
+3764  006b 84            	pop	a
+3766  006c 200d          	jra	L5521
+3767  006e               L3521:
+3768                     ; 767     TI1_Config((uint8_t)TIM1_ICPolarity, (uint8_t)TIM1_ICSELECTION_DIRECTTI, (uint8_t)ICFilter);
+3770  006e 7b05          	ld	a,(OFST+5,sp)
+3771  0070 88            	push	a
+3772  0071 7b03          	ld	a,(OFST+3,sp)
+3773  0073 ae0001        	ldw	x,#1
+3774  0076 95            	ld	xh,a
+3775  0077 cd0000        	call	L3_TI1_Config
+3777  007a 84            	pop	a
+3778  007b               L5521:
+3779                     ; 771   TIM1_SelectInputTrigger((TIM1_TS_TypeDef)TIM1_TIxExternalCLKSource);
+3781  007b 7b01          	ld	a,(OFST+1,sp)
+3782  007d cd0000        	call	_TIM1_SelectInputTrigger
+3784                     ; 774   TIM1->SMCR |= (uint8_t)(TIM1_SLAVEMODE_EXTERNAL1);
+3786  0080 c65252        	ld	a,21074
+3787  0083 aa07          	or	a,#7
+3788  0085 c75252        	ld	21074,a
+3789                     ; 775 }
+3792  0088 85            	popw	x
+3793  0089 81            	ret
+3879                     ; 787 void TIM1_SelectInputTrigger(TIM1_TS_TypeDef TIM1_InputTriggerSource)
+3879                     ; 788 {
+3880                     .text:	section	.text,new
+3881  0000               _TIM1_SelectInputTrigger:
+3883  0000 88            	push	a
+3884       00000000      OFST:	set	0
+3887                     ; 790   assert_param(IS_TIM1_TRIGGER_SELECTION_OK(TIM1_InputTriggerSource));
+3889  0001 a140          	cp	a,#64
+3890  0003 2713          	jreq	L235
+3891  0005 a150          	cp	a,#80
+3892  0007 270f          	jreq	L235
+3893  0009 a160          	cp	a,#96
+3894  000b 270b          	jreq	L235
+3895  000d a170          	cp	a,#112
+3896  000f 2707          	jreq	L235
+3897  0011 a130          	cp	a,#48
+3898  0013 2703          	jreq	L235
+3899  0015 4d            	tnz	a
+3900  0016 2603          	jrne	L035
+3901  0018               L235:
+3902  0018 4f            	clr	a
+3903  0019 2010          	jra	L435
+3904  001b               L035:
+3905  001b ae0316        	ldw	x,#790
+3906  001e 89            	pushw	x
+3907  001f ae0000        	ldw	x,#0
+3908  0022 89            	pushw	x
+3909  0023 ae0000        	ldw	x,#L37
+3910  0026 cd0000        	call	_assert_failed
+3912  0029 5b04          	addw	sp,#4
+3913  002b               L435:
+3914                     ; 793   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(~TIM1_SMCR_TS)) | (uint8_t)TIM1_InputTriggerSource);
+3916  002b c65252        	ld	a,21074
+3917  002e a48f          	and	a,#143
+3918  0030 1a01          	or	a,(OFST+1,sp)
+3919  0032 c75252        	ld	21074,a
+3920                     ; 794 }
+3923  0035 84            	pop	a
+3924  0036 81            	ret
+3961                     ; 803 void TIM1_UpdateDisableConfig(FunctionalState NewState)
+3961                     ; 804 {
+3962                     .text:	section	.text,new
+3963  0000               _TIM1_UpdateDisableConfig:
+3965  0000 88            	push	a
+3966       00000000      OFST:	set	0
+3969                     ; 806   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+3971  0001 4d            	tnz	a
+3972  0002 2704          	jreq	L245
+3973  0004 a101          	cp	a,#1
+3974  0006 2603          	jrne	L045
+3975  0008               L245:
+3976  0008 4f            	clr	a
+3977  0009 2010          	jra	L445
+3978  000b               L045:
+3979  000b ae0326        	ldw	x,#806
+3980  000e 89            	pushw	x
+3981  000f ae0000        	ldw	x,#0
+3982  0012 89            	pushw	x
+3983  0013 ae0000        	ldw	x,#L37
+3984  0016 cd0000        	call	_assert_failed
+3986  0019 5b04          	addw	sp,#4
+3987  001b               L445:
+3988                     ; 809   if (NewState != DISABLE)
+3990  001b 0d01          	tnz	(OFST+1,sp)
+3991  001d 2706          	jreq	L3331
+3992                     ; 811     TIM1->CR1 |= TIM1_CR1_UDIS;
+3994  001f 72125250      	bset	21072,#1
+3996  0023 2004          	jra	L5331
+3997  0025               L3331:
+3998                     ; 815     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_UDIS);
+4000  0025 72135250      	bres	21072,#1
+4001  0029               L5331:
+4002                     ; 817 }
+4005  0029 84            	pop	a
+4006  002a 81            	ret
+4065                     ; 827 void TIM1_UpdateRequestConfig(TIM1_UpdateSource_TypeDef TIM1_UpdateSource)
+4065                     ; 828 {
+4066                     .text:	section	.text,new
+4067  0000               _TIM1_UpdateRequestConfig:
+4069  0000 88            	push	a
+4070       00000000      OFST:	set	0
+4073                     ; 830   assert_param(IS_TIM1_UPDATE_SOURCE_OK(TIM1_UpdateSource));
+4075  0001 4d            	tnz	a
+4076  0002 2704          	jreq	L255
+4077  0004 a101          	cp	a,#1
+4078  0006 2603          	jrne	L055
+4079  0008               L255:
+4080  0008 4f            	clr	a
+4081  0009 2010          	jra	L455
+4082  000b               L055:
+4083  000b ae033e        	ldw	x,#830
+4084  000e 89            	pushw	x
+4085  000f ae0000        	ldw	x,#0
+4086  0012 89            	pushw	x
+4087  0013 ae0000        	ldw	x,#L37
+4088  0016 cd0000        	call	_assert_failed
+4090  0019 5b04          	addw	sp,#4
+4091  001b               L455:
+4092                     ; 833   if (TIM1_UpdateSource != TIM1_UPDATESOURCE_GLOBAL)
+4094  001b 0d01          	tnz	(OFST+1,sp)
+4095  001d 2706          	jreq	L5631
+4096                     ; 835     TIM1->CR1 |= TIM1_CR1_URS;
+4098  001f 72145250      	bset	21072,#2
+4100  0023 2004          	jra	L7631
+4101  0025               L5631:
+4102                     ; 839     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_URS);
+4104  0025 72155250      	bres	21072,#2
+4105  0029               L7631:
+4106                     ; 841 }
+4109  0029 84            	pop	a
+4110  002a 81            	ret
+4147                     ; 849 void TIM1_SelectHallSensor(FunctionalState NewState)
+4147                     ; 850 {
+4148                     .text:	section	.text,new
+4149  0000               _TIM1_SelectHallSensor:
+4151  0000 88            	push	a
+4152       00000000      OFST:	set	0
+4155                     ; 852   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+4157  0001 4d            	tnz	a
+4158  0002 2704          	jreq	L265
+4159  0004 a101          	cp	a,#1
+4160  0006 2603          	jrne	L065
+4161  0008               L265:
+4162  0008 4f            	clr	a
+4163  0009 2010          	jra	L465
+4164  000b               L065:
+4165  000b ae0354        	ldw	x,#852
+4166  000e 89            	pushw	x
+4167  000f ae0000        	ldw	x,#0
+4168  0012 89            	pushw	x
+4169  0013 ae0000        	ldw	x,#L37
+4170  0016 cd0000        	call	_assert_failed
+4172  0019 5b04          	addw	sp,#4
+4173  001b               L465:
+4174                     ; 855   if (NewState != DISABLE)
+4176  001b 0d01          	tnz	(OFST+1,sp)
+4177  001d 2706          	jreq	L7041
+4178                     ; 857     TIM1->CR2 |= TIM1_CR2_TI1S;
+4180  001f 721e5251      	bset	21073,#7
+4182  0023 2004          	jra	L1141
+4183  0025               L7041:
+4184                     ; 861     TIM1->CR2 &= (uint8_t)(~TIM1_CR2_TI1S);
+4186  0025 721f5251      	bres	21073,#7
+4187  0029               L1141:
+4188                     ; 863 }
+4191  0029 84            	pop	a
+4192  002a 81            	ret
+4250                     ; 873 void TIM1_SelectOnePulseMode(TIM1_OPMode_TypeDef TIM1_OPMode)
+4250                     ; 874 {
+4251                     .text:	section	.text,new
+4252  0000               _TIM1_SelectOnePulseMode:
+4254  0000 88            	push	a
+4255       00000000      OFST:	set	0
+4258                     ; 876   assert_param(IS_TIM1_OPM_MODE_OK(TIM1_OPMode));
+4260  0001 a101          	cp	a,#1
+4261  0003 2703          	jreq	L275
+4262  0005 4d            	tnz	a
+4263  0006 2603          	jrne	L075
+4264  0008               L275:
+4265  0008 4f            	clr	a
+4266  0009 2010          	jra	L475
+4267  000b               L075:
+4268  000b ae036c        	ldw	x,#876
+4269  000e 89            	pushw	x
+4270  000f ae0000        	ldw	x,#0
+4271  0012 89            	pushw	x
+4272  0013 ae0000        	ldw	x,#L37
+4273  0016 cd0000        	call	_assert_failed
+4275  0019 5b04          	addw	sp,#4
+4276  001b               L475:
+4277                     ; 879   if (TIM1_OPMode != TIM1_OPMODE_REPETITIVE)
+4279  001b 0d01          	tnz	(OFST+1,sp)
+4280  001d 2706          	jreq	L1441
+4281                     ; 881     TIM1->CR1 |= TIM1_CR1_OPM;
+4283  001f 72165250      	bset	21072,#3
+4285  0023 2004          	jra	L3441
+4286  0025               L1441:
+4287                     ; 885     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_OPM);
+4289  0025 72175250      	bres	21072,#3
+4290  0029               L3441:
+4291                     ; 888 }
+4294  0029 84            	pop	a
+4295  002a 81            	ret
+4394                     ; 903 void TIM1_SelectOutputTrigger(TIM1_TRGOSource_TypeDef TIM1_TRGOSource)
+4394                     ; 904 {
+4395                     .text:	section	.text,new
+4396  0000               _TIM1_SelectOutputTrigger:
+4398  0000 88            	push	a
+4399       00000000      OFST:	set	0
+4402                     ; 906   assert_param(IS_TIM1_TRGO_SOURCE_OK(TIM1_TRGOSource));
+4404  0001 4d            	tnz	a
+4405  0002 2718          	jreq	L206
+4406  0004 a110          	cp	a,#16
+4407  0006 2714          	jreq	L206
+4408  0008 a120          	cp	a,#32
+4409  000a 2710          	jreq	L206
+4410  000c a130          	cp	a,#48
+4411  000e 270c          	jreq	L206
+4412  0010 a140          	cp	a,#64
+4413  0012 2708          	jreq	L206
+4414  0014 a150          	cp	a,#80
+4415  0016 2704          	jreq	L206
+4416  0018 a160          	cp	a,#96
+4417  001a 2603          	jrne	L006
+4418  001c               L206:
+4419  001c 4f            	clr	a
+4420  001d 2010          	jra	L406
+4421  001f               L006:
+4422  001f ae038a        	ldw	x,#906
+4423  0022 89            	pushw	x
+4424  0023 ae0000        	ldw	x,#0
+4425  0026 89            	pushw	x
+4426  0027 ae0000        	ldw	x,#L37
+4427  002a cd0000        	call	_assert_failed
+4429  002d 5b04          	addw	sp,#4
+4430  002f               L406:
+4431                     ; 909   TIM1->CR2 = (uint8_t)((uint8_t)(TIM1->CR2 & (uint8_t)(~TIM1_CR2_MMS)) | 
+4431                     ; 910                         (uint8_t) TIM1_TRGOSource);
+4433  002f c65251        	ld	a,21073
+4434  0032 a48f          	and	a,#143
+4435  0034 1a01          	or	a,(OFST+1,sp)
+4436  0036 c75251        	ld	21073,a
+4437                     ; 911 }
+4440  0039 84            	pop	a
+4441  003a 81            	ret
+4516                     ; 923 void TIM1_SelectSlaveMode(TIM1_SlaveMode_TypeDef TIM1_SlaveMode)
+4516                     ; 924 {
+4517                     .text:	section	.text,new
+4518  0000               _TIM1_SelectSlaveMode:
+4520  0000 88            	push	a
+4521       00000000      OFST:	set	0
+4524                     ; 926   assert_param(IS_TIM1_SLAVE_MODE_OK(TIM1_SlaveMode));
+4526  0001 a104          	cp	a,#4
+4527  0003 270c          	jreq	L216
+4528  0005 a105          	cp	a,#5
+4529  0007 2708          	jreq	L216
+4530  0009 a106          	cp	a,#6
+4531  000b 2704          	jreq	L216
+4532  000d a107          	cp	a,#7
+4533  000f 2603          	jrne	L016
+4534  0011               L216:
+4535  0011 4f            	clr	a
+4536  0012 2010          	jra	L416
+4537  0014               L016:
+4538  0014 ae039e        	ldw	x,#926
+4539  0017 89            	pushw	x
+4540  0018 ae0000        	ldw	x,#0
+4541  001b 89            	pushw	x
+4542  001c ae0000        	ldw	x,#L37
+4543  001f cd0000        	call	_assert_failed
+4545  0022 5b04          	addw	sp,#4
+4546  0024               L416:
+4547                     ; 929   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(~TIM1_SMCR_SMS)) |
+4547                     ; 930                          (uint8_t)TIM1_SlaveMode);
+4549  0024 c65252        	ld	a,21074
+4550  0027 a4f8          	and	a,#248
+4551  0029 1a01          	or	a,(OFST+1,sp)
+4552  002b c75252        	ld	21074,a
+4553                     ; 931 }
+4556  002e 84            	pop	a
+4557  002f 81            	ret
+4594                     ; 939 void TIM1_SelectMasterSlaveMode(FunctionalState NewState)
+4594                     ; 940 {
+4595                     .text:	section	.text,new
+4596  0000               _TIM1_SelectMasterSlaveMode:
+4598  0000 88            	push	a
+4599       00000000      OFST:	set	0
+4602                     ; 942   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+4604  0001 4d            	tnz	a
+4605  0002 2704          	jreq	L226
+4606  0004 a101          	cp	a,#1
+4607  0006 2603          	jrne	L026
+4608  0008               L226:
+4609  0008 4f            	clr	a
+4610  0009 2010          	jra	L426
+4611  000b               L026:
+4612  000b ae03ae        	ldw	x,#942
 4613  000e 89            	pushw	x
-4614  000f ae0000        	ldw	x,#L37
-4615  0012 cd0000        	call	_assert_failed
-4617  0015 5b04          	addw	sp,#4
-4618  0017               L4511:
-4619                     ; 1073   TIM1->CCMR1 =  (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_OCM))|
-4619                     ; 1074                            (uint8_t)TIM1_ForcedAction);
-4621  0017 c65258        	ld	a,21080
-4622  001a a48f          	and	a,#143
-4623  001c 1a01          	or	a,(OFST+1,sp)
-4624  001e c75258        	ld	21080,a
-4625                     ; 1075 }
-4628  0021 84            	pop	a
-4629  0022 81            	ret	
-4666                     ; 1085 void TIM1_ForcedOC2Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
-4666                     ; 1086 {
-4667                     .text:	section	.text,new
-4668  0000               _TIM1_ForcedOC2Config:
-4670  0000 88            	push	a
-4671       00000000      OFST:	set	0
-4674                     ; 1088   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
-4676  0001 a150          	cp	a,#80
-4677  0003 2712          	jreq	L6611
-4678  0005 a140          	cp	a,#64
-4679  0007 270e          	jreq	L6611
-4680  0009 ae0440        	ldw	x,#1088
-4681  000c 89            	pushw	x
-4682  000d 5f            	clrw	x
-4683  000e 89            	pushw	x
-4684  000f ae0000        	ldw	x,#L37
-4685  0012 cd0000        	call	_assert_failed
-4687  0015 5b04          	addw	sp,#4
-4688  0017               L6611:
-4689                     ; 1091   TIM1->CCMR2  =  (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_OCM))
-4689                     ; 1092                             | (uint8_t)TIM1_ForcedAction);
-4691  0017 c65259        	ld	a,21081
-4692  001a a48f          	and	a,#143
-4693  001c 1a01          	or	a,(OFST+1,sp)
-4694  001e c75259        	ld	21081,a
-4695                     ; 1093 }
-4698  0021 84            	pop	a
-4699  0022 81            	ret	
-4736                     ; 1104 void TIM1_ForcedOC3Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
-4736                     ; 1105 {
-4737                     .text:	section	.text,new
-4738  0000               _TIM1_ForcedOC3Config:
-4740  0000 88            	push	a
-4741       00000000      OFST:	set	0
-4744                     ; 1107   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
-4746  0001 a150          	cp	a,#80
-4747  0003 2712          	jreq	L0021
-4748  0005 a140          	cp	a,#64
-4749  0007 270e          	jreq	L0021
-4750  0009 ae0453        	ldw	x,#1107
-4751  000c 89            	pushw	x
-4752  000d 5f            	clrw	x
-4753  000e 89            	pushw	x
-4754  000f ae0000        	ldw	x,#L37
-4755  0012 cd0000        	call	_assert_failed
-4757  0015 5b04          	addw	sp,#4
-4758  0017               L0021:
-4759                     ; 1110   TIM1->CCMR3  =  (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_OCM))  
-4759                     ; 1111                             | (uint8_t)TIM1_ForcedAction);
-4761  0017 c6525a        	ld	a,21082
-4762  001a a48f          	and	a,#143
-4763  001c 1a01          	or	a,(OFST+1,sp)
-4764  001e c7525a        	ld	21082,a
-4765                     ; 1112 }
-4768  0021 84            	pop	a
-4769  0022 81            	ret	
-4806                     ; 1123 void TIM1_ForcedOC4Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
-4806                     ; 1124 {
-4807                     .text:	section	.text,new
-4808  0000               _TIM1_ForcedOC4Config:
-4810  0000 88            	push	a
-4811       00000000      OFST:	set	0
-4814                     ; 1126   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
-4816  0001 a150          	cp	a,#80
-4817  0003 2712          	jreq	L2121
-4818  0005 a140          	cp	a,#64
-4819  0007 270e          	jreq	L2121
-4820  0009 ae0466        	ldw	x,#1126
-4821  000c 89            	pushw	x
-4822  000d 5f            	clrw	x
-4823  000e 89            	pushw	x
-4824  000f ae0000        	ldw	x,#L37
-4825  0012 cd0000        	call	_assert_failed
-4827  0015 5b04          	addw	sp,#4
-4828  0017               L2121:
-4829                     ; 1129   TIM1->CCMR4  =  (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_OCM)) 
-4829                     ; 1130                             | (uint8_t)TIM1_ForcedAction);
-4831  0017 c6525b        	ld	a,21083
-4832  001a a48f          	and	a,#143
-4833  001c 1a01          	or	a,(OFST+1,sp)
-4834  001e c7525b        	ld	21083,a
-4835                     ; 1131 }
-4838  0021 84            	pop	a
-4839  0022 81            	ret	
-4876                     ; 1139 void TIM1_ARRPreloadConfig(FunctionalState NewState)
-4876                     ; 1140 {
-4877                     .text:	section	.text,new
-4878  0000               _TIM1_ARRPreloadConfig:
-4880  0000 88            	push	a
-4881       00000000      OFST:	set	0
-4884                     ; 1142   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-4886  0001 4d            	tnz	a
-4887  0002 2711          	jreq	L4221
-4888  0004 4a            	dec	a
-4889  0005 270e          	jreq	L4221
-4890  0007 ae0476        	ldw	x,#1142
-4891  000a 89            	pushw	x
-4892  000b 5f            	clrw	x
-4893  000c 89            	pushw	x
-4894  000d ae0000        	ldw	x,#L37
-4895  0010 cd0000        	call	_assert_failed
-4897  0013 5b04          	addw	sp,#4
-4898  0015               L4221:
-4899                     ; 1145   if (NewState != DISABLE)
-4901  0015 7b01          	ld	a,(OFST+1,sp)
-4902  0017 2706          	jreq	L5102
-4903                     ; 1147     TIM1->CR1 |= TIM1_CR1_ARPE;
-4905  0019 721e5250      	bset	21072,#7
-4907  001d 2004          	jra	L7102
-4908  001f               L5102:
-4909                     ; 1151     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_ARPE);
-4911  001f 721f5250      	bres	21072,#7
-4912  0023               L7102:
-4913                     ; 1153 }
-4916  0023 84            	pop	a
-4917  0024 81            	ret	
-4953                     ; 1161 void TIM1_SelectCOM(FunctionalState NewState)
-4953                     ; 1162 {
-4954                     .text:	section	.text,new
-4955  0000               _TIM1_SelectCOM:
-4957  0000 88            	push	a
-4958       00000000      OFST:	set	0
-4961                     ; 1164   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-4963  0001 4d            	tnz	a
-4964  0002 2711          	jreq	L6321
-4965  0004 4a            	dec	a
-4966  0005 270e          	jreq	L6321
-4967  0007 ae048c        	ldw	x,#1164
-4968  000a 89            	pushw	x
-4969  000b 5f            	clrw	x
-4970  000c 89            	pushw	x
-4971  000d ae0000        	ldw	x,#L37
-4972  0010 cd0000        	call	_assert_failed
-4974  0013 5b04          	addw	sp,#4
-4975  0015               L6321:
-4976                     ; 1167   if (NewState != DISABLE)
-4978  0015 7b01          	ld	a,(OFST+1,sp)
-4979  0017 2706          	jreq	L7302
-4980                     ; 1169     TIM1->CR2 |= TIM1_CR2_COMS;
-4982  0019 72145251      	bset	21073,#2
-4984  001d 2004          	jra	L1402
-4985  001f               L7302:
-4986                     ; 1173     TIM1->CR2 &= (uint8_t)(~TIM1_CR2_COMS);
-4988  001f 72155251      	bres	21073,#2
-4989  0023               L1402:
-4990                     ; 1175 }
-4993  0023 84            	pop	a
-4994  0024 81            	ret	
-5031                     ; 1183 void TIM1_CCPreloadControl(FunctionalState NewState)
-5031                     ; 1184 {
-5032                     .text:	section	.text,new
-5033  0000               _TIM1_CCPreloadControl:
-5035  0000 88            	push	a
-5036       00000000      OFST:	set	0
-5039                     ; 1186   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5041  0001 4d            	tnz	a
-5042  0002 2711          	jreq	L0521
-5043  0004 4a            	dec	a
-5044  0005 270e          	jreq	L0521
-5045  0007 ae04a2        	ldw	x,#1186
-5046  000a 89            	pushw	x
-5047  000b 5f            	clrw	x
-5048  000c 89            	pushw	x
-5049  000d ae0000        	ldw	x,#L37
-5050  0010 cd0000        	call	_assert_failed
-5052  0013 5b04          	addw	sp,#4
-5053  0015               L0521:
-5054                     ; 1189   if (NewState != DISABLE)
-5056  0015 7b01          	ld	a,(OFST+1,sp)
-5057  0017 2706          	jreq	L1602
-5058                     ; 1191     TIM1->CR2 |= TIM1_CR2_CCPC;
-5060  0019 72105251      	bset	21073,#0
-5062  001d 2004          	jra	L3602
-5063  001f               L1602:
-5064                     ; 1195     TIM1->CR2 &= (uint8_t)(~TIM1_CR2_CCPC);
-5066  001f 72115251      	bres	21073,#0
-5067  0023               L3602:
-5068                     ; 1197 }
-5071  0023 84            	pop	a
-5072  0024 81            	ret	
-5109                     ; 1205 void TIM1_OC1PreloadConfig(FunctionalState NewState)
-5109                     ; 1206 {
-5110                     .text:	section	.text,new
-5111  0000               _TIM1_OC1PreloadConfig:
-5113  0000 88            	push	a
-5114       00000000      OFST:	set	0
-5117                     ; 1208   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5119  0001 4d            	tnz	a
-5120  0002 2711          	jreq	L2621
-5121  0004 4a            	dec	a
-5122  0005 270e          	jreq	L2621
-5123  0007 ae04b8        	ldw	x,#1208
-5124  000a 89            	pushw	x
-5125  000b 5f            	clrw	x
-5126  000c 89            	pushw	x
-5127  000d ae0000        	ldw	x,#L37
-5128  0010 cd0000        	call	_assert_failed
-5130  0013 5b04          	addw	sp,#4
-5131  0015               L2621:
-5132                     ; 1211   if (NewState != DISABLE)
-5134  0015 7b01          	ld	a,(OFST+1,sp)
-5135  0017 2706          	jreq	L3012
-5136                     ; 1213     TIM1->CCMR1 |= TIM1_CCMR_OCxPE;
-5138  0019 72165258      	bset	21080,#3
-5140  001d 2004          	jra	L5012
-5141  001f               L3012:
-5142                     ; 1217     TIM1->CCMR1 &= (uint8_t)(~TIM1_CCMR_OCxPE);
-5144  001f 72175258      	bres	21080,#3
-5145  0023               L5012:
-5146                     ; 1219 }
-5149  0023 84            	pop	a
-5150  0024 81            	ret	
-5187                     ; 1227 void TIM1_OC2PreloadConfig(FunctionalState NewState)
-5187                     ; 1228 {
-5188                     .text:	section	.text,new
-5189  0000               _TIM1_OC2PreloadConfig:
-5191  0000 88            	push	a
-5192       00000000      OFST:	set	0
-5195                     ; 1230   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5197  0001 4d            	tnz	a
-5198  0002 2711          	jreq	L4721
-5199  0004 4a            	dec	a
-5200  0005 270e          	jreq	L4721
-5201  0007 ae04ce        	ldw	x,#1230
-5202  000a 89            	pushw	x
-5203  000b 5f            	clrw	x
-5204  000c 89            	pushw	x
-5205  000d ae0000        	ldw	x,#L37
-5206  0010 cd0000        	call	_assert_failed
-5208  0013 5b04          	addw	sp,#4
-5209  0015               L4721:
-5210                     ; 1233   if (NewState != DISABLE)
-5212  0015 7b01          	ld	a,(OFST+1,sp)
-5213  0017 2706          	jreq	L5212
-5214                     ; 1235     TIM1->CCMR2 |= TIM1_CCMR_OCxPE;
-5216  0019 72165259      	bset	21081,#3
-5218  001d 2004          	jra	L7212
-5219  001f               L5212:
-5220                     ; 1239     TIM1->CCMR2 &= (uint8_t)(~TIM1_CCMR_OCxPE);
-5222  001f 72175259      	bres	21081,#3
-5223  0023               L7212:
-5224                     ; 1241 }
-5227  0023 84            	pop	a
-5228  0024 81            	ret	
-5265                     ; 1249 void TIM1_OC3PreloadConfig(FunctionalState NewState)
-5265                     ; 1250 {
-5266                     .text:	section	.text,new
-5267  0000               _TIM1_OC3PreloadConfig:
-5269  0000 88            	push	a
-5270       00000000      OFST:	set	0
-5273                     ; 1252   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5275  0001 4d            	tnz	a
-5276  0002 2711          	jreq	L6031
-5277  0004 4a            	dec	a
-5278  0005 270e          	jreq	L6031
-5279  0007 ae04e4        	ldw	x,#1252
-5280  000a 89            	pushw	x
-5281  000b 5f            	clrw	x
-5282  000c 89            	pushw	x
-5283  000d ae0000        	ldw	x,#L37
-5284  0010 cd0000        	call	_assert_failed
-5286  0013 5b04          	addw	sp,#4
-5287  0015               L6031:
-5288                     ; 1255   if (NewState != DISABLE)
-5290  0015 7b01          	ld	a,(OFST+1,sp)
-5291  0017 2706          	jreq	L7412
-5292                     ; 1257     TIM1->CCMR3 |= TIM1_CCMR_OCxPE;
-5294  0019 7216525a      	bset	21082,#3
-5296  001d 2004          	jra	L1512
-5297  001f               L7412:
-5298                     ; 1261     TIM1->CCMR3 &= (uint8_t)(~TIM1_CCMR_OCxPE);
-5300  001f 7217525a      	bres	21082,#3
-5301  0023               L1512:
-5302                     ; 1263 }
-5305  0023 84            	pop	a
-5306  0024 81            	ret	
-5343                     ; 1271 void TIM1_OC4PreloadConfig(FunctionalState NewState)
-5343                     ; 1272 {
-5344                     .text:	section	.text,new
-5345  0000               _TIM1_OC4PreloadConfig:
-5347  0000 88            	push	a
-5348       00000000      OFST:	set	0
-5351                     ; 1274   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5353  0001 4d            	tnz	a
-5354  0002 2711          	jreq	L0231
-5355  0004 4a            	dec	a
-5356  0005 270e          	jreq	L0231
-5357  0007 ae04fa        	ldw	x,#1274
-5358  000a 89            	pushw	x
-5359  000b 5f            	clrw	x
-5360  000c 89            	pushw	x
-5361  000d ae0000        	ldw	x,#L37
-5362  0010 cd0000        	call	_assert_failed
-5364  0013 5b04          	addw	sp,#4
-5365  0015               L0231:
-5366                     ; 1277   if (NewState != DISABLE)
-5368  0015 7b01          	ld	a,(OFST+1,sp)
-5369  0017 2706          	jreq	L1712
-5370                     ; 1279     TIM1->CCMR4 |= TIM1_CCMR_OCxPE;
-5372  0019 7216525b      	bset	21083,#3
-5374  001d 2004          	jra	L3712
-5375  001f               L1712:
-5376                     ; 1283     TIM1->CCMR4 &= (uint8_t)(~TIM1_CCMR_OCxPE);
-5378  001f 7217525b      	bres	21083,#3
-5379  0023               L3712:
-5380                     ; 1285 }
-5383  0023 84            	pop	a
-5384  0024 81            	ret	
-5420                     ; 1293 void TIM1_OC1FastConfig(FunctionalState NewState)
-5420                     ; 1294 {
-5421                     .text:	section	.text,new
-5422  0000               _TIM1_OC1FastConfig:
-5424  0000 88            	push	a
-5425       00000000      OFST:	set	0
-5428                     ; 1296   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5430  0001 4d            	tnz	a
-5431  0002 2711          	jreq	L2331
-5432  0004 4a            	dec	a
-5433  0005 270e          	jreq	L2331
-5434  0007 ae0510        	ldw	x,#1296
-5435  000a 89            	pushw	x
-5436  000b 5f            	clrw	x
-5437  000c 89            	pushw	x
-5438  000d ae0000        	ldw	x,#L37
-5439  0010 cd0000        	call	_assert_failed
-5441  0013 5b04          	addw	sp,#4
-5442  0015               L2331:
-5443                     ; 1299   if (NewState != DISABLE)
-5445  0015 7b01          	ld	a,(OFST+1,sp)
-5446  0017 2706          	jreq	L3122
-5447                     ; 1301     TIM1->CCMR1 |= TIM1_CCMR_OCxFE;
-5449  0019 72145258      	bset	21080,#2
-5451  001d 2004          	jra	L5122
-5452  001f               L3122:
-5453                     ; 1305     TIM1->CCMR1 &= (uint8_t)(~TIM1_CCMR_OCxFE);
-5455  001f 72155258      	bres	21080,#2
-5456  0023               L5122:
-5457                     ; 1307 }
-5460  0023 84            	pop	a
-5461  0024 81            	ret	
-5497                     ; 1315 void TIM1_OC2FastConfig(FunctionalState NewState)
-5497                     ; 1316 {
-5498                     .text:	section	.text,new
-5499  0000               _TIM1_OC2FastConfig:
-5501  0000 88            	push	a
-5502       00000000      OFST:	set	0
-5505                     ; 1318   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5507  0001 4d            	tnz	a
-5508  0002 2711          	jreq	L4431
-5509  0004 4a            	dec	a
-5510  0005 270e          	jreq	L4431
-5511  0007 ae0526        	ldw	x,#1318
-5512  000a 89            	pushw	x
-5513  000b 5f            	clrw	x
-5514  000c 89            	pushw	x
-5515  000d ae0000        	ldw	x,#L37
-5516  0010 cd0000        	call	_assert_failed
-5518  0013 5b04          	addw	sp,#4
-5519  0015               L4431:
-5520                     ; 1321   if (NewState != DISABLE)
-5522  0015 7b01          	ld	a,(OFST+1,sp)
-5523  0017 2706          	jreq	L5322
-5524                     ; 1323     TIM1->CCMR2 |= TIM1_CCMR_OCxFE;
-5526  0019 72145259      	bset	21081,#2
-5528  001d 2004          	jra	L7322
-5529  001f               L5322:
-5530                     ; 1327     TIM1->CCMR2 &= (uint8_t)(~TIM1_CCMR_OCxFE);
-5532  001f 72155259      	bres	21081,#2
-5533  0023               L7322:
-5534                     ; 1329 }
-5537  0023 84            	pop	a
-5538  0024 81            	ret	
-5574                     ; 1337 void TIM1_OC3FastConfig(FunctionalState NewState)
-5574                     ; 1338 {
-5575                     .text:	section	.text,new
-5576  0000               _TIM1_OC3FastConfig:
-5578  0000 88            	push	a
-5579       00000000      OFST:	set	0
-5582                     ; 1340   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5584  0001 4d            	tnz	a
-5585  0002 2711          	jreq	L6531
-5586  0004 4a            	dec	a
-5587  0005 270e          	jreq	L6531
-5588  0007 ae053c        	ldw	x,#1340
-5589  000a 89            	pushw	x
-5590  000b 5f            	clrw	x
-5591  000c 89            	pushw	x
-5592  000d ae0000        	ldw	x,#L37
-5593  0010 cd0000        	call	_assert_failed
-5595  0013 5b04          	addw	sp,#4
-5596  0015               L6531:
-5597                     ; 1343   if (NewState != DISABLE)
-5599  0015 7b01          	ld	a,(OFST+1,sp)
-5600  0017 2706          	jreq	L7522
-5601                     ; 1345     TIM1->CCMR3 |= TIM1_CCMR_OCxFE;
-5603  0019 7214525a      	bset	21082,#2
-5605  001d 2004          	jra	L1622
-5606  001f               L7522:
-5607                     ; 1349     TIM1->CCMR3 &= (uint8_t)(~TIM1_CCMR_OCxFE);
-5609  001f 7215525a      	bres	21082,#2
-5610  0023               L1622:
-5611                     ; 1351 }
-5614  0023 84            	pop	a
-5615  0024 81            	ret	
-5651                     ; 1359 void TIM1_OC4FastConfig(FunctionalState NewState)
-5651                     ; 1360 {
-5652                     .text:	section	.text,new
-5653  0000               _TIM1_OC4FastConfig:
-5655  0000 88            	push	a
-5656       00000000      OFST:	set	0
-5659                     ; 1362   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-5661  0001 4d            	tnz	a
-5662  0002 2711          	jreq	L0731
-5663  0004 4a            	dec	a
-5664  0005 270e          	jreq	L0731
-5665  0007 ae0552        	ldw	x,#1362
-5666  000a 89            	pushw	x
-5667  000b 5f            	clrw	x
-5668  000c 89            	pushw	x
-5669  000d ae0000        	ldw	x,#L37
-5670  0010 cd0000        	call	_assert_failed
-5672  0013 5b04          	addw	sp,#4
-5673  0015               L0731:
-5674                     ; 1365   if (NewState != DISABLE)
-5676  0015 7b01          	ld	a,(OFST+1,sp)
-5677  0017 2706          	jreq	L1032
-5678                     ; 1367     TIM1->CCMR4 |= TIM1_CCMR_OCxFE;
-5680  0019 7214525b      	bset	21083,#2
-5682  001d 2004          	jra	L3032
-5683  001f               L1032:
-5684                     ; 1371     TIM1->CCMR4 &= (uint8_t)(~TIM1_CCMR_OCxFE);
-5686  001f 7215525b      	bres	21083,#2
-5687  0023               L3032:
-5688                     ; 1373 }
-5691  0023 84            	pop	a
-5692  0024 81            	ret	
-5798                     ; 1389 void TIM1_GenerateEvent(TIM1_EventSource_TypeDef TIM1_EventSource)
-5798                     ; 1390 {
-5799                     .text:	section	.text,new
-5800  0000               _TIM1_GenerateEvent:
-5802  0000 88            	push	a
-5803       00000000      OFST:	set	0
-5806                     ; 1392   assert_param(IS_TIM1_EVENT_SOURCE_OK(TIM1_EventSource));
-5808  0001 4d            	tnz	a
-5809  0002 260e          	jrne	L0041
-5810  0004 ae0570        	ldw	x,#1392
-5811  0007 89            	pushw	x
-5812  0008 5f            	clrw	x
-5813  0009 89            	pushw	x
-5814  000a ae0000        	ldw	x,#L37
-5815  000d cd0000        	call	_assert_failed
-5817  0010 5b04          	addw	sp,#4
-5818  0012               L0041:
-5819                     ; 1395   TIM1->EGR = (uint8_t)TIM1_EventSource;
-5821  0012 7b01          	ld	a,(OFST+1,sp)
-5822  0014 c75257        	ld	21079,a
-5823                     ; 1396 }
-5826  0017 84            	pop	a
-5827  0018 81            	ret	
-5864                     ; 1406 void TIM1_OC1PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
-5864                     ; 1407 {
-5865                     .text:	section	.text,new
-5866  0000               _TIM1_OC1PolarityConfig:
-5868  0000 88            	push	a
-5869       00000000      OFST:	set	0
-5872                     ; 1409   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
-5874  0001 4d            	tnz	a
-5875  0002 2712          	jreq	L2141
-5876  0004 a122          	cp	a,#34
-5877  0006 270e          	jreq	L2141
-5878  0008 ae0581        	ldw	x,#1409
-5879  000b 89            	pushw	x
-5880  000c 5f            	clrw	x
-5881  000d 89            	pushw	x
-5882  000e ae0000        	ldw	x,#L37
-5883  0011 cd0000        	call	_assert_failed
-5885  0014 5b04          	addw	sp,#4
-5886  0016               L2141:
-5887                     ; 1412   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
-5889  0016 7b01          	ld	a,(OFST+1,sp)
-5890  0018 2706          	jreq	L5632
-5891                     ; 1414     TIM1->CCER1 |= TIM1_CCER1_CC1P;
-5893  001a 7212525c      	bset	21084,#1
-5895  001e 2004          	jra	L7632
-5896  0020               L5632:
-5897                     ; 1418     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
-5899  0020 7213525c      	bres	21084,#1
-5900  0024               L7632:
-5901                     ; 1420 }
-5904  0024 84            	pop	a
-5905  0025 81            	ret	
-5942                     ; 1430 void TIM1_OC1NPolarityConfig(TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity)
-5942                     ; 1431 {
-5943                     .text:	section	.text,new
-5944  0000               _TIM1_OC1NPolarityConfig:
-5946  0000 88            	push	a
-5947       00000000      OFST:	set	0
-5950                     ; 1433   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
-5952  0001 4d            	tnz	a
-5953  0002 2712          	jreq	L4241
-5954  0004 a188          	cp	a,#136
-5955  0006 270e          	jreq	L4241
-5956  0008 ae0599        	ldw	x,#1433
-5957  000b 89            	pushw	x
-5958  000c 5f            	clrw	x
-5959  000d 89            	pushw	x
-5960  000e ae0000        	ldw	x,#L37
-5961  0011 cd0000        	call	_assert_failed
-5963  0014 5b04          	addw	sp,#4
-5964  0016               L4241:
-5965                     ; 1436   if (TIM1_OCNPolarity != TIM1_OCNPOLARITY_HIGH)
-5967  0016 7b01          	ld	a,(OFST+1,sp)
-5968  0018 2706          	jreq	L7042
-5969                     ; 1438     TIM1->CCER1 |= TIM1_CCER1_CC1NP;
-5971  001a 7216525c      	bset	21084,#3
-5973  001e 2004          	jra	L1142
-5974  0020               L7042:
-5975                     ; 1442     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1NP);
-5977  0020 7217525c      	bres	21084,#3
-5978  0024               L1142:
-5979                     ; 1444 }
-5982  0024 84            	pop	a
-5983  0025 81            	ret	
-6020                     ; 1454 void TIM1_OC2PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
-6020                     ; 1455 {
-6021                     .text:	section	.text,new
-6022  0000               _TIM1_OC2PolarityConfig:
-6024  0000 88            	push	a
-6025       00000000      OFST:	set	0
-6028                     ; 1457   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
-6030  0001 4d            	tnz	a
-6031  0002 2712          	jreq	L6341
-6032  0004 a122          	cp	a,#34
-6033  0006 270e          	jreq	L6341
-6034  0008 ae05b1        	ldw	x,#1457
-6035  000b 89            	pushw	x
-6036  000c 5f            	clrw	x
-6037  000d 89            	pushw	x
-6038  000e ae0000        	ldw	x,#L37
-6039  0011 cd0000        	call	_assert_failed
-6041  0014 5b04          	addw	sp,#4
-6042  0016               L6341:
-6043                     ; 1460   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
-6045  0016 7b01          	ld	a,(OFST+1,sp)
-6046  0018 2706          	jreq	L1342
-6047                     ; 1462     TIM1->CCER1 |= TIM1_CCER1_CC2P;
-6049  001a 721a525c      	bset	21084,#5
-6051  001e 2004          	jra	L3342
-6052  0020               L1342:
-6053                     ; 1466     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
-6055  0020 721b525c      	bres	21084,#5
-6056  0024               L3342:
-6057                     ; 1468 }
-6060  0024 84            	pop	a
-6061  0025 81            	ret	
-6098                     ; 1478 void TIM1_OC2NPolarityConfig(TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity)
-6098                     ; 1479 {
-6099                     .text:	section	.text,new
-6100  0000               _TIM1_OC2NPolarityConfig:
-6102  0000 88            	push	a
-6103       00000000      OFST:	set	0
-6106                     ; 1481   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
-6108  0001 4d            	tnz	a
-6109  0002 2712          	jreq	L0541
-6110  0004 a188          	cp	a,#136
-6111  0006 270e          	jreq	L0541
-6112  0008 ae05c9        	ldw	x,#1481
-6113  000b 89            	pushw	x
-6114  000c 5f            	clrw	x
-6115  000d 89            	pushw	x
-6116  000e ae0000        	ldw	x,#L37
-6117  0011 cd0000        	call	_assert_failed
-6119  0014 5b04          	addw	sp,#4
-6120  0016               L0541:
-6121                     ; 1484   if (TIM1_OCNPolarity != TIM1_OCNPOLARITY_HIGH)
-6123  0016 7b01          	ld	a,(OFST+1,sp)
-6124  0018 2706          	jreq	L3542
-6125                     ; 1486     TIM1->CCER1 |= TIM1_CCER1_CC2NP;
-6127  001a 721e525c      	bset	21084,#7
-6129  001e 2004          	jra	L5542
-6130  0020               L3542:
-6131                     ; 1490     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2NP);
-6133  0020 721f525c      	bres	21084,#7
-6134  0024               L5542:
-6135                     ; 1492 }
-6138  0024 84            	pop	a
-6139  0025 81            	ret	
-6176                     ; 1502 void TIM1_OC3PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
-6176                     ; 1503 {
-6177                     .text:	section	.text,new
-6178  0000               _TIM1_OC3PolarityConfig:
-6180  0000 88            	push	a
-6181       00000000      OFST:	set	0
-6184                     ; 1505   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
-6186  0001 4d            	tnz	a
-6187  0002 2712          	jreq	L2641
-6188  0004 a122          	cp	a,#34
-6189  0006 270e          	jreq	L2641
-6190  0008 ae05e1        	ldw	x,#1505
-6191  000b 89            	pushw	x
-6192  000c 5f            	clrw	x
-6193  000d 89            	pushw	x
-6194  000e ae0000        	ldw	x,#L37
-6195  0011 cd0000        	call	_assert_failed
-6197  0014 5b04          	addw	sp,#4
-6198  0016               L2641:
-6199                     ; 1508   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
-6201  0016 7b01          	ld	a,(OFST+1,sp)
-6202  0018 2706          	jreq	L5742
-6203                     ; 1510     TIM1->CCER2 |= TIM1_CCER2_CC3P;
-6205  001a 7212525d      	bset	21085,#1
-6207  001e 2004          	jra	L7742
-6208  0020               L5742:
-6209                     ; 1514     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3P);
-6211  0020 7213525d      	bres	21085,#1
-6212  0024               L7742:
-6213                     ; 1516 }
-6216  0024 84            	pop	a
-6217  0025 81            	ret	
-6254                     ; 1527 void TIM1_OC3NPolarityConfig(TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity)
-6254                     ; 1528 {
-6255                     .text:	section	.text,new
-6256  0000               _TIM1_OC3NPolarityConfig:
-6258  0000 88            	push	a
-6259       00000000      OFST:	set	0
-6262                     ; 1530   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
-6264  0001 4d            	tnz	a
-6265  0002 2712          	jreq	L4741
-6266  0004 a188          	cp	a,#136
-6267  0006 270e          	jreq	L4741
-6268  0008 ae05fa        	ldw	x,#1530
-6269  000b 89            	pushw	x
-6270  000c 5f            	clrw	x
-6271  000d 89            	pushw	x
-6272  000e ae0000        	ldw	x,#L37
-6273  0011 cd0000        	call	_assert_failed
-6275  0014 5b04          	addw	sp,#4
-6276  0016               L4741:
-6277                     ; 1533   if (TIM1_OCNPolarity != TIM1_OCNPOLARITY_HIGH)
-6279  0016 7b01          	ld	a,(OFST+1,sp)
-6280  0018 2706          	jreq	L7152
-6281                     ; 1535     TIM1->CCER2 |= TIM1_CCER2_CC3NP;
-6283  001a 7216525d      	bset	21085,#3
-6285  001e 2004          	jra	L1252
-6286  0020               L7152:
-6287                     ; 1539     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3NP);
-6289  0020 7217525d      	bres	21085,#3
-6290  0024               L1252:
-6291                     ; 1541 }
-6294  0024 84            	pop	a
-6295  0025 81            	ret	
-6332                     ; 1551 void TIM1_OC4PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
-6332                     ; 1552 {
-6333                     .text:	section	.text,new
-6334  0000               _TIM1_OC4PolarityConfig:
-6336  0000 88            	push	a
-6337       00000000      OFST:	set	0
-6340                     ; 1554   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
-6342  0001 4d            	tnz	a
-6343  0002 2712          	jreq	L6051
-6344  0004 a122          	cp	a,#34
-6345  0006 270e          	jreq	L6051
-6346  0008 ae0612        	ldw	x,#1554
-6347  000b 89            	pushw	x
-6348  000c 5f            	clrw	x
-6349  000d 89            	pushw	x
-6350  000e ae0000        	ldw	x,#L37
-6351  0011 cd0000        	call	_assert_failed
-6353  0014 5b04          	addw	sp,#4
-6354  0016               L6051:
-6355                     ; 1557   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
-6357  0016 7b01          	ld	a,(OFST+1,sp)
-6358  0018 2706          	jreq	L1452
-6359                     ; 1559     TIM1->CCER2 |= TIM1_CCER2_CC4P;
-6361  001a 721a525d      	bset	21085,#5
-6363  001e 2004          	jra	L3452
-6364  0020               L1452:
-6365                     ; 1563     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4P);
-6367  0020 721b525d      	bres	21085,#5
-6368  0024               L3452:
-6369                     ; 1565 }
-6372  0024 84            	pop	a
-6373  0025 81            	ret	
-6419                     ; 1579 void TIM1_CCxCmd(TIM1_Channel_TypeDef TIM1_Channel, FunctionalState NewState)
-6419                     ; 1580 {
-6420                     .text:	section	.text,new
-6421  0000               _TIM1_CCxCmd:
-6423  0000 89            	pushw	x
-6424       00000000      OFST:	set	0
-6427                     ; 1582   assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
-6429  0001 9e            	ld	a,xh
-6430  0002 4d            	tnz	a
-6431  0003 2713          	jreq	L0251
-6432  0005 9e            	ld	a,xh
-6433  0006 4a            	dec	a
-6434  0007 270f          	jreq	L0251
-6435  0009 9e            	ld	a,xh
-6436  000a a102          	cp	a,#2
-6437  000c 270a          	jreq	L0251
-6438  000e 9e            	ld	a,xh
-6439  000f a103          	cp	a,#3
-6440  0011 2705          	jreq	L0251
-6441  0013 ae062e        	ldw	x,#1582
-6442  0016 ad58          	call	LC013
-6443  0018               L0251:
-6444                     ; 1583   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-6446  0018 7b02          	ld	a,(OFST+2,sp)
-6447  001a 2708          	jreq	L0351
-6448  001c 4a            	dec	a
-6449  001d 2705          	jreq	L0351
-6450  001f ae062f        	ldw	x,#1583
-6451  0022 ad4c          	call	LC013
-6452  0024               L0351:
-6453                     ; 1585   if (TIM1_Channel == TIM1_CHANNEL_1)
-6455  0024 7b01          	ld	a,(OFST+1,sp)
-6456  0026 2610          	jrne	L7652
-6457                     ; 1588     if (NewState != DISABLE)
-6459  0028 7b02          	ld	a,(OFST+2,sp)
-6460  002a 2706          	jreq	L1752
-6461                     ; 1590       TIM1->CCER1 |= TIM1_CCER1_CC1E;
-6463  002c 7210525c      	bset	21084,#0
-6465  0030 203c          	jra	L5752
-6466  0032               L1752:
-6467                     ; 1594       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
-6469  0032 7211525c      	bres	21084,#0
-6470  0036 2036          	jra	L5752
-6471  0038               L7652:
-6472                     ; 1598   else if (TIM1_Channel == TIM1_CHANNEL_2)
-6474  0038 a101          	cp	a,#1
-6475  003a 2610          	jrne	L7752
-6476                     ; 1601     if (NewState != DISABLE)
-6478  003c 7b02          	ld	a,(OFST+2,sp)
-6479  003e 2706          	jreq	L1062
-6480                     ; 1603       TIM1->CCER1 |= TIM1_CCER1_CC2E;
-6482  0040 7218525c      	bset	21084,#4
-6484  0044 2028          	jra	L5752
-6485  0046               L1062:
-6486                     ; 1607       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2E);
-6488  0046 7219525c      	bres	21084,#4
-6489  004a 2022          	jra	L5752
-6490  004c               L7752:
-6491                     ; 1610   else if (TIM1_Channel == TIM1_CHANNEL_3)
-6493  004c a102          	cp	a,#2
-6494  004e 2610          	jrne	L7062
-6495                     ; 1613     if (NewState != DISABLE)
-6497  0050 7b02          	ld	a,(OFST+2,sp)
-6498  0052 2706          	jreq	L1162
-6499                     ; 1615       TIM1->CCER2 |= TIM1_CCER2_CC3E;
-6501  0054 7210525d      	bset	21085,#0
-6503  0058 2014          	jra	L5752
-6504  005a               L1162:
-6505                     ; 1619       TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3E);
-6507  005a 7211525d      	bres	21085,#0
-6508  005e 200e          	jra	L5752
-6509  0060               L7062:
-6510                     ; 1625     if (NewState != DISABLE)
-6512  0060 7b02          	ld	a,(OFST+2,sp)
-6513  0062 2706          	jreq	L7162
-6514                     ; 1627       TIM1->CCER2 |= TIM1_CCER2_CC4E;
-6516  0064 7218525d      	bset	21085,#4
-6518  0068 2004          	jra	L5752
-6519  006a               L7162:
-6520                     ; 1631       TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4E);
-6522  006a 7219525d      	bres	21085,#4
-6523  006e               L5752:
-6524                     ; 1634 }
-6527  006e 85            	popw	x
-6528  006f 81            	ret	
-6529  0070               LC013:
-6530  0070 89            	pushw	x
-6531  0071 5f            	clrw	x
-6532  0072 89            	pushw	x
-6533  0073 ae0000        	ldw	x,#L37
-6534  0076 cd0000        	call	_assert_failed
-6536  0079 5b04          	addw	sp,#4
-6537  007b 81            	ret	
-6583                     ; 1647 void TIM1_CCxNCmd(TIM1_Channel_TypeDef TIM1_Channel, FunctionalState NewState)
-6583                     ; 1648 {
-6584                     .text:	section	.text,new
-6585  0000               _TIM1_CCxNCmd:
-6587  0000 89            	pushw	x
-6588       00000000      OFST:	set	0
-6591                     ; 1650   assert_param(IS_TIM1_COMPLEMENTARY_CHANNEL_OK(TIM1_Channel));
-6593  0001 9e            	ld	a,xh
-6594  0002 4d            	tnz	a
-6595  0003 270e          	jreq	L2451
-6596  0005 9e            	ld	a,xh
-6597  0006 4a            	dec	a
-6598  0007 270a          	jreq	L2451
-6599  0009 9e            	ld	a,xh
-6600  000a a102          	cp	a,#2
-6601  000c 2705          	jreq	L2451
-6602  000e ae0672        	ldw	x,#1650
-6603  0011 ad43          	call	LC014
-6604  0013               L2451:
-6605                     ; 1651   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-6607  0013 7b02          	ld	a,(OFST+2,sp)
-6608  0015 2708          	jreq	L2551
-6609  0017 4a            	dec	a
-6610  0018 2705          	jreq	L2551
-6611  001a ae0673        	ldw	x,#1651
-6612  001d ad37          	call	LC014
-6613  001f               L2551:
-6614                     ; 1653   if (TIM1_Channel == TIM1_CHANNEL_1)
-6616  001f 7b01          	ld	a,(OFST+1,sp)
-6617  0021 2610          	jrne	L5462
-6618                     ; 1656     if (NewState != DISABLE)
-6620  0023 7b02          	ld	a,(OFST+2,sp)
-6621  0025 2706          	jreq	L7462
-6622                     ; 1658       TIM1->CCER1 |= TIM1_CCER1_CC1NE;
-6624  0027 7214525c      	bset	21084,#2
-6626  002b 2027          	jra	L3562
-6627  002d               L7462:
-6628                     ; 1662       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1NE);
-6630  002d 7215525c      	bres	21084,#2
-6631  0031 2021          	jra	L3562
-6632  0033               L5462:
-6633                     ; 1665   else if (TIM1_Channel == TIM1_CHANNEL_2)
-6635  0033 4a            	dec	a
-6636  0034 2610          	jrne	L5562
-6637                     ; 1668     if (NewState != DISABLE)
-6639  0036 7b02          	ld	a,(OFST+2,sp)
-6640  0038 2706          	jreq	L7562
-6641                     ; 1670       TIM1->CCER1 |= TIM1_CCER1_CC2NE;
-6643  003a 721c525c      	bset	21084,#6
-6645  003e 2014          	jra	L3562
-6646  0040               L7562:
-6647                     ; 1674       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2NE);
-6649  0040 721d525c      	bres	21084,#6
-6650  0044 200e          	jra	L3562
-6651  0046               L5562:
-6652                     ; 1680     if (NewState != DISABLE)
-6654  0046 7b02          	ld	a,(OFST+2,sp)
-6655  0048 2706          	jreq	L5662
-6656                     ; 1682       TIM1->CCER2 |= TIM1_CCER2_CC3NE;
-6658  004a 7214525d      	bset	21085,#2
-6660  004e 2004          	jra	L3562
-6661  0050               L5662:
-6662                     ; 1686       TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3NE);
-6664  0050 7215525d      	bres	21085,#2
-6665  0054               L3562:
-6666                     ; 1689 }
-6669  0054 85            	popw	x
-6670  0055 81            	ret	
-6671  0056               LC014:
-6672  0056 89            	pushw	x
-6673  0057 5f            	clrw	x
-6674  0058 89            	pushw	x
-6675  0059 ae0000        	ldw	x,#L37
-6676  005c cd0000        	call	_assert_failed
-6678  005f 5b04          	addw	sp,#4
-6679  0061 81            	ret	
-6725                     ; 1712 void TIM1_SelectOCxM(TIM1_Channel_TypeDef TIM1_Channel, TIM1_OCMode_TypeDef TIM1_OCMode)
-6725                     ; 1713 {
-6726                     .text:	section	.text,new
-6727  0000               _TIM1_SelectOCxM:
-6729  0000 89            	pushw	x
-6730       00000000      OFST:	set	0
-6733                     ; 1715   assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
-6735  0001 9e            	ld	a,xh
-6736  0002 4d            	tnz	a
-6737  0003 2713          	jreq	L4651
-6738  0005 9e            	ld	a,xh
-6739  0006 4a            	dec	a
-6740  0007 270f          	jreq	L4651
-6741  0009 9e            	ld	a,xh
-6742  000a a102          	cp	a,#2
-6743  000c 270a          	jreq	L4651
-6744  000e 9e            	ld	a,xh
-6745  000f a103          	cp	a,#3
-6746  0011 2705          	jreq	L4651
-6747  0013 ae06b3        	ldw	x,#1715
-6748  0016 ad71          	call	LC015
-6749  0018               L4651:
-6750                     ; 1716   assert_param(IS_TIM1_OCM_OK(TIM1_OCMode));
-6752  0018 7b02          	ld	a,(OFST+2,sp)
-6753  001a 2721          	jreq	L4751
-6754  001c a110          	cp	a,#16
-6755  001e 271d          	jreq	L4751
-6756  0020 a120          	cp	a,#32
-6757  0022 2719          	jreq	L4751
-6758  0024 a130          	cp	a,#48
-6759  0026 2715          	jreq	L4751
-6760  0028 a160          	cp	a,#96
-6761  002a 2711          	jreq	L4751
-6762  002c a170          	cp	a,#112
-6763  002e 270d          	jreq	L4751
-6764  0030 a150          	cp	a,#80
-6765  0032 2709          	jreq	L4751
-6766  0034 a140          	cp	a,#64
-6767  0036 2705          	jreq	L4751
-6768  0038 ae06b4        	ldw	x,#1716
-6769  003b ad4c          	call	LC015
-6770  003d               L4751:
-6771                     ; 1718   if (TIM1_Channel == TIM1_CHANNEL_1)
-6773  003d 7b01          	ld	a,(OFST+1,sp)
-6774  003f 2610          	jrne	L3172
-6775                     ; 1721     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
-6777  0041 7211525c      	bres	21084,#0
-6778                     ; 1724     TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_OCM)) 
-6778                     ; 1725                             | (uint8_t)TIM1_OCMode);
-6780  0045 c65258        	ld	a,21080
-6781  0048 a48f          	and	a,#143
-6782  004a 1a02          	or	a,(OFST+2,sp)
-6783  004c c75258        	ld	21080,a
-6785  004f 2036          	jra	L5172
-6786  0051               L3172:
-6787                     ; 1727   else if (TIM1_Channel == TIM1_CHANNEL_2)
-6789  0051 a101          	cp	a,#1
-6790  0053 2610          	jrne	L7172
-6791                     ; 1730     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2E);
-6793  0055 7219525c      	bres	21084,#4
-6794                     ; 1733     TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_OCM))
-6794                     ; 1734                             | (uint8_t)TIM1_OCMode);
-6796  0059 c65259        	ld	a,21081
-6797  005c a48f          	and	a,#143
-6798  005e 1a02          	or	a,(OFST+2,sp)
-6799  0060 c75259        	ld	21081,a
-6801  0063 2022          	jra	L5172
-6802  0065               L7172:
-6803                     ; 1736   else if (TIM1_Channel == TIM1_CHANNEL_3)
-6805  0065 a102          	cp	a,#2
-6806  0067 2610          	jrne	L3272
-6807                     ; 1739     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3E);
-6809  0069 7211525d      	bres	21085,#0
-6810                     ; 1742     TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_OCM)) 
-6810                     ; 1743                             | (uint8_t)TIM1_OCMode);
-6812  006d c6525a        	ld	a,21082
-6813  0070 a48f          	and	a,#143
-6814  0072 1a02          	or	a,(OFST+2,sp)
-6815  0074 c7525a        	ld	21082,a
-6817  0077 200e          	jra	L5172
-6818  0079               L3272:
-6819                     ; 1748     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4E);
-6821  0079 7219525d      	bres	21085,#4
-6822                     ; 1751     TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_OCM)) 
-6822                     ; 1752                             | (uint8_t)TIM1_OCMode);
-6824  007d c6525b        	ld	a,21083
-6825  0080 a48f          	and	a,#143
-6826  0082 1a02          	or	a,(OFST+2,sp)
-6827  0084 c7525b        	ld	21083,a
-6828  0087               L5172:
-6829                     ; 1754 }
-6832  0087 85            	popw	x
-6833  0088 81            	ret	
-6834  0089               LC015:
-6835  0089 89            	pushw	x
-6836  008a 5f            	clrw	x
-6837  008b 89            	pushw	x
-6838  008c ae0000        	ldw	x,#L37
-6839  008f cd0000        	call	_assert_failed
-6841  0092 5b04          	addw	sp,#4
-6842  0094 81            	ret	
-6874                     ; 1762 void TIM1_SetCounter(uint16_t Counter)
-6874                     ; 1763 {
-6875                     .text:	section	.text,new
-6876  0000               _TIM1_SetCounter:
-6880                     ; 1765   TIM1->CNTRH = (uint8_t)(Counter >> 8);
-6882  0000 9e            	ld	a,xh
-6883  0001 c7525e        	ld	21086,a
-6884                     ; 1766   TIM1->CNTRL = (uint8_t)(Counter);
-6886  0004 9f            	ld	a,xl
-6887  0005 c7525f        	ld	21087,a
-6888                     ; 1767 }
-6891  0008 81            	ret	
-6923                     ; 1775 void TIM1_SetAutoreload(uint16_t Autoreload)
-6923                     ; 1776 {
-6924                     .text:	section	.text,new
-6925  0000               _TIM1_SetAutoreload:
-6929                     ; 1778   TIM1->ARRH = (uint8_t)(Autoreload >> 8);
-6931  0000 9e            	ld	a,xh
-6932  0001 c75262        	ld	21090,a
-6933                     ; 1779   TIM1->ARRL = (uint8_t)(Autoreload);
-6935  0004 9f            	ld	a,xl
-6936  0005 c75263        	ld	21091,a
-6937                     ; 1780  }
-6940  0008 81            	ret	
-6972                     ; 1788 void TIM1_SetCompare1(uint16_t Compare1)
-6972                     ; 1789 {
-6973                     .text:	section	.text,new
-6974  0000               _TIM1_SetCompare1:
-6978                     ; 1791   TIM1->CCR1H = (uint8_t)(Compare1 >> 8);
-6980  0000 9e            	ld	a,xh
-6981  0001 c75265        	ld	21093,a
-6982                     ; 1792   TIM1->CCR1L = (uint8_t)(Compare1);
-6984  0004 9f            	ld	a,xl
-6985  0005 c75266        	ld	21094,a
-6986                     ; 1793 }
-6989  0008 81            	ret	
-7021                     ; 1801 void TIM1_SetCompare2(uint16_t Compare2)
-7021                     ; 1802 {
-7022                     .text:	section	.text,new
-7023  0000               _TIM1_SetCompare2:
-7027                     ; 1804   TIM1->CCR2H = (uint8_t)(Compare2 >> 8);
-7029  0000 9e            	ld	a,xh
-7030  0001 c75267        	ld	21095,a
-7031                     ; 1805   TIM1->CCR2L = (uint8_t)(Compare2);
-7033  0004 9f            	ld	a,xl
-7034  0005 c75268        	ld	21096,a
-7035                     ; 1806 }
-7038  0008 81            	ret	
-7070                     ; 1814 void TIM1_SetCompare3(uint16_t Compare3)
-7070                     ; 1815 {
-7071                     .text:	section	.text,new
-7072  0000               _TIM1_SetCompare3:
-7076                     ; 1817   TIM1->CCR3H = (uint8_t)(Compare3 >> 8);
-7078  0000 9e            	ld	a,xh
-7079  0001 c75269        	ld	21097,a
-7080                     ; 1818   TIM1->CCR3L = (uint8_t)(Compare3);
-7082  0004 9f            	ld	a,xl
-7083  0005 c7526a        	ld	21098,a
-7084                     ; 1819 }
-7087  0008 81            	ret	
-7119                     ; 1827 void TIM1_SetCompare4(uint16_t Compare4)
-7119                     ; 1828 {
-7120                     .text:	section	.text,new
-7121  0000               _TIM1_SetCompare4:
-7125                     ; 1830   TIM1->CCR4H = (uint8_t)(Compare4 >> 8);
-7127  0000 9e            	ld	a,xh
-7128  0001 c7526b        	ld	21099,a
-7129                     ; 1831   TIM1->CCR4L = (uint8_t)(Compare4);
-7131  0004 9f            	ld	a,xl
-7132  0005 c7526c        	ld	21100,a
-7133                     ; 1832 }
-7136  0008 81            	ret	
-7173                     ; 1844 void TIM1_SetIC1Prescaler(TIM1_ICPSC_TypeDef TIM1_IC1Prescaler)
-7173                     ; 1845 {
-7174                     .text:	section	.text,new
-7175  0000               _TIM1_SetIC1Prescaler:
-7177  0000 88            	push	a
-7178       00000000      OFST:	set	0
-7181                     ; 1847   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC1Prescaler));
-7183  0001 4d            	tnz	a
-7184  0002 271a          	jreq	L2261
-7185  0004 a104          	cp	a,#4
-7186  0006 2716          	jreq	L2261
-7187  0008 a108          	cp	a,#8
-7188  000a 2712          	jreq	L2261
-7189  000c a10c          	cp	a,#12
-7190  000e 270e          	jreq	L2261
-7191  0010 ae0737        	ldw	x,#1847
-7192  0013 89            	pushw	x
-7193  0014 5f            	clrw	x
-7194  0015 89            	pushw	x
-7195  0016 ae0000        	ldw	x,#L37
-7196  0019 cd0000        	call	_assert_failed
-7198  001c 5b04          	addw	sp,#4
-7199  001e               L2261:
-7200                     ; 1850   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_ICxPSC)) 
-7200                     ; 1851                           | (uint8_t)TIM1_IC1Prescaler);
-7202  001e c65258        	ld	a,21080
-7203  0021 a4f3          	and	a,#243
-7204  0023 1a01          	or	a,(OFST+1,sp)
-7205  0025 c75258        	ld	21080,a
-7206                     ; 1852 }
-7209  0028 84            	pop	a
-7210  0029 81            	ret	
-7247                     ; 1864 void TIM1_SetIC2Prescaler(TIM1_ICPSC_TypeDef TIM1_IC2Prescaler)
-7247                     ; 1865 {
-7248                     .text:	section	.text,new
-7249  0000               _TIM1_SetIC2Prescaler:
-7251  0000 88            	push	a
-7252       00000000      OFST:	set	0
-7255                     ; 1868   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC2Prescaler));
-7257  0001 4d            	tnz	a
-7258  0002 271a          	jreq	L4361
-7259  0004 a104          	cp	a,#4
-7260  0006 2716          	jreq	L4361
-7261  0008 a108          	cp	a,#8
-7262  000a 2712          	jreq	L4361
-7263  000c a10c          	cp	a,#12
-7264  000e 270e          	jreq	L4361
-7265  0010 ae074c        	ldw	x,#1868
-7266  0013 89            	pushw	x
-7267  0014 5f            	clrw	x
-7268  0015 89            	pushw	x
-7269  0016 ae0000        	ldw	x,#L37
-7270  0019 cd0000        	call	_assert_failed
-7272  001c 5b04          	addw	sp,#4
-7273  001e               L4361:
-7274                     ; 1871   TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_ICxPSC))
-7274                     ; 1872                           | (uint8_t)TIM1_IC2Prescaler);
-7276  001e c65259        	ld	a,21081
-7277  0021 a4f3          	and	a,#243
-7278  0023 1a01          	or	a,(OFST+1,sp)
-7279  0025 c75259        	ld	21081,a
-7280                     ; 1873 }
-7283  0028 84            	pop	a
-7284  0029 81            	ret	
-7321                     ; 1885 void TIM1_SetIC3Prescaler(TIM1_ICPSC_TypeDef TIM1_IC3Prescaler)
-7321                     ; 1886 {
-7322                     .text:	section	.text,new
-7323  0000               _TIM1_SetIC3Prescaler:
-7325  0000 88            	push	a
-7326       00000000      OFST:	set	0
-7329                     ; 1889   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC3Prescaler));
-7331  0001 4d            	tnz	a
-7332  0002 271a          	jreq	L6461
-7333  0004 a104          	cp	a,#4
-7334  0006 2716          	jreq	L6461
-7335  0008 a108          	cp	a,#8
-7336  000a 2712          	jreq	L6461
-7337  000c a10c          	cp	a,#12
-7338  000e 270e          	jreq	L6461
-7339  0010 ae0761        	ldw	x,#1889
-7340  0013 89            	pushw	x
-7341  0014 5f            	clrw	x
-7342  0015 89            	pushw	x
-7343  0016 ae0000        	ldw	x,#L37
-7344  0019 cd0000        	call	_assert_failed
-7346  001c 5b04          	addw	sp,#4
-7347  001e               L6461:
-7348                     ; 1892   TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_ICxPSC)) | 
-7348                     ; 1893                           (uint8_t)TIM1_IC3Prescaler);
-7350  001e c6525a        	ld	a,21082
-7351  0021 a4f3          	and	a,#243
-7352  0023 1a01          	or	a,(OFST+1,sp)
-7353  0025 c7525a        	ld	21082,a
-7354                     ; 1894 }
-7357  0028 84            	pop	a
-7358  0029 81            	ret	
-7395                     ; 1906 void TIM1_SetIC4Prescaler(TIM1_ICPSC_TypeDef TIM1_IC4Prescaler)
-7395                     ; 1907 {
-7396                     .text:	section	.text,new
-7397  0000               _TIM1_SetIC4Prescaler:
-7399  0000 88            	push	a
-7400       00000000      OFST:	set	0
-7403                     ; 1910   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC4Prescaler));
-7405  0001 4d            	tnz	a
-7406  0002 271a          	jreq	L0661
-7407  0004 a104          	cp	a,#4
-7408  0006 2716          	jreq	L0661
-7409  0008 a108          	cp	a,#8
-7410  000a 2712          	jreq	L0661
-7411  000c a10c          	cp	a,#12
-7412  000e 270e          	jreq	L0661
-7413  0010 ae0776        	ldw	x,#1910
-7414  0013 89            	pushw	x
-7415  0014 5f            	clrw	x
-7416  0015 89            	pushw	x
-7417  0016 ae0000        	ldw	x,#L37
-7418  0019 cd0000        	call	_assert_failed
-7420  001c 5b04          	addw	sp,#4
-7421  001e               L0661:
-7422                     ; 1913   TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_ICxPSC)) |
-7422                     ; 1914                           (uint8_t)TIM1_IC4Prescaler);
-7424  001e c6525b        	ld	a,21083
-7425  0021 a4f3          	and	a,#243
-7426  0023 1a01          	or	a,(OFST+1,sp)
-7427  0025 c7525b        	ld	21083,a
-7428                     ; 1915 }
-7431  0028 84            	pop	a
-7432  0029 81            	ret	
-7478                     ; 1922 uint16_t TIM1_GetCapture1(void)
-7478                     ; 1923 {
-7479                     .text:	section	.text,new
-7480  0000               _TIM1_GetCapture1:
-7482  0000 5204          	subw	sp,#4
-7483       00000004      OFST:	set	4
-7486                     ; 1926   uint16_t tmpccr1 = 0;
-7488                     ; 1927   uint8_t tmpccr1l=0, tmpccr1h=0;
-7492                     ; 1929   tmpccr1h = TIM1->CCR1H;
-7494  0002 c65265        	ld	a,21093
-7495  0005 6b02          	ld	(OFST-2,sp),a
-7497                     ; 1930   tmpccr1l = TIM1->CCR1L;
-7499  0007 c65266        	ld	a,21094
-7500  000a 6b01          	ld	(OFST-3,sp),a
-7502                     ; 1932   tmpccr1 = (uint16_t)(tmpccr1l);
-7504  000c 5f            	clrw	x
-7505  000d 97            	ld	xl,a
-7506  000e 1f03          	ldw	(OFST-1,sp),x
-7508                     ; 1933   tmpccr1 |= (uint16_t)((uint16_t)tmpccr1h << 8);
-7510  0010 5f            	clrw	x
-7511  0011 7b02          	ld	a,(OFST-2,sp)
-7512  0013 97            	ld	xl,a
-7513  0014 7b04          	ld	a,(OFST+0,sp)
-7514  0016 01            	rrwa	x,a
-7515  0017 1a03          	or	a,(OFST-1,sp)
-7516  0019 01            	rrwa	x,a
-7518                     ; 1935   return (uint16_t)tmpccr1;
-7522  001a 5b04          	addw	sp,#4
-7523  001c 81            	ret	
-7569                     ; 1943 uint16_t TIM1_GetCapture2(void)
-7569                     ; 1944 {
-7570                     .text:	section	.text,new
-7571  0000               _TIM1_GetCapture2:
-7573  0000 5204          	subw	sp,#4
-7574       00000004      OFST:	set	4
-7577                     ; 1947   uint16_t tmpccr2 = 0;
-7579                     ; 1948   uint8_t tmpccr2l=0, tmpccr2h=0;
-7583                     ; 1950   tmpccr2h = TIM1->CCR2H;
-7585  0002 c65267        	ld	a,21095
-7586  0005 6b02          	ld	(OFST-2,sp),a
-7588                     ; 1951   tmpccr2l = TIM1->CCR2L;
-7590  0007 c65268        	ld	a,21096
-7591  000a 6b01          	ld	(OFST-3,sp),a
-7593                     ; 1953   tmpccr2 = (uint16_t)(tmpccr2l);
-7595  000c 5f            	clrw	x
-7596  000d 97            	ld	xl,a
-7597  000e 1f03          	ldw	(OFST-1,sp),x
-7599                     ; 1954   tmpccr2 |= (uint16_t)((uint16_t)tmpccr2h << 8);
-7601  0010 5f            	clrw	x
-7602  0011 7b02          	ld	a,(OFST-2,sp)
-7603  0013 97            	ld	xl,a
-7604  0014 7b04          	ld	a,(OFST+0,sp)
-7605  0016 01            	rrwa	x,a
-7606  0017 1a03          	or	a,(OFST-1,sp)
-7607  0019 01            	rrwa	x,a
-7609                     ; 1956   return (uint16_t)tmpccr2;
-7613  001a 5b04          	addw	sp,#4
-7614  001c 81            	ret	
-7660                     ; 1964 uint16_t TIM1_GetCapture3(void)
-7660                     ; 1965 {
+4614  000f ae0000        	ldw	x,#0
+4615  0012 89            	pushw	x
+4616  0013 ae0000        	ldw	x,#L37
+4617  0016 cd0000        	call	_assert_failed
+4619  0019 5b04          	addw	sp,#4
+4620  001b               L426:
+4621                     ; 945   if (NewState != DISABLE)
+4623  001b 0d01          	tnz	(OFST+1,sp)
+4624  001d 2706          	jreq	L5551
+4625                     ; 947     TIM1->SMCR |= TIM1_SMCR_MSM;
+4627  001f 721e5252      	bset	21074,#7
+4629  0023 2004          	jra	L7551
+4630  0025               L5551:
+4631                     ; 951     TIM1->SMCR &= (uint8_t)(~TIM1_SMCR_MSM);
+4633  0025 721f5252      	bres	21074,#7
+4634  0029               L7551:
+4635                     ; 953 }
+4638  0029 84            	pop	a
+4639  002a 81            	ret
+4726                     ; 975 void TIM1_EncoderInterfaceConfig(TIM1_EncoderMode_TypeDef TIM1_EncoderMode,
+4726                     ; 976                                  TIM1_ICPolarity_TypeDef TIM1_IC1Polarity,
+4726                     ; 977                                  TIM1_ICPolarity_TypeDef TIM1_IC2Polarity)
+4726                     ; 978 {
+4727                     .text:	section	.text,new
+4728  0000               _TIM1_EncoderInterfaceConfig:
+4730  0000 89            	pushw	x
+4731       00000000      OFST:	set	0
+4734                     ; 980   assert_param(IS_TIM1_ENCODER_MODE_OK(TIM1_EncoderMode));
+4736  0001 9e            	ld	a,xh
+4737  0002 a101          	cp	a,#1
+4738  0004 270a          	jreq	L236
+4739  0006 9e            	ld	a,xh
+4740  0007 a102          	cp	a,#2
+4741  0009 2705          	jreq	L236
+4742  000b 9e            	ld	a,xh
+4743  000c a103          	cp	a,#3
+4744  000e 2603          	jrne	L036
+4745  0010               L236:
+4746  0010 4f            	clr	a
+4747  0011 2010          	jra	L436
+4748  0013               L036:
+4749  0013 ae03d4        	ldw	x,#980
+4750  0016 89            	pushw	x
+4751  0017 ae0000        	ldw	x,#0
+4752  001a 89            	pushw	x
+4753  001b ae0000        	ldw	x,#L37
+4754  001e cd0000        	call	_assert_failed
+4756  0021 5b04          	addw	sp,#4
+4757  0023               L436:
+4758                     ; 981   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_IC1Polarity));
+4760  0023 0d02          	tnz	(OFST+2,sp)
+4761  0025 2706          	jreq	L046
+4762  0027 7b02          	ld	a,(OFST+2,sp)
+4763  0029 a101          	cp	a,#1
+4764  002b 2603          	jrne	L636
+4765  002d               L046:
+4766  002d 4f            	clr	a
+4767  002e 2010          	jra	L246
+4768  0030               L636:
+4769  0030 ae03d5        	ldw	x,#981
+4770  0033 89            	pushw	x
+4771  0034 ae0000        	ldw	x,#0
+4772  0037 89            	pushw	x
+4773  0038 ae0000        	ldw	x,#L37
+4774  003b cd0000        	call	_assert_failed
+4776  003e 5b04          	addw	sp,#4
+4777  0040               L246:
+4778                     ; 982   assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_IC2Polarity));
+4780  0040 0d05          	tnz	(OFST+5,sp)
+4781  0042 2706          	jreq	L646
+4782  0044 7b05          	ld	a,(OFST+5,sp)
+4783  0046 a101          	cp	a,#1
+4784  0048 2603          	jrne	L446
+4785  004a               L646:
+4786  004a 4f            	clr	a
+4787  004b 2010          	jra	L056
+4788  004d               L446:
+4789  004d ae03d6        	ldw	x,#982
+4790  0050 89            	pushw	x
+4791  0051 ae0000        	ldw	x,#0
+4792  0054 89            	pushw	x
+4793  0055 ae0000        	ldw	x,#L37
+4794  0058 cd0000        	call	_assert_failed
+4796  005b 5b04          	addw	sp,#4
+4797  005d               L056:
+4798                     ; 985   if (TIM1_IC1Polarity != TIM1_ICPOLARITY_RISING)
+4800  005d 0d02          	tnz	(OFST+2,sp)
+4801  005f 2706          	jreq	L1261
+4802                     ; 987     TIM1->CCER1 |= TIM1_CCER1_CC1P;
+4804  0061 7212525c      	bset	21084,#1
+4806  0065 2004          	jra	L3261
+4807  0067               L1261:
+4808                     ; 991     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
+4810  0067 7213525c      	bres	21084,#1
+4811  006b               L3261:
+4812                     ; 994   if (TIM1_IC2Polarity != TIM1_ICPOLARITY_RISING)
+4814  006b 0d05          	tnz	(OFST+5,sp)
+4815  006d 2706          	jreq	L5261
+4816                     ; 996     TIM1->CCER1 |= TIM1_CCER1_CC2P;
+4818  006f 721a525c      	bset	21084,#5
+4820  0073 2004          	jra	L7261
+4821  0075               L5261:
+4822                     ; 1000     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
+4824  0075 721b525c      	bres	21084,#5
+4825  0079               L7261:
+4826                     ; 1003   TIM1->SMCR = (uint8_t)((uint8_t)(TIM1->SMCR & (uint8_t)(TIM1_SMCR_MSM | TIM1_SMCR_TS))
+4826                     ; 1004                          | (uint8_t) TIM1_EncoderMode);
+4828  0079 c65252        	ld	a,21074
+4829  007c a4f0          	and	a,#240
+4830  007e 1a01          	or	a,(OFST+1,sp)
+4831  0080 c75252        	ld	21074,a
+4832                     ; 1007   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_CCxS)) 
+4832                     ; 1008                           | (uint8_t) CCMR_TIxDirect_Set);
+4834  0083 c65258        	ld	a,21080
+4835  0086 a4fc          	and	a,#252
+4836  0088 aa01          	or	a,#1
+4837  008a c75258        	ld	21080,a
+4838                     ; 1009   TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_CCxS))
+4838                     ; 1010                           | (uint8_t) CCMR_TIxDirect_Set);
+4840  008d c65259        	ld	a,21081
+4841  0090 a4fc          	and	a,#252
+4842  0092 aa01          	or	a,#1
+4843  0094 c75259        	ld	21081,a
+4844                     ; 1011 }
+4847  0097 85            	popw	x
+4848  0098 81            	ret
+4914                     ; 1023 void TIM1_PrescalerConfig(uint16_t Prescaler,
+4914                     ; 1024                           TIM1_PSCReloadMode_TypeDef TIM1_PSCReloadMode)
+4914                     ; 1025 {
+4915                     .text:	section	.text,new
+4916  0000               _TIM1_PrescalerConfig:
+4918  0000 89            	pushw	x
+4919       00000000      OFST:	set	0
+4922                     ; 1027   assert_param(IS_TIM1_PRESCALER_RELOAD_OK(TIM1_PSCReloadMode));
+4924  0001 0d05          	tnz	(OFST+5,sp)
+4925  0003 2706          	jreq	L656
+4926  0005 7b05          	ld	a,(OFST+5,sp)
+4927  0007 a101          	cp	a,#1
+4928  0009 2603          	jrne	L456
+4929  000b               L656:
+4930  000b 4f            	clr	a
+4931  000c 2010          	jra	L066
+4932  000e               L456:
+4933  000e ae0403        	ldw	x,#1027
+4934  0011 89            	pushw	x
+4935  0012 ae0000        	ldw	x,#0
+4936  0015 89            	pushw	x
+4937  0016 ae0000        	ldw	x,#L37
+4938  0019 cd0000        	call	_assert_failed
+4940  001c 5b04          	addw	sp,#4
+4941  001e               L066:
+4942                     ; 1030   TIM1->PSCRH = (uint8_t)(Prescaler >> 8);
+4944  001e 7b01          	ld	a,(OFST+1,sp)
+4945  0020 c75260        	ld	21088,a
+4946                     ; 1031   TIM1->PSCRL = (uint8_t)(Prescaler);
+4948  0023 7b02          	ld	a,(OFST+2,sp)
+4949  0025 c75261        	ld	21089,a
+4950                     ; 1034   TIM1->EGR = (uint8_t)TIM1_PSCReloadMode;
+4952  0028 7b05          	ld	a,(OFST+5,sp)
+4953  002a c75257        	ld	21079,a
+4954                     ; 1035 }
+4957  002d 85            	popw	x
+4958  002e 81            	ret
+4995                     ; 1048 void TIM1_CounterModeConfig(TIM1_CounterMode_TypeDef TIM1_CounterMode)
+4995                     ; 1049 {
+4996                     .text:	section	.text,new
+4997  0000               _TIM1_CounterModeConfig:
+4999  0000 88            	push	a
+5000       00000000      OFST:	set	0
+5003                     ; 1051   assert_param(IS_TIM1_COUNTER_MODE_OK(TIM1_CounterMode));
+5005  0001 4d            	tnz	a
+5006  0002 2710          	jreq	L666
+5007  0004 a110          	cp	a,#16
+5008  0006 270c          	jreq	L666
+5009  0008 a120          	cp	a,#32
+5010  000a 2708          	jreq	L666
+5011  000c a140          	cp	a,#64
+5012  000e 2704          	jreq	L666
+5013  0010 a160          	cp	a,#96
+5014  0012 2603          	jrne	L466
+5015  0014               L666:
+5016  0014 4f            	clr	a
+5017  0015 2010          	jra	L076
+5018  0017               L466:
+5019  0017 ae041b        	ldw	x,#1051
+5020  001a 89            	pushw	x
+5021  001b ae0000        	ldw	x,#0
+5022  001e 89            	pushw	x
+5023  001f ae0000        	ldw	x,#L37
+5024  0022 cd0000        	call	_assert_failed
+5026  0025 5b04          	addw	sp,#4
+5027  0027               L076:
+5028                     ; 1055   TIM1->CR1 = (uint8_t)((uint8_t)(TIM1->CR1 & (uint8_t)((uint8_t)(~TIM1_CR1_CMS) & (uint8_t)(~TIM1_CR1_DIR)))
+5028                     ; 1056                         | (uint8_t)TIM1_CounterMode);
+5030  0027 c65250        	ld	a,21072
+5031  002a a48f          	and	a,#143
+5032  002c 1a01          	or	a,(OFST+1,sp)
+5033  002e c75250        	ld	21072,a
+5034                     ; 1057 }
+5037  0031 84            	pop	a
+5038  0032 81            	ret
+5097                     ; 1067 void TIM1_ForcedOC1Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
+5097                     ; 1068 {
+5098                     .text:	section	.text,new
+5099  0000               _TIM1_ForcedOC1Config:
+5101  0000 88            	push	a
+5102       00000000      OFST:	set	0
+5105                     ; 1070   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
+5107  0001 a150          	cp	a,#80
+5108  0003 2704          	jreq	L676
+5109  0005 a140          	cp	a,#64
+5110  0007 2603          	jrne	L476
+5111  0009               L676:
+5112  0009 4f            	clr	a
+5113  000a 2010          	jra	L007
+5114  000c               L476:
+5115  000c ae042e        	ldw	x,#1070
+5116  000f 89            	pushw	x
+5117  0010 ae0000        	ldw	x,#0
+5118  0013 89            	pushw	x
+5119  0014 ae0000        	ldw	x,#L37
+5120  0017 cd0000        	call	_assert_failed
+5122  001a 5b04          	addw	sp,#4
+5123  001c               L007:
+5124                     ; 1073   TIM1->CCMR1 =  (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_OCM))|
+5124                     ; 1074                            (uint8_t)TIM1_ForcedAction);
+5126  001c c65258        	ld	a,21080
+5127  001f a48f          	and	a,#143
+5128  0021 1a01          	or	a,(OFST+1,sp)
+5129  0023 c75258        	ld	21080,a
+5130                     ; 1075 }
+5133  0026 84            	pop	a
+5134  0027 81            	ret
+5171                     ; 1085 void TIM1_ForcedOC2Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
+5171                     ; 1086 {
+5172                     .text:	section	.text,new
+5173  0000               _TIM1_ForcedOC2Config:
+5175  0000 88            	push	a
+5176       00000000      OFST:	set	0
+5179                     ; 1088   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
+5181  0001 a150          	cp	a,#80
+5182  0003 2704          	jreq	L607
+5183  0005 a140          	cp	a,#64
+5184  0007 2603          	jrne	L407
+5185  0009               L607:
+5186  0009 4f            	clr	a
+5187  000a 2010          	jra	L017
+5188  000c               L407:
+5189  000c ae0440        	ldw	x,#1088
+5190  000f 89            	pushw	x
+5191  0010 ae0000        	ldw	x,#0
+5192  0013 89            	pushw	x
+5193  0014 ae0000        	ldw	x,#L37
+5194  0017 cd0000        	call	_assert_failed
+5196  001a 5b04          	addw	sp,#4
+5197  001c               L017:
+5198                     ; 1091   TIM1->CCMR2  =  (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_OCM))
+5198                     ; 1092                             | (uint8_t)TIM1_ForcedAction);
+5200  001c c65259        	ld	a,21081
+5201  001f a48f          	and	a,#143
+5202  0021 1a01          	or	a,(OFST+1,sp)
+5203  0023 c75259        	ld	21081,a
+5204                     ; 1093 }
+5207  0026 84            	pop	a
+5208  0027 81            	ret
+5245                     ; 1104 void TIM1_ForcedOC3Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
+5245                     ; 1105 {
+5246                     .text:	section	.text,new
+5247  0000               _TIM1_ForcedOC3Config:
+5249  0000 88            	push	a
+5250       00000000      OFST:	set	0
+5253                     ; 1107   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
+5255  0001 a150          	cp	a,#80
+5256  0003 2704          	jreq	L617
+5257  0005 a140          	cp	a,#64
+5258  0007 2603          	jrne	L417
+5259  0009               L617:
+5260  0009 4f            	clr	a
+5261  000a 2010          	jra	L027
+5262  000c               L417:
+5263  000c ae0453        	ldw	x,#1107
+5264  000f 89            	pushw	x
+5265  0010 ae0000        	ldw	x,#0
+5266  0013 89            	pushw	x
+5267  0014 ae0000        	ldw	x,#L37
+5268  0017 cd0000        	call	_assert_failed
+5270  001a 5b04          	addw	sp,#4
+5271  001c               L027:
+5272                     ; 1110   TIM1->CCMR3  =  (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_OCM))  
+5272                     ; 1111                             | (uint8_t)TIM1_ForcedAction);
+5274  001c c6525a        	ld	a,21082
+5275  001f a48f          	and	a,#143
+5276  0021 1a01          	or	a,(OFST+1,sp)
+5277  0023 c7525a        	ld	21082,a
+5278                     ; 1112 }
+5281  0026 84            	pop	a
+5282  0027 81            	ret
+5319                     ; 1123 void TIM1_ForcedOC4Config(TIM1_ForcedAction_TypeDef TIM1_ForcedAction)
+5319                     ; 1124 {
+5320                     .text:	section	.text,new
+5321  0000               _TIM1_ForcedOC4Config:
+5323  0000 88            	push	a
+5324       00000000      OFST:	set	0
+5327                     ; 1126   assert_param(IS_TIM1_FORCED_ACTION_OK(TIM1_ForcedAction));
+5329  0001 a150          	cp	a,#80
+5330  0003 2704          	jreq	L627
+5331  0005 a140          	cp	a,#64
+5332  0007 2603          	jrne	L427
+5333  0009               L627:
+5334  0009 4f            	clr	a
+5335  000a 2010          	jra	L037
+5336  000c               L427:
+5337  000c ae0466        	ldw	x,#1126
+5338  000f 89            	pushw	x
+5339  0010 ae0000        	ldw	x,#0
+5340  0013 89            	pushw	x
+5341  0014 ae0000        	ldw	x,#L37
+5342  0017 cd0000        	call	_assert_failed
+5344  001a 5b04          	addw	sp,#4
+5345  001c               L037:
+5346                     ; 1129   TIM1->CCMR4  =  (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_OCM)) 
+5346                     ; 1130                             | (uint8_t)TIM1_ForcedAction);
+5348  001c c6525b        	ld	a,21083
+5349  001f a48f          	and	a,#143
+5350  0021 1a01          	or	a,(OFST+1,sp)
+5351  0023 c7525b        	ld	21083,a
+5352                     ; 1131 }
+5355  0026 84            	pop	a
+5356  0027 81            	ret
+5393                     ; 1139 void TIM1_ARRPreloadConfig(FunctionalState NewState)
+5393                     ; 1140 {
+5394                     .text:	section	.text,new
+5395  0000               _TIM1_ARRPreloadConfig:
+5397  0000 88            	push	a
+5398       00000000      OFST:	set	0
+5401                     ; 1142   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5403  0001 4d            	tnz	a
+5404  0002 2704          	jreq	L637
+5405  0004 a101          	cp	a,#1
+5406  0006 2603          	jrne	L437
+5407  0008               L637:
+5408  0008 4f            	clr	a
+5409  0009 2010          	jra	L047
+5410  000b               L437:
+5411  000b ae0476        	ldw	x,#1142
+5412  000e 89            	pushw	x
+5413  000f ae0000        	ldw	x,#0
+5414  0012 89            	pushw	x
+5415  0013 ae0000        	ldw	x,#L37
+5416  0016 cd0000        	call	_assert_failed
+5418  0019 5b04          	addw	sp,#4
+5419  001b               L047:
+5420                     ; 1145   if (NewState != DISABLE)
+5422  001b 0d01          	tnz	(OFST+1,sp)
+5423  001d 2706          	jreq	L5102
+5424                     ; 1147     TIM1->CR1 |= TIM1_CR1_ARPE;
+5426  001f 721e5250      	bset	21072,#7
+5428  0023 2004          	jra	L7102
+5429  0025               L5102:
+5430                     ; 1151     TIM1->CR1 &= (uint8_t)(~TIM1_CR1_ARPE);
+5432  0025 721f5250      	bres	21072,#7
+5433  0029               L7102:
+5434                     ; 1153 }
+5437  0029 84            	pop	a
+5438  002a 81            	ret
+5474                     ; 1161 void TIM1_SelectCOM(FunctionalState NewState)
+5474                     ; 1162 {
+5475                     .text:	section	.text,new
+5476  0000               _TIM1_SelectCOM:
+5478  0000 88            	push	a
+5479       00000000      OFST:	set	0
+5482                     ; 1164   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5484  0001 4d            	tnz	a
+5485  0002 2704          	jreq	L647
+5486  0004 a101          	cp	a,#1
+5487  0006 2603          	jrne	L447
+5488  0008               L647:
+5489  0008 4f            	clr	a
+5490  0009 2010          	jra	L057
+5491  000b               L447:
+5492  000b ae048c        	ldw	x,#1164
+5493  000e 89            	pushw	x
+5494  000f ae0000        	ldw	x,#0
+5495  0012 89            	pushw	x
+5496  0013 ae0000        	ldw	x,#L37
+5497  0016 cd0000        	call	_assert_failed
+5499  0019 5b04          	addw	sp,#4
+5500  001b               L057:
+5501                     ; 1167   if (NewState != DISABLE)
+5503  001b 0d01          	tnz	(OFST+1,sp)
+5504  001d 2706          	jreq	L7302
+5505                     ; 1169     TIM1->CR2 |= TIM1_CR2_COMS;
+5507  001f 72145251      	bset	21073,#2
+5509  0023 2004          	jra	L1402
+5510  0025               L7302:
+5511                     ; 1173     TIM1->CR2 &= (uint8_t)(~TIM1_CR2_COMS);
+5513  0025 72155251      	bres	21073,#2
+5514  0029               L1402:
+5515                     ; 1175 }
+5518  0029 84            	pop	a
+5519  002a 81            	ret
+5556                     ; 1183 void TIM1_CCPreloadControl(FunctionalState NewState)
+5556                     ; 1184 {
+5557                     .text:	section	.text,new
+5558  0000               _TIM1_CCPreloadControl:
+5560  0000 88            	push	a
+5561       00000000      OFST:	set	0
+5564                     ; 1186   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5566  0001 4d            	tnz	a
+5567  0002 2704          	jreq	L657
+5568  0004 a101          	cp	a,#1
+5569  0006 2603          	jrne	L457
+5570  0008               L657:
+5571  0008 4f            	clr	a
+5572  0009 2010          	jra	L067
+5573  000b               L457:
+5574  000b ae04a2        	ldw	x,#1186
+5575  000e 89            	pushw	x
+5576  000f ae0000        	ldw	x,#0
+5577  0012 89            	pushw	x
+5578  0013 ae0000        	ldw	x,#L37
+5579  0016 cd0000        	call	_assert_failed
+5581  0019 5b04          	addw	sp,#4
+5582  001b               L067:
+5583                     ; 1189   if (NewState != DISABLE)
+5585  001b 0d01          	tnz	(OFST+1,sp)
+5586  001d 2706          	jreq	L1602
+5587                     ; 1191     TIM1->CR2 |= TIM1_CR2_CCPC;
+5589  001f 72105251      	bset	21073,#0
+5591  0023 2004          	jra	L3602
+5592  0025               L1602:
+5593                     ; 1195     TIM1->CR2 &= (uint8_t)(~TIM1_CR2_CCPC);
+5595  0025 72115251      	bres	21073,#0
+5596  0029               L3602:
+5597                     ; 1197 }
+5600  0029 84            	pop	a
+5601  002a 81            	ret
+5638                     ; 1205 void TIM1_OC1PreloadConfig(FunctionalState NewState)
+5638                     ; 1206 {
+5639                     .text:	section	.text,new
+5640  0000               _TIM1_OC1PreloadConfig:
+5642  0000 88            	push	a
+5643       00000000      OFST:	set	0
+5646                     ; 1208   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5648  0001 4d            	tnz	a
+5649  0002 2704          	jreq	L667
+5650  0004 a101          	cp	a,#1
+5651  0006 2603          	jrne	L467
+5652  0008               L667:
+5653  0008 4f            	clr	a
+5654  0009 2010          	jra	L077
+5655  000b               L467:
+5656  000b ae04b8        	ldw	x,#1208
+5657  000e 89            	pushw	x
+5658  000f ae0000        	ldw	x,#0
+5659  0012 89            	pushw	x
+5660  0013 ae0000        	ldw	x,#L37
+5661  0016 cd0000        	call	_assert_failed
+5663  0019 5b04          	addw	sp,#4
+5664  001b               L077:
+5665                     ; 1211   if (NewState != DISABLE)
+5667  001b 0d01          	tnz	(OFST+1,sp)
+5668  001d 2706          	jreq	L3012
+5669                     ; 1213     TIM1->CCMR1 |= TIM1_CCMR_OCxPE;
+5671  001f 72165258      	bset	21080,#3
+5673  0023 2004          	jra	L5012
+5674  0025               L3012:
+5675                     ; 1217     TIM1->CCMR1 &= (uint8_t)(~TIM1_CCMR_OCxPE);
+5677  0025 72175258      	bres	21080,#3
+5678  0029               L5012:
+5679                     ; 1219 }
+5682  0029 84            	pop	a
+5683  002a 81            	ret
+5720                     ; 1227 void TIM1_OC2PreloadConfig(FunctionalState NewState)
+5720                     ; 1228 {
+5721                     .text:	section	.text,new
+5722  0000               _TIM1_OC2PreloadConfig:
+5724  0000 88            	push	a
+5725       00000000      OFST:	set	0
+5728                     ; 1230   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5730  0001 4d            	tnz	a
+5731  0002 2704          	jreq	L677
+5732  0004 a101          	cp	a,#1
+5733  0006 2603          	jrne	L477
+5734  0008               L677:
+5735  0008 4f            	clr	a
+5736  0009 2010          	jra	L0001
+5737  000b               L477:
+5738  000b ae04ce        	ldw	x,#1230
+5739  000e 89            	pushw	x
+5740  000f ae0000        	ldw	x,#0
+5741  0012 89            	pushw	x
+5742  0013 ae0000        	ldw	x,#L37
+5743  0016 cd0000        	call	_assert_failed
+5745  0019 5b04          	addw	sp,#4
+5746  001b               L0001:
+5747                     ; 1233   if (NewState != DISABLE)
+5749  001b 0d01          	tnz	(OFST+1,sp)
+5750  001d 2706          	jreq	L5212
+5751                     ; 1235     TIM1->CCMR2 |= TIM1_CCMR_OCxPE;
+5753  001f 72165259      	bset	21081,#3
+5755  0023 2004          	jra	L7212
+5756  0025               L5212:
+5757                     ; 1239     TIM1->CCMR2 &= (uint8_t)(~TIM1_CCMR_OCxPE);
+5759  0025 72175259      	bres	21081,#3
+5760  0029               L7212:
+5761                     ; 1241 }
+5764  0029 84            	pop	a
+5765  002a 81            	ret
+5802                     ; 1249 void TIM1_OC3PreloadConfig(FunctionalState NewState)
+5802                     ; 1250 {
+5803                     .text:	section	.text,new
+5804  0000               _TIM1_OC3PreloadConfig:
+5806  0000 88            	push	a
+5807       00000000      OFST:	set	0
+5810                     ; 1252   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5812  0001 4d            	tnz	a
+5813  0002 2704          	jreq	L6001
+5814  0004 a101          	cp	a,#1
+5815  0006 2603          	jrne	L4001
+5816  0008               L6001:
+5817  0008 4f            	clr	a
+5818  0009 2010          	jra	L0101
+5819  000b               L4001:
+5820  000b ae04e4        	ldw	x,#1252
+5821  000e 89            	pushw	x
+5822  000f ae0000        	ldw	x,#0
+5823  0012 89            	pushw	x
+5824  0013 ae0000        	ldw	x,#L37
+5825  0016 cd0000        	call	_assert_failed
+5827  0019 5b04          	addw	sp,#4
+5828  001b               L0101:
+5829                     ; 1255   if (NewState != DISABLE)
+5831  001b 0d01          	tnz	(OFST+1,sp)
+5832  001d 2706          	jreq	L7412
+5833                     ; 1257     TIM1->CCMR3 |= TIM1_CCMR_OCxPE;
+5835  001f 7216525a      	bset	21082,#3
+5837  0023 2004          	jra	L1512
+5838  0025               L7412:
+5839                     ; 1261     TIM1->CCMR3 &= (uint8_t)(~TIM1_CCMR_OCxPE);
+5841  0025 7217525a      	bres	21082,#3
+5842  0029               L1512:
+5843                     ; 1263 }
+5846  0029 84            	pop	a
+5847  002a 81            	ret
+5884                     ; 1271 void TIM1_OC4PreloadConfig(FunctionalState NewState)
+5884                     ; 1272 {
+5885                     .text:	section	.text,new
+5886  0000               _TIM1_OC4PreloadConfig:
+5888  0000 88            	push	a
+5889       00000000      OFST:	set	0
+5892                     ; 1274   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5894  0001 4d            	tnz	a
+5895  0002 2704          	jreq	L6101
+5896  0004 a101          	cp	a,#1
+5897  0006 2603          	jrne	L4101
+5898  0008               L6101:
+5899  0008 4f            	clr	a
+5900  0009 2010          	jra	L0201
+5901  000b               L4101:
+5902  000b ae04fa        	ldw	x,#1274
+5903  000e 89            	pushw	x
+5904  000f ae0000        	ldw	x,#0
+5905  0012 89            	pushw	x
+5906  0013 ae0000        	ldw	x,#L37
+5907  0016 cd0000        	call	_assert_failed
+5909  0019 5b04          	addw	sp,#4
+5910  001b               L0201:
+5911                     ; 1277   if (NewState != DISABLE)
+5913  001b 0d01          	tnz	(OFST+1,sp)
+5914  001d 2706          	jreq	L1712
+5915                     ; 1279     TIM1->CCMR4 |= TIM1_CCMR_OCxPE;
+5917  001f 7216525b      	bset	21083,#3
+5919  0023 2004          	jra	L3712
+5920  0025               L1712:
+5921                     ; 1283     TIM1->CCMR4 &= (uint8_t)(~TIM1_CCMR_OCxPE);
+5923  0025 7217525b      	bres	21083,#3
+5924  0029               L3712:
+5925                     ; 1285 }
+5928  0029 84            	pop	a
+5929  002a 81            	ret
+5965                     ; 1293 void TIM1_OC1FastConfig(FunctionalState NewState)
+5965                     ; 1294 {
+5966                     .text:	section	.text,new
+5967  0000               _TIM1_OC1FastConfig:
+5969  0000 88            	push	a
+5970       00000000      OFST:	set	0
+5973                     ; 1296   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+5975  0001 4d            	tnz	a
+5976  0002 2704          	jreq	L6201
+5977  0004 a101          	cp	a,#1
+5978  0006 2603          	jrne	L4201
+5979  0008               L6201:
+5980  0008 4f            	clr	a
+5981  0009 2010          	jra	L0301
+5982  000b               L4201:
+5983  000b ae0510        	ldw	x,#1296
+5984  000e 89            	pushw	x
+5985  000f ae0000        	ldw	x,#0
+5986  0012 89            	pushw	x
+5987  0013 ae0000        	ldw	x,#L37
+5988  0016 cd0000        	call	_assert_failed
+5990  0019 5b04          	addw	sp,#4
+5991  001b               L0301:
+5992                     ; 1299   if (NewState != DISABLE)
+5994  001b 0d01          	tnz	(OFST+1,sp)
+5995  001d 2706          	jreq	L3122
+5996                     ; 1301     TIM1->CCMR1 |= TIM1_CCMR_OCxFE;
+5998  001f 72145258      	bset	21080,#2
+6000  0023 2004          	jra	L5122
+6001  0025               L3122:
+6002                     ; 1305     TIM1->CCMR1 &= (uint8_t)(~TIM1_CCMR_OCxFE);
+6004  0025 72155258      	bres	21080,#2
+6005  0029               L5122:
+6006                     ; 1307 }
+6009  0029 84            	pop	a
+6010  002a 81            	ret
+6046                     ; 1315 void TIM1_OC2FastConfig(FunctionalState NewState)
+6046                     ; 1316 {
+6047                     .text:	section	.text,new
+6048  0000               _TIM1_OC2FastConfig:
+6050  0000 88            	push	a
+6051       00000000      OFST:	set	0
+6054                     ; 1318   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+6056  0001 4d            	tnz	a
+6057  0002 2704          	jreq	L6301
+6058  0004 a101          	cp	a,#1
+6059  0006 2603          	jrne	L4301
+6060  0008               L6301:
+6061  0008 4f            	clr	a
+6062  0009 2010          	jra	L0401
+6063  000b               L4301:
+6064  000b ae0526        	ldw	x,#1318
+6065  000e 89            	pushw	x
+6066  000f ae0000        	ldw	x,#0
+6067  0012 89            	pushw	x
+6068  0013 ae0000        	ldw	x,#L37
+6069  0016 cd0000        	call	_assert_failed
+6071  0019 5b04          	addw	sp,#4
+6072  001b               L0401:
+6073                     ; 1321   if (NewState != DISABLE)
+6075  001b 0d01          	tnz	(OFST+1,sp)
+6076  001d 2706          	jreq	L5322
+6077                     ; 1323     TIM1->CCMR2 |= TIM1_CCMR_OCxFE;
+6079  001f 72145259      	bset	21081,#2
+6081  0023 2004          	jra	L7322
+6082  0025               L5322:
+6083                     ; 1327     TIM1->CCMR2 &= (uint8_t)(~TIM1_CCMR_OCxFE);
+6085  0025 72155259      	bres	21081,#2
+6086  0029               L7322:
+6087                     ; 1329 }
+6090  0029 84            	pop	a
+6091  002a 81            	ret
+6127                     ; 1337 void TIM1_OC3FastConfig(FunctionalState NewState)
+6127                     ; 1338 {
+6128                     .text:	section	.text,new
+6129  0000               _TIM1_OC3FastConfig:
+6131  0000 88            	push	a
+6132       00000000      OFST:	set	0
+6135                     ; 1340   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+6137  0001 4d            	tnz	a
+6138  0002 2704          	jreq	L6401
+6139  0004 a101          	cp	a,#1
+6140  0006 2603          	jrne	L4401
+6141  0008               L6401:
+6142  0008 4f            	clr	a
+6143  0009 2010          	jra	L0501
+6144  000b               L4401:
+6145  000b ae053c        	ldw	x,#1340
+6146  000e 89            	pushw	x
+6147  000f ae0000        	ldw	x,#0
+6148  0012 89            	pushw	x
+6149  0013 ae0000        	ldw	x,#L37
+6150  0016 cd0000        	call	_assert_failed
+6152  0019 5b04          	addw	sp,#4
+6153  001b               L0501:
+6154                     ; 1343   if (NewState != DISABLE)
+6156  001b 0d01          	tnz	(OFST+1,sp)
+6157  001d 2706          	jreq	L7522
+6158                     ; 1345     TIM1->CCMR3 |= TIM1_CCMR_OCxFE;
+6160  001f 7214525a      	bset	21082,#2
+6162  0023 2004          	jra	L1622
+6163  0025               L7522:
+6164                     ; 1349     TIM1->CCMR3 &= (uint8_t)(~TIM1_CCMR_OCxFE);
+6166  0025 7215525a      	bres	21082,#2
+6167  0029               L1622:
+6168                     ; 1351 }
+6171  0029 84            	pop	a
+6172  002a 81            	ret
+6208                     ; 1359 void TIM1_OC4FastConfig(FunctionalState NewState)
+6208                     ; 1360 {
+6209                     .text:	section	.text,new
+6210  0000               _TIM1_OC4FastConfig:
+6212  0000 88            	push	a
+6213       00000000      OFST:	set	0
+6216                     ; 1362   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+6218  0001 4d            	tnz	a
+6219  0002 2704          	jreq	L6501
+6220  0004 a101          	cp	a,#1
+6221  0006 2603          	jrne	L4501
+6222  0008               L6501:
+6223  0008 4f            	clr	a
+6224  0009 2010          	jra	L0601
+6225  000b               L4501:
+6226  000b ae0552        	ldw	x,#1362
+6227  000e 89            	pushw	x
+6228  000f ae0000        	ldw	x,#0
+6229  0012 89            	pushw	x
+6230  0013 ae0000        	ldw	x,#L37
+6231  0016 cd0000        	call	_assert_failed
+6233  0019 5b04          	addw	sp,#4
+6234  001b               L0601:
+6235                     ; 1365   if (NewState != DISABLE)
+6237  001b 0d01          	tnz	(OFST+1,sp)
+6238  001d 2706          	jreq	L1032
+6239                     ; 1367     TIM1->CCMR4 |= TIM1_CCMR_OCxFE;
+6241  001f 7214525b      	bset	21083,#2
+6243  0023 2004          	jra	L3032
+6244  0025               L1032:
+6245                     ; 1371     TIM1->CCMR4 &= (uint8_t)(~TIM1_CCMR_OCxFE);
+6247  0025 7215525b      	bres	21083,#2
+6248  0029               L3032:
+6249                     ; 1373 }
+6252  0029 84            	pop	a
+6253  002a 81            	ret
+6359                     ; 1389 void TIM1_GenerateEvent(TIM1_EventSource_TypeDef TIM1_EventSource)
+6359                     ; 1390 {
+6360                     .text:	section	.text,new
+6361  0000               _TIM1_GenerateEvent:
+6363  0000 88            	push	a
+6364       00000000      OFST:	set	0
+6367                     ; 1392   assert_param(IS_TIM1_EVENT_SOURCE_OK(TIM1_EventSource));
+6369  0001 4d            	tnz	a
+6370  0002 2703          	jreq	L4601
+6371  0004 4f            	clr	a
+6372  0005 2010          	jra	L6601
+6373  0007               L4601:
+6374  0007 ae0570        	ldw	x,#1392
+6375  000a 89            	pushw	x
+6376  000b ae0000        	ldw	x,#0
+6377  000e 89            	pushw	x
+6378  000f ae0000        	ldw	x,#L37
+6379  0012 cd0000        	call	_assert_failed
+6381  0015 5b04          	addw	sp,#4
+6382  0017               L6601:
+6383                     ; 1395   TIM1->EGR = (uint8_t)TIM1_EventSource;
+6385  0017 7b01          	ld	a,(OFST+1,sp)
+6386  0019 c75257        	ld	21079,a
+6387                     ; 1396 }
+6390  001c 84            	pop	a
+6391  001d 81            	ret
+6428                     ; 1406 void TIM1_OC1PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
+6428                     ; 1407 {
+6429                     .text:	section	.text,new
+6430  0000               _TIM1_OC1PolarityConfig:
+6432  0000 88            	push	a
+6433       00000000      OFST:	set	0
+6436                     ; 1409   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+6438  0001 4d            	tnz	a
+6439  0002 2704          	jreq	L4701
+6440  0004 a122          	cp	a,#34
+6441  0006 2603          	jrne	L2701
+6442  0008               L4701:
+6443  0008 4f            	clr	a
+6444  0009 2010          	jra	L6701
+6445  000b               L2701:
+6446  000b ae0581        	ldw	x,#1409
+6447  000e 89            	pushw	x
+6448  000f ae0000        	ldw	x,#0
+6449  0012 89            	pushw	x
+6450  0013 ae0000        	ldw	x,#L37
+6451  0016 cd0000        	call	_assert_failed
+6453  0019 5b04          	addw	sp,#4
+6454  001b               L6701:
+6455                     ; 1412   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
+6457  001b 0d01          	tnz	(OFST+1,sp)
+6458  001d 2706          	jreq	L5632
+6459                     ; 1414     TIM1->CCER1 |= TIM1_CCER1_CC1P;
+6461  001f 7212525c      	bset	21084,#1
+6463  0023 2004          	jra	L7632
+6464  0025               L5632:
+6465                     ; 1418     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
+6467  0025 7213525c      	bres	21084,#1
+6468  0029               L7632:
+6469                     ; 1420 }
+6472  0029 84            	pop	a
+6473  002a 81            	ret
+6510                     ; 1430 void TIM1_OC1NPolarityConfig(TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity)
+6510                     ; 1431 {
+6511                     .text:	section	.text,new
+6512  0000               _TIM1_OC1NPolarityConfig:
+6514  0000 88            	push	a
+6515       00000000      OFST:	set	0
+6518                     ; 1433   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
+6520  0001 4d            	tnz	a
+6521  0002 2704          	jreq	L4011
+6522  0004 a188          	cp	a,#136
+6523  0006 2603          	jrne	L2011
+6524  0008               L4011:
+6525  0008 4f            	clr	a
+6526  0009 2010          	jra	L6011
+6527  000b               L2011:
+6528  000b ae0599        	ldw	x,#1433
+6529  000e 89            	pushw	x
+6530  000f ae0000        	ldw	x,#0
+6531  0012 89            	pushw	x
+6532  0013 ae0000        	ldw	x,#L37
+6533  0016 cd0000        	call	_assert_failed
+6535  0019 5b04          	addw	sp,#4
+6536  001b               L6011:
+6537                     ; 1436   if (TIM1_OCNPolarity != TIM1_OCNPOLARITY_HIGH)
+6539  001b 0d01          	tnz	(OFST+1,sp)
+6540  001d 2706          	jreq	L7042
+6541                     ; 1438     TIM1->CCER1 |= TIM1_CCER1_CC1NP;
+6543  001f 7216525c      	bset	21084,#3
+6545  0023 2004          	jra	L1142
+6546  0025               L7042:
+6547                     ; 1442     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1NP);
+6549  0025 7217525c      	bres	21084,#3
+6550  0029               L1142:
+6551                     ; 1444 }
+6554  0029 84            	pop	a
+6555  002a 81            	ret
+6592                     ; 1454 void TIM1_OC2PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
+6592                     ; 1455 {
+6593                     .text:	section	.text,new
+6594  0000               _TIM1_OC2PolarityConfig:
+6596  0000 88            	push	a
+6597       00000000      OFST:	set	0
+6600                     ; 1457   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+6602  0001 4d            	tnz	a
+6603  0002 2704          	jreq	L4111
+6604  0004 a122          	cp	a,#34
+6605  0006 2603          	jrne	L2111
+6606  0008               L4111:
+6607  0008 4f            	clr	a
+6608  0009 2010          	jra	L6111
+6609  000b               L2111:
+6610  000b ae05b1        	ldw	x,#1457
+6611  000e 89            	pushw	x
+6612  000f ae0000        	ldw	x,#0
+6613  0012 89            	pushw	x
+6614  0013 ae0000        	ldw	x,#L37
+6615  0016 cd0000        	call	_assert_failed
+6617  0019 5b04          	addw	sp,#4
+6618  001b               L6111:
+6619                     ; 1460   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
+6621  001b 0d01          	tnz	(OFST+1,sp)
+6622  001d 2706          	jreq	L1342
+6623                     ; 1462     TIM1->CCER1 |= TIM1_CCER1_CC2P;
+6625  001f 721a525c      	bset	21084,#5
+6627  0023 2004          	jra	L3342
+6628  0025               L1342:
+6629                     ; 1466     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
+6631  0025 721b525c      	bres	21084,#5
+6632  0029               L3342:
+6633                     ; 1468 }
+6636  0029 84            	pop	a
+6637  002a 81            	ret
+6674                     ; 1478 void TIM1_OC2NPolarityConfig(TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity)
+6674                     ; 1479 {
+6675                     .text:	section	.text,new
+6676  0000               _TIM1_OC2NPolarityConfig:
+6678  0000 88            	push	a
+6679       00000000      OFST:	set	0
+6682                     ; 1481   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
+6684  0001 4d            	tnz	a
+6685  0002 2704          	jreq	L4211
+6686  0004 a188          	cp	a,#136
+6687  0006 2603          	jrne	L2211
+6688  0008               L4211:
+6689  0008 4f            	clr	a
+6690  0009 2010          	jra	L6211
+6691  000b               L2211:
+6692  000b ae05c9        	ldw	x,#1481
+6693  000e 89            	pushw	x
+6694  000f ae0000        	ldw	x,#0
+6695  0012 89            	pushw	x
+6696  0013 ae0000        	ldw	x,#L37
+6697  0016 cd0000        	call	_assert_failed
+6699  0019 5b04          	addw	sp,#4
+6700  001b               L6211:
+6701                     ; 1484   if (TIM1_OCNPolarity != TIM1_OCNPOLARITY_HIGH)
+6703  001b 0d01          	tnz	(OFST+1,sp)
+6704  001d 2706          	jreq	L3542
+6705                     ; 1486     TIM1->CCER1 |= TIM1_CCER1_CC2NP;
+6707  001f 721e525c      	bset	21084,#7
+6709  0023 2004          	jra	L5542
+6710  0025               L3542:
+6711                     ; 1490     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2NP);
+6713  0025 721f525c      	bres	21084,#7
+6714  0029               L5542:
+6715                     ; 1492 }
+6718  0029 84            	pop	a
+6719  002a 81            	ret
+6756                     ; 1502 void TIM1_OC3PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
+6756                     ; 1503 {
+6757                     .text:	section	.text,new
+6758  0000               _TIM1_OC3PolarityConfig:
+6760  0000 88            	push	a
+6761       00000000      OFST:	set	0
+6764                     ; 1505   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+6766  0001 4d            	tnz	a
+6767  0002 2704          	jreq	L4311
+6768  0004 a122          	cp	a,#34
+6769  0006 2603          	jrne	L2311
+6770  0008               L4311:
+6771  0008 4f            	clr	a
+6772  0009 2010          	jra	L6311
+6773  000b               L2311:
+6774  000b ae05e1        	ldw	x,#1505
+6775  000e 89            	pushw	x
+6776  000f ae0000        	ldw	x,#0
+6777  0012 89            	pushw	x
+6778  0013 ae0000        	ldw	x,#L37
+6779  0016 cd0000        	call	_assert_failed
+6781  0019 5b04          	addw	sp,#4
+6782  001b               L6311:
+6783                     ; 1508   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
+6785  001b 0d01          	tnz	(OFST+1,sp)
+6786  001d 2706          	jreq	L5742
+6787                     ; 1510     TIM1->CCER2 |= TIM1_CCER2_CC3P;
+6789  001f 7212525d      	bset	21085,#1
+6791  0023 2004          	jra	L7742
+6792  0025               L5742:
+6793                     ; 1514     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3P);
+6795  0025 7213525d      	bres	21085,#1
+6796  0029               L7742:
+6797                     ; 1516 }
+6800  0029 84            	pop	a
+6801  002a 81            	ret
+6838                     ; 1527 void TIM1_OC3NPolarityConfig(TIM1_OCNPolarity_TypeDef TIM1_OCNPolarity)
+6838                     ; 1528 {
+6839                     .text:	section	.text,new
+6840  0000               _TIM1_OC3NPolarityConfig:
+6842  0000 88            	push	a
+6843       00000000      OFST:	set	0
+6846                     ; 1530   assert_param(IS_TIM1_OCN_POLARITY_OK(TIM1_OCNPolarity));
+6848  0001 4d            	tnz	a
+6849  0002 2704          	jreq	L4411
+6850  0004 a188          	cp	a,#136
+6851  0006 2603          	jrne	L2411
+6852  0008               L4411:
+6853  0008 4f            	clr	a
+6854  0009 2010          	jra	L6411
+6855  000b               L2411:
+6856  000b ae05fa        	ldw	x,#1530
+6857  000e 89            	pushw	x
+6858  000f ae0000        	ldw	x,#0
+6859  0012 89            	pushw	x
+6860  0013 ae0000        	ldw	x,#L37
+6861  0016 cd0000        	call	_assert_failed
+6863  0019 5b04          	addw	sp,#4
+6864  001b               L6411:
+6865                     ; 1533   if (TIM1_OCNPolarity != TIM1_OCNPOLARITY_HIGH)
+6867  001b 0d01          	tnz	(OFST+1,sp)
+6868  001d 2706          	jreq	L7152
+6869                     ; 1535     TIM1->CCER2 |= TIM1_CCER2_CC3NP;
+6871  001f 7216525d      	bset	21085,#3
+6873  0023 2004          	jra	L1252
+6874  0025               L7152:
+6875                     ; 1539     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3NP);
+6877  0025 7217525d      	bres	21085,#3
+6878  0029               L1252:
+6879                     ; 1541 }
+6882  0029 84            	pop	a
+6883  002a 81            	ret
+6920                     ; 1551 void TIM1_OC4PolarityConfig(TIM1_OCPolarity_TypeDef TIM1_OCPolarity)
+6920                     ; 1552 {
+6921                     .text:	section	.text,new
+6922  0000               _TIM1_OC4PolarityConfig:
+6924  0000 88            	push	a
+6925       00000000      OFST:	set	0
+6928                     ; 1554   assert_param(IS_TIM1_OC_POLARITY_OK(TIM1_OCPolarity));
+6930  0001 4d            	tnz	a
+6931  0002 2704          	jreq	L4511
+6932  0004 a122          	cp	a,#34
+6933  0006 2603          	jrne	L2511
+6934  0008               L4511:
+6935  0008 4f            	clr	a
+6936  0009 2010          	jra	L6511
+6937  000b               L2511:
+6938  000b ae0612        	ldw	x,#1554
+6939  000e 89            	pushw	x
+6940  000f ae0000        	ldw	x,#0
+6941  0012 89            	pushw	x
+6942  0013 ae0000        	ldw	x,#L37
+6943  0016 cd0000        	call	_assert_failed
+6945  0019 5b04          	addw	sp,#4
+6946  001b               L6511:
+6947                     ; 1557   if (TIM1_OCPolarity != TIM1_OCPOLARITY_HIGH)
+6949  001b 0d01          	tnz	(OFST+1,sp)
+6950  001d 2706          	jreq	L1452
+6951                     ; 1559     TIM1->CCER2 |= TIM1_CCER2_CC4P;
+6953  001f 721a525d      	bset	21085,#5
+6955  0023 2004          	jra	L3452
+6956  0025               L1452:
+6957                     ; 1563     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4P);
+6959  0025 721b525d      	bres	21085,#5
+6960  0029               L3452:
+6961                     ; 1565 }
+6964  0029 84            	pop	a
+6965  002a 81            	ret
+7011                     ; 1579 void TIM1_CCxCmd(TIM1_Channel_TypeDef TIM1_Channel, FunctionalState NewState)
+7011                     ; 1580 {
+7012                     .text:	section	.text,new
+7013  0000               _TIM1_CCxCmd:
+7015  0000 89            	pushw	x
+7016       00000000      OFST:	set	0
+7019                     ; 1582   assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
+7021  0001 9e            	ld	a,xh
+7022  0002 4d            	tnz	a
+7023  0003 270f          	jreq	L4611
+7024  0005 9e            	ld	a,xh
+7025  0006 a101          	cp	a,#1
+7026  0008 270a          	jreq	L4611
+7027  000a 9e            	ld	a,xh
+7028  000b a102          	cp	a,#2
+7029  000d 2705          	jreq	L4611
+7030  000f 9e            	ld	a,xh
+7031  0010 a103          	cp	a,#3
+7032  0012 2603          	jrne	L2611
+7033  0014               L4611:
+7034  0014 4f            	clr	a
+7035  0015 2010          	jra	L6611
+7036  0017               L2611:
+7037  0017 ae062e        	ldw	x,#1582
+7038  001a 89            	pushw	x
+7039  001b ae0000        	ldw	x,#0
+7040  001e 89            	pushw	x
+7041  001f ae0000        	ldw	x,#L37
+7042  0022 cd0000        	call	_assert_failed
+7044  0025 5b04          	addw	sp,#4
+7045  0027               L6611:
+7046                     ; 1583   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+7048  0027 0d02          	tnz	(OFST+2,sp)
+7049  0029 2706          	jreq	L2711
+7050  002b 7b02          	ld	a,(OFST+2,sp)
+7051  002d a101          	cp	a,#1
+7052  002f 2603          	jrne	L0711
+7053  0031               L2711:
+7054  0031 4f            	clr	a
+7055  0032 2010          	jra	L4711
+7056  0034               L0711:
+7057  0034 ae062f        	ldw	x,#1583
+7058  0037 89            	pushw	x
+7059  0038 ae0000        	ldw	x,#0
+7060  003b 89            	pushw	x
+7061  003c ae0000        	ldw	x,#L37
+7062  003f cd0000        	call	_assert_failed
+7064  0042 5b04          	addw	sp,#4
+7065  0044               L4711:
+7066                     ; 1585   if (TIM1_Channel == TIM1_CHANNEL_1)
+7068  0044 0d01          	tnz	(OFST+1,sp)
+7069  0046 2610          	jrne	L7652
+7070                     ; 1588     if (NewState != DISABLE)
+7072  0048 0d02          	tnz	(OFST+2,sp)
+7073  004a 2706          	jreq	L1752
+7074                     ; 1590       TIM1->CCER1 |= TIM1_CCER1_CC1E;
+7076  004c 7210525c      	bset	21084,#0
+7078  0050 2040          	jra	L5752
+7079  0052               L1752:
+7080                     ; 1594       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
+7082  0052 7211525c      	bres	21084,#0
+7083  0056 203a          	jra	L5752
+7084  0058               L7652:
+7085                     ; 1598   else if (TIM1_Channel == TIM1_CHANNEL_2)
+7087  0058 7b01          	ld	a,(OFST+1,sp)
+7088  005a a101          	cp	a,#1
+7089  005c 2610          	jrne	L7752
+7090                     ; 1601     if (NewState != DISABLE)
+7092  005e 0d02          	tnz	(OFST+2,sp)
+7093  0060 2706          	jreq	L1062
+7094                     ; 1603       TIM1->CCER1 |= TIM1_CCER1_CC2E;
+7096  0062 7218525c      	bset	21084,#4
+7098  0066 202a          	jra	L5752
+7099  0068               L1062:
+7100                     ; 1607       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2E);
+7102  0068 7219525c      	bres	21084,#4
+7103  006c 2024          	jra	L5752
+7104  006e               L7752:
+7105                     ; 1610   else if (TIM1_Channel == TIM1_CHANNEL_3)
+7107  006e 7b01          	ld	a,(OFST+1,sp)
+7108  0070 a102          	cp	a,#2
+7109  0072 2610          	jrne	L7062
+7110                     ; 1613     if (NewState != DISABLE)
+7112  0074 0d02          	tnz	(OFST+2,sp)
+7113  0076 2706          	jreq	L1162
+7114                     ; 1615       TIM1->CCER2 |= TIM1_CCER2_CC3E;
+7116  0078 7210525d      	bset	21085,#0
+7118  007c 2014          	jra	L5752
+7119  007e               L1162:
+7120                     ; 1619       TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3E);
+7122  007e 7211525d      	bres	21085,#0
+7123  0082 200e          	jra	L5752
+7124  0084               L7062:
+7125                     ; 1625     if (NewState != DISABLE)
+7127  0084 0d02          	tnz	(OFST+2,sp)
+7128  0086 2706          	jreq	L7162
+7129                     ; 1627       TIM1->CCER2 |= TIM1_CCER2_CC4E;
+7131  0088 7218525d      	bset	21085,#4
+7133  008c 2004          	jra	L5752
+7134  008e               L7162:
+7135                     ; 1631       TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4E);
+7137  008e 7219525d      	bres	21085,#4
+7138  0092               L5752:
+7139                     ; 1634 }
+7142  0092 85            	popw	x
+7143  0093 81            	ret
+7189                     ; 1647 void TIM1_CCxNCmd(TIM1_Channel_TypeDef TIM1_Channel, FunctionalState NewState)
+7189                     ; 1648 {
+7190                     .text:	section	.text,new
+7191  0000               _TIM1_CCxNCmd:
+7193  0000 89            	pushw	x
+7194       00000000      OFST:	set	0
+7197                     ; 1650   assert_param(IS_TIM1_COMPLEMENTARY_CHANNEL_OK(TIM1_Channel));
+7199  0001 9e            	ld	a,xh
+7200  0002 4d            	tnz	a
+7201  0003 270a          	jreq	L2021
+7202  0005 9e            	ld	a,xh
+7203  0006 a101          	cp	a,#1
+7204  0008 2705          	jreq	L2021
+7205  000a 9e            	ld	a,xh
+7206  000b a102          	cp	a,#2
+7207  000d 2603          	jrne	L0021
+7208  000f               L2021:
+7209  000f 4f            	clr	a
+7210  0010 2010          	jra	L4021
+7211  0012               L0021:
+7212  0012 ae0672        	ldw	x,#1650
+7213  0015 89            	pushw	x
+7214  0016 ae0000        	ldw	x,#0
+7215  0019 89            	pushw	x
+7216  001a ae0000        	ldw	x,#L37
+7217  001d cd0000        	call	_assert_failed
+7219  0020 5b04          	addw	sp,#4
+7220  0022               L4021:
+7221                     ; 1651   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+7223  0022 0d02          	tnz	(OFST+2,sp)
+7224  0024 2706          	jreq	L0121
+7225  0026 7b02          	ld	a,(OFST+2,sp)
+7226  0028 a101          	cp	a,#1
+7227  002a 2603          	jrne	L6021
+7228  002c               L0121:
+7229  002c 4f            	clr	a
+7230  002d 2010          	jra	L2121
+7231  002f               L6021:
+7232  002f ae0673        	ldw	x,#1651
+7233  0032 89            	pushw	x
+7234  0033 ae0000        	ldw	x,#0
+7235  0036 89            	pushw	x
+7236  0037 ae0000        	ldw	x,#L37
+7237  003a cd0000        	call	_assert_failed
+7239  003d 5b04          	addw	sp,#4
+7240  003f               L2121:
+7241                     ; 1653   if (TIM1_Channel == TIM1_CHANNEL_1)
+7243  003f 0d01          	tnz	(OFST+1,sp)
+7244  0041 2610          	jrne	L5462
+7245                     ; 1656     if (NewState != DISABLE)
+7247  0043 0d02          	tnz	(OFST+2,sp)
+7248  0045 2706          	jreq	L7462
+7249                     ; 1658       TIM1->CCER1 |= TIM1_CCER1_CC1NE;
+7251  0047 7214525c      	bset	21084,#2
+7253  004b 202a          	jra	L3562
+7254  004d               L7462:
+7255                     ; 1662       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1NE);
+7257  004d 7215525c      	bres	21084,#2
+7258  0051 2024          	jra	L3562
+7259  0053               L5462:
+7260                     ; 1665   else if (TIM1_Channel == TIM1_CHANNEL_2)
+7262  0053 7b01          	ld	a,(OFST+1,sp)
+7263  0055 a101          	cp	a,#1
+7264  0057 2610          	jrne	L5562
+7265                     ; 1668     if (NewState != DISABLE)
+7267  0059 0d02          	tnz	(OFST+2,sp)
+7268  005b 2706          	jreq	L7562
+7269                     ; 1670       TIM1->CCER1 |= TIM1_CCER1_CC2NE;
+7271  005d 721c525c      	bset	21084,#6
+7273  0061 2014          	jra	L3562
+7274  0063               L7562:
+7275                     ; 1674       TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2NE);
+7277  0063 721d525c      	bres	21084,#6
+7278  0067 200e          	jra	L3562
+7279  0069               L5562:
+7280                     ; 1680     if (NewState != DISABLE)
+7282  0069 0d02          	tnz	(OFST+2,sp)
+7283  006b 2706          	jreq	L5662
+7284                     ; 1682       TIM1->CCER2 |= TIM1_CCER2_CC3NE;
+7286  006d 7214525d      	bset	21085,#2
+7288  0071 2004          	jra	L3562
+7289  0073               L5662:
+7290                     ; 1686       TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3NE);
+7292  0073 7215525d      	bres	21085,#2
+7293  0077               L3562:
+7294                     ; 1689 }
+7297  0077 85            	popw	x
+7298  0078 81            	ret
+7344                     ; 1712 void TIM1_SelectOCxM(TIM1_Channel_TypeDef TIM1_Channel, TIM1_OCMode_TypeDef TIM1_OCMode)
+7344                     ; 1713 {
+7345                     .text:	section	.text,new
+7346  0000               _TIM1_SelectOCxM:
+7348  0000 89            	pushw	x
+7349       00000000      OFST:	set	0
+7352                     ; 1715   assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
+7354  0001 9e            	ld	a,xh
+7355  0002 4d            	tnz	a
+7356  0003 270f          	jreq	L0221
+7357  0005 9e            	ld	a,xh
+7358  0006 a101          	cp	a,#1
+7359  0008 270a          	jreq	L0221
+7360  000a 9e            	ld	a,xh
+7361  000b a102          	cp	a,#2
+7362  000d 2705          	jreq	L0221
+7363  000f 9e            	ld	a,xh
+7364  0010 a103          	cp	a,#3
+7365  0012 2603          	jrne	L6121
+7366  0014               L0221:
+7367  0014 4f            	clr	a
+7368  0015 2010          	jra	L2221
+7369  0017               L6121:
+7370  0017 ae06b3        	ldw	x,#1715
+7371  001a 89            	pushw	x
+7372  001b ae0000        	ldw	x,#0
+7373  001e 89            	pushw	x
+7374  001f ae0000        	ldw	x,#L37
+7375  0022 cd0000        	call	_assert_failed
+7377  0025 5b04          	addw	sp,#4
+7378  0027               L2221:
+7379                     ; 1716   assert_param(IS_TIM1_OCM_OK(TIM1_OCMode));
+7381  0027 0d02          	tnz	(OFST+2,sp)
+7382  0029 272a          	jreq	L6221
+7383  002b 7b02          	ld	a,(OFST+2,sp)
+7384  002d a110          	cp	a,#16
+7385  002f 2724          	jreq	L6221
+7386  0031 7b02          	ld	a,(OFST+2,sp)
+7387  0033 a120          	cp	a,#32
+7388  0035 271e          	jreq	L6221
+7389  0037 7b02          	ld	a,(OFST+2,sp)
+7390  0039 a130          	cp	a,#48
+7391  003b 2718          	jreq	L6221
+7392  003d 7b02          	ld	a,(OFST+2,sp)
+7393  003f a160          	cp	a,#96
+7394  0041 2712          	jreq	L6221
+7395  0043 7b02          	ld	a,(OFST+2,sp)
+7396  0045 a170          	cp	a,#112
+7397  0047 270c          	jreq	L6221
+7398  0049 7b02          	ld	a,(OFST+2,sp)
+7399  004b a150          	cp	a,#80
+7400  004d 2706          	jreq	L6221
+7401  004f 7b02          	ld	a,(OFST+2,sp)
+7402  0051 a140          	cp	a,#64
+7403  0053 2603          	jrne	L4221
+7404  0055               L6221:
+7405  0055 4f            	clr	a
+7406  0056 2010          	jra	L0321
+7407  0058               L4221:
+7408  0058 ae06b4        	ldw	x,#1716
+7409  005b 89            	pushw	x
+7410  005c ae0000        	ldw	x,#0
+7411  005f 89            	pushw	x
+7412  0060 ae0000        	ldw	x,#L37
+7413  0063 cd0000        	call	_assert_failed
+7415  0066 5b04          	addw	sp,#4
+7416  0068               L0321:
+7417                     ; 1718   if (TIM1_Channel == TIM1_CHANNEL_1)
+7419  0068 0d01          	tnz	(OFST+1,sp)
+7420  006a 2610          	jrne	L3172
+7421                     ; 1721     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
+7423  006c 7211525c      	bres	21084,#0
+7424                     ; 1724     TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_OCM)) 
+7424                     ; 1725                             | (uint8_t)TIM1_OCMode);
+7426  0070 c65258        	ld	a,21080
+7427  0073 a48f          	and	a,#143
+7428  0075 1a02          	or	a,(OFST+2,sp)
+7429  0077 c75258        	ld	21080,a
+7431  007a 203a          	jra	L5172
+7432  007c               L3172:
+7433                     ; 1727   else if (TIM1_Channel == TIM1_CHANNEL_2)
+7435  007c 7b01          	ld	a,(OFST+1,sp)
+7436  007e a101          	cp	a,#1
+7437  0080 2610          	jrne	L7172
+7438                     ; 1730     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2E);
+7440  0082 7219525c      	bres	21084,#4
+7441                     ; 1733     TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_OCM))
+7441                     ; 1734                             | (uint8_t)TIM1_OCMode);
+7443  0086 c65259        	ld	a,21081
+7444  0089 a48f          	and	a,#143
+7445  008b 1a02          	or	a,(OFST+2,sp)
+7446  008d c75259        	ld	21081,a
+7448  0090 2024          	jra	L5172
+7449  0092               L7172:
+7450                     ; 1736   else if (TIM1_Channel == TIM1_CHANNEL_3)
+7452  0092 7b01          	ld	a,(OFST+1,sp)
+7453  0094 a102          	cp	a,#2
+7454  0096 2610          	jrne	L3272
+7455                     ; 1739     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3E);
+7457  0098 7211525d      	bres	21085,#0
+7458                     ; 1742     TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_OCM)) 
+7458                     ; 1743                             | (uint8_t)TIM1_OCMode);
+7460  009c c6525a        	ld	a,21082
+7461  009f a48f          	and	a,#143
+7462  00a1 1a02          	or	a,(OFST+2,sp)
+7463  00a3 c7525a        	ld	21082,a
+7465  00a6 200e          	jra	L5172
+7466  00a8               L3272:
+7467                     ; 1748     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4E);
+7469  00a8 7219525d      	bres	21085,#4
+7470                     ; 1751     TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_OCM)) 
+7470                     ; 1752                             | (uint8_t)TIM1_OCMode);
+7472  00ac c6525b        	ld	a,21083
+7473  00af a48f          	and	a,#143
+7474  00b1 1a02          	or	a,(OFST+2,sp)
+7475  00b3 c7525b        	ld	21083,a
+7476  00b6               L5172:
+7477                     ; 1754 }
+7480  00b6 85            	popw	x
+7481  00b7 81            	ret
+7513                     ; 1762 void TIM1_SetCounter(uint16_t Counter)
+7513                     ; 1763 {
+7514                     .text:	section	.text,new
+7515  0000               _TIM1_SetCounter:
+7519                     ; 1765   TIM1->CNTRH = (uint8_t)(Counter >> 8);
+7521  0000 9e            	ld	a,xh
+7522  0001 c7525e        	ld	21086,a
+7523                     ; 1766   TIM1->CNTRL = (uint8_t)(Counter);
+7525  0004 9f            	ld	a,xl
+7526  0005 c7525f        	ld	21087,a
+7527                     ; 1767 }
+7530  0008 81            	ret
+7562                     ; 1775 void TIM1_SetAutoreload(uint16_t Autoreload)
+7562                     ; 1776 {
+7563                     .text:	section	.text,new
+7564  0000               _TIM1_SetAutoreload:
+7568                     ; 1778   TIM1->ARRH = (uint8_t)(Autoreload >> 8);
+7570  0000 9e            	ld	a,xh
+7571  0001 c75262        	ld	21090,a
+7572                     ; 1779   TIM1->ARRL = (uint8_t)(Autoreload);
+7574  0004 9f            	ld	a,xl
+7575  0005 c75263        	ld	21091,a
+7576                     ; 1780  }
+7579  0008 81            	ret
+7611                     ; 1788 void TIM1_SetCompare1(uint16_t Compare1)
+7611                     ; 1789 {
+7612                     .text:	section	.text,new
+7613  0000               _TIM1_SetCompare1:
+7617                     ; 1791   TIM1->CCR1H = (uint8_t)(Compare1 >> 8);
+7619  0000 9e            	ld	a,xh
+7620  0001 c75265        	ld	21093,a
+7621                     ; 1792   TIM1->CCR1L = (uint8_t)(Compare1);
+7623  0004 9f            	ld	a,xl
+7624  0005 c75266        	ld	21094,a
+7625                     ; 1793 }
+7628  0008 81            	ret
+7660                     ; 1801 void TIM1_SetCompare2(uint16_t Compare2)
+7660                     ; 1802 {
 7661                     .text:	section	.text,new
-7662  0000               _TIM1_GetCapture3:
-7664  0000 5204          	subw	sp,#4
-7665       00000004      OFST:	set	4
-7668                     ; 1967   uint16_t tmpccr3 = 0;
-7670                     ; 1968   uint8_t tmpccr3l=0, tmpccr3h=0;
-7674                     ; 1970   tmpccr3h = TIM1->CCR3H;
-7676  0002 c65269        	ld	a,21097
-7677  0005 6b02          	ld	(OFST-2,sp),a
-7679                     ; 1971   tmpccr3l = TIM1->CCR3L;
-7681  0007 c6526a        	ld	a,21098
-7682  000a 6b01          	ld	(OFST-3,sp),a
-7684                     ; 1973   tmpccr3 = (uint16_t)(tmpccr3l);
-7686  000c 5f            	clrw	x
-7687  000d 97            	ld	xl,a
-7688  000e 1f03          	ldw	(OFST-1,sp),x
-7690                     ; 1974   tmpccr3 |= (uint16_t)((uint16_t)tmpccr3h << 8);
-7692  0010 5f            	clrw	x
-7693  0011 7b02          	ld	a,(OFST-2,sp)
-7694  0013 97            	ld	xl,a
-7695  0014 7b04          	ld	a,(OFST+0,sp)
-7696  0016 01            	rrwa	x,a
-7697  0017 1a03          	or	a,(OFST-1,sp)
-7698  0019 01            	rrwa	x,a
-7700                     ; 1976   return (uint16_t)tmpccr3;
-7704  001a 5b04          	addw	sp,#4
-7705  001c 81            	ret	
-7751                     ; 1984 uint16_t TIM1_GetCapture4(void)
-7751                     ; 1985 {
-7752                     .text:	section	.text,new
-7753  0000               _TIM1_GetCapture4:
-7755  0000 5204          	subw	sp,#4
-7756       00000004      OFST:	set	4
-7759                     ; 1987   uint16_t tmpccr4 = 0;
-7761                     ; 1988   uint8_t tmpccr4l=0, tmpccr4h=0;
-7765                     ; 1990   tmpccr4h = TIM1->CCR4H;
-7767  0002 c6526b        	ld	a,21099
-7768  0005 6b02          	ld	(OFST-2,sp),a
-7770                     ; 1991   tmpccr4l = TIM1->CCR4L;
-7772  0007 c6526c        	ld	a,21100
-7773  000a 6b01          	ld	(OFST-3,sp),a
-7775                     ; 1993   tmpccr4 = (uint16_t)(tmpccr4l);
-7777  000c 5f            	clrw	x
-7778  000d 97            	ld	xl,a
-7779  000e 1f03          	ldw	(OFST-1,sp),x
-7781                     ; 1994   tmpccr4 |= (uint16_t)((uint16_t)tmpccr4h << 8);
-7783  0010 5f            	clrw	x
-7784  0011 7b02          	ld	a,(OFST-2,sp)
-7785  0013 97            	ld	xl,a
-7786  0014 7b04          	ld	a,(OFST+0,sp)
-7787  0016 01            	rrwa	x,a
-7788  0017 1a03          	or	a,(OFST-1,sp)
-7789  0019 01            	rrwa	x,a
-7791                     ; 1996   return (uint16_t)tmpccr4;
-7795  001a 5b04          	addw	sp,#4
-7796  001c 81            	ret	
-7828                     ; 2004 uint16_t TIM1_GetCounter(void)
-7828                     ; 2005 {
-7829                     .text:	section	.text,new
-7830  0000               _TIM1_GetCounter:
-7832  0000 89            	pushw	x
-7833       00000002      OFST:	set	2
-7836                     ; 2006   uint16_t tmpcntr = 0;
-7838                     ; 2008   tmpcntr = ((uint16_t)TIM1->CNTRH << 8);
-7840  0001 c6525e        	ld	a,21086
-7841  0004 97            	ld	xl,a
-7842  0005 4f            	clr	a
-7843  0006 02            	rlwa	x,a
-7844  0007 1f01          	ldw	(OFST-1,sp),x
-7846                     ; 2011   return (uint16_t)(tmpcntr | (uint16_t)(TIM1->CNTRL));
-7848  0009 c6525f        	ld	a,21087
-7849  000c 5f            	clrw	x
-7850  000d 97            	ld	xl,a
-7851  000e 01            	rrwa	x,a
-7852  000f 1a02          	or	a,(OFST+0,sp)
-7853  0011 01            	rrwa	x,a
-7854  0012 1a01          	or	a,(OFST-1,sp)
-7855  0014 01            	rrwa	x,a
-7858  0015 5b02          	addw	sp,#2
-7859  0017 81            	ret	
-7891                     ; 2019 uint16_t TIM1_GetPrescaler(void)
-7891                     ; 2020 {
-7892                     .text:	section	.text,new
-7893  0000               _TIM1_GetPrescaler:
-7895  0000 89            	pushw	x
-7896       00000002      OFST:	set	2
-7899                     ; 2021   uint16_t temp = 0;
-7901                     ; 2023   temp = ((uint16_t)TIM1->PSCRH << 8);
-7903  0001 c65260        	ld	a,21088
-7904  0004 97            	ld	xl,a
-7905  0005 4f            	clr	a
-7906  0006 02            	rlwa	x,a
-7907  0007 1f01          	ldw	(OFST-1,sp),x
-7909                     ; 2026   return (uint16_t)( temp | (uint16_t)(TIM1->PSCRL));
-7911  0009 c65261        	ld	a,21089
-7912  000c 5f            	clrw	x
-7913  000d 97            	ld	xl,a
-7914  000e 01            	rrwa	x,a
-7915  000f 1a02          	or	a,(OFST+0,sp)
-7916  0011 01            	rrwa	x,a
-7917  0012 1a01          	or	a,(OFST-1,sp)
-7918  0014 01            	rrwa	x,a
-7921  0015 5b02          	addw	sp,#2
-7922  0017 81            	ret	
-8093                     ; 2047 FlagStatus TIM1_GetFlagStatus(TIM1_FLAG_TypeDef TIM1_FLAG)
-8093                     ; 2048 {
-8094                     .text:	section	.text,new
-8095  0000               _TIM1_GetFlagStatus:
-8097  0000 89            	pushw	x
-8098  0001 89            	pushw	x
-8099       00000002      OFST:	set	2
-8102                     ; 2049   FlagStatus bitstatus = RESET;
-8104                     ; 2050   uint8_t tim1_flag_l = 0, tim1_flag_h = 0;
-8108                     ; 2053   assert_param(IS_TIM1_GET_FLAG_OK(TIM1_FLAG));
-8110  0002 a30001        	cpw	x,#1
-8111  0005 2745          	jreq	L6071
-8112  0007 a30002        	cpw	x,#2
-8113  000a 2740          	jreq	L6071
-8114  000c a30004        	cpw	x,#4
-8115  000f 273b          	jreq	L6071
-8116  0011 a30008        	cpw	x,#8
-8117  0014 2736          	jreq	L6071
-8118  0016 a30010        	cpw	x,#16
-8119  0019 2731          	jreq	L6071
-8120  001b a30020        	cpw	x,#32
-8121  001e 272c          	jreq	L6071
-8122  0020 a30040        	cpw	x,#64
-8123  0023 2727          	jreq	L6071
-8124  0025 a30080        	cpw	x,#128
-8125  0028 2722          	jreq	L6071
-8126  002a a30200        	cpw	x,#512
-8127  002d 271d          	jreq	L6071
-8128  002f a30400        	cpw	x,#1024
-8129  0032 2718          	jreq	L6071
-8130  0034 a30800        	cpw	x,#2048
-8131  0037 2713          	jreq	L6071
-8132  0039 a31000        	cpw	x,#4096
-8133  003c 270e          	jreq	L6071
-8134  003e ae0805        	ldw	x,#2053
-8135  0041 89            	pushw	x
-8136  0042 5f            	clrw	x
-8137  0043 89            	pushw	x
-8138  0044 ae0000        	ldw	x,#L37
-8139  0047 cd0000        	call	_assert_failed
-8141  004a 5b04          	addw	sp,#4
-8142  004c               L6071:
-8143                     ; 2055   tim1_flag_l = (uint8_t)(TIM1->SR1 & (uint8_t)TIM1_FLAG);
-8145  004c c65255        	ld	a,21077
-8146  004f 1404          	and	a,(OFST+2,sp)
-8147  0051 6b01          	ld	(OFST-1,sp),a
-8149                     ; 2056   tim1_flag_h = (uint8_t)((uint16_t)TIM1_FLAG >> 8);
-8151  0053 7b03          	ld	a,(OFST+1,sp)
-8152  0055 6b02          	ld	(OFST+0,sp),a
-8154                     ; 2058   if ((tim1_flag_l | (uint8_t)(TIM1->SR2 & tim1_flag_h)) != 0)
-8156  0057 c45256        	and	a,21078
-8157  005a 1a01          	or	a,(OFST-1,sp)
-8158  005c 2702          	jreq	L1533
-8159                     ; 2060     bitstatus = SET;
-8161  005e a601          	ld	a,#1
-8164  0060               L1533:
-8165                     ; 2064     bitstatus = RESET;
-8168                     ; 2066   return (FlagStatus)(bitstatus);
-8172  0060 5b04          	addw	sp,#4
-8173  0062 81            	ret	
-8209                     ; 2087 void TIM1_ClearFlag(TIM1_FLAG_TypeDef TIM1_FLAG)
-8209                     ; 2088 {
-8210                     .text:	section	.text,new
-8211  0000               _TIM1_ClearFlag:
-8213  0000 89            	pushw	x
-8214       00000000      OFST:	set	0
-8217                     ; 2090   assert_param(IS_TIM1_CLEAR_FLAG_OK(TIM1_FLAG));
-8219  0001 01            	rrwa	x,a
-8220  0002 9f            	ld	a,xl
-8221  0003 a4e1          	and	a,#225
-8222  0005 97            	ld	xl,a
-8223  0006 4f            	clr	a
-8224  0007 02            	rlwa	x,a
-8225  0008 5d            	tnzw	x
-8226  0009 2604          	jrne	L4171
-8227  000b 1e01          	ldw	x,(OFST+1,sp)
-8228  000d 260e          	jrne	L6171
-8229  000f               L4171:
-8230  000f ae082a        	ldw	x,#2090
-8231  0012 89            	pushw	x
-8232  0013 5f            	clrw	x
-8233  0014 89            	pushw	x
-8234  0015 ae0000        	ldw	x,#L37
-8235  0018 cd0000        	call	_assert_failed
-8237  001b 5b04          	addw	sp,#4
-8238  001d               L6171:
-8239                     ; 2093   TIM1->SR1 = (uint8_t)(~(uint8_t)(TIM1_FLAG));
-8241  001d 7b02          	ld	a,(OFST+2,sp)
-8242  001f 43            	cpl	a
-8243  0020 c75255        	ld	21077,a
-8244                     ; 2094   TIM1->SR2 = (uint8_t)((uint8_t)(~((uint8_t)((uint16_t)TIM1_FLAG >> 8))) & 
-8244                     ; 2095                         (uint8_t)0x1E);
-8246  0023 7b01          	ld	a,(OFST+1,sp)
-8247  0025 43            	cpl	a
-8248  0026 a41e          	and	a,#30
-8249  0028 c75256        	ld	21078,a
-8250                     ; 2096 }
-8253  002b 85            	popw	x
-8254  002c 81            	ret	
-8315                     ; 2112 ITStatus TIM1_GetITStatus(TIM1_IT_TypeDef TIM1_IT)
-8315                     ; 2113 {
-8316                     .text:	section	.text,new
-8317  0000               _TIM1_GetITStatus:
-8319  0000 88            	push	a
-8320  0001 89            	pushw	x
-8321       00000002      OFST:	set	2
-8324                     ; 2114   ITStatus bitstatus = RESET;
-8326                     ; 2115   uint8_t TIM1_itStatus = 0, TIM1_itEnable = 0;
-8330                     ; 2118   assert_param(IS_TIM1_GET_IT_OK(TIM1_IT));
-8332  0002 a101          	cp	a,#1
-8333  0004 272a          	jreq	L0371
-8334  0006 a102          	cp	a,#2
-8335  0008 2726          	jreq	L0371
-8336  000a a104          	cp	a,#4
-8337  000c 2722          	jreq	L0371
-8338  000e a108          	cp	a,#8
-8339  0010 271e          	jreq	L0371
-8340  0012 a110          	cp	a,#16
-8341  0014 271a          	jreq	L0371
-8342  0016 a120          	cp	a,#32
-8343  0018 2716          	jreq	L0371
-8344  001a a140          	cp	a,#64
-8345  001c 2712          	jreq	L0371
-8346  001e a180          	cp	a,#128
-8347  0020 270e          	jreq	L0371
-8348  0022 ae0846        	ldw	x,#2118
-8349  0025 89            	pushw	x
-8350  0026 5f            	clrw	x
-8351  0027 89            	pushw	x
-8352  0028 ae0000        	ldw	x,#L37
-8353  002b cd0000        	call	_assert_failed
-8355  002e 5b04          	addw	sp,#4
-8356  0030               L0371:
-8357                     ; 2120   TIM1_itStatus = (uint8_t)(TIM1->SR1 & (uint8_t)TIM1_IT);
-8359  0030 c65255        	ld	a,21077
-8360  0033 1403          	and	a,(OFST+1,sp)
-8361  0035 6b01          	ld	(OFST-1,sp),a
-8363                     ; 2122   TIM1_itEnable = (uint8_t)(TIM1->IER & (uint8_t)TIM1_IT);
-8365  0037 c65254        	ld	a,21076
-8366  003a 1403          	and	a,(OFST+1,sp)
-8367  003c 6b02          	ld	(OFST+0,sp),a
-8369                     ; 2124   if ((TIM1_itStatus != (uint8_t)RESET ) && (TIM1_itEnable != (uint8_t)RESET ))
-8371  003e 7b01          	ld	a,(OFST-1,sp)
-8372  0040 2708          	jreq	L1243
-8374  0042 7b02          	ld	a,(OFST+0,sp)
-8375  0044 2704          	jreq	L1243
-8376                     ; 2126     bitstatus = SET;
-8378  0046 a601          	ld	a,#1
-8381  0048 2001          	jra	L3243
-8382  004a               L1243:
-8383                     ; 2130     bitstatus = RESET;
-8385  004a 4f            	clr	a
-8387  004b               L3243:
-8388                     ; 2132   return (ITStatus)(bitstatus);
-8392  004b 5b03          	addw	sp,#3
-8393  004d 81            	ret	
-8430                     ; 2149 void TIM1_ClearITPendingBit(TIM1_IT_TypeDef TIM1_IT)
-8430                     ; 2150 {
-8431                     .text:	section	.text,new
-8432  0000               _TIM1_ClearITPendingBit:
-8434  0000 88            	push	a
-8435       00000000      OFST:	set	0
-8438                     ; 2152   assert_param(IS_TIM1_IT_OK(TIM1_IT));
-8440  0001 4d            	tnz	a
-8441  0002 260e          	jrne	L0471
-8442  0004 ae0868        	ldw	x,#2152
-8443  0007 89            	pushw	x
-8444  0008 5f            	clrw	x
-8445  0009 89            	pushw	x
-8446  000a ae0000        	ldw	x,#L37
-8447  000d cd0000        	call	_assert_failed
-8449  0010 5b04          	addw	sp,#4
-8450  0012               L0471:
-8451                     ; 2155   TIM1->SR1 = (uint8_t)(~(uint8_t)TIM1_IT);
-8453  0012 7b01          	ld	a,(OFST+1,sp)
-8454  0014 43            	cpl	a
-8455  0015 c75255        	ld	21077,a
-8456                     ; 2156 }
-8459  0018 84            	pop	a
-8460  0019 81            	ret	
-8506                     ; 2174 static void TI1_Config(uint8_t TIM1_ICPolarity,
-8506                     ; 2175                        uint8_t TIM1_ICSelection,
-8506                     ; 2176                        uint8_t TIM1_ICFilter)
-8506                     ; 2177 {
-8507                     .text:	section	.text,new
-8508  0000               L3_TI1_Config:
-8510  0000 89            	pushw	x
-8511  0001 88            	push	a
-8512       00000001      OFST:	set	1
-8515                     ; 2179   TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
-8517  0002 7211525c      	bres	21084,#0
-8518                     ; 2182   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF ))) | 
-8518                     ; 2183                           (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-8520  0006 7b06          	ld	a,(OFST+5,sp)
-8521  0008 97            	ld	xl,a
-8522  0009 a610          	ld	a,#16
-8523  000b 42            	mul	x,a
-8524  000c 9f            	ld	a,xl
-8525  000d 1a03          	or	a,(OFST+2,sp)
-8526  000f 6b01          	ld	(OFST+0,sp),a
-8528  0011 c65258        	ld	a,21080
-8529  0014 a40c          	and	a,#12
-8530  0016 1a01          	or	a,(OFST+0,sp)
-8531  0018 c75258        	ld	21080,a
-8532                     ; 2186   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-8534  001b 7b02          	ld	a,(OFST+1,sp)
-8535  001d 2706          	jreq	L3643
-8536                     ; 2188     TIM1->CCER1 |= TIM1_CCER1_CC1P;
-8538  001f 7212525c      	bset	21084,#1
-8540  0023 2004          	jra	L5643
-8541  0025               L3643:
-8542                     ; 2192     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
-8544  0025 7213525c      	bres	21084,#1
-8545  0029               L5643:
-8546                     ; 2196   TIM1->CCER1 |=  TIM1_CCER1_CC1E;
-8548  0029 7210525c      	bset	21084,#0
-8549                     ; 2197 }
-8552  002d 5b03          	addw	sp,#3
-8553  002f 81            	ret	
-8599                     ; 2215 static void TI2_Config(uint8_t TIM1_ICPolarity,
-8599                     ; 2216                        uint8_t TIM1_ICSelection,
-8599                     ; 2217                        uint8_t TIM1_ICFilter)
-8599                     ; 2218 {
-8600                     .text:	section	.text,new
-8601  0000               L5_TI2_Config:
-8603  0000 89            	pushw	x
-8604  0001 88            	push	a
-8605       00000001      OFST:	set	1
-8608                     ; 2220   TIM1->CCER1 &=  (uint8_t)(~TIM1_CCER1_CC2E);
-8610  0002 7219525c      	bres	21084,#4
-8611                     ; 2223   TIM1->CCMR2  = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF ))) 
-8611                     ; 2224                            | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-8613  0006 7b06          	ld	a,(OFST+5,sp)
-8614  0008 97            	ld	xl,a
-8615  0009 a610          	ld	a,#16
-8616  000b 42            	mul	x,a
-8617  000c 9f            	ld	a,xl
-8618  000d 1a03          	or	a,(OFST+2,sp)
-8619  000f 6b01          	ld	(OFST+0,sp),a
-8621  0011 c65259        	ld	a,21081
-8622  0014 a40c          	and	a,#12
-8623  0016 1a01          	or	a,(OFST+0,sp)
-8624  0018 c75259        	ld	21081,a
-8625                     ; 2226   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-8627  001b 7b02          	ld	a,(OFST+1,sp)
-8628  001d 2706          	jreq	L7053
-8629                     ; 2228     TIM1->CCER1 |= TIM1_CCER1_CC2P;
-8631  001f 721a525c      	bset	21084,#5
-8633  0023 2004          	jra	L1153
-8634  0025               L7053:
-8635                     ; 2232     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
-8637  0025 721b525c      	bres	21084,#5
-8638  0029               L1153:
-8639                     ; 2235   TIM1->CCER1 |=  TIM1_CCER1_CC2E;
-8641  0029 7218525c      	bset	21084,#4
-8642                     ; 2236 }
-8645  002d 5b03          	addw	sp,#3
-8646  002f 81            	ret	
-8692                     ; 2254 static void TI3_Config(uint8_t TIM1_ICPolarity,
-8692                     ; 2255                        uint8_t TIM1_ICSelection,
-8692                     ; 2256                        uint8_t TIM1_ICFilter)
-8692                     ; 2257 {
-8693                     .text:	section	.text,new
-8694  0000               L7_TI3_Config:
-8696  0000 89            	pushw	x
-8697  0001 88            	push	a
-8698       00000001      OFST:	set	1
-8701                     ; 2259   TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC3E);
-8703  0002 7211525d      	bres	21085,#0
-8704                     ; 2262   TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) 
-8704                     ; 2263                           | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-8706  0006 7b06          	ld	a,(OFST+5,sp)
-8707  0008 97            	ld	xl,a
-8708  0009 a610          	ld	a,#16
-8709  000b 42            	mul	x,a
-8710  000c 9f            	ld	a,xl
-8711  000d 1a03          	or	a,(OFST+2,sp)
-8712  000f 6b01          	ld	(OFST+0,sp),a
-8714  0011 c6525a        	ld	a,21082
-8715  0014 a40c          	and	a,#12
-8716  0016 1a01          	or	a,(OFST+0,sp)
-8717  0018 c7525a        	ld	21082,a
-8718                     ; 2266   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-8720  001b 7b02          	ld	a,(OFST+1,sp)
-8721  001d 2706          	jreq	L3353
-8722                     ; 2268     TIM1->CCER2 |= TIM1_CCER2_CC3P;
-8724  001f 7212525d      	bset	21085,#1
-8726  0023 2004          	jra	L5353
-8727  0025               L3353:
-8728                     ; 2272     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3P);
-8730  0025 7213525d      	bres	21085,#1
-8731  0029               L5353:
-8732                     ; 2275   TIM1->CCER2 |=  TIM1_CCER2_CC3E;
-8734  0029 7210525d      	bset	21085,#0
-8735                     ; 2276 }
-8738  002d 5b03          	addw	sp,#3
-8739  002f 81            	ret	
-8785                     ; 2294 static void TI4_Config(uint8_t TIM1_ICPolarity,
-8785                     ; 2295                        uint8_t TIM1_ICSelection,
-8785                     ; 2296                        uint8_t TIM1_ICFilter)
-8785                     ; 2297 {
-8786                     .text:	section	.text,new
-8787  0000               L11_TI4_Config:
-8789  0000 89            	pushw	x
-8790  0001 88            	push	a
-8791       00000001      OFST:	set	1
-8794                     ; 2299   TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC4E);
-8796  0002 7219525d      	bres	21085,#4
-8797                     ; 2302   TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF )))
-8797                     ; 2303                           | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-8799  0006 7b06          	ld	a,(OFST+5,sp)
-8800  0008 97            	ld	xl,a
-8801  0009 a610          	ld	a,#16
-8802  000b 42            	mul	x,a
-8803  000c 9f            	ld	a,xl
-8804  000d 1a03          	or	a,(OFST+2,sp)
-8805  000f 6b01          	ld	(OFST+0,sp),a
-8807  0011 c6525b        	ld	a,21083
-8808  0014 a40c          	and	a,#12
-8809  0016 1a01          	or	a,(OFST+0,sp)
-8810  0018 c7525b        	ld	21083,a
-8811                     ; 2306   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-8813  001b 7b02          	ld	a,(OFST+1,sp)
-8814  001d 2706          	jreq	L7553
-8815                     ; 2308     TIM1->CCER2 |= TIM1_CCER2_CC4P;
-8817  001f 721a525d      	bset	21085,#5
-8819  0023 2004          	jra	L1653
-8820  0025               L7553:
-8821                     ; 2312     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4P);
-8823  0025 721b525d      	bres	21085,#5
-8824  0029               L1653:
-8825                     ; 2316   TIM1->CCER2 |=  TIM1_CCER2_CC4E;
-8827  0029 7218525d      	bset	21085,#4
-8828                     ; 2317 }
-8831  002d 5b03          	addw	sp,#3
-8832  002f 81            	ret	
-8845                     	xdef	_TIM1_ClearITPendingBit
-8846                     	xdef	_TIM1_GetITStatus
-8847                     	xdef	_TIM1_ClearFlag
-8848                     	xdef	_TIM1_GetFlagStatus
-8849                     	xdef	_TIM1_GetPrescaler
-8850                     	xdef	_TIM1_GetCounter
-8851                     	xdef	_TIM1_GetCapture4
-8852                     	xdef	_TIM1_GetCapture3
-8853                     	xdef	_TIM1_GetCapture2
-8854                     	xdef	_TIM1_GetCapture1
-8855                     	xdef	_TIM1_SetIC4Prescaler
-8856                     	xdef	_TIM1_SetIC3Prescaler
-8857                     	xdef	_TIM1_SetIC2Prescaler
-8858                     	xdef	_TIM1_SetIC1Prescaler
-8859                     	xdef	_TIM1_SetCompare4
-8860                     	xdef	_TIM1_SetCompare3
-8861                     	xdef	_TIM1_SetCompare2
-8862                     	xdef	_TIM1_SetCompare1
-8863                     	xdef	_TIM1_SetAutoreload
-8864                     	xdef	_TIM1_SetCounter
-8865                     	xdef	_TIM1_SelectOCxM
-8866                     	xdef	_TIM1_CCxNCmd
-8867                     	xdef	_TIM1_CCxCmd
-8868                     	xdef	_TIM1_OC4PolarityConfig
-8869                     	xdef	_TIM1_OC3NPolarityConfig
-8870                     	xdef	_TIM1_OC3PolarityConfig
-8871                     	xdef	_TIM1_OC2NPolarityConfig
-8872                     	xdef	_TIM1_OC2PolarityConfig
-8873                     	xdef	_TIM1_OC1NPolarityConfig
-8874                     	xdef	_TIM1_OC1PolarityConfig
-8875                     	xdef	_TIM1_GenerateEvent
-8876                     	xdef	_TIM1_OC4FastConfig
-8877                     	xdef	_TIM1_OC3FastConfig
-8878                     	xdef	_TIM1_OC2FastConfig
-8879                     	xdef	_TIM1_OC1FastConfig
-8880                     	xdef	_TIM1_OC4PreloadConfig
-8881                     	xdef	_TIM1_OC3PreloadConfig
-8882                     	xdef	_TIM1_OC2PreloadConfig
-8883                     	xdef	_TIM1_OC1PreloadConfig
-8884                     	xdef	_TIM1_CCPreloadControl
-8885                     	xdef	_TIM1_SelectCOM
-8886                     	xdef	_TIM1_ARRPreloadConfig
-8887                     	xdef	_TIM1_ForcedOC4Config
-8888                     	xdef	_TIM1_ForcedOC3Config
-8889                     	xdef	_TIM1_ForcedOC2Config
-8890                     	xdef	_TIM1_ForcedOC1Config
-8891                     	xdef	_TIM1_CounterModeConfig
-8892                     	xdef	_TIM1_PrescalerConfig
-8893                     	xdef	_TIM1_EncoderInterfaceConfig
-8894                     	xdef	_TIM1_SelectMasterSlaveMode
-8895                     	xdef	_TIM1_SelectSlaveMode
-8896                     	xdef	_TIM1_SelectOutputTrigger
-8897                     	xdef	_TIM1_SelectOnePulseMode
-8898                     	xdef	_TIM1_SelectHallSensor
-8899                     	xdef	_TIM1_UpdateRequestConfig
-8900                     	xdef	_TIM1_UpdateDisableConfig
-8901                     	xdef	_TIM1_SelectInputTrigger
-8902                     	xdef	_TIM1_TIxExternalClockConfig
-8903                     	xdef	_TIM1_ETRConfig
-8904                     	xdef	_TIM1_ETRClockMode2Config
-8905                     	xdef	_TIM1_ETRClockMode1Config
-8906                     	xdef	_TIM1_InternalClockConfig
-8907                     	xdef	_TIM1_ITConfig
-8908                     	xdef	_TIM1_CtrlPWMOutputs
-8909                     	xdef	_TIM1_Cmd
-8910                     	xdef	_TIM1_PWMIConfig
-8911                     	xdef	_TIM1_ICInit
-8912                     	xdef	_TIM1_BDTRConfig
-8913                     	xdef	_TIM1_OC4Init
-8914                     	xdef	_TIM1_OC3Init
-8915                     	xdef	_TIM1_OC2Init
-8916                     	xdef	_TIM1_OC1Init
-8917                     	xdef	_TIM1_TimeBaseInit
-8918                     	xdef	_TIM1_DeInit
-8919                     	xref	_assert_failed
-8920                     .const:	section	.text
-8921  0000               L37:
-8922  0000 2e2e5c6c6962  	dc.b	"..\libs\src\stm8s_"
-8923  0012 74696d312e63  	dc.b	"tim1.c",0
-8943                     	end
+7662  0000               _TIM1_SetCompare2:
+7666                     ; 1804   TIM1->CCR2H = (uint8_t)(Compare2 >> 8);
+7668  0000 9e            	ld	a,xh
+7669  0001 c75267        	ld	21095,a
+7670                     ; 1805   TIM1->CCR2L = (uint8_t)(Compare2);
+7672  0004 9f            	ld	a,xl
+7673  0005 c75268        	ld	21096,a
+7674                     ; 1806 }
+7677  0008 81            	ret
+7709                     ; 1814 void TIM1_SetCompare3(uint16_t Compare3)
+7709                     ; 1815 {
+7710                     .text:	section	.text,new
+7711  0000               _TIM1_SetCompare3:
+7715                     ; 1817   TIM1->CCR3H = (uint8_t)(Compare3 >> 8);
+7717  0000 9e            	ld	a,xh
+7718  0001 c75269        	ld	21097,a
+7719                     ; 1818   TIM1->CCR3L = (uint8_t)(Compare3);
+7721  0004 9f            	ld	a,xl
+7722  0005 c7526a        	ld	21098,a
+7723                     ; 1819 }
+7726  0008 81            	ret
+7758                     ; 1827 void TIM1_SetCompare4(uint16_t Compare4)
+7758                     ; 1828 {
+7759                     .text:	section	.text,new
+7760  0000               _TIM1_SetCompare4:
+7764                     ; 1830   TIM1->CCR4H = (uint8_t)(Compare4 >> 8);
+7766  0000 9e            	ld	a,xh
+7767  0001 c7526b        	ld	21099,a
+7768                     ; 1831   TIM1->CCR4L = (uint8_t)(Compare4);
+7770  0004 9f            	ld	a,xl
+7771  0005 c7526c        	ld	21100,a
+7772                     ; 1832 }
+7775  0008 81            	ret
+7812                     ; 1844 void TIM1_SetIC1Prescaler(TIM1_ICPSC_TypeDef TIM1_IC1Prescaler)
+7812                     ; 1845 {
+7813                     .text:	section	.text,new
+7814  0000               _TIM1_SetIC1Prescaler:
+7816  0000 88            	push	a
+7817       00000000      OFST:	set	0
+7820                     ; 1847   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC1Prescaler));
+7822  0001 4d            	tnz	a
+7823  0002 270c          	jreq	L2521
+7824  0004 a104          	cp	a,#4
+7825  0006 2708          	jreq	L2521
+7826  0008 a108          	cp	a,#8
+7827  000a 2704          	jreq	L2521
+7828  000c a10c          	cp	a,#12
+7829  000e 2603          	jrne	L0521
+7830  0010               L2521:
+7831  0010 4f            	clr	a
+7832  0011 2010          	jra	L4521
+7833  0013               L0521:
+7834  0013 ae0737        	ldw	x,#1847
+7835  0016 89            	pushw	x
+7836  0017 ae0000        	ldw	x,#0
+7837  001a 89            	pushw	x
+7838  001b ae0000        	ldw	x,#L37
+7839  001e cd0000        	call	_assert_failed
+7841  0021 5b04          	addw	sp,#4
+7842  0023               L4521:
+7843                     ; 1850   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_ICxPSC)) 
+7843                     ; 1851                           | (uint8_t)TIM1_IC1Prescaler);
+7845  0023 c65258        	ld	a,21080
+7846  0026 a4f3          	and	a,#243
+7847  0028 1a01          	or	a,(OFST+1,sp)
+7848  002a c75258        	ld	21080,a
+7849                     ; 1852 }
+7852  002d 84            	pop	a
+7853  002e 81            	ret
+7890                     ; 1864 void TIM1_SetIC2Prescaler(TIM1_ICPSC_TypeDef TIM1_IC2Prescaler)
+7890                     ; 1865 {
+7891                     .text:	section	.text,new
+7892  0000               _TIM1_SetIC2Prescaler:
+7894  0000 88            	push	a
+7895       00000000      OFST:	set	0
+7898                     ; 1868   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC2Prescaler));
+7900  0001 4d            	tnz	a
+7901  0002 270c          	jreq	L2621
+7902  0004 a104          	cp	a,#4
+7903  0006 2708          	jreq	L2621
+7904  0008 a108          	cp	a,#8
+7905  000a 2704          	jreq	L2621
+7906  000c a10c          	cp	a,#12
+7907  000e 2603          	jrne	L0621
+7908  0010               L2621:
+7909  0010 4f            	clr	a
+7910  0011 2010          	jra	L4621
+7911  0013               L0621:
+7912  0013 ae074c        	ldw	x,#1868
+7913  0016 89            	pushw	x
+7914  0017 ae0000        	ldw	x,#0
+7915  001a 89            	pushw	x
+7916  001b ae0000        	ldw	x,#L37
+7917  001e cd0000        	call	_assert_failed
+7919  0021 5b04          	addw	sp,#4
+7920  0023               L4621:
+7921                     ; 1871   TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_ICxPSC))
+7921                     ; 1872                           | (uint8_t)TIM1_IC2Prescaler);
+7923  0023 c65259        	ld	a,21081
+7924  0026 a4f3          	and	a,#243
+7925  0028 1a01          	or	a,(OFST+1,sp)
+7926  002a c75259        	ld	21081,a
+7927                     ; 1873 }
+7930  002d 84            	pop	a
+7931  002e 81            	ret
+7968                     ; 1885 void TIM1_SetIC3Prescaler(TIM1_ICPSC_TypeDef TIM1_IC3Prescaler)
+7968                     ; 1886 {
+7969                     .text:	section	.text,new
+7970  0000               _TIM1_SetIC3Prescaler:
+7972  0000 88            	push	a
+7973       00000000      OFST:	set	0
+7976                     ; 1889   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC3Prescaler));
+7978  0001 4d            	tnz	a
+7979  0002 270c          	jreq	L2721
+7980  0004 a104          	cp	a,#4
+7981  0006 2708          	jreq	L2721
+7982  0008 a108          	cp	a,#8
+7983  000a 2704          	jreq	L2721
+7984  000c a10c          	cp	a,#12
+7985  000e 2603          	jrne	L0721
+7986  0010               L2721:
+7987  0010 4f            	clr	a
+7988  0011 2010          	jra	L4721
+7989  0013               L0721:
+7990  0013 ae0761        	ldw	x,#1889
+7991  0016 89            	pushw	x
+7992  0017 ae0000        	ldw	x,#0
+7993  001a 89            	pushw	x
+7994  001b ae0000        	ldw	x,#L37
+7995  001e cd0000        	call	_assert_failed
+7997  0021 5b04          	addw	sp,#4
+7998  0023               L4721:
+7999                     ; 1892   TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_ICxPSC)) | 
+7999                     ; 1893                           (uint8_t)TIM1_IC3Prescaler);
+8001  0023 c6525a        	ld	a,21082
+8002  0026 a4f3          	and	a,#243
+8003  0028 1a01          	or	a,(OFST+1,sp)
+8004  002a c7525a        	ld	21082,a
+8005                     ; 1894 }
+8008  002d 84            	pop	a
+8009  002e 81            	ret
+8046                     ; 1906 void TIM1_SetIC4Prescaler(TIM1_ICPSC_TypeDef TIM1_IC4Prescaler)
+8046                     ; 1907 {
+8047                     .text:	section	.text,new
+8048  0000               _TIM1_SetIC4Prescaler:
+8050  0000 88            	push	a
+8051       00000000      OFST:	set	0
+8054                     ; 1910   assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC4Prescaler));
+8056  0001 4d            	tnz	a
+8057  0002 270c          	jreq	L2031
+8058  0004 a104          	cp	a,#4
+8059  0006 2708          	jreq	L2031
+8060  0008 a108          	cp	a,#8
+8061  000a 2704          	jreq	L2031
+8062  000c a10c          	cp	a,#12
+8063  000e 2603          	jrne	L0031
+8064  0010               L2031:
+8065  0010 4f            	clr	a
+8066  0011 2010          	jra	L4031
+8067  0013               L0031:
+8068  0013 ae0776        	ldw	x,#1910
+8069  0016 89            	pushw	x
+8070  0017 ae0000        	ldw	x,#0
+8071  001a 89            	pushw	x
+8072  001b ae0000        	ldw	x,#L37
+8073  001e cd0000        	call	_assert_failed
+8075  0021 5b04          	addw	sp,#4
+8076  0023               L4031:
+8077                     ; 1913   TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_ICxPSC)) |
+8077                     ; 1914                           (uint8_t)TIM1_IC4Prescaler);
+8079  0023 c6525b        	ld	a,21083
+8080  0026 a4f3          	and	a,#243
+8081  0028 1a01          	or	a,(OFST+1,sp)
+8082  002a c7525b        	ld	21083,a
+8083                     ; 1915 }
+8086  002d 84            	pop	a
+8087  002e 81            	ret
+8133                     ; 1922 uint16_t TIM1_GetCapture1(void)
+8133                     ; 1923 {
+8134                     .text:	section	.text,new
+8135  0000               _TIM1_GetCapture1:
+8137  0000 5204          	subw	sp,#4
+8138       00000004      OFST:	set	4
+8141                     ; 1926   uint16_t tmpccr1 = 0;
+8143                     ; 1927   uint8_t tmpccr1l=0, tmpccr1h=0;
+8147                     ; 1929   tmpccr1h = TIM1->CCR1H;
+8149  0002 c65265        	ld	a,21093
+8150  0005 6b02          	ld	(OFST-2,sp),a
+8152                     ; 1930   tmpccr1l = TIM1->CCR1L;
+8154  0007 c65266        	ld	a,21094
+8155  000a 6b01          	ld	(OFST-3,sp),a
+8157                     ; 1932   tmpccr1 = (uint16_t)(tmpccr1l);
+8159  000c 7b01          	ld	a,(OFST-3,sp)
+8160  000e 5f            	clrw	x
+8161  000f 97            	ld	xl,a
+8162  0010 1f03          	ldw	(OFST-1,sp),x
+8164                     ; 1933   tmpccr1 |= (uint16_t)((uint16_t)tmpccr1h << 8);
+8166  0012 7b02          	ld	a,(OFST-2,sp)
+8167  0014 5f            	clrw	x
+8168  0015 97            	ld	xl,a
+8169  0016 4f            	clr	a
+8170  0017 02            	rlwa	x,a
+8171  0018 01            	rrwa	x,a
+8172  0019 1a04          	or	a,(OFST+0,sp)
+8173  001b 01            	rrwa	x,a
+8174  001c 1a03          	or	a,(OFST-1,sp)
+8175  001e 01            	rrwa	x,a
+8176  001f 1f03          	ldw	(OFST-1,sp),x
+8178                     ; 1935   return (uint16_t)tmpccr1;
+8180  0021 1e03          	ldw	x,(OFST-1,sp)
+8183  0023 5b04          	addw	sp,#4
+8184  0025 81            	ret
+8230                     ; 1943 uint16_t TIM1_GetCapture2(void)
+8230                     ; 1944 {
+8231                     .text:	section	.text,new
+8232  0000               _TIM1_GetCapture2:
+8234  0000 5204          	subw	sp,#4
+8235       00000004      OFST:	set	4
+8238                     ; 1947   uint16_t tmpccr2 = 0;
+8240                     ; 1948   uint8_t tmpccr2l=0, tmpccr2h=0;
+8244                     ; 1950   tmpccr2h = TIM1->CCR2H;
+8246  0002 c65267        	ld	a,21095
+8247  0005 6b02          	ld	(OFST-2,sp),a
+8249                     ; 1951   tmpccr2l = TIM1->CCR2L;
+8251  0007 c65268        	ld	a,21096
+8252  000a 6b01          	ld	(OFST-3,sp),a
+8254                     ; 1953   tmpccr2 = (uint16_t)(tmpccr2l);
+8256  000c 7b01          	ld	a,(OFST-3,sp)
+8257  000e 5f            	clrw	x
+8258  000f 97            	ld	xl,a
+8259  0010 1f03          	ldw	(OFST-1,sp),x
+8261                     ; 1954   tmpccr2 |= (uint16_t)((uint16_t)tmpccr2h << 8);
+8263  0012 7b02          	ld	a,(OFST-2,sp)
+8264  0014 5f            	clrw	x
+8265  0015 97            	ld	xl,a
+8266  0016 4f            	clr	a
+8267  0017 02            	rlwa	x,a
+8268  0018 01            	rrwa	x,a
+8269  0019 1a04          	or	a,(OFST+0,sp)
+8270  001b 01            	rrwa	x,a
+8271  001c 1a03          	or	a,(OFST-1,sp)
+8272  001e 01            	rrwa	x,a
+8273  001f 1f03          	ldw	(OFST-1,sp),x
+8275                     ; 1956   return (uint16_t)tmpccr2;
+8277  0021 1e03          	ldw	x,(OFST-1,sp)
+8280  0023 5b04          	addw	sp,#4
+8281  0025 81            	ret
+8327                     ; 1964 uint16_t TIM1_GetCapture3(void)
+8327                     ; 1965 {
+8328                     .text:	section	.text,new
+8329  0000               _TIM1_GetCapture3:
+8331  0000 5204          	subw	sp,#4
+8332       00000004      OFST:	set	4
+8335                     ; 1967   uint16_t tmpccr3 = 0;
+8337                     ; 1968   uint8_t tmpccr3l=0, tmpccr3h=0;
+8341                     ; 1970   tmpccr3h = TIM1->CCR3H;
+8343  0002 c65269        	ld	a,21097
+8344  0005 6b02          	ld	(OFST-2,sp),a
+8346                     ; 1971   tmpccr3l = TIM1->CCR3L;
+8348  0007 c6526a        	ld	a,21098
+8349  000a 6b01          	ld	(OFST-3,sp),a
+8351                     ; 1973   tmpccr3 = (uint16_t)(tmpccr3l);
+8353  000c 7b01          	ld	a,(OFST-3,sp)
+8354  000e 5f            	clrw	x
+8355  000f 97            	ld	xl,a
+8356  0010 1f03          	ldw	(OFST-1,sp),x
+8358                     ; 1974   tmpccr3 |= (uint16_t)((uint16_t)tmpccr3h << 8);
+8360  0012 7b02          	ld	a,(OFST-2,sp)
+8361  0014 5f            	clrw	x
+8362  0015 97            	ld	xl,a
+8363  0016 4f            	clr	a
+8364  0017 02            	rlwa	x,a
+8365  0018 01            	rrwa	x,a
+8366  0019 1a04          	or	a,(OFST+0,sp)
+8367  001b 01            	rrwa	x,a
+8368  001c 1a03          	or	a,(OFST-1,sp)
+8369  001e 01            	rrwa	x,a
+8370  001f 1f03          	ldw	(OFST-1,sp),x
+8372                     ; 1976   return (uint16_t)tmpccr3;
+8374  0021 1e03          	ldw	x,(OFST-1,sp)
+8377  0023 5b04          	addw	sp,#4
+8378  0025 81            	ret
+8424                     ; 1984 uint16_t TIM1_GetCapture4(void)
+8424                     ; 1985 {
+8425                     .text:	section	.text,new
+8426  0000               _TIM1_GetCapture4:
+8428  0000 5204          	subw	sp,#4
+8429       00000004      OFST:	set	4
+8432                     ; 1987   uint16_t tmpccr4 = 0;
+8434                     ; 1988   uint8_t tmpccr4l=0, tmpccr4h=0;
+8438                     ; 1990   tmpccr4h = TIM1->CCR4H;
+8440  0002 c6526b        	ld	a,21099
+8441  0005 6b02          	ld	(OFST-2,sp),a
+8443                     ; 1991   tmpccr4l = TIM1->CCR4L;
+8445  0007 c6526c        	ld	a,21100
+8446  000a 6b01          	ld	(OFST-3,sp),a
+8448                     ; 1993   tmpccr4 = (uint16_t)(tmpccr4l);
+8450  000c 7b01          	ld	a,(OFST-3,sp)
+8451  000e 5f            	clrw	x
+8452  000f 97            	ld	xl,a
+8453  0010 1f03          	ldw	(OFST-1,sp),x
+8455                     ; 1994   tmpccr4 |= (uint16_t)((uint16_t)tmpccr4h << 8);
+8457  0012 7b02          	ld	a,(OFST-2,sp)
+8458  0014 5f            	clrw	x
+8459  0015 97            	ld	xl,a
+8460  0016 4f            	clr	a
+8461  0017 02            	rlwa	x,a
+8462  0018 01            	rrwa	x,a
+8463  0019 1a04          	or	a,(OFST+0,sp)
+8464  001b 01            	rrwa	x,a
+8465  001c 1a03          	or	a,(OFST-1,sp)
+8466  001e 01            	rrwa	x,a
+8467  001f 1f03          	ldw	(OFST-1,sp),x
+8469                     ; 1996   return (uint16_t)tmpccr4;
+8471  0021 1e03          	ldw	x,(OFST-1,sp)
+8474  0023 5b04          	addw	sp,#4
+8475  0025 81            	ret
+8507                     ; 2004 uint16_t TIM1_GetCounter(void)
+8507                     ; 2005 {
+8508                     .text:	section	.text,new
+8509  0000               _TIM1_GetCounter:
+8511  0000 89            	pushw	x
+8512       00000002      OFST:	set	2
+8515                     ; 2006   uint16_t tmpcntr = 0;
+8517                     ; 2008   tmpcntr = ((uint16_t)TIM1->CNTRH << 8);
+8519  0001 c6525e        	ld	a,21086
+8520  0004 5f            	clrw	x
+8521  0005 97            	ld	xl,a
+8522  0006 4f            	clr	a
+8523  0007 02            	rlwa	x,a
+8524  0008 1f01          	ldw	(OFST-1,sp),x
+8526                     ; 2011   return (uint16_t)(tmpcntr | (uint16_t)(TIM1->CNTRL));
+8528  000a c6525f        	ld	a,21087
+8529  000d 5f            	clrw	x
+8530  000e 97            	ld	xl,a
+8531  000f 01            	rrwa	x,a
+8532  0010 1a02          	or	a,(OFST+0,sp)
+8533  0012 01            	rrwa	x,a
+8534  0013 1a01          	or	a,(OFST-1,sp)
+8535  0015 01            	rrwa	x,a
+8538  0016 5b02          	addw	sp,#2
+8539  0018 81            	ret
+8571                     ; 2019 uint16_t TIM1_GetPrescaler(void)
+8571                     ; 2020 {
+8572                     .text:	section	.text,new
+8573  0000               _TIM1_GetPrescaler:
+8575  0000 89            	pushw	x
+8576       00000002      OFST:	set	2
+8579                     ; 2021   uint16_t temp = 0;
+8581                     ; 2023   temp = ((uint16_t)TIM1->PSCRH << 8);
+8583  0001 c65260        	ld	a,21088
+8584  0004 5f            	clrw	x
+8585  0005 97            	ld	xl,a
+8586  0006 4f            	clr	a
+8587  0007 02            	rlwa	x,a
+8588  0008 1f01          	ldw	(OFST-1,sp),x
+8590                     ; 2026   return (uint16_t)( temp | (uint16_t)(TIM1->PSCRL));
+8592  000a c65261        	ld	a,21089
+8593  000d 5f            	clrw	x
+8594  000e 97            	ld	xl,a
+8595  000f 01            	rrwa	x,a
+8596  0010 1a02          	or	a,(OFST+0,sp)
+8597  0012 01            	rrwa	x,a
+8598  0013 1a01          	or	a,(OFST-1,sp)
+8599  0015 01            	rrwa	x,a
+8602  0016 5b02          	addw	sp,#2
+8603  0018 81            	ret
+8774                     ; 2047 FlagStatus TIM1_GetFlagStatus(TIM1_FLAG_TypeDef TIM1_FLAG)
+8774                     ; 2048 {
+8775                     .text:	section	.text,new
+8776  0000               _TIM1_GetFlagStatus:
+8778  0000 89            	pushw	x
+8779  0001 89            	pushw	x
+8780       00000002      OFST:	set	2
+8783                     ; 2049   FlagStatus bitstatus = RESET;
+8785                     ; 2050   uint8_t tim1_flag_l = 0, tim1_flag_h = 0;
+8789                     ; 2053   assert_param(IS_TIM1_GET_FLAG_OK(TIM1_FLAG));
+8791  0002 a30001        	cpw	x,#1
+8792  0005 2737          	jreq	L6231
+8793  0007 a30002        	cpw	x,#2
+8794  000a 2732          	jreq	L6231
+8795  000c a30004        	cpw	x,#4
+8796  000f 272d          	jreq	L6231
+8797  0011 a30008        	cpw	x,#8
+8798  0014 2728          	jreq	L6231
+8799  0016 a30010        	cpw	x,#16
+8800  0019 2723          	jreq	L6231
+8801  001b a30020        	cpw	x,#32
+8802  001e 271e          	jreq	L6231
+8803  0020 a30040        	cpw	x,#64
+8804  0023 2719          	jreq	L6231
+8805  0025 a30080        	cpw	x,#128
+8806  0028 2714          	jreq	L6231
+8807  002a a30200        	cpw	x,#512
+8808  002d 270f          	jreq	L6231
+8809  002f a30400        	cpw	x,#1024
+8810  0032 270a          	jreq	L6231
+8811  0034 a30800        	cpw	x,#2048
+8812  0037 2705          	jreq	L6231
+8813  0039 a31000        	cpw	x,#4096
+8814  003c 2603          	jrne	L4231
+8815  003e               L6231:
+8816  003e 4f            	clr	a
+8817  003f 2010          	jra	L0331
+8818  0041               L4231:
+8819  0041 ae0805        	ldw	x,#2053
+8820  0044 89            	pushw	x
+8821  0045 ae0000        	ldw	x,#0
+8822  0048 89            	pushw	x
+8823  0049 ae0000        	ldw	x,#L37
+8824  004c cd0000        	call	_assert_failed
+8826  004f 5b04          	addw	sp,#4
+8827  0051               L0331:
+8828                     ; 2055   tim1_flag_l = (uint8_t)(TIM1->SR1 & (uint8_t)TIM1_FLAG);
+8830  0051 c65255        	ld	a,21077
+8831  0054 1404          	and	a,(OFST+2,sp)
+8832  0056 6b01          	ld	(OFST-1,sp),a
+8834                     ; 2056   tim1_flag_h = (uint8_t)((uint16_t)TIM1_FLAG >> 8);
+8836  0058 7b03          	ld	a,(OFST+1,sp)
+8837  005a 6b02          	ld	(OFST+0,sp),a
+8839                     ; 2058   if ((tim1_flag_l | (uint8_t)(TIM1->SR2 & tim1_flag_h)) != 0)
+8841  005c c65256        	ld	a,21078
+8842  005f 1402          	and	a,(OFST+0,sp)
+8843  0061 1a01          	or	a,(OFST-1,sp)
+8844  0063 2706          	jreq	L1533
+8845                     ; 2060     bitstatus = SET;
+8847  0065 a601          	ld	a,#1
+8848  0067 6b02          	ld	(OFST+0,sp),a
+8851  0069 2002          	jra	L3533
+8852  006b               L1533:
+8853                     ; 2064     bitstatus = RESET;
+8855  006b 0f02          	clr	(OFST+0,sp)
+8857  006d               L3533:
+8858                     ; 2066   return (FlagStatus)(bitstatus);
+8860  006d 7b02          	ld	a,(OFST+0,sp)
+8863  006f 5b04          	addw	sp,#4
+8864  0071 81            	ret
+8900                     ; 2087 void TIM1_ClearFlag(TIM1_FLAG_TypeDef TIM1_FLAG)
+8900                     ; 2088 {
+8901                     .text:	section	.text,new
+8902  0000               _TIM1_ClearFlag:
+8904  0000 89            	pushw	x
+8905       00000000      OFST:	set	0
+8908                     ; 2090   assert_param(IS_TIM1_CLEAR_FLAG_OK(TIM1_FLAG));
+8910  0001 01            	rrwa	x,a
+8911  0002 9f            	ld	a,xl
+8912  0003 a4e1          	and	a,#225
+8913  0005 97            	ld	xl,a
+8914  0006 4f            	clr	a
+8915  0007 02            	rlwa	x,a
+8916  0008 5d            	tnzw	x
+8917  0009 2607          	jrne	L4331
+8918  000b 1e01          	ldw	x,(OFST+1,sp)
+8919  000d 2703          	jreq	L4331
+8920  000f 4f            	clr	a
+8921  0010 2010          	jra	L6331
+8922  0012               L4331:
+8923  0012 ae082a        	ldw	x,#2090
+8924  0015 89            	pushw	x
+8925  0016 ae0000        	ldw	x,#0
+8926  0019 89            	pushw	x
+8927  001a ae0000        	ldw	x,#L37
+8928  001d cd0000        	call	_assert_failed
+8930  0020 5b04          	addw	sp,#4
+8931  0022               L6331:
+8932                     ; 2093   TIM1->SR1 = (uint8_t)(~(uint8_t)(TIM1_FLAG));
+8934  0022 7b02          	ld	a,(OFST+2,sp)
+8935  0024 43            	cpl	a
+8936  0025 c75255        	ld	21077,a
+8937                     ; 2094   TIM1->SR2 = (uint8_t)((uint8_t)(~((uint8_t)((uint16_t)TIM1_FLAG >> 8))) & 
+8937                     ; 2095                         (uint8_t)0x1E);
+8939  0028 7b01          	ld	a,(OFST+1,sp)
+8940  002a 43            	cpl	a
+8941  002b a41e          	and	a,#30
+8942  002d c75256        	ld	21078,a
+8943                     ; 2096 }
+8946  0030 85            	popw	x
+8947  0031 81            	ret
+9008                     ; 2112 ITStatus TIM1_GetITStatus(TIM1_IT_TypeDef TIM1_IT)
+9008                     ; 2113 {
+9009                     .text:	section	.text,new
+9010  0000               _TIM1_GetITStatus:
+9012  0000 88            	push	a
+9013  0001 89            	pushw	x
+9014       00000002      OFST:	set	2
+9017                     ; 2114   ITStatus bitstatus = RESET;
+9019                     ; 2115   uint8_t TIM1_itStatus = 0, TIM1_itEnable = 0;
+9023                     ; 2118   assert_param(IS_TIM1_GET_IT_OK(TIM1_IT));
+9025  0002 a101          	cp	a,#1
+9026  0004 271c          	jreq	L4431
+9027  0006 a102          	cp	a,#2
+9028  0008 2718          	jreq	L4431
+9029  000a a104          	cp	a,#4
+9030  000c 2714          	jreq	L4431
+9031  000e a108          	cp	a,#8
+9032  0010 2710          	jreq	L4431
+9033  0012 a110          	cp	a,#16
+9034  0014 270c          	jreq	L4431
+9035  0016 a120          	cp	a,#32
+9036  0018 2708          	jreq	L4431
+9037  001a a140          	cp	a,#64
+9038  001c 2704          	jreq	L4431
+9039  001e a180          	cp	a,#128
+9040  0020 2603          	jrne	L2431
+9041  0022               L4431:
+9042  0022 4f            	clr	a
+9043  0023 2010          	jra	L6431
+9044  0025               L2431:
+9045  0025 ae0846        	ldw	x,#2118
+9046  0028 89            	pushw	x
+9047  0029 ae0000        	ldw	x,#0
+9048  002c 89            	pushw	x
+9049  002d ae0000        	ldw	x,#L37
+9050  0030 cd0000        	call	_assert_failed
+9052  0033 5b04          	addw	sp,#4
+9053  0035               L6431:
+9054                     ; 2120   TIM1_itStatus = (uint8_t)(TIM1->SR1 & (uint8_t)TIM1_IT);
+9056  0035 c65255        	ld	a,21077
+9057  0038 1403          	and	a,(OFST+1,sp)
+9058  003a 6b01          	ld	(OFST-1,sp),a
+9060                     ; 2122   TIM1_itEnable = (uint8_t)(TIM1->IER & (uint8_t)TIM1_IT);
+9062  003c c65254        	ld	a,21076
+9063  003f 1403          	and	a,(OFST+1,sp)
+9064  0041 6b02          	ld	(OFST+0,sp),a
+9066                     ; 2124   if ((TIM1_itStatus != (uint8_t)RESET ) && (TIM1_itEnable != (uint8_t)RESET ))
+9068  0043 0d01          	tnz	(OFST-1,sp)
+9069  0045 270a          	jreq	L1243
+9071  0047 0d02          	tnz	(OFST+0,sp)
+9072  0049 2706          	jreq	L1243
+9073                     ; 2126     bitstatus = SET;
+9075  004b a601          	ld	a,#1
+9076  004d 6b02          	ld	(OFST+0,sp),a
+9079  004f 2002          	jra	L3243
+9080  0051               L1243:
+9081                     ; 2130     bitstatus = RESET;
+9083  0051 0f02          	clr	(OFST+0,sp)
+9085  0053               L3243:
+9086                     ; 2132   return (ITStatus)(bitstatus);
+9088  0053 7b02          	ld	a,(OFST+0,sp)
+9091  0055 5b03          	addw	sp,#3
+9092  0057 81            	ret
+9129                     ; 2149 void TIM1_ClearITPendingBit(TIM1_IT_TypeDef TIM1_IT)
+9129                     ; 2150 {
+9130                     .text:	section	.text,new
+9131  0000               _TIM1_ClearITPendingBit:
+9133  0000 88            	push	a
+9134       00000000      OFST:	set	0
+9137                     ; 2152   assert_param(IS_TIM1_IT_OK(TIM1_IT));
+9139  0001 4d            	tnz	a
+9140  0002 2703          	jreq	L2531
+9141  0004 4f            	clr	a
+9142  0005 2010          	jra	L4531
+9143  0007               L2531:
+9144  0007 ae0868        	ldw	x,#2152
+9145  000a 89            	pushw	x
+9146  000b ae0000        	ldw	x,#0
+9147  000e 89            	pushw	x
+9148  000f ae0000        	ldw	x,#L37
+9149  0012 cd0000        	call	_assert_failed
+9151  0015 5b04          	addw	sp,#4
+9152  0017               L4531:
+9153                     ; 2155   TIM1->SR1 = (uint8_t)(~(uint8_t)TIM1_IT);
+9155  0017 7b01          	ld	a,(OFST+1,sp)
+9156  0019 43            	cpl	a
+9157  001a c75255        	ld	21077,a
+9158                     ; 2156 }
+9161  001d 84            	pop	a
+9162  001e 81            	ret
+9208                     ; 2174 static void TI1_Config(uint8_t TIM1_ICPolarity,
+9208                     ; 2175                        uint8_t TIM1_ICSelection,
+9208                     ; 2176                        uint8_t TIM1_ICFilter)
+9208                     ; 2177 {
+9209                     .text:	section	.text,new
+9210  0000               L3_TI1_Config:
+9212  0000 89            	pushw	x
+9213  0001 88            	push	a
+9214       00000001      OFST:	set	1
+9217                     ; 2179   TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
+9219  0002 7211525c      	bres	21084,#0
+9220                     ; 2182   TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF ))) | 
+9220                     ; 2183                           (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
+9222  0006 7b06          	ld	a,(OFST+5,sp)
+9223  0008 97            	ld	xl,a
+9224  0009 a610          	ld	a,#16
+9225  000b 42            	mul	x,a
+9226  000c 9f            	ld	a,xl
+9227  000d 1a03          	or	a,(OFST+2,sp)
+9228  000f 6b01          	ld	(OFST+0,sp),a
+9230  0011 c65258        	ld	a,21080
+9231  0014 a40c          	and	a,#12
+9232  0016 1a01          	or	a,(OFST+0,sp)
+9233  0018 c75258        	ld	21080,a
+9234                     ; 2186   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+9236  001b 0d02          	tnz	(OFST+1,sp)
+9237  001d 2706          	jreq	L3643
+9238                     ; 2188     TIM1->CCER1 |= TIM1_CCER1_CC1P;
+9240  001f 7212525c      	bset	21084,#1
+9242  0023 2004          	jra	L5643
+9243  0025               L3643:
+9244                     ; 2192     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
+9246  0025 7213525c      	bres	21084,#1
+9247  0029               L5643:
+9248                     ; 2196   TIM1->CCER1 |=  TIM1_CCER1_CC1E;
+9250  0029 7210525c      	bset	21084,#0
+9251                     ; 2197 }
+9254  002d 5b03          	addw	sp,#3
+9255  002f 81            	ret
+9301                     ; 2215 static void TI2_Config(uint8_t TIM1_ICPolarity,
+9301                     ; 2216                        uint8_t TIM1_ICSelection,
+9301                     ; 2217                        uint8_t TIM1_ICFilter)
+9301                     ; 2218 {
+9302                     .text:	section	.text,new
+9303  0000               L5_TI2_Config:
+9305  0000 89            	pushw	x
+9306  0001 88            	push	a
+9307       00000001      OFST:	set	1
+9310                     ; 2220   TIM1->CCER1 &=  (uint8_t)(~TIM1_CCER1_CC2E);
+9312  0002 7219525c      	bres	21084,#4
+9313                     ; 2223   TIM1->CCMR2  = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF ))) 
+9313                     ; 2224                            | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
+9315  0006 7b06          	ld	a,(OFST+5,sp)
+9316  0008 97            	ld	xl,a
+9317  0009 a610          	ld	a,#16
+9318  000b 42            	mul	x,a
+9319  000c 9f            	ld	a,xl
+9320  000d 1a03          	or	a,(OFST+2,sp)
+9321  000f 6b01          	ld	(OFST+0,sp),a
+9323  0011 c65259        	ld	a,21081
+9324  0014 a40c          	and	a,#12
+9325  0016 1a01          	or	a,(OFST+0,sp)
+9326  0018 c75259        	ld	21081,a
+9327                     ; 2226   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+9329  001b 0d02          	tnz	(OFST+1,sp)
+9330  001d 2706          	jreq	L7053
+9331                     ; 2228     TIM1->CCER1 |= TIM1_CCER1_CC2P;
+9333  001f 721a525c      	bset	21084,#5
+9335  0023 2004          	jra	L1153
+9336  0025               L7053:
+9337                     ; 2232     TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
+9339  0025 721b525c      	bres	21084,#5
+9340  0029               L1153:
+9341                     ; 2235   TIM1->CCER1 |=  TIM1_CCER1_CC2E;
+9343  0029 7218525c      	bset	21084,#4
+9344                     ; 2236 }
+9347  002d 5b03          	addw	sp,#3
+9348  002f 81            	ret
+9394                     ; 2254 static void TI3_Config(uint8_t TIM1_ICPolarity,
+9394                     ; 2255                        uint8_t TIM1_ICSelection,
+9394                     ; 2256                        uint8_t TIM1_ICFilter)
+9394                     ; 2257 {
+9395                     .text:	section	.text,new
+9396  0000               L7_TI3_Config:
+9398  0000 89            	pushw	x
+9399  0001 88            	push	a
+9400       00000001      OFST:	set	1
+9403                     ; 2259   TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC3E);
+9405  0002 7211525d      	bres	21085,#0
+9406                     ; 2262   TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) 
+9406                     ; 2263                           | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
+9408  0006 7b06          	ld	a,(OFST+5,sp)
+9409  0008 97            	ld	xl,a
+9410  0009 a610          	ld	a,#16
+9411  000b 42            	mul	x,a
+9412  000c 9f            	ld	a,xl
+9413  000d 1a03          	or	a,(OFST+2,sp)
+9414  000f 6b01          	ld	(OFST+0,sp),a
+9416  0011 c6525a        	ld	a,21082
+9417  0014 a40c          	and	a,#12
+9418  0016 1a01          	or	a,(OFST+0,sp)
+9419  0018 c7525a        	ld	21082,a
+9420                     ; 2266   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+9422  001b 0d02          	tnz	(OFST+1,sp)
+9423  001d 2706          	jreq	L3353
+9424                     ; 2268     TIM1->CCER2 |= TIM1_CCER2_CC3P;
+9426  001f 7212525d      	bset	21085,#1
+9428  0023 2004          	jra	L5353
+9429  0025               L3353:
+9430                     ; 2272     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3P);
+9432  0025 7213525d      	bres	21085,#1
+9433  0029               L5353:
+9434                     ; 2275   TIM1->CCER2 |=  TIM1_CCER2_CC3E;
+9436  0029 7210525d      	bset	21085,#0
+9437                     ; 2276 }
+9440  002d 5b03          	addw	sp,#3
+9441  002f 81            	ret
+9487                     ; 2294 static void TI4_Config(uint8_t TIM1_ICPolarity,
+9487                     ; 2295                        uint8_t TIM1_ICSelection,
+9487                     ; 2296                        uint8_t TIM1_ICFilter)
+9487                     ; 2297 {
+9488                     .text:	section	.text,new
+9489  0000               L11_TI4_Config:
+9491  0000 89            	pushw	x
+9492  0001 88            	push	a
+9493       00000001      OFST:	set	1
+9496                     ; 2299   TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC4E);
+9498  0002 7219525d      	bres	21085,#4
+9499                     ; 2302   TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF )))
+9499                     ; 2303                           | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
+9501  0006 7b06          	ld	a,(OFST+5,sp)
+9502  0008 97            	ld	xl,a
+9503  0009 a610          	ld	a,#16
+9504  000b 42            	mul	x,a
+9505  000c 9f            	ld	a,xl
+9506  000d 1a03          	or	a,(OFST+2,sp)
+9507  000f 6b01          	ld	(OFST+0,sp),a
+9509  0011 c6525b        	ld	a,21083
+9510  0014 a40c          	and	a,#12
+9511  0016 1a01          	or	a,(OFST+0,sp)
+9512  0018 c7525b        	ld	21083,a
+9513                     ; 2306   if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+9515  001b 0d02          	tnz	(OFST+1,sp)
+9516  001d 2706          	jreq	L7553
+9517                     ; 2308     TIM1->CCER2 |= TIM1_CCER2_CC4P;
+9519  001f 721a525d      	bset	21085,#5
+9521  0023 2004          	jra	L1653
+9522  0025               L7553:
+9523                     ; 2312     TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4P);
+9525  0025 721b525d      	bres	21085,#5
+9526  0029               L1653:
+9527                     ; 2316   TIM1->CCER2 |=  TIM1_CCER2_CC4E;
+9529  0029 7218525d      	bset	21085,#4
+9530                     ; 2317 }
+9533  002d 5b03          	addw	sp,#3
+9534  002f 81            	ret
+9547                     	xdef	_TIM1_ClearITPendingBit
+9548                     	xdef	_TIM1_GetITStatus
+9549                     	xdef	_TIM1_ClearFlag
+9550                     	xdef	_TIM1_GetFlagStatus
+9551                     	xdef	_TIM1_GetPrescaler
+9552                     	xdef	_TIM1_GetCounter
+9553                     	xdef	_TIM1_GetCapture4
+9554                     	xdef	_TIM1_GetCapture3
+9555                     	xdef	_TIM1_GetCapture2
+9556                     	xdef	_TIM1_GetCapture1
+9557                     	xdef	_TIM1_SetIC4Prescaler
+9558                     	xdef	_TIM1_SetIC3Prescaler
+9559                     	xdef	_TIM1_SetIC2Prescaler
+9560                     	xdef	_TIM1_SetIC1Prescaler
+9561                     	xdef	_TIM1_SetCompare4
+9562                     	xdef	_TIM1_SetCompare3
+9563                     	xdef	_TIM1_SetCompare2
+9564                     	xdef	_TIM1_SetCompare1
+9565                     	xdef	_TIM1_SetAutoreload
+9566                     	xdef	_TIM1_SetCounter
+9567                     	xdef	_TIM1_SelectOCxM
+9568                     	xdef	_TIM1_CCxNCmd
+9569                     	xdef	_TIM1_CCxCmd
+9570                     	xdef	_TIM1_OC4PolarityConfig
+9571                     	xdef	_TIM1_OC3NPolarityConfig
+9572                     	xdef	_TIM1_OC3PolarityConfig
+9573                     	xdef	_TIM1_OC2NPolarityConfig
+9574                     	xdef	_TIM1_OC2PolarityConfig
+9575                     	xdef	_TIM1_OC1NPolarityConfig
+9576                     	xdef	_TIM1_OC1PolarityConfig
+9577                     	xdef	_TIM1_GenerateEvent
+9578                     	xdef	_TIM1_OC4FastConfig
+9579                     	xdef	_TIM1_OC3FastConfig
+9580                     	xdef	_TIM1_OC2FastConfig
+9581                     	xdef	_TIM1_OC1FastConfig
+9582                     	xdef	_TIM1_OC4PreloadConfig
+9583                     	xdef	_TIM1_OC3PreloadConfig
+9584                     	xdef	_TIM1_OC2PreloadConfig
+9585                     	xdef	_TIM1_OC1PreloadConfig
+9586                     	xdef	_TIM1_CCPreloadControl
+9587                     	xdef	_TIM1_SelectCOM
+9588                     	xdef	_TIM1_ARRPreloadConfig
+9589                     	xdef	_TIM1_ForcedOC4Config
+9590                     	xdef	_TIM1_ForcedOC3Config
+9591                     	xdef	_TIM1_ForcedOC2Config
+9592                     	xdef	_TIM1_ForcedOC1Config
+9593                     	xdef	_TIM1_CounterModeConfig
+9594                     	xdef	_TIM1_PrescalerConfig
+9595                     	xdef	_TIM1_EncoderInterfaceConfig
+9596                     	xdef	_TIM1_SelectMasterSlaveMode
+9597                     	xdef	_TIM1_SelectSlaveMode
+9598                     	xdef	_TIM1_SelectOutputTrigger
+9599                     	xdef	_TIM1_SelectOnePulseMode
+9600                     	xdef	_TIM1_SelectHallSensor
+9601                     	xdef	_TIM1_UpdateRequestConfig
+9602                     	xdef	_TIM1_UpdateDisableConfig
+9603                     	xdef	_TIM1_SelectInputTrigger
+9604                     	xdef	_TIM1_TIxExternalClockConfig
+9605                     	xdef	_TIM1_ETRConfig
+9606                     	xdef	_TIM1_ETRClockMode2Config
+9607                     	xdef	_TIM1_ETRClockMode1Config
+9608                     	xdef	_TIM1_InternalClockConfig
+9609                     	xdef	_TIM1_ITConfig
+9610                     	xdef	_TIM1_CtrlPWMOutputs
+9611                     	xdef	_TIM1_Cmd
+9612                     	xdef	_TIM1_PWMIConfig
+9613                     	xdef	_TIM1_ICInit
+9614                     	xdef	_TIM1_BDTRConfig
+9615                     	xdef	_TIM1_OC4Init
+9616                     	xdef	_TIM1_OC3Init
+9617                     	xdef	_TIM1_OC2Init
+9618                     	xdef	_TIM1_OC1Init
+9619                     	xdef	_TIM1_TimeBaseInit
+9620                     	xdef	_TIM1_DeInit
+9621                     	xref	_assert_failed
+9622                     .const:	section	.text
+9623  0000               L37:
+9624  0000 2e2e5c6c6962  	dc.b	"..\libs\src\stm8s_"
+9625  0012 74696d312e63  	dc.b	"tim1.c",0
+9645                     	end

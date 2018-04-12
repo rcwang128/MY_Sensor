@@ -1,73 +1,76 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.11.10 - 06 Jul 2017
    3                     ; Generator (Limited) V4.4.7 - 05 Oct 2017
-   4                     ; Optimizer V4.4.7 - 05 Oct 2017
-  49                     ; 49 void TIM4_DeInit(void)
-  49                     ; 50 {
-  51                     .text:	section	.text,new
-  52  0000               _TIM4_DeInit:
-  56                     ; 51   TIM4->CR1 = TIM4_CR1_RESET_VALUE;
-  58  0000 725f5340      	clr	21312
-  59                     ; 52   TIM4->IER = TIM4_IER_RESET_VALUE;
-  61  0004 725f5343      	clr	21315
-  62                     ; 53   TIM4->CNTR = TIM4_CNTR_RESET_VALUE;
-  64  0008 725f5346      	clr	21318
-  65                     ; 54   TIM4->PSCR = TIM4_PSCR_RESET_VALUE;
-  67  000c 725f5347      	clr	21319
-  68                     ; 55   TIM4->ARR = TIM4_ARR_RESET_VALUE;
-  70  0010 35ff5348      	mov	21320,#255
-  71                     ; 56   TIM4->SR1 = TIM4_SR1_RESET_VALUE;
-  73  0014 725f5344      	clr	21316
-  74                     ; 57 }
-  77  0018 81            	ret	
- 182                     ; 65 void TIM4_TimeBaseInit(TIM4_Prescaler_TypeDef TIM4_Prescaler, uint8_t TIM4_Period)
- 182                     ; 66 {
- 183                     .text:	section	.text,new
- 184  0000               _TIM4_TimeBaseInit:
- 186  0000 89            	pushw	x
- 187       00000000      OFST:	set	0
- 190                     ; 68   assert_param(IS_TIM4_PRESCALER_OK(TIM4_Prescaler));
- 192  0001 9e            	ld	a,xh
- 193  0002 4d            	tnz	a
- 194  0003 2730          	jreq	L41
- 195  0005 9e            	ld	a,xh
- 196  0006 4a            	dec	a
- 197  0007 272c          	jreq	L41
- 198  0009 9e            	ld	a,xh
- 199  000a a102          	cp	a,#2
- 200  000c 2727          	jreq	L41
- 201  000e 9e            	ld	a,xh
- 202  000f a103          	cp	a,#3
- 203  0011 2722          	jreq	L41
- 204  0013 9e            	ld	a,xh
- 205  0014 a104          	cp	a,#4
- 206  0016 271d          	jreq	L41
- 207  0018 9e            	ld	a,xh
- 208  0019 a105          	cp	a,#5
- 209  001b 2718          	jreq	L41
- 210  001d 9e            	ld	a,xh
- 211  001e a106          	cp	a,#6
- 212  0020 2713          	jreq	L41
- 213  0022 9e            	ld	a,xh
- 214  0023 a107          	cp	a,#7
- 215  0025 270e          	jreq	L41
- 216  0027 ae0044        	ldw	x,#68
- 217  002a 89            	pushw	x
- 218  002b 5f            	clrw	x
- 219  002c 89            	pushw	x
- 220  002d ae0000        	ldw	x,#L56
- 221  0030 cd0000        	call	_assert_failed
- 223  0033 5b04          	addw	sp,#4
- 224  0035               L41:
+  45                     ; 49 void TIM4_DeInit(void)
+  45                     ; 50 {
+  47                     .text:	section	.text,new
+  48  0000               _TIM4_DeInit:
+  52                     ; 51   TIM4->CR1 = TIM4_CR1_RESET_VALUE;
+  54  0000 725f5340      	clr	21312
+  55                     ; 52   TIM4->IER = TIM4_IER_RESET_VALUE;
+  57  0004 725f5343      	clr	21315
+  58                     ; 53   TIM4->CNTR = TIM4_CNTR_RESET_VALUE;
+  60  0008 725f5346      	clr	21318
+  61                     ; 54   TIM4->PSCR = TIM4_PSCR_RESET_VALUE;
+  63  000c 725f5347      	clr	21319
+  64                     ; 55   TIM4->ARR = TIM4_ARR_RESET_VALUE;
+  66  0010 35ff5348      	mov	21320,#255
+  67                     ; 56   TIM4->SR1 = TIM4_SR1_RESET_VALUE;
+  69  0014 725f5344      	clr	21316
+  70                     ; 57 }
+  73  0018 81            	ret
+ 178                     ; 65 void TIM4_TimeBaseInit(TIM4_Prescaler_TypeDef TIM4_Prescaler, uint8_t TIM4_Period)
+ 178                     ; 66 {
+ 179                     .text:	section	.text,new
+ 180  0000               _TIM4_TimeBaseInit:
+ 182  0000 89            	pushw	x
+ 183       00000000      OFST:	set	0
+ 186                     ; 68   assert_param(IS_TIM4_PRESCALER_OK(TIM4_Prescaler));
+ 188  0001 9e            	ld	a,xh
+ 189  0002 4d            	tnz	a
+ 190  0003 2723          	jreq	L21
+ 191  0005 9e            	ld	a,xh
+ 192  0006 a101          	cp	a,#1
+ 193  0008 271e          	jreq	L21
+ 194  000a 9e            	ld	a,xh
+ 195  000b a102          	cp	a,#2
+ 196  000d 2719          	jreq	L21
+ 197  000f 9e            	ld	a,xh
+ 198  0010 a103          	cp	a,#3
+ 199  0012 2714          	jreq	L21
+ 200  0014 9e            	ld	a,xh
+ 201  0015 a104          	cp	a,#4
+ 202  0017 270f          	jreq	L21
+ 203  0019 9e            	ld	a,xh
+ 204  001a a105          	cp	a,#5
+ 205  001c 270a          	jreq	L21
+ 206  001e 9e            	ld	a,xh
+ 207  001f a106          	cp	a,#6
+ 208  0021 2705          	jreq	L21
+ 209  0023 9e            	ld	a,xh
+ 210  0024 a107          	cp	a,#7
+ 211  0026 2603          	jrne	L01
+ 212  0028               L21:
+ 213  0028 4f            	clr	a
+ 214  0029 2010          	jra	L41
+ 215  002b               L01:
+ 216  002b ae0044        	ldw	x,#68
+ 217  002e 89            	pushw	x
+ 218  002f ae0000        	ldw	x,#0
+ 219  0032 89            	pushw	x
+ 220  0033 ae0000        	ldw	x,#L56
+ 221  0036 cd0000        	call	_assert_failed
+ 223  0039 5b04          	addw	sp,#4
+ 224  003b               L41:
  225                     ; 70   TIM4->PSCR = (uint8_t)(TIM4_Prescaler);
- 227  0035 7b01          	ld	a,(OFST+1,sp)
- 228  0037 c75347        	ld	21319,a
+ 227  003b 7b01          	ld	a,(OFST+1,sp)
+ 228  003d c75347        	ld	21319,a
  229                     ; 72   TIM4->ARR = (uint8_t)(TIM4_Period);
- 231  003a 7b02          	ld	a,(OFST+2,sp)
- 232  003c c75348        	ld	21320,a
+ 231  0040 7b02          	ld	a,(OFST+2,sp)
+ 232  0042 c75348        	ld	21320,a
  233                     ; 73 }
- 236  003f 85            	popw	x
- 237  0040 81            	ret	
+ 236  0045 85            	popw	x
+ 237  0046 81            	ret
  293                     ; 81 void TIM4_Cmd(FunctionalState NewState)
  293                     ; 82 {
  294                     .text:	section	.text,new
@@ -76,455 +79,522 @@
  298       00000000      OFST:	set	0
  301                     ; 84   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
  303  0001 4d            	tnz	a
- 304  0002 2711          	jreq	L62
- 305  0004 4a            	dec	a
- 306  0005 270e          	jreq	L62
- 307  0007 ae0054        	ldw	x,#84
- 308  000a 89            	pushw	x
- 309  000b 5f            	clrw	x
- 310  000c 89            	pushw	x
- 311  000d ae0000        	ldw	x,#L56
- 312  0010 cd0000        	call	_assert_failed
- 314  0013 5b04          	addw	sp,#4
- 315  0015               L62:
- 316                     ; 87   if (NewState != DISABLE)
- 318  0015 7b01          	ld	a,(OFST+1,sp)
- 319  0017 2706          	jreq	L511
- 320                     ; 89     TIM4->CR1 |= TIM4_CR1_CEN;
- 322  0019 72105340      	bset	21312,#0
- 324  001d 2004          	jra	L711
- 325  001f               L511:
- 326                     ; 93     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_CEN);
- 328  001f 72115340      	bres	21312,#0
- 329  0023               L711:
- 330                     ; 95 }
- 333  0023 84            	pop	a
- 334  0024 81            	ret	
- 393                     ; 107 void TIM4_ITConfig(TIM4_IT_TypeDef TIM4_IT, FunctionalState NewState)
- 393                     ; 108 {
- 394                     .text:	section	.text,new
- 395  0000               _TIM4_ITConfig:
- 397  0000 89            	pushw	x
- 398       00000000      OFST:	set	0
- 401                     ; 110   assert_param(IS_TIM4_IT_OK(TIM4_IT));
- 403  0001 9e            	ld	a,xh
- 404  0002 4a            	dec	a
- 405  0003 2705          	jreq	L63
- 406  0005 ae006e        	ldw	x,#110
- 407  0008 ad22          	call	LC001
- 408  000a               L63:
- 409                     ; 111   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
- 411  000a 7b02          	ld	a,(OFST+2,sp)
- 412  000c 2708          	jreq	L64
- 413  000e 4a            	dec	a
- 414  000f 2705          	jreq	L64
- 415  0011 ae006f        	ldw	x,#111
- 416  0014 ad16          	call	LC001
- 417  0016               L64:
- 418                     ; 113   if (NewState != DISABLE)
- 420  0016 7b02          	ld	a,(OFST+2,sp)
- 421  0018 2707          	jreq	L151
- 422                     ; 116     TIM4->IER |= (uint8_t)TIM4_IT;
- 424  001a c65343        	ld	a,21315
- 425  001d 1a01          	or	a,(OFST+1,sp)
- 427  001f 2006          	jra	L351
- 428  0021               L151:
- 429                     ; 121     TIM4->IER &= (uint8_t)(~TIM4_IT);
- 431  0021 7b01          	ld	a,(OFST+1,sp)
- 432  0023 43            	cpl	a
- 433  0024 c45343        	and	a,21315
- 434  0027               L351:
- 435  0027 c75343        	ld	21315,a
- 436                     ; 123 }
- 439  002a 85            	popw	x
- 440  002b 81            	ret	
- 441  002c               LC001:
- 442  002c 89            	pushw	x
- 443  002d 5f            	clrw	x
- 444  002e 89            	pushw	x
- 445  002f ae0000        	ldw	x,#L56
- 446  0032 cd0000        	call	_assert_failed
- 448  0035 5b04          	addw	sp,#4
- 449  0037 81            	ret	
- 486                     ; 131 void TIM4_UpdateDisableConfig(FunctionalState NewState)
- 486                     ; 132 {
- 487                     .text:	section	.text,new
- 488  0000               _TIM4_UpdateDisableConfig:
- 490  0000 88            	push	a
- 491       00000000      OFST:	set	0
- 494                     ; 134   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
- 496  0001 4d            	tnz	a
- 497  0002 2711          	jreq	L06
- 498  0004 4a            	dec	a
- 499  0005 270e          	jreq	L06
- 500  0007 ae0086        	ldw	x,#134
- 501  000a 89            	pushw	x
- 502  000b 5f            	clrw	x
- 503  000c 89            	pushw	x
- 504  000d ae0000        	ldw	x,#L56
- 505  0010 cd0000        	call	_assert_failed
- 507  0013 5b04          	addw	sp,#4
- 508  0015               L06:
- 509                     ; 137   if (NewState != DISABLE)
- 511  0015 7b01          	ld	a,(OFST+1,sp)
- 512  0017 2706          	jreq	L371
- 513                     ; 139     TIM4->CR1 |= TIM4_CR1_UDIS;
- 515  0019 72125340      	bset	21312,#1
- 517  001d 2004          	jra	L571
- 518  001f               L371:
- 519                     ; 143     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_UDIS);
- 521  001f 72135340      	bres	21312,#1
- 522  0023               L571:
- 523                     ; 145 }
- 526  0023 84            	pop	a
- 527  0024 81            	ret	
- 586                     ; 155 void TIM4_UpdateRequestConfig(TIM4_UpdateSource_TypeDef TIM4_UpdateSource)
- 586                     ; 156 {
- 587                     .text:	section	.text,new
- 588  0000               _TIM4_UpdateRequestConfig:
- 590  0000 88            	push	a
- 591       00000000      OFST:	set	0
- 594                     ; 158   assert_param(IS_TIM4_UPDATE_SOURCE_OK(TIM4_UpdateSource));
- 596  0001 4d            	tnz	a
- 597  0002 2711          	jreq	L27
- 598  0004 4a            	dec	a
- 599  0005 270e          	jreq	L27
- 600  0007 ae009e        	ldw	x,#158
- 601  000a 89            	pushw	x
- 602  000b 5f            	clrw	x
- 603  000c 89            	pushw	x
- 604  000d ae0000        	ldw	x,#L56
- 605  0010 cd0000        	call	_assert_failed
- 607  0013 5b04          	addw	sp,#4
- 608  0015               L27:
- 609                     ; 161   if (TIM4_UpdateSource != TIM4_UPDATESOURCE_GLOBAL)
- 611  0015 7b01          	ld	a,(OFST+1,sp)
- 612  0017 2706          	jreq	L522
- 613                     ; 163     TIM4->CR1 |= TIM4_CR1_URS;
- 615  0019 72145340      	bset	21312,#2
- 617  001d 2004          	jra	L722
- 618  001f               L522:
- 619                     ; 167     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_URS);
- 621  001f 72155340      	bres	21312,#2
- 622  0023               L722:
- 623                     ; 169 }
- 626  0023 84            	pop	a
- 627  0024 81            	ret	
- 685                     ; 179 void TIM4_SelectOnePulseMode(TIM4_OPMode_TypeDef TIM4_OPMode)
- 685                     ; 180 {
- 686                     .text:	section	.text,new
- 687  0000               _TIM4_SelectOnePulseMode:
- 689  0000 88            	push	a
- 690       00000000      OFST:	set	0
- 693                     ; 182   assert_param(IS_TIM4_OPM_MODE_OK(TIM4_OPMode));
- 695  0001 a101          	cp	a,#1
- 696  0003 2711          	jreq	L401
- 697  0005 4d            	tnz	a
- 698  0006 270e          	jreq	L401
- 699  0008 ae00b6        	ldw	x,#182
- 700  000b 89            	pushw	x
- 701  000c 5f            	clrw	x
- 702  000d 89            	pushw	x
- 703  000e ae0000        	ldw	x,#L56
- 704  0011 cd0000        	call	_assert_failed
- 706  0014 5b04          	addw	sp,#4
- 707  0016               L401:
- 708                     ; 185   if (TIM4_OPMode != TIM4_OPMODE_REPETITIVE)
- 710  0016 7b01          	ld	a,(OFST+1,sp)
- 711  0018 2706          	jreq	L752
- 712                     ; 187     TIM4->CR1 |= TIM4_CR1_OPM;
- 714  001a 72165340      	bset	21312,#3
- 716  001e 2004          	jra	L162
- 717  0020               L752:
- 718                     ; 191     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_OPM);
- 720  0020 72175340      	bres	21312,#3
- 721  0024               L162:
- 722                     ; 193 }
- 725  0024 84            	pop	a
- 726  0025 81            	ret	
- 795                     ; 215 void TIM4_PrescalerConfig(TIM4_Prescaler_TypeDef Prescaler, TIM4_PSCReloadMode_TypeDef TIM4_PSCReloadMode)
- 795                     ; 216 {
- 796                     .text:	section	.text,new
- 797  0000               _TIM4_PrescalerConfig:
- 799  0000 89            	pushw	x
- 800       00000000      OFST:	set	0
- 803                     ; 218   assert_param(IS_TIM4_PRESCALER_RELOAD_OK(TIM4_PSCReloadMode));
- 805  0001 9f            	ld	a,xl
- 806  0002 4d            	tnz	a
- 807  0003 2709          	jreq	L611
- 808  0005 9f            	ld	a,xl
- 809  0006 4a            	dec	a
- 810  0007 2705          	jreq	L611
- 811  0009 ae00da        	ldw	x,#218
- 812  000c ad31          	call	LC002
- 813  000e               L611:
- 814                     ; 219   assert_param(IS_TIM4_PRESCALER_OK(Prescaler));
- 816  000e 7b01          	ld	a,(OFST+1,sp)
- 817  0010 2723          	jreq	L621
- 818  0012 a101          	cp	a,#1
- 819  0014 271f          	jreq	L621
- 820  0016 a102          	cp	a,#2
- 821  0018 271b          	jreq	L621
- 822  001a a103          	cp	a,#3
- 823  001c 2717          	jreq	L621
- 824  001e a104          	cp	a,#4
- 825  0020 2713          	jreq	L621
- 826  0022 a105          	cp	a,#5
- 827  0024 270f          	jreq	L621
- 828  0026 a106          	cp	a,#6
- 829  0028 270b          	jreq	L621
- 830  002a a107          	cp	a,#7
- 831  002c 2707          	jreq	L621
- 832  002e ae00db        	ldw	x,#219
- 833  0031 ad0c          	call	LC002
- 834  0033 7b01          	ld	a,(OFST+1,sp)
- 835  0035               L621:
- 836                     ; 222   TIM4->PSCR = (uint8_t)Prescaler;
- 838  0035 c75347        	ld	21319,a
- 839                     ; 225   TIM4->EGR = (uint8_t)TIM4_PSCReloadMode;
- 841  0038 7b02          	ld	a,(OFST+2,sp)
- 842  003a c75345        	ld	21317,a
- 843                     ; 226 }
- 846  003d 85            	popw	x
- 847  003e 81            	ret	
- 848  003f               LC002:
- 849  003f 89            	pushw	x
- 850  0040 5f            	clrw	x
- 851  0041 89            	pushw	x
- 852  0042 ae0000        	ldw	x,#L56
- 853  0045 cd0000        	call	_assert_failed
- 855  0048 5b04          	addw	sp,#4
- 856  004a 81            	ret	
- 893                     ; 234 void TIM4_ARRPreloadConfig(FunctionalState NewState)
- 893                     ; 235 {
- 894                     .text:	section	.text,new
- 895  0000               _TIM4_ARRPreloadConfig:
- 897  0000 88            	push	a
- 898       00000000      OFST:	set	0
- 901                     ; 237   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
- 903  0001 4d            	tnz	a
- 904  0002 2711          	jreq	L041
- 905  0004 4a            	dec	a
- 906  0005 270e          	jreq	L041
- 907  0007 ae00ed        	ldw	x,#237
- 908  000a 89            	pushw	x
- 909  000b 5f            	clrw	x
- 910  000c 89            	pushw	x
- 911  000d ae0000        	ldw	x,#L56
- 912  0010 cd0000        	call	_assert_failed
- 914  0013 5b04          	addw	sp,#4
- 915  0015               L041:
- 916                     ; 240   if (NewState != DISABLE)
- 918  0015 7b01          	ld	a,(OFST+1,sp)
- 919  0017 2706          	jreq	L333
- 920                     ; 242     TIM4->CR1 |= TIM4_CR1_ARPE;
- 922  0019 721e5340      	bset	21312,#7
- 924  001d 2004          	jra	L533
- 925  001f               L333:
- 926                     ; 246     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_ARPE);
- 928  001f 721f5340      	bres	21312,#7
- 929  0023               L533:
- 930                     ; 248 }
- 933  0023 84            	pop	a
- 934  0024 81            	ret	
- 984                     ; 257 void TIM4_GenerateEvent(TIM4_EventSource_TypeDef TIM4_EventSource)
- 984                     ; 258 {
- 985                     .text:	section	.text,new
- 986  0000               _TIM4_GenerateEvent:
- 988  0000 88            	push	a
- 989       00000000      OFST:	set	0
- 992                     ; 260   assert_param(IS_TIM4_EVENT_SOURCE_OK(TIM4_EventSource));
- 994  0001 4a            	dec	a
- 995  0002 270e          	jreq	L051
- 996  0004 ae0104        	ldw	x,#260
- 997  0007 89            	pushw	x
- 998  0008 5f            	clrw	x
- 999  0009 89            	pushw	x
-1000  000a ae0000        	ldw	x,#L56
-1001  000d cd0000        	call	_assert_failed
-1003  0010 5b04          	addw	sp,#4
-1004  0012               L051:
-1005                     ; 263   TIM4->EGR = (uint8_t)(TIM4_EventSource);
-1007  0012 7b01          	ld	a,(OFST+1,sp)
-1008  0014 c75345        	ld	21317,a
-1009                     ; 264 }
-1012  0017 84            	pop	a
-1013  0018 81            	ret	
-1045                     ; 272 void TIM4_SetCounter(uint8_t Counter)
-1045                     ; 273 {
-1046                     .text:	section	.text,new
-1047  0000               _TIM4_SetCounter:
-1051                     ; 275   TIM4->CNTR = (uint8_t)(Counter);
-1053  0000 c75346        	ld	21318,a
-1054                     ; 276 }
-1057  0003 81            	ret	
-1089                     ; 284 void TIM4_SetAutoreload(uint8_t Autoreload)
-1089                     ; 285 {
-1090                     .text:	section	.text,new
-1091  0000               _TIM4_SetAutoreload:
-1095                     ; 287   TIM4->ARR = (uint8_t)(Autoreload);
-1097  0000 c75348        	ld	21320,a
-1098                     ; 288 }
-1101  0003 81            	ret	
-1124                     ; 295 uint8_t TIM4_GetCounter(void)
-1124                     ; 296 {
-1125                     .text:	section	.text,new
-1126  0000               _TIM4_GetCounter:
-1130                     ; 298   return (uint8_t)(TIM4->CNTR);
-1132  0000 c65346        	ld	a,21318
-1135  0003 81            	ret	
-1159                     ; 306 TIM4_Prescaler_TypeDef TIM4_GetPrescaler(void)
-1159                     ; 307 {
-1160                     .text:	section	.text,new
-1161  0000               _TIM4_GetPrescaler:
-1165                     ; 309   return (TIM4_Prescaler_TypeDef)(TIM4->PSCR);
-1167  0000 c65347        	ld	a,21319
-1170  0003 81            	ret	
-1250                     ; 319 FlagStatus TIM4_GetFlagStatus(TIM4_FLAG_TypeDef TIM4_FLAG)
-1250                     ; 320 {
-1251                     .text:	section	.text,new
-1252  0000               _TIM4_GetFlagStatus:
-1254  0000 88            	push	a
-1255  0001 88            	push	a
-1256       00000001      OFST:	set	1
-1259                     ; 321   FlagStatus bitstatus = RESET;
-1261                     ; 324   assert_param(IS_TIM4_GET_FLAG_OK(TIM4_FLAG));
-1263  0002 4a            	dec	a
-1264  0003 270e          	jreq	L071
-1265  0005 ae0144        	ldw	x,#324
-1266  0008 89            	pushw	x
-1267  0009 5f            	clrw	x
-1268  000a 89            	pushw	x
-1269  000b ae0000        	ldw	x,#L56
-1270  000e cd0000        	call	_assert_failed
-1272  0011 5b04          	addw	sp,#4
-1273  0013               L071:
-1274                     ; 326   if ((TIM4->SR1 & (uint8_t)TIM4_FLAG)  != 0)
-1276  0013 c65344        	ld	a,21316
-1277  0016 1502          	bcp	a,(OFST+1,sp)
-1278  0018 2704          	jreq	L374
-1279                     ; 328     bitstatus = SET;
-1281  001a a601          	ld	a,#1
-1284  001c 2001          	jra	L574
-1285  001e               L374:
-1286                     ; 332     bitstatus = RESET;
-1288  001e 4f            	clr	a
-1290  001f               L574:
-1291                     ; 334   return ((FlagStatus)bitstatus);
-1295  001f 85            	popw	x
-1296  0020 81            	ret	
-1332                     ; 344 void TIM4_ClearFlag(TIM4_FLAG_TypeDef TIM4_FLAG)
-1332                     ; 345 {
-1333                     .text:	section	.text,new
-1334  0000               _TIM4_ClearFlag:
-1336  0000 88            	push	a
-1337       00000000      OFST:	set	0
-1340                     ; 347   assert_param(IS_TIM4_GET_FLAG_OK(TIM4_FLAG));
-1342  0001 4a            	dec	a
-1343  0002 270e          	jreq	L002
-1344  0004 ae015b        	ldw	x,#347
-1345  0007 89            	pushw	x
-1346  0008 5f            	clrw	x
-1347  0009 89            	pushw	x
-1348  000a ae0000        	ldw	x,#L56
-1349  000d cd0000        	call	_assert_failed
-1351  0010 5b04          	addw	sp,#4
-1352  0012               L002:
-1353                     ; 350   TIM4->SR1 = (uint8_t)(~TIM4_FLAG);
-1355  0012 7b01          	ld	a,(OFST+1,sp)
-1356  0014 43            	cpl	a
-1357  0015 c75344        	ld	21316,a
-1358                     ; 351 }
-1361  0018 84            	pop	a
-1362  0019 81            	ret	
-1423                     ; 360 ITStatus TIM4_GetITStatus(TIM4_IT_TypeDef TIM4_IT)
-1423                     ; 361 {
-1424                     .text:	section	.text,new
-1425  0000               _TIM4_GetITStatus:
-1427  0000 88            	push	a
-1428  0001 89            	pushw	x
-1429       00000002      OFST:	set	2
-1432                     ; 362   ITStatus bitstatus = RESET;
-1434                     ; 364   uint8_t itstatus = 0x0, itenable = 0x0;
-1438                     ; 367   assert_param(IS_TIM4_IT_OK(TIM4_IT));
-1440  0002 4a            	dec	a
-1441  0003 270e          	jreq	L012
-1442  0005 ae016f        	ldw	x,#367
-1443  0008 89            	pushw	x
-1444  0009 5f            	clrw	x
-1445  000a 89            	pushw	x
-1446  000b ae0000        	ldw	x,#L56
-1447  000e cd0000        	call	_assert_failed
-1449  0011 5b04          	addw	sp,#4
-1450  0013               L012:
-1451                     ; 369   itstatus = (uint8_t)(TIM4->SR1 & (uint8_t)TIM4_IT);
-1453  0013 c65344        	ld	a,21316
-1454  0016 1403          	and	a,(OFST+1,sp)
-1455  0018 6b01          	ld	(OFST-1,sp),a
-1457                     ; 371   itenable = (uint8_t)(TIM4->IER & (uint8_t)TIM4_IT);
-1459  001a c65343        	ld	a,21315
-1460  001d 1403          	and	a,(OFST+1,sp)
-1461  001f 6b02          	ld	(OFST+0,sp),a
-1463                     ; 373   if ((itstatus != (uint8_t)RESET ) && (itenable != (uint8_t)RESET ))
-1465  0021 7b01          	ld	a,(OFST-1,sp)
-1466  0023 2708          	jreq	L345
-1468  0025 7b02          	ld	a,(OFST+0,sp)
-1469  0027 2704          	jreq	L345
-1470                     ; 375     bitstatus = (ITStatus)SET;
-1472  0029 a601          	ld	a,#1
-1475  002b 2001          	jra	L545
-1476  002d               L345:
-1477                     ; 379     bitstatus = (ITStatus)RESET;
-1479  002d 4f            	clr	a
-1481  002e               L545:
-1482                     ; 381   return ((ITStatus)bitstatus);
-1486  002e 5b03          	addw	sp,#3
-1487  0030 81            	ret	
-1524                     ; 391 void TIM4_ClearITPendingBit(TIM4_IT_TypeDef TIM4_IT)
-1524                     ; 392 {
-1525                     .text:	section	.text,new
-1526  0000               _TIM4_ClearITPendingBit:
-1528  0000 88            	push	a
-1529       00000000      OFST:	set	0
-1532                     ; 394   assert_param(IS_TIM4_IT_OK(TIM4_IT));
-1534  0001 4a            	dec	a
-1535  0002 270e          	jreq	L022
-1536  0004 ae018a        	ldw	x,#394
-1537  0007 89            	pushw	x
-1538  0008 5f            	clrw	x
-1539  0009 89            	pushw	x
-1540  000a ae0000        	ldw	x,#L56
-1541  000d cd0000        	call	_assert_failed
-1543  0010 5b04          	addw	sp,#4
-1544  0012               L022:
-1545                     ; 397   TIM4->SR1 = (uint8_t)(~TIM4_IT);
-1547  0012 7b01          	ld	a,(OFST+1,sp)
-1548  0014 43            	cpl	a
-1549  0015 c75344        	ld	21316,a
-1550                     ; 398 }
-1553  0018 84            	pop	a
-1554  0019 81            	ret	
-1567                     	xdef	_TIM4_ClearITPendingBit
-1568                     	xdef	_TIM4_GetITStatus
-1569                     	xdef	_TIM4_ClearFlag
-1570                     	xdef	_TIM4_GetFlagStatus
-1571                     	xdef	_TIM4_GetPrescaler
-1572                     	xdef	_TIM4_GetCounter
-1573                     	xdef	_TIM4_SetAutoreload
-1574                     	xdef	_TIM4_SetCounter
-1575                     	xdef	_TIM4_GenerateEvent
-1576                     	xdef	_TIM4_ARRPreloadConfig
-1577                     	xdef	_TIM4_PrescalerConfig
-1578                     	xdef	_TIM4_SelectOnePulseMode
-1579                     	xdef	_TIM4_UpdateRequestConfig
-1580                     	xdef	_TIM4_UpdateDisableConfig
-1581                     	xdef	_TIM4_ITConfig
-1582                     	xdef	_TIM4_Cmd
-1583                     	xdef	_TIM4_TimeBaseInit
-1584                     	xdef	_TIM4_DeInit
-1585                     	xref	_assert_failed
-1586                     .const:	section	.text
-1587  0000               L56:
-1588  0000 2e2e5c6c6962  	dc.b	"..\libs\src\stm8s_"
-1589  0012 74696d342e63  	dc.b	"tim4.c",0
-1609                     	end
+ 304  0002 2704          	jreq	L22
+ 305  0004 a101          	cp	a,#1
+ 306  0006 2603          	jrne	L02
+ 307  0008               L22:
+ 308  0008 4f            	clr	a
+ 309  0009 2010          	jra	L42
+ 310  000b               L02:
+ 311  000b ae0054        	ldw	x,#84
+ 312  000e 89            	pushw	x
+ 313  000f ae0000        	ldw	x,#0
+ 314  0012 89            	pushw	x
+ 315  0013 ae0000        	ldw	x,#L56
+ 316  0016 cd0000        	call	_assert_failed
+ 318  0019 5b04          	addw	sp,#4
+ 319  001b               L42:
+ 320                     ; 87   if (NewState != DISABLE)
+ 322  001b 0d01          	tnz	(OFST+1,sp)
+ 323  001d 2706          	jreq	L511
+ 324                     ; 89     TIM4->CR1 |= TIM4_CR1_CEN;
+ 326  001f 72105340      	bset	21312,#0
+ 328  0023 2004          	jra	L711
+ 329  0025               L511:
+ 330                     ; 93     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_CEN);
+ 332  0025 72115340      	bres	21312,#0
+ 333  0029               L711:
+ 334                     ; 95 }
+ 337  0029 84            	pop	a
+ 338  002a 81            	ret
+ 397                     ; 107 void TIM4_ITConfig(TIM4_IT_TypeDef TIM4_IT, FunctionalState NewState)
+ 397                     ; 108 {
+ 398                     .text:	section	.text,new
+ 399  0000               _TIM4_ITConfig:
+ 401  0000 89            	pushw	x
+ 402       00000000      OFST:	set	0
+ 405                     ; 110   assert_param(IS_TIM4_IT_OK(TIM4_IT));
+ 407  0001 9e            	ld	a,xh
+ 408  0002 a101          	cp	a,#1
+ 409  0004 2603          	jrne	L03
+ 410  0006 4f            	clr	a
+ 411  0007 2010          	jra	L23
+ 412  0009               L03:
+ 413  0009 ae006e        	ldw	x,#110
+ 414  000c 89            	pushw	x
+ 415  000d ae0000        	ldw	x,#0
+ 416  0010 89            	pushw	x
+ 417  0011 ae0000        	ldw	x,#L56
+ 418  0014 cd0000        	call	_assert_failed
+ 420  0017 5b04          	addw	sp,#4
+ 421  0019               L23:
+ 422                     ; 111   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+ 424  0019 0d02          	tnz	(OFST+2,sp)
+ 425  001b 2706          	jreq	L63
+ 426  001d 7b02          	ld	a,(OFST+2,sp)
+ 427  001f a101          	cp	a,#1
+ 428  0021 2603          	jrne	L43
+ 429  0023               L63:
+ 430  0023 4f            	clr	a
+ 431  0024 2010          	jra	L04
+ 432  0026               L43:
+ 433  0026 ae006f        	ldw	x,#111
+ 434  0029 89            	pushw	x
+ 435  002a ae0000        	ldw	x,#0
+ 436  002d 89            	pushw	x
+ 437  002e ae0000        	ldw	x,#L56
+ 438  0031 cd0000        	call	_assert_failed
+ 440  0034 5b04          	addw	sp,#4
+ 441  0036               L04:
+ 442                     ; 113   if (NewState != DISABLE)
+ 444  0036 0d02          	tnz	(OFST+2,sp)
+ 445  0038 270a          	jreq	L151
+ 446                     ; 116     TIM4->IER |= (uint8_t)TIM4_IT;
+ 448  003a c65343        	ld	a,21315
+ 449  003d 1a01          	or	a,(OFST+1,sp)
+ 450  003f c75343        	ld	21315,a
+ 452  0042 2009          	jra	L351
+ 453  0044               L151:
+ 454                     ; 121     TIM4->IER &= (uint8_t)(~TIM4_IT);
+ 456  0044 7b01          	ld	a,(OFST+1,sp)
+ 457  0046 43            	cpl	a
+ 458  0047 c45343        	and	a,21315
+ 459  004a c75343        	ld	21315,a
+ 460  004d               L351:
+ 461                     ; 123 }
+ 464  004d 85            	popw	x
+ 465  004e 81            	ret
+ 502                     ; 131 void TIM4_UpdateDisableConfig(FunctionalState NewState)
+ 502                     ; 132 {
+ 503                     .text:	section	.text,new
+ 504  0000               _TIM4_UpdateDisableConfig:
+ 506  0000 88            	push	a
+ 507       00000000      OFST:	set	0
+ 510                     ; 134   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+ 512  0001 4d            	tnz	a
+ 513  0002 2704          	jreq	L64
+ 514  0004 a101          	cp	a,#1
+ 515  0006 2603          	jrne	L44
+ 516  0008               L64:
+ 517  0008 4f            	clr	a
+ 518  0009 2010          	jra	L05
+ 519  000b               L44:
+ 520  000b ae0086        	ldw	x,#134
+ 521  000e 89            	pushw	x
+ 522  000f ae0000        	ldw	x,#0
+ 523  0012 89            	pushw	x
+ 524  0013 ae0000        	ldw	x,#L56
+ 525  0016 cd0000        	call	_assert_failed
+ 527  0019 5b04          	addw	sp,#4
+ 528  001b               L05:
+ 529                     ; 137   if (NewState != DISABLE)
+ 531  001b 0d01          	tnz	(OFST+1,sp)
+ 532  001d 2706          	jreq	L371
+ 533                     ; 139     TIM4->CR1 |= TIM4_CR1_UDIS;
+ 535  001f 72125340      	bset	21312,#1
+ 537  0023 2004          	jra	L571
+ 538  0025               L371:
+ 539                     ; 143     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_UDIS);
+ 541  0025 72135340      	bres	21312,#1
+ 542  0029               L571:
+ 543                     ; 145 }
+ 546  0029 84            	pop	a
+ 547  002a 81            	ret
+ 606                     ; 155 void TIM4_UpdateRequestConfig(TIM4_UpdateSource_TypeDef TIM4_UpdateSource)
+ 606                     ; 156 {
+ 607                     .text:	section	.text,new
+ 608  0000               _TIM4_UpdateRequestConfig:
+ 610  0000 88            	push	a
+ 611       00000000      OFST:	set	0
+ 614                     ; 158   assert_param(IS_TIM4_UPDATE_SOURCE_OK(TIM4_UpdateSource));
+ 616  0001 4d            	tnz	a
+ 617  0002 2704          	jreq	L65
+ 618  0004 a101          	cp	a,#1
+ 619  0006 2603          	jrne	L45
+ 620  0008               L65:
+ 621  0008 4f            	clr	a
+ 622  0009 2010          	jra	L06
+ 623  000b               L45:
+ 624  000b ae009e        	ldw	x,#158
+ 625  000e 89            	pushw	x
+ 626  000f ae0000        	ldw	x,#0
+ 627  0012 89            	pushw	x
+ 628  0013 ae0000        	ldw	x,#L56
+ 629  0016 cd0000        	call	_assert_failed
+ 631  0019 5b04          	addw	sp,#4
+ 632  001b               L06:
+ 633                     ; 161   if (TIM4_UpdateSource != TIM4_UPDATESOURCE_GLOBAL)
+ 635  001b 0d01          	tnz	(OFST+1,sp)
+ 636  001d 2706          	jreq	L522
+ 637                     ; 163     TIM4->CR1 |= TIM4_CR1_URS;
+ 639  001f 72145340      	bset	21312,#2
+ 641  0023 2004          	jra	L722
+ 642  0025               L522:
+ 643                     ; 167     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_URS);
+ 645  0025 72155340      	bres	21312,#2
+ 646  0029               L722:
+ 647                     ; 169 }
+ 650  0029 84            	pop	a
+ 651  002a 81            	ret
+ 709                     ; 179 void TIM4_SelectOnePulseMode(TIM4_OPMode_TypeDef TIM4_OPMode)
+ 709                     ; 180 {
+ 710                     .text:	section	.text,new
+ 711  0000               _TIM4_SelectOnePulseMode:
+ 713  0000 88            	push	a
+ 714       00000000      OFST:	set	0
+ 717                     ; 182   assert_param(IS_TIM4_OPM_MODE_OK(TIM4_OPMode));
+ 719  0001 a101          	cp	a,#1
+ 720  0003 2703          	jreq	L66
+ 721  0005 4d            	tnz	a
+ 722  0006 2603          	jrne	L46
+ 723  0008               L66:
+ 724  0008 4f            	clr	a
+ 725  0009 2010          	jra	L07
+ 726  000b               L46:
+ 727  000b ae00b6        	ldw	x,#182
+ 728  000e 89            	pushw	x
+ 729  000f ae0000        	ldw	x,#0
+ 730  0012 89            	pushw	x
+ 731  0013 ae0000        	ldw	x,#L56
+ 732  0016 cd0000        	call	_assert_failed
+ 734  0019 5b04          	addw	sp,#4
+ 735  001b               L07:
+ 736                     ; 185   if (TIM4_OPMode != TIM4_OPMODE_REPETITIVE)
+ 738  001b 0d01          	tnz	(OFST+1,sp)
+ 739  001d 2706          	jreq	L752
+ 740                     ; 187     TIM4->CR1 |= TIM4_CR1_OPM;
+ 742  001f 72165340      	bset	21312,#3
+ 744  0023 2004          	jra	L162
+ 745  0025               L752:
+ 746                     ; 191     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_OPM);
+ 748  0025 72175340      	bres	21312,#3
+ 749  0029               L162:
+ 750                     ; 193 }
+ 753  0029 84            	pop	a
+ 754  002a 81            	ret
+ 823                     ; 215 void TIM4_PrescalerConfig(TIM4_Prescaler_TypeDef Prescaler, TIM4_PSCReloadMode_TypeDef TIM4_PSCReloadMode)
+ 823                     ; 216 {
+ 824                     .text:	section	.text,new
+ 825  0000               _TIM4_PrescalerConfig:
+ 827  0000 89            	pushw	x
+ 828       00000000      OFST:	set	0
+ 831                     ; 218   assert_param(IS_TIM4_PRESCALER_RELOAD_OK(TIM4_PSCReloadMode));
+ 833  0001 9f            	ld	a,xl
+ 834  0002 4d            	tnz	a
+ 835  0003 2705          	jreq	L67
+ 836  0005 9f            	ld	a,xl
+ 837  0006 a101          	cp	a,#1
+ 838  0008 2603          	jrne	L47
+ 839  000a               L67:
+ 840  000a 4f            	clr	a
+ 841  000b 2010          	jra	L001
+ 842  000d               L47:
+ 843  000d ae00da        	ldw	x,#218
+ 844  0010 89            	pushw	x
+ 845  0011 ae0000        	ldw	x,#0
+ 846  0014 89            	pushw	x
+ 847  0015 ae0000        	ldw	x,#L56
+ 848  0018 cd0000        	call	_assert_failed
+ 850  001b 5b04          	addw	sp,#4
+ 851  001d               L001:
+ 852                     ; 219   assert_param(IS_TIM4_PRESCALER_OK(Prescaler));
+ 854  001d 0d01          	tnz	(OFST+1,sp)
+ 855  001f 272a          	jreq	L401
+ 856  0021 7b01          	ld	a,(OFST+1,sp)
+ 857  0023 a101          	cp	a,#1
+ 858  0025 2724          	jreq	L401
+ 859  0027 7b01          	ld	a,(OFST+1,sp)
+ 860  0029 a102          	cp	a,#2
+ 861  002b 271e          	jreq	L401
+ 862  002d 7b01          	ld	a,(OFST+1,sp)
+ 863  002f a103          	cp	a,#3
+ 864  0031 2718          	jreq	L401
+ 865  0033 7b01          	ld	a,(OFST+1,sp)
+ 866  0035 a104          	cp	a,#4
+ 867  0037 2712          	jreq	L401
+ 868  0039 7b01          	ld	a,(OFST+1,sp)
+ 869  003b a105          	cp	a,#5
+ 870  003d 270c          	jreq	L401
+ 871  003f 7b01          	ld	a,(OFST+1,sp)
+ 872  0041 a106          	cp	a,#6
+ 873  0043 2706          	jreq	L401
+ 874  0045 7b01          	ld	a,(OFST+1,sp)
+ 875  0047 a107          	cp	a,#7
+ 876  0049 2603          	jrne	L201
+ 877  004b               L401:
+ 878  004b 4f            	clr	a
+ 879  004c 2010          	jra	L601
+ 880  004e               L201:
+ 881  004e ae00db        	ldw	x,#219
+ 882  0051 89            	pushw	x
+ 883  0052 ae0000        	ldw	x,#0
+ 884  0055 89            	pushw	x
+ 885  0056 ae0000        	ldw	x,#L56
+ 886  0059 cd0000        	call	_assert_failed
+ 888  005c 5b04          	addw	sp,#4
+ 889  005e               L601:
+ 890                     ; 222   TIM4->PSCR = (uint8_t)Prescaler;
+ 892  005e 7b01          	ld	a,(OFST+1,sp)
+ 893  0060 c75347        	ld	21319,a
+ 894                     ; 225   TIM4->EGR = (uint8_t)TIM4_PSCReloadMode;
+ 896  0063 7b02          	ld	a,(OFST+2,sp)
+ 897  0065 c75345        	ld	21317,a
+ 898                     ; 226 }
+ 901  0068 85            	popw	x
+ 902  0069 81            	ret
+ 939                     ; 234 void TIM4_ARRPreloadConfig(FunctionalState NewState)
+ 939                     ; 235 {
+ 940                     .text:	section	.text,new
+ 941  0000               _TIM4_ARRPreloadConfig:
+ 943  0000 88            	push	a
+ 944       00000000      OFST:	set	0
+ 947                     ; 237   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+ 949  0001 4d            	tnz	a
+ 950  0002 2704          	jreq	L411
+ 951  0004 a101          	cp	a,#1
+ 952  0006 2603          	jrne	L211
+ 953  0008               L411:
+ 954  0008 4f            	clr	a
+ 955  0009 2010          	jra	L611
+ 956  000b               L211:
+ 957  000b ae00ed        	ldw	x,#237
+ 958  000e 89            	pushw	x
+ 959  000f ae0000        	ldw	x,#0
+ 960  0012 89            	pushw	x
+ 961  0013 ae0000        	ldw	x,#L56
+ 962  0016 cd0000        	call	_assert_failed
+ 964  0019 5b04          	addw	sp,#4
+ 965  001b               L611:
+ 966                     ; 240   if (NewState != DISABLE)
+ 968  001b 0d01          	tnz	(OFST+1,sp)
+ 969  001d 2706          	jreq	L333
+ 970                     ; 242     TIM4->CR1 |= TIM4_CR1_ARPE;
+ 972  001f 721e5340      	bset	21312,#7
+ 974  0023 2004          	jra	L533
+ 975  0025               L333:
+ 976                     ; 246     TIM4->CR1 &= (uint8_t)(~TIM4_CR1_ARPE);
+ 978  0025 721f5340      	bres	21312,#7
+ 979  0029               L533:
+ 980                     ; 248 }
+ 983  0029 84            	pop	a
+ 984  002a 81            	ret
+1034                     ; 257 void TIM4_GenerateEvent(TIM4_EventSource_TypeDef TIM4_EventSource)
+1034                     ; 258 {
+1035                     .text:	section	.text,new
+1036  0000               _TIM4_GenerateEvent:
+1038  0000 88            	push	a
+1039       00000000      OFST:	set	0
+1042                     ; 260   assert_param(IS_TIM4_EVENT_SOURCE_OK(TIM4_EventSource));
+1044  0001 a101          	cp	a,#1
+1045  0003 2603          	jrne	L221
+1046  0005 4f            	clr	a
+1047  0006 2010          	jra	L421
+1048  0008               L221:
+1049  0008 ae0104        	ldw	x,#260
+1050  000b 89            	pushw	x
+1051  000c ae0000        	ldw	x,#0
+1052  000f 89            	pushw	x
+1053  0010 ae0000        	ldw	x,#L56
+1054  0013 cd0000        	call	_assert_failed
+1056  0016 5b04          	addw	sp,#4
+1057  0018               L421:
+1058                     ; 263   TIM4->EGR = (uint8_t)(TIM4_EventSource);
+1060  0018 7b01          	ld	a,(OFST+1,sp)
+1061  001a c75345        	ld	21317,a
+1062                     ; 264 }
+1065  001d 84            	pop	a
+1066  001e 81            	ret
+1098                     ; 272 void TIM4_SetCounter(uint8_t Counter)
+1098                     ; 273 {
+1099                     .text:	section	.text,new
+1100  0000               _TIM4_SetCounter:
+1104                     ; 275   TIM4->CNTR = (uint8_t)(Counter);
+1106  0000 c75346        	ld	21318,a
+1107                     ; 276 }
+1110  0003 81            	ret
+1142                     ; 284 void TIM4_SetAutoreload(uint8_t Autoreload)
+1142                     ; 285 {
+1143                     .text:	section	.text,new
+1144  0000               _TIM4_SetAutoreload:
+1148                     ; 287   TIM4->ARR = (uint8_t)(Autoreload);
+1150  0000 c75348        	ld	21320,a
+1151                     ; 288 }
+1154  0003 81            	ret
+1177                     ; 295 uint8_t TIM4_GetCounter(void)
+1177                     ; 296 {
+1178                     .text:	section	.text,new
+1179  0000               _TIM4_GetCounter:
+1183                     ; 298   return (uint8_t)(TIM4->CNTR);
+1185  0000 c65346        	ld	a,21318
+1188  0003 81            	ret
+1212                     ; 306 TIM4_Prescaler_TypeDef TIM4_GetPrescaler(void)
+1212                     ; 307 {
+1213                     .text:	section	.text,new
+1214  0000               _TIM4_GetPrescaler:
+1218                     ; 309   return (TIM4_Prescaler_TypeDef)(TIM4->PSCR);
+1220  0000 c65347        	ld	a,21319
+1223  0003 81            	ret
+1303                     ; 319 FlagStatus TIM4_GetFlagStatus(TIM4_FLAG_TypeDef TIM4_FLAG)
+1303                     ; 320 {
+1304                     .text:	section	.text,new
+1305  0000               _TIM4_GetFlagStatus:
+1307  0000 88            	push	a
+1308  0001 88            	push	a
+1309       00000001      OFST:	set	1
+1312                     ; 321   FlagStatus bitstatus = RESET;
+1314                     ; 324   assert_param(IS_TIM4_GET_FLAG_OK(TIM4_FLAG));
+1316  0002 a101          	cp	a,#1
+1317  0004 2603          	jrne	L041
+1318  0006 4f            	clr	a
+1319  0007 2010          	jra	L241
+1320  0009               L041:
+1321  0009 ae0144        	ldw	x,#324
+1322  000c 89            	pushw	x
+1323  000d ae0000        	ldw	x,#0
+1324  0010 89            	pushw	x
+1325  0011 ae0000        	ldw	x,#L56
+1326  0014 cd0000        	call	_assert_failed
+1328  0017 5b04          	addw	sp,#4
+1329  0019               L241:
+1330                     ; 326   if ((TIM4->SR1 & (uint8_t)TIM4_FLAG)  != 0)
+1332  0019 c65344        	ld	a,21316
+1333  001c 1502          	bcp	a,(OFST+1,sp)
+1334  001e 2706          	jreq	L374
+1335                     ; 328     bitstatus = SET;
+1337  0020 a601          	ld	a,#1
+1338  0022 6b01          	ld	(OFST+0,sp),a
+1341  0024 2002          	jra	L574
+1342  0026               L374:
+1343                     ; 332     bitstatus = RESET;
+1345  0026 0f01          	clr	(OFST+0,sp)
+1347  0028               L574:
+1348                     ; 334   return ((FlagStatus)bitstatus);
+1350  0028 7b01          	ld	a,(OFST+0,sp)
+1353  002a 85            	popw	x
+1354  002b 81            	ret
+1390                     ; 344 void TIM4_ClearFlag(TIM4_FLAG_TypeDef TIM4_FLAG)
+1390                     ; 345 {
+1391                     .text:	section	.text,new
+1392  0000               _TIM4_ClearFlag:
+1394  0000 88            	push	a
+1395       00000000      OFST:	set	0
+1398                     ; 347   assert_param(IS_TIM4_GET_FLAG_OK(TIM4_FLAG));
+1400  0001 a101          	cp	a,#1
+1401  0003 2603          	jrne	L641
+1402  0005 4f            	clr	a
+1403  0006 2010          	jra	L051
+1404  0008               L641:
+1405  0008 ae015b        	ldw	x,#347
+1406  000b 89            	pushw	x
+1407  000c ae0000        	ldw	x,#0
+1408  000f 89            	pushw	x
+1409  0010 ae0000        	ldw	x,#L56
+1410  0013 cd0000        	call	_assert_failed
+1412  0016 5b04          	addw	sp,#4
+1413  0018               L051:
+1414                     ; 350   TIM4->SR1 = (uint8_t)(~TIM4_FLAG);
+1416  0018 7b01          	ld	a,(OFST+1,sp)
+1417  001a 43            	cpl	a
+1418  001b c75344        	ld	21316,a
+1419                     ; 351 }
+1422  001e 84            	pop	a
+1423  001f 81            	ret
+1484                     ; 360 ITStatus TIM4_GetITStatus(TIM4_IT_TypeDef TIM4_IT)
+1484                     ; 361 {
+1485                     .text:	section	.text,new
+1486  0000               _TIM4_GetITStatus:
+1488  0000 88            	push	a
+1489  0001 89            	pushw	x
+1490       00000002      OFST:	set	2
+1493                     ; 362   ITStatus bitstatus = RESET;
+1495                     ; 364   uint8_t itstatus = 0x0, itenable = 0x0;
+1499                     ; 367   assert_param(IS_TIM4_IT_OK(TIM4_IT));
+1501  0002 a101          	cp	a,#1
+1502  0004 2603          	jrne	L451
+1503  0006 4f            	clr	a
+1504  0007 2010          	jra	L651
+1505  0009               L451:
+1506  0009 ae016f        	ldw	x,#367
+1507  000c 89            	pushw	x
+1508  000d ae0000        	ldw	x,#0
+1509  0010 89            	pushw	x
+1510  0011 ae0000        	ldw	x,#L56
+1511  0014 cd0000        	call	_assert_failed
+1513  0017 5b04          	addw	sp,#4
+1514  0019               L651:
+1515                     ; 369   itstatus = (uint8_t)(TIM4->SR1 & (uint8_t)TIM4_IT);
+1517  0019 c65344        	ld	a,21316
+1518  001c 1403          	and	a,(OFST+1,sp)
+1519  001e 6b01          	ld	(OFST-1,sp),a
+1521                     ; 371   itenable = (uint8_t)(TIM4->IER & (uint8_t)TIM4_IT);
+1523  0020 c65343        	ld	a,21315
+1524  0023 1403          	and	a,(OFST+1,sp)
+1525  0025 6b02          	ld	(OFST+0,sp),a
+1527                     ; 373   if ((itstatus != (uint8_t)RESET ) && (itenable != (uint8_t)RESET ))
+1529  0027 0d01          	tnz	(OFST-1,sp)
+1530  0029 270a          	jreq	L345
+1532  002b 0d02          	tnz	(OFST+0,sp)
+1533  002d 2706          	jreq	L345
+1534                     ; 375     bitstatus = (ITStatus)SET;
+1536  002f a601          	ld	a,#1
+1537  0031 6b02          	ld	(OFST+0,sp),a
+1540  0033 2002          	jra	L545
+1541  0035               L345:
+1542                     ; 379     bitstatus = (ITStatus)RESET;
+1544  0035 0f02          	clr	(OFST+0,sp)
+1546  0037               L545:
+1547                     ; 381   return ((ITStatus)bitstatus);
+1549  0037 7b02          	ld	a,(OFST+0,sp)
+1552  0039 5b03          	addw	sp,#3
+1553  003b 81            	ret
+1590                     ; 391 void TIM4_ClearITPendingBit(TIM4_IT_TypeDef TIM4_IT)
+1590                     ; 392 {
+1591                     .text:	section	.text,new
+1592  0000               _TIM4_ClearITPendingBit:
+1594  0000 88            	push	a
+1595       00000000      OFST:	set	0
+1598                     ; 394   assert_param(IS_TIM4_IT_OK(TIM4_IT));
+1600  0001 a101          	cp	a,#1
+1601  0003 2603          	jrne	L261
+1602  0005 4f            	clr	a
+1603  0006 2010          	jra	L461
+1604  0008               L261:
+1605  0008 ae018a        	ldw	x,#394
+1606  000b 89            	pushw	x
+1607  000c ae0000        	ldw	x,#0
+1608  000f 89            	pushw	x
+1609  0010 ae0000        	ldw	x,#L56
+1610  0013 cd0000        	call	_assert_failed
+1612  0016 5b04          	addw	sp,#4
+1613  0018               L461:
+1614                     ; 397   TIM4->SR1 = (uint8_t)(~TIM4_IT);
+1616  0018 7b01          	ld	a,(OFST+1,sp)
+1617  001a 43            	cpl	a
+1618  001b c75344        	ld	21316,a
+1619                     ; 398 }
+1622  001e 84            	pop	a
+1623  001f 81            	ret
+1636                     	xdef	_TIM4_ClearITPendingBit
+1637                     	xdef	_TIM4_GetITStatus
+1638                     	xdef	_TIM4_ClearFlag
+1639                     	xdef	_TIM4_GetFlagStatus
+1640                     	xdef	_TIM4_GetPrescaler
+1641                     	xdef	_TIM4_GetCounter
+1642                     	xdef	_TIM4_SetAutoreload
+1643                     	xdef	_TIM4_SetCounter
+1644                     	xdef	_TIM4_GenerateEvent
+1645                     	xdef	_TIM4_ARRPreloadConfig
+1646                     	xdef	_TIM4_PrescalerConfig
+1647                     	xdef	_TIM4_SelectOnePulseMode
+1648                     	xdef	_TIM4_UpdateRequestConfig
+1649                     	xdef	_TIM4_UpdateDisableConfig
+1650                     	xdef	_TIM4_ITConfig
+1651                     	xdef	_TIM4_Cmd
+1652                     	xdef	_TIM4_TimeBaseInit
+1653                     	xdef	_TIM4_DeInit
+1654                     	xref	_assert_failed
+1655                     .const:	section	.text
+1656  0000               L56:
+1657  0000 2e2e5c6c6962  	dc.b	"..\libs\src\stm8s_"
+1658  0012 74696d342e63  	dc.b	"tim4.c",0
+1678                     	end

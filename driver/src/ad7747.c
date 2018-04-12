@@ -22,7 +22,7 @@ unsigned char AD7747_Init(void)
 {
     unsigned char status = 0;
     
-    //status = I2C_Init();
+//    status = I2C_Init();
     
     return status;
 }

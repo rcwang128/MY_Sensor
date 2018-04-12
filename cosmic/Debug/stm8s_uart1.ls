@@ -1,1119 +1,1287 @@
    1                     ; C Compiler for STM8 (COSMIC Software)
    2                     ; Parser V4.11.10 - 06 Jul 2017
    3                     ; Generator (Limited) V4.4.7 - 05 Oct 2017
-   4                     ; Optimizer V4.4.7 - 05 Oct 2017
-  49                     ; 53 void UART1_DeInit(void)
-  49                     ; 54 {
-  51                     .text:	section	.text,new
-  52  0000               _UART1_DeInit:
-  56                     ; 57   (void)UART1->SR;
-  58  0000 c65230        	ld	a,21040
-  59                     ; 58   (void)UART1->DR;
-  61  0003 c65231        	ld	a,21041
-  62                     ; 60   UART1->BRR2 = UART1_BRR2_RESET_VALUE;  /* Set UART1_BRR2 to reset value 0x00 */
-  64  0006 725f5233      	clr	21043
-  65                     ; 61   UART1->BRR1 = UART1_BRR1_RESET_VALUE;  /* Set UART1_BRR1 to reset value 0x00 */
-  67  000a 725f5232      	clr	21042
-  68                     ; 63   UART1->CR1 = UART1_CR1_RESET_VALUE;  /* Set UART1_CR1 to reset value 0x00 */
-  70  000e 725f5234      	clr	21044
-  71                     ; 64   UART1->CR2 = UART1_CR2_RESET_VALUE;  /* Set UART1_CR2 to reset value 0x00 */
-  73  0012 725f5235      	clr	21045
-  74                     ; 65   UART1->CR3 = UART1_CR3_RESET_VALUE;  /* Set UART1_CR3 to reset value 0x00 */
-  76  0016 725f5236      	clr	21046
-  77                     ; 66   UART1->CR4 = UART1_CR4_RESET_VALUE;  /* Set UART1_CR4 to reset value 0x00 */
-  79  001a 725f5237      	clr	21047
-  80                     ; 67   UART1->CR5 = UART1_CR5_RESET_VALUE;  /* Set UART1_CR5 to reset value 0x00 */
-  82  001e 725f5238      	clr	21048
-  83                     ; 69   UART1->GTR = UART1_GTR_RESET_VALUE;
-  85  0022 725f5239      	clr	21049
-  86                     ; 70   UART1->PSCR = UART1_PSCR_RESET_VALUE;
-  88  0026 725f523a      	clr	21050
-  89                     ; 71 }
-  92  002a 81            	ret	
- 390                     .const:	section	.text
- 391  0000               L21:
- 392  0000 00098969      	dc.l	625001
- 393  0004               L27:
- 394  0004 00000064      	dc.l	100
- 395                     ; 90 void UART1_Init(uint32_t BaudRate, UART1_WordLength_TypeDef WordLength, 
- 395                     ; 91                 UART1_StopBits_TypeDef StopBits, UART1_Parity_TypeDef Parity, 
- 395                     ; 92                 UART1_SyncMode_TypeDef SyncMode, UART1_Mode_TypeDef Mode)
- 395                     ; 93 {
- 396                     .text:	section	.text,new
- 397  0000               _UART1_Init:
- 399  0000 520c          	subw	sp,#12
- 400       0000000c      OFST:	set	12
- 403                     ; 94   uint32_t BaudRate_Mantissa = 0, BaudRate_Mantissa100 = 0;
- 407                     ; 97   assert_param(IS_UART1_BAUDRATE_OK(BaudRate));
- 409  0002 96            	ldw	x,sp
- 410  0003 1c000f        	addw	x,#OFST+3
- 411  0006 cd0000        	call	c_ltor
- 413  0009 ae0000        	ldw	x,#L21
- 414  000c cd0000        	call	c_lcmp
- 416  000f 2506          	jrult	L41
- 417  0011 ae0061        	ldw	x,#97
- 418  0014 cd01b5        	call	LC001
- 419  0017               L41:
- 420                     ; 98   assert_param(IS_UART1_WORDLENGTH_OK(WordLength));
- 422  0017 7b13          	ld	a,(OFST+7,sp)
- 423  0019 270a          	jreq	L42
- 424  001b a110          	cp	a,#16
- 425  001d 2706          	jreq	L42
- 426  001f ae0062        	ldw	x,#98
- 427  0022 cd01b5        	call	LC001
- 428  0025               L42:
- 429                     ; 99   assert_param(IS_UART1_STOPBITS_OK(StopBits));
- 431  0025 7b14          	ld	a,(OFST+8,sp)
- 432  0027 2712          	jreq	L43
- 433  0029 a110          	cp	a,#16
- 434  002b 270e          	jreq	L43
- 435  002d a120          	cp	a,#32
- 436  002f 270a          	jreq	L43
- 437  0031 a130          	cp	a,#48
- 438  0033 2706          	jreq	L43
- 439  0035 ae0063        	ldw	x,#99
- 440  0038 cd01b5        	call	LC001
- 441  003b               L43:
- 442                     ; 100   assert_param(IS_UART1_PARITY_OK(Parity));
- 444  003b 7b15          	ld	a,(OFST+9,sp)
- 445  003d 270e          	jreq	L44
- 446  003f a104          	cp	a,#4
- 447  0041 270a          	jreq	L44
- 448  0043 a106          	cp	a,#6
- 449  0045 2706          	jreq	L44
- 450  0047 ae0064        	ldw	x,#100
- 451  004a cd01b5        	call	LC001
- 452  004d               L44:
- 453                     ; 101   assert_param(IS_UART1_MODE_OK((uint8_t)Mode));
- 455  004d 7b17          	ld	a,(OFST+11,sp)
- 456  004f a108          	cp	a,#8
- 457  0051 2722          	jreq	L45
- 458  0053 a140          	cp	a,#64
- 459  0055 271e          	jreq	L45
- 460  0057 a104          	cp	a,#4
- 461  0059 271a          	jreq	L45
- 462  005b a180          	cp	a,#128
- 463  005d 2716          	jreq	L45
- 464  005f a10c          	cp	a,#12
- 465  0061 2712          	jreq	L45
- 466  0063 a144          	cp	a,#68
- 467  0065 270e          	jreq	L45
- 468  0067 a1c0          	cp	a,#192
- 469  0069 270a          	jreq	L45
- 470  006b a188          	cp	a,#136
- 471  006d 2706          	jreq	L45
- 472  006f ae0065        	ldw	x,#101
- 473  0072 cd01b5        	call	LC001
- 474  0075               L45:
- 475                     ; 102   assert_param(IS_UART1_SYNCMODE_OK((uint8_t)SyncMode));
- 477  0075 7b16          	ld	a,(OFST+10,sp)
- 478  0077 a488          	and	a,#136
- 479  0079 a188          	cp	a,#136
- 480  007b 2718          	jreq	L06
- 481  007d 7b16          	ld	a,(OFST+10,sp)
- 482  007f a444          	and	a,#68
- 483  0081 a144          	cp	a,#68
- 484  0083 2710          	jreq	L06
- 485  0085 7b16          	ld	a,(OFST+10,sp)
- 486  0087 a422          	and	a,#34
- 487  0089 a122          	cp	a,#34
- 488  008b 2708          	jreq	L06
- 489  008d 7b16          	ld	a,(OFST+10,sp)
- 490  008f a411          	and	a,#17
- 491  0091 a111          	cp	a,#17
- 492  0093 2606          	jrne	L26
- 493  0095               L06:
- 494  0095 ae0066        	ldw	x,#102
- 495  0098 cd01b5        	call	LC001
- 496  009b               L26:
- 497                     ; 105   UART1->CR1 &= (uint8_t)(~UART1_CR1_M);  
- 499  009b 72195234      	bres	21044,#4
- 500                     ; 108   UART1->CR1 |= (uint8_t)WordLength;
- 502  009f c65234        	ld	a,21044
- 503  00a2 1a13          	or	a,(OFST+7,sp)
- 504  00a4 c75234        	ld	21044,a
- 505                     ; 111   UART1->CR3 &= (uint8_t)(~UART1_CR3_STOP);  
- 507  00a7 c65236        	ld	a,21046
- 508  00aa a4cf          	and	a,#207
- 509  00ac c75236        	ld	21046,a
- 510                     ; 113   UART1->CR3 |= (uint8_t)StopBits;  
- 512  00af c65236        	ld	a,21046
- 513  00b2 1a14          	or	a,(OFST+8,sp)
- 514  00b4 c75236        	ld	21046,a
- 515                     ; 116   UART1->CR1 &= (uint8_t)(~(UART1_CR1_PCEN | UART1_CR1_PS  ));  
- 517  00b7 c65234        	ld	a,21044
- 518  00ba a4f9          	and	a,#249
- 519  00bc c75234        	ld	21044,a
- 520                     ; 118   UART1->CR1 |= (uint8_t)Parity;  
- 522  00bf c65234        	ld	a,21044
- 523  00c2 1a15          	or	a,(OFST+9,sp)
- 524  00c4 c75234        	ld	21044,a
- 525                     ; 121   UART1->BRR1 &= (uint8_t)(~UART1_BRR1_DIVM);  
- 527  00c7 725f5232      	clr	21042
- 528                     ; 123   UART1->BRR2 &= (uint8_t)(~UART1_BRR2_DIVM);  
- 530  00cb c65233        	ld	a,21043
- 531  00ce a40f          	and	a,#15
- 532  00d0 c75233        	ld	21043,a
- 533                     ; 125   UART1->BRR2 &= (uint8_t)(~UART1_BRR2_DIVF);  
- 535  00d3 c65233        	ld	a,21043
- 536  00d6 a4f0          	and	a,#240
- 537  00d8 c75233        	ld	21043,a
- 538                     ; 128   BaudRate_Mantissa    = ((uint32_t)CLK_GetClockFreq() / (BaudRate << 4));
- 540  00db 96            	ldw	x,sp
- 541  00dc cd01c1        	call	LC002
- 543  00df 96            	ldw	x,sp
- 544  00e0 5c            	incw	x
- 545  00e1 cd0000        	call	c_rtol
- 548  00e4 cd0000        	call	_CLK_GetClockFreq
- 550  00e7 96            	ldw	x,sp
- 551  00e8 5c            	incw	x
- 552  00e9 cd0000        	call	c_ludv
- 554  00ec 96            	ldw	x,sp
- 555  00ed 1c0009        	addw	x,#OFST-3
- 556  00f0 cd0000        	call	c_rtol
- 559                     ; 129   BaudRate_Mantissa100 = (((uint32_t)CLK_GetClockFreq() * 100) / (BaudRate << 4));
- 561  00f3 96            	ldw	x,sp
- 562  00f4 cd01c1        	call	LC002
- 564  00f7 96            	ldw	x,sp
- 565  00f8 5c            	incw	x
- 566  00f9 cd0000        	call	c_rtol
- 569  00fc cd0000        	call	_CLK_GetClockFreq
- 571  00ff a664          	ld	a,#100
- 572  0101 cd0000        	call	c_smul
- 574  0104 96            	ldw	x,sp
- 575  0105 5c            	incw	x
- 576  0106 cd0000        	call	c_ludv
- 578  0109 96            	ldw	x,sp
- 579  010a 1c0005        	addw	x,#OFST-7
- 580  010d cd0000        	call	c_rtol
- 583                     ; 131   UART1->BRR2 |= (uint8_t)((uint8_t)(((BaudRate_Mantissa100 - (BaudRate_Mantissa * 100)) << 4) / 100) & (uint8_t)0x0F); 
- 585  0110 96            	ldw	x,sp
- 586  0111 1c0009        	addw	x,#OFST-3
- 587  0114 cd0000        	call	c_ltor
- 589  0117 a664          	ld	a,#100
- 590  0119 cd0000        	call	c_smul
- 592  011c 96            	ldw	x,sp
- 593  011d 5c            	incw	x
- 594  011e cd0000        	call	c_rtol
- 597  0121 96            	ldw	x,sp
- 598  0122 1c0005        	addw	x,#OFST-7
- 599  0125 cd0000        	call	c_ltor
- 601  0128 96            	ldw	x,sp
- 602  0129 5c            	incw	x
- 603  012a cd0000        	call	c_lsub
- 605  012d a604          	ld	a,#4
- 606  012f cd0000        	call	c_llsh
- 608  0132 ae0004        	ldw	x,#L27
- 609  0135 cd0000        	call	c_ludv
- 611  0138 b603          	ld	a,c_lreg+3
- 612  013a a40f          	and	a,#15
- 613  013c ca5233        	or	a,21043
- 614  013f c75233        	ld	21043,a
- 615                     ; 133   UART1->BRR2 |= (uint8_t)((BaudRate_Mantissa >> 4) & (uint8_t)0xF0); 
- 617  0142 96            	ldw	x,sp
- 618  0143 1c0009        	addw	x,#OFST-3
- 619  0146 cd0000        	call	c_ltor
- 621  0149 a604          	ld	a,#4
- 622  014b cd0000        	call	c_lursh
- 624  014e b603          	ld	a,c_lreg+3
- 625  0150 a4f0          	and	a,#240
- 626  0152 b703          	ld	c_lreg+3,a
- 627  0154 3f02          	clr	c_lreg+2
- 628  0156 3f01          	clr	c_lreg+1
- 629  0158 3f00          	clr	c_lreg
- 630  015a ca5233        	or	a,21043
- 631  015d c75233        	ld	21043,a
- 632                     ; 135   UART1->BRR1 |= (uint8_t)BaudRate_Mantissa;           
- 634  0160 c65232        	ld	a,21042
- 635  0163 1a0c          	or	a,(OFST+0,sp)
- 636  0165 c75232        	ld	21042,a
- 637                     ; 138   UART1->CR2 &= (uint8_t)~(UART1_CR2_TEN | UART1_CR2_REN); 
- 639  0168 c65235        	ld	a,21045
- 640  016b a4f3          	and	a,#243
- 641  016d c75235        	ld	21045,a
- 642                     ; 140   UART1->CR3 &= (uint8_t)~(UART1_CR3_CPOL | UART1_CR3_CPHA | UART1_CR3_LBCL); 
- 644  0170 c65236        	ld	a,21046
- 645  0173 a4f8          	and	a,#248
- 646  0175 c75236        	ld	21046,a
- 647                     ; 142   UART1->CR3 |= (uint8_t)((uint8_t)SyncMode & (uint8_t)(UART1_CR3_CPOL | 
- 647                     ; 143                                                         UART1_CR3_CPHA | UART1_CR3_LBCL));  
- 649  0178 7b16          	ld	a,(OFST+10,sp)
- 650  017a a407          	and	a,#7
- 651  017c ca5236        	or	a,21046
- 652  017f c75236        	ld	21046,a
- 653                     ; 145   if ((uint8_t)(Mode & UART1_MODE_TX_ENABLE))
- 655  0182 7b17          	ld	a,(OFST+11,sp)
- 656  0184 a504          	bcp	a,#4
- 657  0186 2706          	jreq	L761
- 658                     ; 148     UART1->CR2 |= (uint8_t)UART1_CR2_TEN;  
- 660  0188 72165235      	bset	21045,#3
- 662  018c 2004          	jra	L171
- 663  018e               L761:
- 664                     ; 153     UART1->CR2 &= (uint8_t)(~UART1_CR2_TEN);  
- 666  018e 72175235      	bres	21045,#3
- 667  0192               L171:
- 668                     ; 155   if ((uint8_t)(Mode & UART1_MODE_RX_ENABLE))
- 670  0192 a508          	bcp	a,#8
- 671  0194 2706          	jreq	L371
- 672                     ; 158     UART1->CR2 |= (uint8_t)UART1_CR2_REN;  
- 674  0196 72145235      	bset	21045,#2
- 676  019a 2004          	jra	L571
- 677  019c               L371:
- 678                     ; 163     UART1->CR2 &= (uint8_t)(~UART1_CR2_REN);  
- 680  019c 72155235      	bres	21045,#2
- 681  01a0               L571:
- 682                     ; 167   if ((uint8_t)(SyncMode & UART1_SYNCMODE_CLOCK_DISABLE))
- 684  01a0 7b16          	ld	a,(OFST+10,sp)
- 685  01a2 2a06          	jrpl	L771
- 686                     ; 170     UART1->CR3 &= (uint8_t)(~UART1_CR3_CKEN); 
- 688  01a4 72175236      	bres	21046,#3
- 690  01a8 2008          	jra	L102
- 691  01aa               L771:
- 692                     ; 174     UART1->CR3 |= (uint8_t)((uint8_t)SyncMode & UART1_CR3_CKEN);
- 694  01aa a408          	and	a,#8
- 695  01ac ca5236        	or	a,21046
- 696  01af c75236        	ld	21046,a
- 697  01b2               L102:
- 698                     ; 176 }
- 701  01b2 5b0c          	addw	sp,#12
- 702  01b4 81            	ret	
- 703  01b5               LC001:
- 704  01b5 89            	pushw	x
- 705  01b6 5f            	clrw	x
- 706  01b7 89            	pushw	x
- 707  01b8 ae0008        	ldw	x,#L561
- 708  01bb cd0000        	call	_assert_failed
- 710  01be 5b04          	addw	sp,#4
- 711  01c0 81            	ret	
- 712  01c1               LC002:
- 713  01c1 1c000f        	addw	x,#OFST+3
- 714  01c4 cd0000        	call	c_ltor
- 716  01c7 a604          	ld	a,#4
- 717  01c9 cc0000        	jp	c_llsh
- 772                     ; 184 void UART1_Cmd(FunctionalState NewState)
- 772                     ; 185 {
- 773                     .text:	section	.text,new
- 774  0000               _UART1_Cmd:
- 778                     ; 186   if (NewState != DISABLE)
- 780  0000 4d            	tnz	a
- 781  0001 2705          	jreq	L132
- 782                     ; 189     UART1->CR1 &= (uint8_t)(~UART1_CR1_UARTD); 
- 784  0003 721b5234      	bres	21044,#5
- 787  0007 81            	ret	
- 788  0008               L132:
- 789                     ; 194     UART1->CR1 |= UART1_CR1_UARTD;  
- 791  0008 721a5234      	bset	21044,#5
- 792                     ; 196 }
- 795  000c 81            	ret	
- 917                     ; 211 void UART1_ITConfig(UART1_IT_TypeDef UART1_IT, FunctionalState NewState)
- 917                     ; 212 {
- 918                     .text:	section	.text,new
- 919  0000               _UART1_ITConfig:
- 921  0000 89            	pushw	x
- 922  0001 89            	pushw	x
- 923       00000002      OFST:	set	2
- 926                     ; 213   uint8_t uartreg = 0, itpos = 0x00;
- 930                     ; 216   assert_param(IS_UART1_CONFIG_IT_OK(UART1_IT));
- 932  0002 a30100        	cpw	x,#256
- 933  0005 271e          	jreq	L401
- 934  0007 a30277        	cpw	x,#631
- 935  000a 2719          	jreq	L401
- 936  000c a30266        	cpw	x,#614
- 937  000f 2714          	jreq	L401
- 938  0011 a30205        	cpw	x,#517
- 939  0014 270f          	jreq	L401
- 940  0016 a30244        	cpw	x,#580
- 941  0019 270a          	jreq	L401
- 942  001b a30346        	cpw	x,#838
- 943  001e 2705          	jreq	L401
- 944  0020 ae00d8        	ldw	x,#216
- 945  0023 ad70          	call	LC006
- 946  0025               L401:
- 947                     ; 217   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
- 949  0025 7b07          	ld	a,(OFST+5,sp)
- 950  0027 2708          	jreq	L411
- 951  0029 4a            	dec	a
- 952  002a 2705          	jreq	L411
- 953  002c ae00d9        	ldw	x,#217
- 954  002f ad64          	call	LC006
- 955  0031               L411:
- 956                     ; 220   uartreg = (uint8_t)((uint16_t)UART1_IT >> 0x08);
- 958  0031 7b03          	ld	a,(OFST+1,sp)
- 959  0033 6b01          	ld	(OFST-1,sp),a
- 961                     ; 222   itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)UART1_IT & (uint8_t)0x0F));
- 963  0035 7b04          	ld	a,(OFST+2,sp)
- 964  0037 a40f          	and	a,#15
- 965  0039 5f            	clrw	x
- 966  003a 97            	ld	xl,a
- 967  003b a601          	ld	a,#1
- 968  003d 5d            	tnzw	x
- 969  003e 2704          	jreq	L021
- 970  0040               L221:
- 971  0040 48            	sll	a
- 972  0041 5a            	decw	x
- 973  0042 26fc          	jrne	L221
- 974  0044               L021:
- 975  0044 6b02          	ld	(OFST+0,sp),a
- 977                     ; 224   if (NewState != DISABLE)
- 979  0046 7b07          	ld	a,(OFST+5,sp)
- 980  0048 271f          	jreq	L703
- 981                     ; 227     if (uartreg == 0x01)
- 983  004a 7b01          	ld	a,(OFST-1,sp)
- 984  004c a101          	cp	a,#1
- 985  004e 2607          	jrne	L113
- 986                     ; 229       UART1->CR1 |= itpos;
- 988  0050 c65234        	ld	a,21044
- 989  0053 1a02          	or	a,(OFST+0,sp)
- 991  0055 201e          	jp	LC004
- 992  0057               L113:
- 993                     ; 231     else if (uartreg == 0x02)
- 995  0057 a102          	cp	a,#2
- 996  0059 2607          	jrne	L513
- 997                     ; 233       UART1->CR2 |= itpos;
- 999  005b c65235        	ld	a,21045
-1000  005e 1a02          	or	a,(OFST+0,sp)
-1002  0060 2022          	jp	LC005
-1003  0062               L513:
-1004                     ; 237       UART1->CR4 |= itpos;
-1006  0062 c65237        	ld	a,21047
-1007  0065 1a02          	or	a,(OFST+0,sp)
-1008  0067 2026          	jp	LC003
-1009  0069               L703:
-1010                     ; 243     if (uartreg == 0x01)
-1012  0069 7b01          	ld	a,(OFST-1,sp)
-1013  006b a101          	cp	a,#1
-1014  006d 260b          	jrne	L323
-1015                     ; 245       UART1->CR1 &= (uint8_t)(~itpos);
-1017  006f 7b02          	ld	a,(OFST+0,sp)
-1018  0071 43            	cpl	a
-1019  0072 c45234        	and	a,21044
-1020  0075               LC004:
-1021  0075 c75234        	ld	21044,a
-1023  0078 2018          	jra	L123
-1024  007a               L323:
-1025                     ; 247     else if (uartreg == 0x02)
-1027  007a a102          	cp	a,#2
-1028  007c 260b          	jrne	L723
-1029                     ; 249       UART1->CR2 &= (uint8_t)(~itpos);
-1031  007e 7b02          	ld	a,(OFST+0,sp)
-1032  0080 43            	cpl	a
-1033  0081 c45235        	and	a,21045
-1034  0084               LC005:
-1035  0084 c75235        	ld	21045,a
-1037  0087 2009          	jra	L123
-1038  0089               L723:
-1039                     ; 253       UART1->CR4 &= (uint8_t)(~itpos);
-1041  0089 7b02          	ld	a,(OFST+0,sp)
-1042  008b 43            	cpl	a
-1043  008c c45237        	and	a,21047
-1044  008f               LC003:
-1045  008f c75237        	ld	21047,a
-1046  0092               L123:
-1047                     ; 257 }
-1050  0092 5b04          	addw	sp,#4
-1051  0094 81            	ret	
-1052  0095               LC006:
-1053  0095 89            	pushw	x
-1054  0096 5f            	clrw	x
-1055  0097 89            	pushw	x
-1056  0098 ae0008        	ldw	x,#L561
-1057  009b cd0000        	call	_assert_failed
-1059  009e 5b04          	addw	sp,#4
-1060  00a0 81            	ret	
-1097                     ; 265 void UART1_HalfDuplexCmd(FunctionalState NewState)
-1097                     ; 266 {
-1098                     .text:	section	.text,new
-1099  0000               _UART1_HalfDuplexCmd:
-1101  0000 88            	push	a
-1102       00000000      OFST:	set	0
-1105                     ; 267   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-1107  0001 4d            	tnz	a
-1108  0002 2711          	jreq	L231
-1109  0004 4a            	dec	a
-1110  0005 270e          	jreq	L231
-1111  0007 ae010b        	ldw	x,#267
-1112  000a 89            	pushw	x
-1113  000b 5f            	clrw	x
-1114  000c 89            	pushw	x
-1115  000d ae0008        	ldw	x,#L561
-1116  0010 cd0000        	call	_assert_failed
-1118  0013 5b04          	addw	sp,#4
-1119  0015               L231:
-1120                     ; 269   if (NewState != DISABLE)
-1122  0015 7b01          	ld	a,(OFST+1,sp)
-1123  0017 2706          	jreq	L153
-1124                     ; 271     UART1->CR5 |= UART1_CR5_HDSEL;  /**< UART1 Half Duplex Enable  */
-1126  0019 72165238      	bset	21048,#3
-1128  001d 2004          	jra	L353
-1129  001f               L153:
-1130                     ; 275     UART1->CR5 &= (uint8_t)~UART1_CR5_HDSEL; /**< UART1 Half Duplex Disable */
-1132  001f 72175238      	bres	21048,#3
-1133  0023               L353:
-1134                     ; 277 }
-1137  0023 84            	pop	a
-1138  0024 81            	ret	
-1196                     ; 285 void UART1_IrDAConfig(UART1_IrDAMode_TypeDef UART1_IrDAMode)
-1196                     ; 286 {
-1197                     .text:	section	.text,new
-1198  0000               _UART1_IrDAConfig:
-1200  0000 88            	push	a
-1201       00000000      OFST:	set	0
-1204                     ; 287   assert_param(IS_UART1_IRDAMODE_OK(UART1_IrDAMode));
-1206  0001 a101          	cp	a,#1
-1207  0003 2711          	jreq	L441
-1208  0005 4d            	tnz	a
-1209  0006 270e          	jreq	L441
-1210  0008 ae011f        	ldw	x,#287
-1211  000b 89            	pushw	x
-1212  000c 5f            	clrw	x
-1213  000d 89            	pushw	x
-1214  000e ae0008        	ldw	x,#L561
-1215  0011 cd0000        	call	_assert_failed
-1217  0014 5b04          	addw	sp,#4
-1218  0016               L441:
-1219                     ; 289   if (UART1_IrDAMode != UART1_IRDAMODE_NORMAL)
-1221  0016 7b01          	ld	a,(OFST+1,sp)
-1222  0018 2706          	jreq	L304
-1223                     ; 291     UART1->CR5 |= UART1_CR5_IRLP;
-1225  001a 72145238      	bset	21048,#2
-1227  001e 2004          	jra	L504
-1228  0020               L304:
-1229                     ; 295     UART1->CR5 &= ((uint8_t)~UART1_CR5_IRLP);
-1231  0020 72155238      	bres	21048,#2
-1232  0024               L504:
-1233                     ; 297 }
-1236  0024 84            	pop	a
-1237  0025 81            	ret	
-1273                     ; 305 void UART1_IrDACmd(FunctionalState NewState)
-1273                     ; 306 {
-1274                     .text:	section	.text,new
-1275  0000               _UART1_IrDACmd:
-1277  0000 88            	push	a
-1278       00000000      OFST:	set	0
-1281                     ; 308   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-1283  0001 4d            	tnz	a
-1284  0002 2711          	jreq	L651
-1285  0004 4a            	dec	a
-1286  0005 270e          	jreq	L651
-1287  0007 ae0134        	ldw	x,#308
-1288  000a 89            	pushw	x
-1289  000b 5f            	clrw	x
-1290  000c 89            	pushw	x
-1291  000d ae0008        	ldw	x,#L561
-1292  0010 cd0000        	call	_assert_failed
-1294  0013 5b04          	addw	sp,#4
-1295  0015               L651:
-1296                     ; 310   if (NewState != DISABLE)
-1298  0015 7b01          	ld	a,(OFST+1,sp)
-1299  0017 2706          	jreq	L524
-1300                     ; 313     UART1->CR5 |= UART1_CR5_IREN;
-1302  0019 72125238      	bset	21048,#1
-1304  001d 2004          	jra	L724
-1305  001f               L524:
-1306                     ; 318     UART1->CR5 &= ((uint8_t)~UART1_CR5_IREN);
-1308  001f 72135238      	bres	21048,#1
-1309  0023               L724:
-1310                     ; 320 }
-1313  0023 84            	pop	a
-1314  0024 81            	ret	
-1374                     ; 329 void UART1_LINBreakDetectionConfig(UART1_LINBreakDetectionLength_TypeDef UART1_LINBreakDetectionLength)
-1374                     ; 330 {
-1375                     .text:	section	.text,new
-1376  0000               _UART1_LINBreakDetectionConfig:
-1378  0000 88            	push	a
-1379       00000000      OFST:	set	0
-1382                     ; 331   assert_param(IS_UART1_LINBREAKDETECTIONLENGTH_OK(UART1_LINBreakDetectionLength));
-1384  0001 4d            	tnz	a
-1385  0002 2711          	jreq	L071
-1386  0004 4a            	dec	a
-1387  0005 270e          	jreq	L071
-1388  0007 ae014b        	ldw	x,#331
-1389  000a 89            	pushw	x
-1390  000b 5f            	clrw	x
-1391  000c 89            	pushw	x
-1392  000d ae0008        	ldw	x,#L561
-1393  0010 cd0000        	call	_assert_failed
-1395  0013 5b04          	addw	sp,#4
-1396  0015               L071:
-1397                     ; 333   if (UART1_LINBreakDetectionLength != UART1_LINBREAKDETECTIONLENGTH_10BITS)
-1399  0015 7b01          	ld	a,(OFST+1,sp)
-1400  0017 2706          	jreq	L754
-1401                     ; 335     UART1->CR4 |= UART1_CR4_LBDL;
-1403  0019 721a5237      	bset	21047,#5
-1405  001d 2004          	jra	L164
-1406  001f               L754:
-1407                     ; 339     UART1->CR4 &= ((uint8_t)~UART1_CR4_LBDL);
-1409  001f 721b5237      	bres	21047,#5
-1410  0023               L164:
-1411                     ; 341 }
-1414  0023 84            	pop	a
-1415  0024 81            	ret	
-1451                     ; 349 void UART1_LINCmd(FunctionalState NewState)
-1451                     ; 350 {
-1452                     .text:	section	.text,new
-1453  0000               _UART1_LINCmd:
-1455  0000 88            	push	a
-1456       00000000      OFST:	set	0
-1459                     ; 351   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-1461  0001 4d            	tnz	a
-1462  0002 2711          	jreq	L202
-1463  0004 4a            	dec	a
-1464  0005 270e          	jreq	L202
-1465  0007 ae015f        	ldw	x,#351
-1466  000a 89            	pushw	x
-1467  000b 5f            	clrw	x
-1468  000c 89            	pushw	x
-1469  000d ae0008        	ldw	x,#L561
-1470  0010 cd0000        	call	_assert_failed
-1472  0013 5b04          	addw	sp,#4
-1473  0015               L202:
-1474                     ; 353   if (NewState != DISABLE)
-1476  0015 7b01          	ld	a,(OFST+1,sp)
-1477  0017 2706          	jreq	L105
-1478                     ; 356     UART1->CR3 |= UART1_CR3_LINEN;
-1480  0019 721c5236      	bset	21046,#6
-1482  001d 2004          	jra	L305
-1483  001f               L105:
-1484                     ; 361     UART1->CR3 &= ((uint8_t)~UART1_CR3_LINEN);
-1486  001f 721d5236      	bres	21046,#6
-1487  0023               L305:
-1488                     ; 363 }
-1491  0023 84            	pop	a
-1492  0024 81            	ret	
-1528                     ; 371 void UART1_SmartCardCmd(FunctionalState NewState)
-1528                     ; 372 {
-1529                     .text:	section	.text,new
-1530  0000               _UART1_SmartCardCmd:
-1532  0000 88            	push	a
-1533       00000000      OFST:	set	0
-1536                     ; 373   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-1538  0001 4d            	tnz	a
-1539  0002 2711          	jreq	L412
-1540  0004 4a            	dec	a
-1541  0005 270e          	jreq	L412
-1542  0007 ae0175        	ldw	x,#373
-1543  000a 89            	pushw	x
-1544  000b 5f            	clrw	x
-1545  000c 89            	pushw	x
-1546  000d ae0008        	ldw	x,#L561
-1547  0010 cd0000        	call	_assert_failed
-1549  0013 5b04          	addw	sp,#4
-1550  0015               L412:
-1551                     ; 375   if (NewState != DISABLE)
-1553  0015 7b01          	ld	a,(OFST+1,sp)
-1554  0017 2706          	jreq	L325
-1555                     ; 378     UART1->CR5 |= UART1_CR5_SCEN;
-1557  0019 721a5238      	bset	21048,#5
-1559  001d 2004          	jra	L525
-1560  001f               L325:
-1561                     ; 383     UART1->CR5 &= ((uint8_t)(~UART1_CR5_SCEN));
-1563  001f 721b5238      	bres	21048,#5
-1564  0023               L525:
-1565                     ; 385 }
-1568  0023 84            	pop	a
-1569  0024 81            	ret	
-1606                     ; 394 void UART1_SmartCardNACKCmd(FunctionalState NewState)
-1606                     ; 395 {
-1607                     .text:	section	.text,new
-1608  0000               _UART1_SmartCardNACKCmd:
-1610  0000 88            	push	a
-1611       00000000      OFST:	set	0
-1614                     ; 396   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-1616  0001 4d            	tnz	a
-1617  0002 2711          	jreq	L622
-1618  0004 4a            	dec	a
-1619  0005 270e          	jreq	L622
-1620  0007 ae018c        	ldw	x,#396
-1621  000a 89            	pushw	x
-1622  000b 5f            	clrw	x
-1623  000c 89            	pushw	x
-1624  000d ae0008        	ldw	x,#L561
-1625  0010 cd0000        	call	_assert_failed
-1627  0013 5b04          	addw	sp,#4
-1628  0015               L622:
-1629                     ; 398   if (NewState != DISABLE)
-1631  0015 7b01          	ld	a,(OFST+1,sp)
-1632  0017 2706          	jreq	L545
-1633                     ; 401     UART1->CR5 |= UART1_CR5_NACK;
-1635  0019 72185238      	bset	21048,#4
-1637  001d 2004          	jra	L745
-1638  001f               L545:
-1639                     ; 406     UART1->CR5 &= ((uint8_t)~(UART1_CR5_NACK));
-1641  001f 72195238      	bres	21048,#4
-1642  0023               L745:
-1643                     ; 408 }
-1646  0023 84            	pop	a
-1647  0024 81            	ret	
-1705                     ; 416 void UART1_WakeUpConfig(UART1_WakeUp_TypeDef UART1_WakeUp)
-1705                     ; 417 {
-1706                     .text:	section	.text,new
-1707  0000               _UART1_WakeUpConfig:
-1709  0000 88            	push	a
-1710       00000000      OFST:	set	0
-1713                     ; 418   assert_param(IS_UART1_WAKEUP_OK(UART1_WakeUp));
-1715  0001 4d            	tnz	a
-1716  0002 2712          	jreq	L042
-1717  0004 a108          	cp	a,#8
-1718  0006 270e          	jreq	L042
-1719  0008 ae01a2        	ldw	x,#418
-1720  000b 89            	pushw	x
-1721  000c 5f            	clrw	x
-1722  000d 89            	pushw	x
-1723  000e ae0008        	ldw	x,#L561
-1724  0011 cd0000        	call	_assert_failed
-1726  0014 5b04          	addw	sp,#4
-1727  0016               L042:
-1728                     ; 420   UART1->CR1 &= ((uint8_t)~UART1_CR1_WAKE);
-1730  0016 72175234      	bres	21044,#3
-1731                     ; 421   UART1->CR1 |= (uint8_t)UART1_WakeUp;
-1733  001a c65234        	ld	a,21044
-1734  001d 1a01          	or	a,(OFST+1,sp)
-1735  001f c75234        	ld	21044,a
-1736                     ; 422 }
-1739  0022 84            	pop	a
-1740  0023 81            	ret	
-1777                     ; 430 void UART1_ReceiverWakeUpCmd(FunctionalState NewState)
-1777                     ; 431 {
-1778                     .text:	section	.text,new
-1779  0000               _UART1_ReceiverWakeUpCmd:
-1781  0000 88            	push	a
-1782       00000000      OFST:	set	0
-1785                     ; 432   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
-1787  0001 4d            	tnz	a
-1788  0002 2711          	jreq	L252
-1789  0004 4a            	dec	a
-1790  0005 270e          	jreq	L252
-1791  0007 ae01b0        	ldw	x,#432
-1792  000a 89            	pushw	x
-1793  000b 5f            	clrw	x
-1794  000c 89            	pushw	x
-1795  000d ae0008        	ldw	x,#L561
-1796  0010 cd0000        	call	_assert_failed
-1798  0013 5b04          	addw	sp,#4
-1799  0015               L252:
-1800                     ; 434   if (NewState != DISABLE)
-1802  0015 7b01          	ld	a,(OFST+1,sp)
-1803  0017 2706          	jreq	L516
-1804                     ; 437     UART1->CR2 |= UART1_CR2_RWU;
-1806  0019 72125235      	bset	21045,#1
-1808  001d 2004          	jra	L716
-1809  001f               L516:
-1810                     ; 442     UART1->CR2 &= ((uint8_t)~UART1_CR2_RWU);
-1812  001f 72135235      	bres	21045,#1
-1813  0023               L716:
-1814                     ; 444 }
-1817  0023 84            	pop	a
-1818  0024 81            	ret	
-1841                     ; 451 uint8_t UART1_ReceiveData8(void)
-1841                     ; 452 {
-1842                     .text:	section	.text,new
-1843  0000               _UART1_ReceiveData8:
-1847                     ; 453   return ((uint8_t)UART1->DR);
-1849  0000 c65231        	ld	a,21041
-1852  0003 81            	ret	
-1884                     ; 461 uint16_t UART1_ReceiveData9(void)
-1884                     ; 462 {
-1885                     .text:	section	.text,new
-1886  0000               _UART1_ReceiveData9:
-1888  0000 89            	pushw	x
-1889       00000002      OFST:	set	2
-1892                     ; 463   uint16_t temp = 0;
-1894                     ; 465   temp = (uint16_t)(((uint16_t)( (uint16_t)UART1->CR1 & (uint16_t)UART1_CR1_R8)) << 1);
-1896  0001 c65234        	ld	a,21044
-1897  0004 a480          	and	a,#128
-1898  0006 5f            	clrw	x
-1899  0007 02            	rlwa	x,a
-1900  0008 58            	sllw	x
-1901  0009 1f01          	ldw	(OFST-1,sp),x
-1903                     ; 466   return (uint16_t)( (((uint16_t) UART1->DR) | temp ) & ((uint16_t)0x01FF));
-1905  000b c65231        	ld	a,21041
-1906  000e 5f            	clrw	x
-1907  000f 97            	ld	xl,a
-1908  0010 01            	rrwa	x,a
-1909  0011 1a02          	or	a,(OFST+0,sp)
-1910  0013 01            	rrwa	x,a
-1911  0014 1a01          	or	a,(OFST-1,sp)
-1912  0016 a401          	and	a,#1
-1913  0018 01            	rrwa	x,a
-1916  0019 5b02          	addw	sp,#2
-1917  001b 81            	ret	
-1949                     ; 474 void UART1_SendData8(uint8_t Data)
-1949                     ; 475 {
-1950                     .text:	section	.text,new
-1951  0000               _UART1_SendData8:
-1955                     ; 477   UART1->DR = Data;
-1957  0000 c75231        	ld	21041,a
-1958                     ; 478 }
-1961  0003 81            	ret	
-1993                     ; 486 void UART1_SendData9(uint16_t Data)
-1993                     ; 487 {
-1994                     .text:	section	.text,new
-1995  0000               _UART1_SendData9:
-1997  0000 89            	pushw	x
-1998       00000000      OFST:	set	0
-2001                     ; 489   UART1->CR1 &= ((uint8_t)~UART1_CR1_T8);
-2003  0001 721d5234      	bres	21044,#6
-2004                     ; 491   UART1->CR1 |= (uint8_t)(((uint8_t)(Data >> 2)) & UART1_CR1_T8);
-2006  0005 54            	srlw	x
-2007  0006 54            	srlw	x
-2008  0007 9f            	ld	a,xl
-2009  0008 a440          	and	a,#64
-2010  000a ca5234        	or	a,21044
-2011  000d c75234        	ld	21044,a
-2012                     ; 493   UART1->DR   = (uint8_t)(Data);
-2014  0010 7b02          	ld	a,(OFST+2,sp)
-2015  0012 c75231        	ld	21041,a
-2016                     ; 494 }
-2019  0015 85            	popw	x
-2020  0016 81            	ret	
-2043                     ; 501 void UART1_SendBreak(void)
-2043                     ; 502 {
-2044                     .text:	section	.text,new
-2045  0000               _UART1_SendBreak:
-2049                     ; 503   UART1->CR2 |= UART1_CR2_SBK;
-2051  0000 72105235      	bset	21045,#0
-2052                     ; 504 }
-2055  0004 81            	ret	
-2088                     ; 511 void UART1_SetAddress(uint8_t UART1_Address)
-2088                     ; 512 {
-2089                     .text:	section	.text,new
-2090  0000               _UART1_SetAddress:
-2092  0000 88            	push	a
-2093       00000000      OFST:	set	0
-2096                     ; 514   assert_param(IS_UART1_ADDRESS_OK(UART1_Address));
-2098  0001 a110          	cp	a,#16
-2099  0003 250e          	jrult	L472
-2100  0005 ae0202        	ldw	x,#514
-2101  0008 89            	pushw	x
-2102  0009 5f            	clrw	x
-2103  000a 89            	pushw	x
-2104  000b ae0008        	ldw	x,#L561
-2105  000e cd0000        	call	_assert_failed
-2107  0011 5b04          	addw	sp,#4
-2108  0013               L472:
-2109                     ; 517   UART1->CR4 &= ((uint8_t)~UART1_CR4_ADD);
-2111  0013 c65237        	ld	a,21047
-2112  0016 a4f0          	and	a,#240
-2113  0018 c75237        	ld	21047,a
-2114                     ; 519   UART1->CR4 |= UART1_Address;
-2116  001b c65237        	ld	a,21047
-2117  001e 1a01          	or	a,(OFST+1,sp)
-2118  0020 c75237        	ld	21047,a
-2119                     ; 520 }
-2122  0023 84            	pop	a
-2123  0024 81            	ret	
-2155                     ; 528 void UART1_SetGuardTime(uint8_t UART1_GuardTime)
-2155                     ; 529 {
-2156                     .text:	section	.text,new
-2157  0000               _UART1_SetGuardTime:
-2161                     ; 531   UART1->GTR = UART1_GuardTime;
-2163  0000 c75239        	ld	21049,a
-2164                     ; 532 }
-2167  0003 81            	ret	
-2199                     ; 556 void UART1_SetPrescaler(uint8_t UART1_Prescaler)
-2199                     ; 557 {
-2200                     .text:	section	.text,new
-2201  0000               _UART1_SetPrescaler:
-2205                     ; 559   UART1->PSCR = UART1_Prescaler;
-2207  0000 c7523a        	ld	21050,a
-2208                     ; 560 }
-2211  0003 81            	ret	
-2355                     ; 568 FlagStatus UART1_GetFlagStatus(UART1_Flag_TypeDef UART1_FLAG)
-2355                     ; 569 {
-2356                     .text:	section	.text,new
-2357  0000               _UART1_GetFlagStatus:
-2359  0000 89            	pushw	x
-2360  0001 88            	push	a
-2361       00000001      OFST:	set	1
-2364                     ; 570   FlagStatus status = RESET;
-2366                     ; 573   assert_param(IS_UART1_FLAG_OK(UART1_FLAG));
-2368  0002 a30080        	cpw	x,#128
-2369  0005 273b          	jreq	L213
-2370  0007 a30040        	cpw	x,#64
-2371  000a 2736          	jreq	L213
-2372  000c a30020        	cpw	x,#32
-2373  000f 2731          	jreq	L213
-2374  0011 a30010        	cpw	x,#16
-2375  0014 272c          	jreq	L213
-2376  0016 a30008        	cpw	x,#8
-2377  0019 2727          	jreq	L213
-2378  001b a30004        	cpw	x,#4
-2379  001e 2722          	jreq	L213
-2380  0020 a30002        	cpw	x,#2
-2381  0023 271d          	jreq	L213
-2382  0025 a30001        	cpw	x,#1
-2383  0028 2718          	jreq	L213
-2384  002a a30101        	cpw	x,#257
-2385  002d 2713          	jreq	L213
-2386  002f a30210        	cpw	x,#528
-2387  0032 270e          	jreq	L213
-2388  0034 ae023d        	ldw	x,#573
-2389  0037 89            	pushw	x
-2390  0038 5f            	clrw	x
-2391  0039 89            	pushw	x
-2392  003a ae0008        	ldw	x,#L561
-2393  003d cd0000        	call	_assert_failed
-2395  0040 5b04          	addw	sp,#4
-2396  0042               L213:
-2397                     ; 577   if (UART1_FLAG == UART1_FLAG_LBDF)
-2399  0042 1e02          	ldw	x,(OFST+1,sp)
-2400  0044 a30210        	cpw	x,#528
-2401  0047 2605          	jrne	L3301
-2402                     ; 579     if ((UART1->CR4 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
-2404  0049 c65237        	ld	a,21047
-2405                     ; 582       status = SET;
-2407  004c 2008          	jp	LC009
-2408                     ; 587       status = RESET;
-2409  004e               L3301:
-2410                     ; 590   else if (UART1_FLAG == UART1_FLAG_SBK)
-2412  004e a30101        	cpw	x,#257
-2413  0051 260b          	jrne	L3401
-2414                     ; 592     if ((UART1->CR2 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
-2416  0053 c65235        	ld	a,21045
-2417  0056               LC009:
-2418  0056 1503          	bcp	a,(OFST+2,sp)
-2419  0058 270b          	jreq	L3501
-2420                     ; 595       status = SET;
-2422  005a               LC008:
-2425  005a a601          	ld	a,#1
-2428  005c 2008          	jra	L1401
-2429                     ; 600       status = RESET;
-2430  005e               L3401:
-2431                     ; 605     if ((UART1->SR & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
-2433  005e c65230        	ld	a,21040
-2434  0061 1503          	bcp	a,(OFST+2,sp)
-2435                     ; 608       status = SET;
-2437  0063 26f5          	jrne	LC008
-2438  0065               L3501:
-2439                     ; 613       status = RESET;
-2443  0065 4f            	clr	a
-2445  0066               L1401:
-2446                     ; 617   return status;
-2450  0066 5b03          	addw	sp,#3
-2451  0068 81            	ret	
-2487                     ; 646 void UART1_ClearFlag(UART1_Flag_TypeDef UART1_FLAG)
-2487                     ; 647 {
-2488                     .text:	section	.text,new
-2489  0000               _UART1_ClearFlag:
-2491  0000 89            	pushw	x
-2492       00000000      OFST:	set	0
-2495                     ; 648   assert_param(IS_UART1_CLEAR_FLAG_OK(UART1_FLAG));
-2497  0001 a30020        	cpw	x,#32
-2498  0004 2713          	jreq	L423
-2499  0006 a30210        	cpw	x,#528
-2500  0009 270e          	jreq	L423
-2501  000b ae0288        	ldw	x,#648
-2502  000e 89            	pushw	x
-2503  000f 5f            	clrw	x
-2504  0010 89            	pushw	x
-2505  0011 ae0008        	ldw	x,#L561
-2506  0014 cd0000        	call	_assert_failed
-2508  0017 5b04          	addw	sp,#4
-2509  0019               L423:
-2510                     ; 651   if (UART1_FLAG == UART1_FLAG_RXNE)
-2512  0019 1e01          	ldw	x,(OFST+1,sp)
-2513  001b a30020        	cpw	x,#32
-2514  001e 2606          	jrne	L5701
-2515                     ; 653     UART1->SR = (uint8_t)~(UART1_SR_RXNE);
-2517  0020 35df5230      	mov	21040,#223
-2519  0024 2004          	jra	L7701
-2520  0026               L5701:
-2521                     ; 658     UART1->CR4 &= (uint8_t)~(UART1_CR4_LBDF);
-2523  0026 72195237      	bres	21047,#4
-2524  002a               L7701:
-2525                     ; 660 }
-2528  002a 85            	popw	x
-2529  002b 81            	ret	
-2604                     ; 675 ITStatus UART1_GetITStatus(UART1_IT_TypeDef UART1_IT)
-2604                     ; 676 {
-2605                     .text:	section	.text,new
-2606  0000               _UART1_GetITStatus:
-2608  0000 89            	pushw	x
-2609  0001 89            	pushw	x
-2610       00000002      OFST:	set	2
-2613                     ; 677   ITStatus pendingbitstatus = RESET;
-2615                     ; 678   uint8_t itpos = 0;
-2617                     ; 679   uint8_t itmask1 = 0;
-2619                     ; 680   uint8_t itmask2 = 0;
-2621                     ; 681   uint8_t enablestatus = 0;
-2623                     ; 684   assert_param(IS_UART1_GET_IT_OK(UART1_IT));
-2625  0002 a30277        	cpw	x,#631
-2626  0005 272c          	jreq	L633
-2627  0007 a30266        	cpw	x,#614
-2628  000a 2727          	jreq	L633
-2629  000c a30255        	cpw	x,#597
-2630  000f 2722          	jreq	L633
-2631  0011 a30244        	cpw	x,#580
-2632  0014 271d          	jreq	L633
-2633  0016 a30235        	cpw	x,#565
-2634  0019 2718          	jreq	L633
-2635  001b a30346        	cpw	x,#838
-2636  001e 2713          	jreq	L633
-2637  0020 a30100        	cpw	x,#256
-2638  0023 270e          	jreq	L633
-2639  0025 ae02ac        	ldw	x,#684
-2640  0028 89            	pushw	x
-2641  0029 5f            	clrw	x
-2642  002a 89            	pushw	x
-2643  002b ae0008        	ldw	x,#L561
-2644  002e cd0000        	call	_assert_failed
-2646  0031 5b04          	addw	sp,#4
-2647  0033               L633:
-2648                     ; 687   itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)UART1_IT & (uint8_t)0x0F));
-2650  0033 7b04          	ld	a,(OFST+2,sp)
-2651  0035 a40f          	and	a,#15
-2652  0037 5f            	clrw	x
-2653  0038 97            	ld	xl,a
-2654  0039 a601          	ld	a,#1
-2655  003b 5d            	tnzw	x
-2656  003c 2704          	jreq	L243
-2657  003e               L443:
-2658  003e 48            	sll	a
-2659  003f 5a            	decw	x
-2660  0040 26fc          	jrne	L443
-2661  0042               L243:
-2662  0042 6b01          	ld	(OFST-1,sp),a
-2664                     ; 689   itmask1 = (uint8_t)((uint8_t)UART1_IT >> (uint8_t)4);
-2666  0044 7b04          	ld	a,(OFST+2,sp)
-2667  0046 4e            	swap	a
-2668  0047 a40f          	and	a,#15
-2669  0049 6b02          	ld	(OFST+0,sp),a
-2671                     ; 691   itmask2 = (uint8_t)((uint8_t)1 << itmask1);
-2673  004b 5f            	clrw	x
-2674  004c 97            	ld	xl,a
-2675  004d a601          	ld	a,#1
-2676  004f 5d            	tnzw	x
-2677  0050 2704          	jreq	L643
-2678  0052               L053:
-2679  0052 48            	sll	a
-2680  0053 5a            	decw	x
-2681  0054 26fc          	jrne	L053
-2682  0056               L643:
-2683  0056 6b02          	ld	(OFST+0,sp),a
-2685                     ; 695   if (UART1_IT == UART1_IT_PE)
-2687  0058 1e03          	ldw	x,(OFST+1,sp)
-2688  005a a30100        	cpw	x,#256
-2689  005d 260c          	jrne	L3311
-2690                     ; 698     enablestatus = (uint8_t)((uint8_t)UART1->CR1 & itmask2);
-2692  005f c65234        	ld	a,21044
-2693  0062 1402          	and	a,(OFST+0,sp)
-2694  0064 6b02          	ld	(OFST+0,sp),a
-2696                     ; 701     if (((UART1->SR & itpos) != (uint8_t)0x00) && enablestatus)
-2698  0066 c65230        	ld	a,21040
-2700                     ; 704       pendingbitstatus = SET;
-2702  0069 200f          	jp	LC012
-2703                     ; 709       pendingbitstatus = RESET;
-2704  006b               L3311:
-2705                     ; 713   else if (UART1_IT == UART1_IT_LBDF)
-2707  006b a30346        	cpw	x,#838
-2708  006e 2616          	jrne	L3411
-2709                     ; 716     enablestatus = (uint8_t)((uint8_t)UART1->CR4 & itmask2);
-2711  0070 c65237        	ld	a,21047
-2712  0073 1402          	and	a,(OFST+0,sp)
-2713  0075 6b02          	ld	(OFST+0,sp),a
-2715                     ; 718     if (((UART1->CR4 & itpos) != (uint8_t)0x00) && enablestatus)
-2717  0077 c65237        	ld	a,21047
-2719  007a               LC012:
-2720  007a 1501          	bcp	a,(OFST-1,sp)
-2721  007c 271a          	jreq	L3511
-2722  007e 7b02          	ld	a,(OFST+0,sp)
-2723  0080 2716          	jreq	L3511
-2724                     ; 721       pendingbitstatus = SET;
-2726  0082               LC011:
-2729  0082 a601          	ld	a,#1
-2732  0084 2013          	jra	L1411
-2733                     ; 726       pendingbitstatus = RESET;
-2734  0086               L3411:
-2735                     ; 732     enablestatus = (uint8_t)((uint8_t)UART1->CR2 & itmask2);
-2737  0086 c65235        	ld	a,21045
-2738  0089 1402          	and	a,(OFST+0,sp)
-2739  008b 6b02          	ld	(OFST+0,sp),a
-2741                     ; 734     if (((UART1->SR & itpos) != (uint8_t)0x00) && enablestatus)
-2743  008d c65230        	ld	a,21040
-2744  0090 1501          	bcp	a,(OFST-1,sp)
-2745  0092 2704          	jreq	L3511
-2747  0094 7b02          	ld	a,(OFST+0,sp)
-2748                     ; 737       pendingbitstatus = SET;
-2750  0096 26ea          	jrne	LC011
-2751  0098               L3511:
-2752                     ; 742       pendingbitstatus = RESET;
-2756  0098 4f            	clr	a
-2758  0099               L1411:
-2759                     ; 747   return  pendingbitstatus;
-2763  0099 5b04          	addw	sp,#4
-2764  009b 81            	ret	
-2801                     ; 775 void UART1_ClearITPendingBit(UART1_IT_TypeDef UART1_IT)
-2801                     ; 776 {
-2802                     .text:	section	.text,new
-2803  0000               _UART1_ClearITPendingBit:
-2805  0000 89            	pushw	x
-2806       00000000      OFST:	set	0
-2809                     ; 777   assert_param(IS_UART1_CLEAR_IT_OK(UART1_IT));
-2811  0001 a30255        	cpw	x,#597
-2812  0004 2713          	jreq	L063
-2813  0006 a30346        	cpw	x,#838
-2814  0009 270e          	jreq	L063
-2815  000b ae0309        	ldw	x,#777
-2816  000e 89            	pushw	x
-2817  000f 5f            	clrw	x
-2818  0010 89            	pushw	x
-2819  0011 ae0008        	ldw	x,#L561
-2820  0014 cd0000        	call	_assert_failed
-2822  0017 5b04          	addw	sp,#4
-2823  0019               L063:
-2824                     ; 780   if (UART1_IT == UART1_IT_RXNE)
-2826  0019 1e01          	ldw	x,(OFST+1,sp)
-2827  001b a30255        	cpw	x,#597
-2828  001e 2606          	jrne	L5711
-2829                     ; 782     UART1->SR = (uint8_t)~(UART1_SR_RXNE);
-2831  0020 35df5230      	mov	21040,#223
-2833  0024 2004          	jra	L7711
-2834  0026               L5711:
-2835                     ; 787     UART1->CR4 &= (uint8_t)~(UART1_CR4_LBDF);
-2837  0026 72195237      	bres	21047,#4
-2838  002a               L7711:
-2839                     ; 789 }
-2842  002a 85            	popw	x
-2843  002b 81            	ret	
-2856                     	xdef	_UART1_ClearITPendingBit
-2857                     	xdef	_UART1_GetITStatus
-2858                     	xdef	_UART1_ClearFlag
-2859                     	xdef	_UART1_GetFlagStatus
-2860                     	xdef	_UART1_SetPrescaler
-2861                     	xdef	_UART1_SetGuardTime
-2862                     	xdef	_UART1_SetAddress
-2863                     	xdef	_UART1_SendBreak
-2864                     	xdef	_UART1_SendData9
-2865                     	xdef	_UART1_SendData8
-2866                     	xdef	_UART1_ReceiveData9
-2867                     	xdef	_UART1_ReceiveData8
-2868                     	xdef	_UART1_ReceiverWakeUpCmd
-2869                     	xdef	_UART1_WakeUpConfig
-2870                     	xdef	_UART1_SmartCardNACKCmd
-2871                     	xdef	_UART1_SmartCardCmd
-2872                     	xdef	_UART1_LINCmd
-2873                     	xdef	_UART1_LINBreakDetectionConfig
-2874                     	xdef	_UART1_IrDACmd
-2875                     	xdef	_UART1_IrDAConfig
-2876                     	xdef	_UART1_HalfDuplexCmd
-2877                     	xdef	_UART1_ITConfig
-2878                     	xdef	_UART1_Cmd
-2879                     	xdef	_UART1_Init
-2880                     	xdef	_UART1_DeInit
-2881                     	xref	_assert_failed
-2882                     	xref	_CLK_GetClockFreq
-2883                     	switch	.const
-2884  0008               L561:
-2885  0008 2e2e5c6c6962  	dc.b	"..\libs\src\stm8s_"
-2886  001a 75617274312e  	dc.b	"uart1.c",0
-2887                     	xref.b	c_lreg
-2888                     	xref.b	c_x
-2908                     	xref	c_lursh
-2909                     	xref	c_lsub
-2910                     	xref	c_smul
-2911                     	xref	c_ludv
-2912                     	xref	c_rtol
-2913                     	xref	c_llsh
-2914                     	xref	c_lcmp
-2915                     	xref	c_ltor
-2916                     	end
+  45                     ; 53 void UART1_DeInit(void)
+  45                     ; 54 {
+  47                     .text:	section	.text,new
+  48  0000               _UART1_DeInit:
+  52                     ; 57   (void)UART1->SR;
+  54  0000 c65230        	ld	a,21040
+  55                     ; 58   (void)UART1->DR;
+  57  0003 c65231        	ld	a,21041
+  58                     ; 60   UART1->BRR2 = UART1_BRR2_RESET_VALUE;  /* Set UART1_BRR2 to reset value 0x00 */
+  60  0006 725f5233      	clr	21043
+  61                     ; 61   UART1->BRR1 = UART1_BRR1_RESET_VALUE;  /* Set UART1_BRR1 to reset value 0x00 */
+  63  000a 725f5232      	clr	21042
+  64                     ; 63   UART1->CR1 = UART1_CR1_RESET_VALUE;  /* Set UART1_CR1 to reset value 0x00 */
+  66  000e 725f5234      	clr	21044
+  67                     ; 64   UART1->CR2 = UART1_CR2_RESET_VALUE;  /* Set UART1_CR2 to reset value 0x00 */
+  69  0012 725f5235      	clr	21045
+  70                     ; 65   UART1->CR3 = UART1_CR3_RESET_VALUE;  /* Set UART1_CR3 to reset value 0x00 */
+  72  0016 725f5236      	clr	21046
+  73                     ; 66   UART1->CR4 = UART1_CR4_RESET_VALUE;  /* Set UART1_CR4 to reset value 0x00 */
+  75  001a 725f5237      	clr	21047
+  76                     ; 67   UART1->CR5 = UART1_CR5_RESET_VALUE;  /* Set UART1_CR5 to reset value 0x00 */
+  78  001e 725f5238      	clr	21048
+  79                     ; 69   UART1->GTR = UART1_GTR_RESET_VALUE;
+  81  0022 725f5239      	clr	21049
+  82                     ; 70   UART1->PSCR = UART1_PSCR_RESET_VALUE;
+  84  0026 725f523a      	clr	21050
+  85                     ; 71 }
+  88  002a 81            	ret
+ 386                     .const:	section	.text
+ 387  0000               L21:
+ 388  0000 00098969      	dc.l	625001
+ 389  0004               L25:
+ 390  0004 00000064      	dc.l	100
+ 391                     ; 90 void UART1_Init(uint32_t BaudRate, UART1_WordLength_TypeDef WordLength, 
+ 391                     ; 91                 UART1_StopBits_TypeDef StopBits, UART1_Parity_TypeDef Parity, 
+ 391                     ; 92                 UART1_SyncMode_TypeDef SyncMode, UART1_Mode_TypeDef Mode)
+ 391                     ; 93 {
+ 392                     .text:	section	.text,new
+ 393  0000               _UART1_Init:
+ 395  0000 520c          	subw	sp,#12
+ 396       0000000c      OFST:	set	12
+ 399                     ; 94   uint32_t BaudRate_Mantissa = 0, BaudRate_Mantissa100 = 0;
+ 403                     ; 97   assert_param(IS_UART1_BAUDRATE_OK(BaudRate));
+ 405  0002 96            	ldw	x,sp
+ 406  0003 1c000f        	addw	x,#OFST+3
+ 407  0006 cd0000        	call	c_ltor
+ 409  0009 ae0000        	ldw	x,#L21
+ 410  000c cd0000        	call	c_lcmp
+ 412  000f 2403          	jruge	L01
+ 413  0011 4f            	clr	a
+ 414  0012 2010          	jra	L41
+ 415  0014               L01:
+ 416  0014 ae0061        	ldw	x,#97
+ 417  0017 89            	pushw	x
+ 418  0018 ae0000        	ldw	x,#0
+ 419  001b 89            	pushw	x
+ 420  001c ae0008        	ldw	x,#L561
+ 421  001f cd0000        	call	_assert_failed
+ 423  0022 5b04          	addw	sp,#4
+ 424  0024               L41:
+ 425                     ; 98   assert_param(IS_UART1_WORDLENGTH_OK(WordLength));
+ 427  0024 0d13          	tnz	(OFST+7,sp)
+ 428  0026 2706          	jreq	L02
+ 429  0028 7b13          	ld	a,(OFST+7,sp)
+ 430  002a a110          	cp	a,#16
+ 431  002c 2603          	jrne	L61
+ 432  002e               L02:
+ 433  002e 4f            	clr	a
+ 434  002f 2010          	jra	L22
+ 435  0031               L61:
+ 436  0031 ae0062        	ldw	x,#98
+ 437  0034 89            	pushw	x
+ 438  0035 ae0000        	ldw	x,#0
+ 439  0038 89            	pushw	x
+ 440  0039 ae0008        	ldw	x,#L561
+ 441  003c cd0000        	call	_assert_failed
+ 443  003f 5b04          	addw	sp,#4
+ 444  0041               L22:
+ 445                     ; 99   assert_param(IS_UART1_STOPBITS_OK(StopBits));
+ 447  0041 0d14          	tnz	(OFST+8,sp)
+ 448  0043 2712          	jreq	L62
+ 449  0045 7b14          	ld	a,(OFST+8,sp)
+ 450  0047 a110          	cp	a,#16
+ 451  0049 270c          	jreq	L62
+ 452  004b 7b14          	ld	a,(OFST+8,sp)
+ 453  004d a120          	cp	a,#32
+ 454  004f 2706          	jreq	L62
+ 455  0051 7b14          	ld	a,(OFST+8,sp)
+ 456  0053 a130          	cp	a,#48
+ 457  0055 2603          	jrne	L42
+ 458  0057               L62:
+ 459  0057 4f            	clr	a
+ 460  0058 2010          	jra	L03
+ 461  005a               L42:
+ 462  005a ae0063        	ldw	x,#99
+ 463  005d 89            	pushw	x
+ 464  005e ae0000        	ldw	x,#0
+ 465  0061 89            	pushw	x
+ 466  0062 ae0008        	ldw	x,#L561
+ 467  0065 cd0000        	call	_assert_failed
+ 469  0068 5b04          	addw	sp,#4
+ 470  006a               L03:
+ 471                     ; 100   assert_param(IS_UART1_PARITY_OK(Parity));
+ 473  006a 0d15          	tnz	(OFST+9,sp)
+ 474  006c 270c          	jreq	L43
+ 475  006e 7b15          	ld	a,(OFST+9,sp)
+ 476  0070 a104          	cp	a,#4
+ 477  0072 2706          	jreq	L43
+ 478  0074 7b15          	ld	a,(OFST+9,sp)
+ 479  0076 a106          	cp	a,#6
+ 480  0078 2603          	jrne	L23
+ 481  007a               L43:
+ 482  007a 4f            	clr	a
+ 483  007b 2010          	jra	L63
+ 484  007d               L23:
+ 485  007d ae0064        	ldw	x,#100
+ 486  0080 89            	pushw	x
+ 487  0081 ae0000        	ldw	x,#0
+ 488  0084 89            	pushw	x
+ 489  0085 ae0008        	ldw	x,#L561
+ 490  0088 cd0000        	call	_assert_failed
+ 492  008b 5b04          	addw	sp,#4
+ 493  008d               L63:
+ 494                     ; 101   assert_param(IS_UART1_MODE_OK((uint8_t)Mode));
+ 496  008d 7b17          	ld	a,(OFST+11,sp)
+ 497  008f a108          	cp	a,#8
+ 498  0091 2730          	jreq	L24
+ 499  0093 7b17          	ld	a,(OFST+11,sp)
+ 500  0095 a140          	cp	a,#64
+ 501  0097 272a          	jreq	L24
+ 502  0099 7b17          	ld	a,(OFST+11,sp)
+ 503  009b a104          	cp	a,#4
+ 504  009d 2724          	jreq	L24
+ 505  009f 7b17          	ld	a,(OFST+11,sp)
+ 506  00a1 a180          	cp	a,#128
+ 507  00a3 271e          	jreq	L24
+ 508  00a5 7b17          	ld	a,(OFST+11,sp)
+ 509  00a7 a10c          	cp	a,#12
+ 510  00a9 2718          	jreq	L24
+ 511  00ab 7b17          	ld	a,(OFST+11,sp)
+ 512  00ad a10c          	cp	a,#12
+ 513  00af 2712          	jreq	L24
+ 514  00b1 7b17          	ld	a,(OFST+11,sp)
+ 515  00b3 a144          	cp	a,#68
+ 516  00b5 270c          	jreq	L24
+ 517  00b7 7b17          	ld	a,(OFST+11,sp)
+ 518  00b9 a1c0          	cp	a,#192
+ 519  00bb 2706          	jreq	L24
+ 520  00bd 7b17          	ld	a,(OFST+11,sp)
+ 521  00bf a188          	cp	a,#136
+ 522  00c1 2603          	jrne	L04
+ 523  00c3               L24:
+ 524  00c3 4f            	clr	a
+ 525  00c4 2010          	jra	L44
+ 526  00c6               L04:
+ 527  00c6 ae0065        	ldw	x,#101
+ 528  00c9 89            	pushw	x
+ 529  00ca ae0000        	ldw	x,#0
+ 530  00cd 89            	pushw	x
+ 531  00ce ae0008        	ldw	x,#L561
+ 532  00d1 cd0000        	call	_assert_failed
+ 534  00d4 5b04          	addw	sp,#4
+ 535  00d6               L44:
+ 536                     ; 102   assert_param(IS_UART1_SYNCMODE_OK((uint8_t)SyncMode));
+ 538  00d6 7b16          	ld	a,(OFST+10,sp)
+ 539  00d8 a488          	and	a,#136
+ 540  00da a188          	cp	a,#136
+ 541  00dc 271b          	jreq	L64
+ 542  00de 7b16          	ld	a,(OFST+10,sp)
+ 543  00e0 a444          	and	a,#68
+ 544  00e2 a144          	cp	a,#68
+ 545  00e4 2713          	jreq	L64
+ 546  00e6 7b16          	ld	a,(OFST+10,sp)
+ 547  00e8 a422          	and	a,#34
+ 548  00ea a122          	cp	a,#34
+ 549  00ec 270b          	jreq	L64
+ 550  00ee 7b16          	ld	a,(OFST+10,sp)
+ 551  00f0 a411          	and	a,#17
+ 552  00f2 a111          	cp	a,#17
+ 553  00f4 2703          	jreq	L64
+ 554  00f6 4f            	clr	a
+ 555  00f7 2010          	jra	L05
+ 556  00f9               L64:
+ 557  00f9 ae0066        	ldw	x,#102
+ 558  00fc 89            	pushw	x
+ 559  00fd ae0000        	ldw	x,#0
+ 560  0100 89            	pushw	x
+ 561  0101 ae0008        	ldw	x,#L561
+ 562  0104 cd0000        	call	_assert_failed
+ 564  0107 5b04          	addw	sp,#4
+ 565  0109               L05:
+ 566                     ; 105   UART1->CR1 &= (uint8_t)(~UART1_CR1_M);  
+ 568  0109 72195234      	bres	21044,#4
+ 569                     ; 108   UART1->CR1 |= (uint8_t)WordLength;
+ 571  010d c65234        	ld	a,21044
+ 572  0110 1a13          	or	a,(OFST+7,sp)
+ 573  0112 c75234        	ld	21044,a
+ 574                     ; 111   UART1->CR3 &= (uint8_t)(~UART1_CR3_STOP);  
+ 576  0115 c65236        	ld	a,21046
+ 577  0118 a4cf          	and	a,#207
+ 578  011a c75236        	ld	21046,a
+ 579                     ; 113   UART1->CR3 |= (uint8_t)StopBits;  
+ 581  011d c65236        	ld	a,21046
+ 582  0120 1a14          	or	a,(OFST+8,sp)
+ 583  0122 c75236        	ld	21046,a
+ 584                     ; 116   UART1->CR1 &= (uint8_t)(~(UART1_CR1_PCEN | UART1_CR1_PS  ));  
+ 586  0125 c65234        	ld	a,21044
+ 587  0128 a4f9          	and	a,#249
+ 588  012a c75234        	ld	21044,a
+ 589                     ; 118   UART1->CR1 |= (uint8_t)Parity;  
+ 591  012d c65234        	ld	a,21044
+ 592  0130 1a15          	or	a,(OFST+9,sp)
+ 593  0132 c75234        	ld	21044,a
+ 594                     ; 121   UART1->BRR1 &= (uint8_t)(~UART1_BRR1_DIVM);  
+ 596  0135 725f5232      	clr	21042
+ 597                     ; 123   UART1->BRR2 &= (uint8_t)(~UART1_BRR2_DIVM);  
+ 599  0139 c65233        	ld	a,21043
+ 600  013c a40f          	and	a,#15
+ 601  013e c75233        	ld	21043,a
+ 602                     ; 125   UART1->BRR2 &= (uint8_t)(~UART1_BRR2_DIVF);  
+ 604  0141 c65233        	ld	a,21043
+ 605  0144 a4f0          	and	a,#240
+ 606  0146 c75233        	ld	21043,a
+ 607                     ; 128   BaudRate_Mantissa    = ((uint32_t)CLK_GetClockFreq() / (BaudRate << 4));
+ 609  0149 96            	ldw	x,sp
+ 610  014a 1c000f        	addw	x,#OFST+3
+ 611  014d cd0000        	call	c_ltor
+ 613  0150 a604          	ld	a,#4
+ 614  0152 cd0000        	call	c_llsh
+ 616  0155 96            	ldw	x,sp
+ 617  0156 1c0001        	addw	x,#OFST-11
+ 618  0159 cd0000        	call	c_rtol
+ 621  015c cd0000        	call	_CLK_GetClockFreq
+ 623  015f 96            	ldw	x,sp
+ 624  0160 1c0001        	addw	x,#OFST-11
+ 625  0163 cd0000        	call	c_ludv
+ 627  0166 96            	ldw	x,sp
+ 628  0167 1c0009        	addw	x,#OFST-3
+ 629  016a cd0000        	call	c_rtol
+ 632                     ; 129   BaudRate_Mantissa100 = (((uint32_t)CLK_GetClockFreq() * 100) / (BaudRate << 4));
+ 634  016d 96            	ldw	x,sp
+ 635  016e 1c000f        	addw	x,#OFST+3
+ 636  0171 cd0000        	call	c_ltor
+ 638  0174 a604          	ld	a,#4
+ 639  0176 cd0000        	call	c_llsh
+ 641  0179 96            	ldw	x,sp
+ 642  017a 1c0001        	addw	x,#OFST-11
+ 643  017d cd0000        	call	c_rtol
+ 646  0180 cd0000        	call	_CLK_GetClockFreq
+ 648  0183 a664          	ld	a,#100
+ 649  0185 cd0000        	call	c_smul
+ 651  0188 96            	ldw	x,sp
+ 652  0189 1c0001        	addw	x,#OFST-11
+ 653  018c cd0000        	call	c_ludv
+ 655  018f 96            	ldw	x,sp
+ 656  0190 1c0005        	addw	x,#OFST-7
+ 657  0193 cd0000        	call	c_rtol
+ 660                     ; 131   UART1->BRR2 |= (uint8_t)((uint8_t)(((BaudRate_Mantissa100 - (BaudRate_Mantissa * 100)) << 4) / 100) & (uint8_t)0x0F); 
+ 662  0196 96            	ldw	x,sp
+ 663  0197 1c0009        	addw	x,#OFST-3
+ 664  019a cd0000        	call	c_ltor
+ 666  019d a664          	ld	a,#100
+ 667  019f cd0000        	call	c_smul
+ 669  01a2 96            	ldw	x,sp
+ 670  01a3 1c0001        	addw	x,#OFST-11
+ 671  01a6 cd0000        	call	c_rtol
+ 674  01a9 96            	ldw	x,sp
+ 675  01aa 1c0005        	addw	x,#OFST-7
+ 676  01ad cd0000        	call	c_ltor
+ 678  01b0 96            	ldw	x,sp
+ 679  01b1 1c0001        	addw	x,#OFST-11
+ 680  01b4 cd0000        	call	c_lsub
+ 682  01b7 a604          	ld	a,#4
+ 683  01b9 cd0000        	call	c_llsh
+ 685  01bc ae0004        	ldw	x,#L25
+ 686  01bf cd0000        	call	c_ludv
+ 688  01c2 b603          	ld	a,c_lreg+3
+ 689  01c4 a40f          	and	a,#15
+ 690  01c6 ca5233        	or	a,21043
+ 691  01c9 c75233        	ld	21043,a
+ 692                     ; 133   UART1->BRR2 |= (uint8_t)((BaudRate_Mantissa >> 4) & (uint8_t)0xF0); 
+ 694  01cc 96            	ldw	x,sp
+ 695  01cd 1c0009        	addw	x,#OFST-3
+ 696  01d0 cd0000        	call	c_ltor
+ 698  01d3 a604          	ld	a,#4
+ 699  01d5 cd0000        	call	c_lursh
+ 701  01d8 b603          	ld	a,c_lreg+3
+ 702  01da a4f0          	and	a,#240
+ 703  01dc b703          	ld	c_lreg+3,a
+ 704  01de 3f02          	clr	c_lreg+2
+ 705  01e0 3f01          	clr	c_lreg+1
+ 706  01e2 3f00          	clr	c_lreg
+ 707  01e4 b603          	ld	a,c_lreg+3
+ 708  01e6 ca5233        	or	a,21043
+ 709  01e9 c75233        	ld	21043,a
+ 710                     ; 135   UART1->BRR1 |= (uint8_t)BaudRate_Mantissa;           
+ 712  01ec c65232        	ld	a,21042
+ 713  01ef 1a0c          	or	a,(OFST+0,sp)
+ 714  01f1 c75232        	ld	21042,a
+ 715                     ; 138   UART1->CR2 &= (uint8_t)~(UART1_CR2_TEN | UART1_CR2_REN); 
+ 717  01f4 c65235        	ld	a,21045
+ 718  01f7 a4f3          	and	a,#243
+ 719  01f9 c75235        	ld	21045,a
+ 720                     ; 140   UART1->CR3 &= (uint8_t)~(UART1_CR3_CPOL | UART1_CR3_CPHA | UART1_CR3_LBCL); 
+ 722  01fc c65236        	ld	a,21046
+ 723  01ff a4f8          	and	a,#248
+ 724  0201 c75236        	ld	21046,a
+ 725                     ; 142   UART1->CR3 |= (uint8_t)((uint8_t)SyncMode & (uint8_t)(UART1_CR3_CPOL | 
+ 725                     ; 143                                                         UART1_CR3_CPHA | UART1_CR3_LBCL));  
+ 727  0204 7b16          	ld	a,(OFST+10,sp)
+ 728  0206 a407          	and	a,#7
+ 729  0208 ca5236        	or	a,21046
+ 730  020b c75236        	ld	21046,a
+ 731                     ; 145   if ((uint8_t)(Mode & UART1_MODE_TX_ENABLE))
+ 733  020e 7b17          	ld	a,(OFST+11,sp)
+ 734  0210 a504          	bcp	a,#4
+ 735  0212 2706          	jreq	L761
+ 736                     ; 148     UART1->CR2 |= (uint8_t)UART1_CR2_TEN;  
+ 738  0214 72165235      	bset	21045,#3
+ 740  0218 2004          	jra	L171
+ 741  021a               L761:
+ 742                     ; 153     UART1->CR2 &= (uint8_t)(~UART1_CR2_TEN);  
+ 744  021a 72175235      	bres	21045,#3
+ 745  021e               L171:
+ 746                     ; 155   if ((uint8_t)(Mode & UART1_MODE_RX_ENABLE))
+ 748  021e 7b17          	ld	a,(OFST+11,sp)
+ 749  0220 a508          	bcp	a,#8
+ 750  0222 2706          	jreq	L371
+ 751                     ; 158     UART1->CR2 |= (uint8_t)UART1_CR2_REN;  
+ 753  0224 72145235      	bset	21045,#2
+ 755  0228 2004          	jra	L571
+ 756  022a               L371:
+ 757                     ; 163     UART1->CR2 &= (uint8_t)(~UART1_CR2_REN);  
+ 759  022a 72155235      	bres	21045,#2
+ 760  022e               L571:
+ 761                     ; 167   if ((uint8_t)(SyncMode & UART1_SYNCMODE_CLOCK_DISABLE))
+ 763  022e 7b16          	ld	a,(OFST+10,sp)
+ 764  0230 a580          	bcp	a,#128
+ 765  0232 2706          	jreq	L771
+ 766                     ; 170     UART1->CR3 &= (uint8_t)(~UART1_CR3_CKEN); 
+ 768  0234 72175236      	bres	21046,#3
+ 770  0238 200a          	jra	L102
+ 771  023a               L771:
+ 772                     ; 174     UART1->CR3 |= (uint8_t)((uint8_t)SyncMode & UART1_CR3_CKEN);
+ 774  023a 7b16          	ld	a,(OFST+10,sp)
+ 775  023c a408          	and	a,#8
+ 776  023e ca5236        	or	a,21046
+ 777  0241 c75236        	ld	21046,a
+ 778  0244               L102:
+ 779                     ; 176 }
+ 782  0244 5b0c          	addw	sp,#12
+ 783  0246 81            	ret
+ 838                     ; 184 void UART1_Cmd(FunctionalState NewState)
+ 838                     ; 185 {
+ 839                     .text:	section	.text,new
+ 840  0000               _UART1_Cmd:
+ 844                     ; 186   if (NewState != DISABLE)
+ 846  0000 4d            	tnz	a
+ 847  0001 2706          	jreq	L132
+ 848                     ; 189     UART1->CR1 &= (uint8_t)(~UART1_CR1_UARTD); 
+ 850  0003 721b5234      	bres	21044,#5
+ 852  0007 2004          	jra	L332
+ 853  0009               L132:
+ 854                     ; 194     UART1->CR1 |= UART1_CR1_UARTD;  
+ 856  0009 721a5234      	bset	21044,#5
+ 857  000d               L332:
+ 858                     ; 196 }
+ 861  000d 81            	ret
+ 983                     ; 211 void UART1_ITConfig(UART1_IT_TypeDef UART1_IT, FunctionalState NewState)
+ 983                     ; 212 {
+ 984                     .text:	section	.text,new
+ 985  0000               _UART1_ITConfig:
+ 987  0000 89            	pushw	x
+ 988  0001 89            	pushw	x
+ 989       00000002      OFST:	set	2
+ 992                     ; 213   uint8_t uartreg = 0, itpos = 0x00;
+ 996                     ; 216   assert_param(IS_UART1_CONFIG_IT_OK(UART1_IT));
+ 998  0002 a30100        	cpw	x,#256
+ 999  0005 2719          	jreq	L26
+1000  0007 a30277        	cpw	x,#631
+1001  000a 2714          	jreq	L26
+1002  000c a30266        	cpw	x,#614
+1003  000f 270f          	jreq	L26
+1004  0011 a30205        	cpw	x,#517
+1005  0014 270a          	jreq	L26
+1006  0016 a30244        	cpw	x,#580
+1007  0019 2705          	jreq	L26
+1008  001b a30346        	cpw	x,#838
+1009  001e 2603          	jrne	L06
+1010  0020               L26:
+1011  0020 4f            	clr	a
+1012  0021 2010          	jra	L46
+1013  0023               L06:
+1014  0023 ae00d8        	ldw	x,#216
+1015  0026 89            	pushw	x
+1016  0027 ae0000        	ldw	x,#0
+1017  002a 89            	pushw	x
+1018  002b ae0008        	ldw	x,#L561
+1019  002e cd0000        	call	_assert_failed
+1021  0031 5b04          	addw	sp,#4
+1022  0033               L46:
+1023                     ; 217   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1025  0033 0d07          	tnz	(OFST+5,sp)
+1026  0035 2706          	jreq	L07
+1027  0037 7b07          	ld	a,(OFST+5,sp)
+1028  0039 a101          	cp	a,#1
+1029  003b 2603          	jrne	L66
+1030  003d               L07:
+1031  003d 4f            	clr	a
+1032  003e 2010          	jra	L27
+1033  0040               L66:
+1034  0040 ae00d9        	ldw	x,#217
+1035  0043 89            	pushw	x
+1036  0044 ae0000        	ldw	x,#0
+1037  0047 89            	pushw	x
+1038  0048 ae0008        	ldw	x,#L561
+1039  004b cd0000        	call	_assert_failed
+1041  004e 5b04          	addw	sp,#4
+1042  0050               L27:
+1043                     ; 220   uartreg = (uint8_t)((uint16_t)UART1_IT >> 0x08);
+1045  0050 7b03          	ld	a,(OFST+1,sp)
+1046  0052 6b01          	ld	(OFST-1,sp),a
+1048                     ; 222   itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)UART1_IT & (uint8_t)0x0F));
+1050  0054 7b04          	ld	a,(OFST+2,sp)
+1051  0056 a40f          	and	a,#15
+1052  0058 5f            	clrw	x
+1053  0059 97            	ld	xl,a
+1054  005a a601          	ld	a,#1
+1055  005c 5d            	tnzw	x
+1056  005d 2704          	jreq	L47
+1057  005f               L67:
+1058  005f 48            	sll	a
+1059  0060 5a            	decw	x
+1060  0061 26fc          	jrne	L67
+1061  0063               L47:
+1062  0063 6b02          	ld	(OFST+0,sp),a
+1064                     ; 224   if (NewState != DISABLE)
+1066  0065 0d07          	tnz	(OFST+5,sp)
+1067  0067 272a          	jreq	L703
+1068                     ; 227     if (uartreg == 0x01)
+1070  0069 7b01          	ld	a,(OFST-1,sp)
+1071  006b a101          	cp	a,#1
+1072  006d 260a          	jrne	L113
+1073                     ; 229       UART1->CR1 |= itpos;
+1075  006f c65234        	ld	a,21044
+1076  0072 1a02          	or	a,(OFST+0,sp)
+1077  0074 c75234        	ld	21044,a
+1079  0077 2045          	jra	L123
+1080  0079               L113:
+1081                     ; 231     else if (uartreg == 0x02)
+1083  0079 7b01          	ld	a,(OFST-1,sp)
+1084  007b a102          	cp	a,#2
+1085  007d 260a          	jrne	L513
+1086                     ; 233       UART1->CR2 |= itpos;
+1088  007f c65235        	ld	a,21045
+1089  0082 1a02          	or	a,(OFST+0,sp)
+1090  0084 c75235        	ld	21045,a
+1092  0087 2035          	jra	L123
+1093  0089               L513:
+1094                     ; 237       UART1->CR4 |= itpos;
+1096  0089 c65237        	ld	a,21047
+1097  008c 1a02          	or	a,(OFST+0,sp)
+1098  008e c75237        	ld	21047,a
+1099  0091 202b          	jra	L123
+1100  0093               L703:
+1101                     ; 243     if (uartreg == 0x01)
+1103  0093 7b01          	ld	a,(OFST-1,sp)
+1104  0095 a101          	cp	a,#1
+1105  0097 260b          	jrne	L323
+1106                     ; 245       UART1->CR1 &= (uint8_t)(~itpos);
+1108  0099 7b02          	ld	a,(OFST+0,sp)
+1109  009b 43            	cpl	a
+1110  009c c45234        	and	a,21044
+1111  009f c75234        	ld	21044,a
+1113  00a2 201a          	jra	L123
+1114  00a4               L323:
+1115                     ; 247     else if (uartreg == 0x02)
+1117  00a4 7b01          	ld	a,(OFST-1,sp)
+1118  00a6 a102          	cp	a,#2
+1119  00a8 260b          	jrne	L723
+1120                     ; 249       UART1->CR2 &= (uint8_t)(~itpos);
+1122  00aa 7b02          	ld	a,(OFST+0,sp)
+1123  00ac 43            	cpl	a
+1124  00ad c45235        	and	a,21045
+1125  00b0 c75235        	ld	21045,a
+1127  00b3 2009          	jra	L123
+1128  00b5               L723:
+1129                     ; 253       UART1->CR4 &= (uint8_t)(~itpos);
+1131  00b5 7b02          	ld	a,(OFST+0,sp)
+1132  00b7 43            	cpl	a
+1133  00b8 c45237        	and	a,21047
+1134  00bb c75237        	ld	21047,a
+1135  00be               L123:
+1136                     ; 257 }
+1139  00be 5b04          	addw	sp,#4
+1140  00c0 81            	ret
+1177                     ; 265 void UART1_HalfDuplexCmd(FunctionalState NewState)
+1177                     ; 266 {
+1178                     .text:	section	.text,new
+1179  0000               _UART1_HalfDuplexCmd:
+1181  0000 88            	push	a
+1182       00000000      OFST:	set	0
+1185                     ; 267   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1187  0001 4d            	tnz	a
+1188  0002 2704          	jreq	L401
+1189  0004 a101          	cp	a,#1
+1190  0006 2603          	jrne	L201
+1191  0008               L401:
+1192  0008 4f            	clr	a
+1193  0009 2010          	jra	L601
+1194  000b               L201:
+1195  000b ae010b        	ldw	x,#267
+1196  000e 89            	pushw	x
+1197  000f ae0000        	ldw	x,#0
+1198  0012 89            	pushw	x
+1199  0013 ae0008        	ldw	x,#L561
+1200  0016 cd0000        	call	_assert_failed
+1202  0019 5b04          	addw	sp,#4
+1203  001b               L601:
+1204                     ; 269   if (NewState != DISABLE)
+1206  001b 0d01          	tnz	(OFST+1,sp)
+1207  001d 2706          	jreq	L153
+1208                     ; 271     UART1->CR5 |= UART1_CR5_HDSEL;  /**< UART1 Half Duplex Enable  */
+1210  001f 72165238      	bset	21048,#3
+1212  0023 2004          	jra	L353
+1213  0025               L153:
+1214                     ; 275     UART1->CR5 &= (uint8_t)~UART1_CR5_HDSEL; /**< UART1 Half Duplex Disable */
+1216  0025 72175238      	bres	21048,#3
+1217  0029               L353:
+1218                     ; 277 }
+1221  0029 84            	pop	a
+1222  002a 81            	ret
+1280                     ; 285 void UART1_IrDAConfig(UART1_IrDAMode_TypeDef UART1_IrDAMode)
+1280                     ; 286 {
+1281                     .text:	section	.text,new
+1282  0000               _UART1_IrDAConfig:
+1284  0000 88            	push	a
+1285       00000000      OFST:	set	0
+1288                     ; 287   assert_param(IS_UART1_IRDAMODE_OK(UART1_IrDAMode));
+1290  0001 a101          	cp	a,#1
+1291  0003 2703          	jreq	L411
+1292  0005 4d            	tnz	a
+1293  0006 2603          	jrne	L211
+1294  0008               L411:
+1295  0008 4f            	clr	a
+1296  0009 2010          	jra	L611
+1297  000b               L211:
+1298  000b ae011f        	ldw	x,#287
+1299  000e 89            	pushw	x
+1300  000f ae0000        	ldw	x,#0
+1301  0012 89            	pushw	x
+1302  0013 ae0008        	ldw	x,#L561
+1303  0016 cd0000        	call	_assert_failed
+1305  0019 5b04          	addw	sp,#4
+1306  001b               L611:
+1307                     ; 289   if (UART1_IrDAMode != UART1_IRDAMODE_NORMAL)
+1309  001b 0d01          	tnz	(OFST+1,sp)
+1310  001d 2706          	jreq	L304
+1311                     ; 291     UART1->CR5 |= UART1_CR5_IRLP;
+1313  001f 72145238      	bset	21048,#2
+1315  0023 2004          	jra	L504
+1316  0025               L304:
+1317                     ; 295     UART1->CR5 &= ((uint8_t)~UART1_CR5_IRLP);
+1319  0025 72155238      	bres	21048,#2
+1320  0029               L504:
+1321                     ; 297 }
+1324  0029 84            	pop	a
+1325  002a 81            	ret
+1361                     ; 305 void UART1_IrDACmd(FunctionalState NewState)
+1361                     ; 306 {
+1362                     .text:	section	.text,new
+1363  0000               _UART1_IrDACmd:
+1365  0000 88            	push	a
+1366       00000000      OFST:	set	0
+1369                     ; 308   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1371  0001 4d            	tnz	a
+1372  0002 2704          	jreq	L421
+1373  0004 a101          	cp	a,#1
+1374  0006 2603          	jrne	L221
+1375  0008               L421:
+1376  0008 4f            	clr	a
+1377  0009 2010          	jra	L621
+1378  000b               L221:
+1379  000b ae0134        	ldw	x,#308
+1380  000e 89            	pushw	x
+1381  000f ae0000        	ldw	x,#0
+1382  0012 89            	pushw	x
+1383  0013 ae0008        	ldw	x,#L561
+1384  0016 cd0000        	call	_assert_failed
+1386  0019 5b04          	addw	sp,#4
+1387  001b               L621:
+1388                     ; 310   if (NewState != DISABLE)
+1390  001b 0d01          	tnz	(OFST+1,sp)
+1391  001d 2706          	jreq	L524
+1392                     ; 313     UART1->CR5 |= UART1_CR5_IREN;
+1394  001f 72125238      	bset	21048,#1
+1396  0023 2004          	jra	L724
+1397  0025               L524:
+1398                     ; 318     UART1->CR5 &= ((uint8_t)~UART1_CR5_IREN);
+1400  0025 72135238      	bres	21048,#1
+1401  0029               L724:
+1402                     ; 320 }
+1405  0029 84            	pop	a
+1406  002a 81            	ret
+1466                     ; 329 void UART1_LINBreakDetectionConfig(UART1_LINBreakDetectionLength_TypeDef UART1_LINBreakDetectionLength)
+1466                     ; 330 {
+1467                     .text:	section	.text,new
+1468  0000               _UART1_LINBreakDetectionConfig:
+1470  0000 88            	push	a
+1471       00000000      OFST:	set	0
+1474                     ; 331   assert_param(IS_UART1_LINBREAKDETECTIONLENGTH_OK(UART1_LINBreakDetectionLength));
+1476  0001 4d            	tnz	a
+1477  0002 2704          	jreq	L431
+1478  0004 a101          	cp	a,#1
+1479  0006 2603          	jrne	L231
+1480  0008               L431:
+1481  0008 4f            	clr	a
+1482  0009 2010          	jra	L631
+1483  000b               L231:
+1484  000b ae014b        	ldw	x,#331
+1485  000e 89            	pushw	x
+1486  000f ae0000        	ldw	x,#0
+1487  0012 89            	pushw	x
+1488  0013 ae0008        	ldw	x,#L561
+1489  0016 cd0000        	call	_assert_failed
+1491  0019 5b04          	addw	sp,#4
+1492  001b               L631:
+1493                     ; 333   if (UART1_LINBreakDetectionLength != UART1_LINBREAKDETECTIONLENGTH_10BITS)
+1495  001b 0d01          	tnz	(OFST+1,sp)
+1496  001d 2706          	jreq	L754
+1497                     ; 335     UART1->CR4 |= UART1_CR4_LBDL;
+1499  001f 721a5237      	bset	21047,#5
+1501  0023 2004          	jra	L164
+1502  0025               L754:
+1503                     ; 339     UART1->CR4 &= ((uint8_t)~UART1_CR4_LBDL);
+1505  0025 721b5237      	bres	21047,#5
+1506  0029               L164:
+1507                     ; 341 }
+1510  0029 84            	pop	a
+1511  002a 81            	ret
+1547                     ; 349 void UART1_LINCmd(FunctionalState NewState)
+1547                     ; 350 {
+1548                     .text:	section	.text,new
+1549  0000               _UART1_LINCmd:
+1551  0000 88            	push	a
+1552       00000000      OFST:	set	0
+1555                     ; 351   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1557  0001 4d            	tnz	a
+1558  0002 2704          	jreq	L441
+1559  0004 a101          	cp	a,#1
+1560  0006 2603          	jrne	L241
+1561  0008               L441:
+1562  0008 4f            	clr	a
+1563  0009 2010          	jra	L641
+1564  000b               L241:
+1565  000b ae015f        	ldw	x,#351
+1566  000e 89            	pushw	x
+1567  000f ae0000        	ldw	x,#0
+1568  0012 89            	pushw	x
+1569  0013 ae0008        	ldw	x,#L561
+1570  0016 cd0000        	call	_assert_failed
+1572  0019 5b04          	addw	sp,#4
+1573  001b               L641:
+1574                     ; 353   if (NewState != DISABLE)
+1576  001b 0d01          	tnz	(OFST+1,sp)
+1577  001d 2706          	jreq	L105
+1578                     ; 356     UART1->CR3 |= UART1_CR3_LINEN;
+1580  001f 721c5236      	bset	21046,#6
+1582  0023 2004          	jra	L305
+1583  0025               L105:
+1584                     ; 361     UART1->CR3 &= ((uint8_t)~UART1_CR3_LINEN);
+1586  0025 721d5236      	bres	21046,#6
+1587  0029               L305:
+1588                     ; 363 }
+1591  0029 84            	pop	a
+1592  002a 81            	ret
+1628                     ; 371 void UART1_SmartCardCmd(FunctionalState NewState)
+1628                     ; 372 {
+1629                     .text:	section	.text,new
+1630  0000               _UART1_SmartCardCmd:
+1632  0000 88            	push	a
+1633       00000000      OFST:	set	0
+1636                     ; 373   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1638  0001 4d            	tnz	a
+1639  0002 2704          	jreq	L451
+1640  0004 a101          	cp	a,#1
+1641  0006 2603          	jrne	L251
+1642  0008               L451:
+1643  0008 4f            	clr	a
+1644  0009 2010          	jra	L651
+1645  000b               L251:
+1646  000b ae0175        	ldw	x,#373
+1647  000e 89            	pushw	x
+1648  000f ae0000        	ldw	x,#0
+1649  0012 89            	pushw	x
+1650  0013 ae0008        	ldw	x,#L561
+1651  0016 cd0000        	call	_assert_failed
+1653  0019 5b04          	addw	sp,#4
+1654  001b               L651:
+1655                     ; 375   if (NewState != DISABLE)
+1657  001b 0d01          	tnz	(OFST+1,sp)
+1658  001d 2706          	jreq	L325
+1659                     ; 378     UART1->CR5 |= UART1_CR5_SCEN;
+1661  001f 721a5238      	bset	21048,#5
+1663  0023 2004          	jra	L525
+1664  0025               L325:
+1665                     ; 383     UART1->CR5 &= ((uint8_t)(~UART1_CR5_SCEN));
+1667  0025 721b5238      	bres	21048,#5
+1668  0029               L525:
+1669                     ; 385 }
+1672  0029 84            	pop	a
+1673  002a 81            	ret
+1710                     ; 394 void UART1_SmartCardNACKCmd(FunctionalState NewState)
+1710                     ; 395 {
+1711                     .text:	section	.text,new
+1712  0000               _UART1_SmartCardNACKCmd:
+1714  0000 88            	push	a
+1715       00000000      OFST:	set	0
+1718                     ; 396   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1720  0001 4d            	tnz	a
+1721  0002 2704          	jreq	L461
+1722  0004 a101          	cp	a,#1
+1723  0006 2603          	jrne	L261
+1724  0008               L461:
+1725  0008 4f            	clr	a
+1726  0009 2010          	jra	L661
+1727  000b               L261:
+1728  000b ae018c        	ldw	x,#396
+1729  000e 89            	pushw	x
+1730  000f ae0000        	ldw	x,#0
+1731  0012 89            	pushw	x
+1732  0013 ae0008        	ldw	x,#L561
+1733  0016 cd0000        	call	_assert_failed
+1735  0019 5b04          	addw	sp,#4
+1736  001b               L661:
+1737                     ; 398   if (NewState != DISABLE)
+1739  001b 0d01          	tnz	(OFST+1,sp)
+1740  001d 2706          	jreq	L545
+1741                     ; 401     UART1->CR5 |= UART1_CR5_NACK;
+1743  001f 72185238      	bset	21048,#4
+1745  0023 2004          	jra	L745
+1746  0025               L545:
+1747                     ; 406     UART1->CR5 &= ((uint8_t)~(UART1_CR5_NACK));
+1749  0025 72195238      	bres	21048,#4
+1750  0029               L745:
+1751                     ; 408 }
+1754  0029 84            	pop	a
+1755  002a 81            	ret
+1813                     ; 416 void UART1_WakeUpConfig(UART1_WakeUp_TypeDef UART1_WakeUp)
+1813                     ; 417 {
+1814                     .text:	section	.text,new
+1815  0000               _UART1_WakeUpConfig:
+1817  0000 88            	push	a
+1818       00000000      OFST:	set	0
+1821                     ; 418   assert_param(IS_UART1_WAKEUP_OK(UART1_WakeUp));
+1823  0001 4d            	tnz	a
+1824  0002 2704          	jreq	L471
+1825  0004 a108          	cp	a,#8
+1826  0006 2603          	jrne	L271
+1827  0008               L471:
+1828  0008 4f            	clr	a
+1829  0009 2010          	jra	L671
+1830  000b               L271:
+1831  000b ae01a2        	ldw	x,#418
+1832  000e 89            	pushw	x
+1833  000f ae0000        	ldw	x,#0
+1834  0012 89            	pushw	x
+1835  0013 ae0008        	ldw	x,#L561
+1836  0016 cd0000        	call	_assert_failed
+1838  0019 5b04          	addw	sp,#4
+1839  001b               L671:
+1840                     ; 420   UART1->CR1 &= ((uint8_t)~UART1_CR1_WAKE);
+1842  001b 72175234      	bres	21044,#3
+1843                     ; 421   UART1->CR1 |= (uint8_t)UART1_WakeUp;
+1845  001f c65234        	ld	a,21044
+1846  0022 1a01          	or	a,(OFST+1,sp)
+1847  0024 c75234        	ld	21044,a
+1848                     ; 422 }
+1851  0027 84            	pop	a
+1852  0028 81            	ret
+1889                     ; 430 void UART1_ReceiverWakeUpCmd(FunctionalState NewState)
+1889                     ; 431 {
+1890                     .text:	section	.text,new
+1891  0000               _UART1_ReceiverWakeUpCmd:
+1893  0000 88            	push	a
+1894       00000000      OFST:	set	0
+1897                     ; 432   assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+1899  0001 4d            	tnz	a
+1900  0002 2704          	jreq	L402
+1901  0004 a101          	cp	a,#1
+1902  0006 2603          	jrne	L202
+1903  0008               L402:
+1904  0008 4f            	clr	a
+1905  0009 2010          	jra	L602
+1906  000b               L202:
+1907  000b ae01b0        	ldw	x,#432
+1908  000e 89            	pushw	x
+1909  000f ae0000        	ldw	x,#0
+1910  0012 89            	pushw	x
+1911  0013 ae0008        	ldw	x,#L561
+1912  0016 cd0000        	call	_assert_failed
+1914  0019 5b04          	addw	sp,#4
+1915  001b               L602:
+1916                     ; 434   if (NewState != DISABLE)
+1918  001b 0d01          	tnz	(OFST+1,sp)
+1919  001d 2706          	jreq	L516
+1920                     ; 437     UART1->CR2 |= UART1_CR2_RWU;
+1922  001f 72125235      	bset	21045,#1
+1924  0023 2004          	jra	L716
+1925  0025               L516:
+1926                     ; 442     UART1->CR2 &= ((uint8_t)~UART1_CR2_RWU);
+1928  0025 72135235      	bres	21045,#1
+1929  0029               L716:
+1930                     ; 444 }
+1933  0029 84            	pop	a
+1934  002a 81            	ret
+1957                     ; 451 uint8_t UART1_ReceiveData8(void)
+1957                     ; 452 {
+1958                     .text:	section	.text,new
+1959  0000               _UART1_ReceiveData8:
+1963                     ; 453   return ((uint8_t)UART1->DR);
+1965  0000 c65231        	ld	a,21041
+1968  0003 81            	ret
+2000                     ; 461 uint16_t UART1_ReceiveData9(void)
+2000                     ; 462 {
+2001                     .text:	section	.text,new
+2002  0000               _UART1_ReceiveData9:
+2004  0000 89            	pushw	x
+2005       00000002      OFST:	set	2
+2008                     ; 463   uint16_t temp = 0;
+2010                     ; 465   temp = (uint16_t)(((uint16_t)( (uint16_t)UART1->CR1 & (uint16_t)UART1_CR1_R8)) << 1);
+2012  0001 c65234        	ld	a,21044
+2013  0004 5f            	clrw	x
+2014  0005 a480          	and	a,#128
+2015  0007 5f            	clrw	x
+2016  0008 02            	rlwa	x,a
+2017  0009 58            	sllw	x
+2018  000a 1f01          	ldw	(OFST-1,sp),x
+2020                     ; 466   return (uint16_t)( (((uint16_t) UART1->DR) | temp ) & ((uint16_t)0x01FF));
+2022  000c c65231        	ld	a,21041
+2023  000f 5f            	clrw	x
+2024  0010 97            	ld	xl,a
+2025  0011 01            	rrwa	x,a
+2026  0012 1a02          	or	a,(OFST+0,sp)
+2027  0014 01            	rrwa	x,a
+2028  0015 1a01          	or	a,(OFST-1,sp)
+2029  0017 01            	rrwa	x,a
+2030  0018 01            	rrwa	x,a
+2031  0019 a4ff          	and	a,#255
+2032  001b 01            	rrwa	x,a
+2033  001c a401          	and	a,#1
+2034  001e 01            	rrwa	x,a
+2037  001f 5b02          	addw	sp,#2
+2038  0021 81            	ret
+2070                     ; 474 void UART1_SendData8(uint8_t Data)
+2070                     ; 475 {
+2071                     .text:	section	.text,new
+2072  0000               _UART1_SendData8:
+2076                     ; 477   UART1->DR = Data;
+2078  0000 c75231        	ld	21041,a
+2079                     ; 478 }
+2082  0003 81            	ret
+2114                     ; 486 void UART1_SendData9(uint16_t Data)
+2114                     ; 487 {
+2115                     .text:	section	.text,new
+2116  0000               _UART1_SendData9:
+2118  0000 89            	pushw	x
+2119       00000000      OFST:	set	0
+2122                     ; 489   UART1->CR1 &= ((uint8_t)~UART1_CR1_T8);
+2124  0001 721d5234      	bres	21044,#6
+2125                     ; 491   UART1->CR1 |= (uint8_t)(((uint8_t)(Data >> 2)) & UART1_CR1_T8);
+2127  0005 54            	srlw	x
+2128  0006 54            	srlw	x
+2129  0007 9f            	ld	a,xl
+2130  0008 a440          	and	a,#64
+2131  000a ca5234        	or	a,21044
+2132  000d c75234        	ld	21044,a
+2133                     ; 493   UART1->DR   = (uint8_t)(Data);
+2135  0010 7b02          	ld	a,(OFST+2,sp)
+2136  0012 c75231        	ld	21041,a
+2137                     ; 494 }
+2140  0015 85            	popw	x
+2141  0016 81            	ret
+2164                     ; 501 void UART1_SendBreak(void)
+2164                     ; 502 {
+2165                     .text:	section	.text,new
+2166  0000               _UART1_SendBreak:
+2170                     ; 503   UART1->CR2 |= UART1_CR2_SBK;
+2172  0000 72105235      	bset	21045,#0
+2173                     ; 504 }
+2176  0004 81            	ret
+2209                     ; 511 void UART1_SetAddress(uint8_t UART1_Address)
+2209                     ; 512 {
+2210                     .text:	section	.text,new
+2211  0000               _UART1_SetAddress:
+2213  0000 88            	push	a
+2214       00000000      OFST:	set	0
+2217                     ; 514   assert_param(IS_UART1_ADDRESS_OK(UART1_Address));
+2219  0001 a110          	cp	a,#16
+2220  0003 2403          	jruge	L422
+2221  0005 4f            	clr	a
+2222  0006 2010          	jra	L622
+2223  0008               L422:
+2224  0008 ae0202        	ldw	x,#514
+2225  000b 89            	pushw	x
+2226  000c ae0000        	ldw	x,#0
+2227  000f 89            	pushw	x
+2228  0010 ae0008        	ldw	x,#L561
+2229  0013 cd0000        	call	_assert_failed
+2231  0016 5b04          	addw	sp,#4
+2232  0018               L622:
+2233                     ; 517   UART1->CR4 &= ((uint8_t)~UART1_CR4_ADD);
+2235  0018 c65237        	ld	a,21047
+2236  001b a4f0          	and	a,#240
+2237  001d c75237        	ld	21047,a
+2238                     ; 519   UART1->CR4 |= UART1_Address;
+2240  0020 c65237        	ld	a,21047
+2241  0023 1a01          	or	a,(OFST+1,sp)
+2242  0025 c75237        	ld	21047,a
+2243                     ; 520 }
+2246  0028 84            	pop	a
+2247  0029 81            	ret
+2279                     ; 528 void UART1_SetGuardTime(uint8_t UART1_GuardTime)
+2279                     ; 529 {
+2280                     .text:	section	.text,new
+2281  0000               _UART1_SetGuardTime:
+2285                     ; 531   UART1->GTR = UART1_GuardTime;
+2287  0000 c75239        	ld	21049,a
+2288                     ; 532 }
+2291  0003 81            	ret
+2323                     ; 556 void UART1_SetPrescaler(uint8_t UART1_Prescaler)
+2323                     ; 557 {
+2324                     .text:	section	.text,new
+2325  0000               _UART1_SetPrescaler:
+2329                     ; 559   UART1->PSCR = UART1_Prescaler;
+2331  0000 c7523a        	ld	21050,a
+2332                     ; 560 }
+2335  0003 81            	ret
+2479                     ; 568 FlagStatus UART1_GetFlagStatus(UART1_Flag_TypeDef UART1_FLAG)
+2479                     ; 569 {
+2480                     .text:	section	.text,new
+2481  0000               _UART1_GetFlagStatus:
+2483  0000 89            	pushw	x
+2484  0001 88            	push	a
+2485       00000001      OFST:	set	1
+2488                     ; 570   FlagStatus status = RESET;
+2490                     ; 573   assert_param(IS_UART1_FLAG_OK(UART1_FLAG));
+2492  0002 a30080        	cpw	x,#128
+2493  0005 272d          	jreq	L042
+2494  0007 a30040        	cpw	x,#64
+2495  000a 2728          	jreq	L042
+2496  000c a30020        	cpw	x,#32
+2497  000f 2723          	jreq	L042
+2498  0011 a30010        	cpw	x,#16
+2499  0014 271e          	jreq	L042
+2500  0016 a30008        	cpw	x,#8
+2501  0019 2719          	jreq	L042
+2502  001b a30004        	cpw	x,#4
+2503  001e 2714          	jreq	L042
+2504  0020 a30002        	cpw	x,#2
+2505  0023 270f          	jreq	L042
+2506  0025 a30001        	cpw	x,#1
+2507  0028 270a          	jreq	L042
+2508  002a a30101        	cpw	x,#257
+2509  002d 2705          	jreq	L042
+2510  002f a30210        	cpw	x,#528
+2511  0032 2603          	jrne	L632
+2512  0034               L042:
+2513  0034 4f            	clr	a
+2514  0035 2010          	jra	L242
+2515  0037               L632:
+2516  0037 ae023d        	ldw	x,#573
+2517  003a 89            	pushw	x
+2518  003b ae0000        	ldw	x,#0
+2519  003e 89            	pushw	x
+2520  003f ae0008        	ldw	x,#L561
+2521  0042 cd0000        	call	_assert_failed
+2523  0045 5b04          	addw	sp,#4
+2524  0047               L242:
+2525                     ; 577   if (UART1_FLAG == UART1_FLAG_LBDF)
+2527  0047 1e02          	ldw	x,(OFST+1,sp)
+2528  0049 a30210        	cpw	x,#528
+2529  004c 2611          	jrne	L3301
+2530                     ; 579     if ((UART1->CR4 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+2532  004e c65237        	ld	a,21047
+2533  0051 1503          	bcp	a,(OFST+2,sp)
+2534  0053 2706          	jreq	L5301
+2535                     ; 582       status = SET;
+2537  0055 a601          	ld	a,#1
+2538  0057 6b01          	ld	(OFST+0,sp),a
+2541  0059 202b          	jra	L1401
+2542  005b               L5301:
+2543                     ; 587       status = RESET;
+2545  005b 0f01          	clr	(OFST+0,sp)
+2547  005d 2027          	jra	L1401
+2548  005f               L3301:
+2549                     ; 590   else if (UART1_FLAG == UART1_FLAG_SBK)
+2551  005f 1e02          	ldw	x,(OFST+1,sp)
+2552  0061 a30101        	cpw	x,#257
+2553  0064 2611          	jrne	L3401
+2554                     ; 592     if ((UART1->CR2 & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+2556  0066 c65235        	ld	a,21045
+2557  0069 1503          	bcp	a,(OFST+2,sp)
+2558  006b 2706          	jreq	L5401
+2559                     ; 595       status = SET;
+2561  006d a601          	ld	a,#1
+2562  006f 6b01          	ld	(OFST+0,sp),a
+2565  0071 2013          	jra	L1401
+2566  0073               L5401:
+2567                     ; 600       status = RESET;
+2569  0073 0f01          	clr	(OFST+0,sp)
+2571  0075 200f          	jra	L1401
+2572  0077               L3401:
+2573                     ; 605     if ((UART1->SR & (uint8_t)UART1_FLAG) != (uint8_t)0x00)
+2575  0077 c65230        	ld	a,21040
+2576  007a 1503          	bcp	a,(OFST+2,sp)
+2577  007c 2706          	jreq	L3501
+2578                     ; 608       status = SET;
+2580  007e a601          	ld	a,#1
+2581  0080 6b01          	ld	(OFST+0,sp),a
+2584  0082 2002          	jra	L1401
+2585  0084               L3501:
+2586                     ; 613       status = RESET;
+2588  0084 0f01          	clr	(OFST+0,sp)
+2590  0086               L1401:
+2591                     ; 617   return status;
+2593  0086 7b01          	ld	a,(OFST+0,sp)
+2596  0088 5b03          	addw	sp,#3
+2597  008a 81            	ret
+2633                     ; 646 void UART1_ClearFlag(UART1_Flag_TypeDef UART1_FLAG)
+2633                     ; 647 {
+2634                     .text:	section	.text,new
+2635  0000               _UART1_ClearFlag:
+2637  0000 89            	pushw	x
+2638       00000000      OFST:	set	0
+2641                     ; 648   assert_param(IS_UART1_CLEAR_FLAG_OK(UART1_FLAG));
+2643  0001 a30020        	cpw	x,#32
+2644  0004 2705          	jreq	L052
+2645  0006 a30210        	cpw	x,#528
+2646  0009 2603          	jrne	L642
+2647  000b               L052:
+2648  000b 4f            	clr	a
+2649  000c 2010          	jra	L252
+2650  000e               L642:
+2651  000e ae0288        	ldw	x,#648
+2652  0011 89            	pushw	x
+2653  0012 ae0000        	ldw	x,#0
+2654  0015 89            	pushw	x
+2655  0016 ae0008        	ldw	x,#L561
+2656  0019 cd0000        	call	_assert_failed
+2658  001c 5b04          	addw	sp,#4
+2659  001e               L252:
+2660                     ; 651   if (UART1_FLAG == UART1_FLAG_RXNE)
+2662  001e 1e01          	ldw	x,(OFST+1,sp)
+2663  0020 a30020        	cpw	x,#32
+2664  0023 2606          	jrne	L5701
+2665                     ; 653     UART1->SR = (uint8_t)~(UART1_SR_RXNE);
+2667  0025 35df5230      	mov	21040,#223
+2669  0029 2004          	jra	L7701
+2670  002b               L5701:
+2671                     ; 658     UART1->CR4 &= (uint8_t)~(UART1_CR4_LBDF);
+2673  002b 72195237      	bres	21047,#4
+2674  002f               L7701:
+2675                     ; 660 }
+2678  002f 85            	popw	x
+2679  0030 81            	ret
+2754                     ; 675 ITStatus UART1_GetITStatus(UART1_IT_TypeDef UART1_IT)
+2754                     ; 676 {
+2755                     .text:	section	.text,new
+2756  0000               _UART1_GetITStatus:
+2758  0000 89            	pushw	x
+2759  0001 89            	pushw	x
+2760       00000002      OFST:	set	2
+2763                     ; 677   ITStatus pendingbitstatus = RESET;
+2765                     ; 678   uint8_t itpos = 0;
+2767                     ; 679   uint8_t itmask1 = 0;
+2769                     ; 680   uint8_t itmask2 = 0;
+2771                     ; 681   uint8_t enablestatus = 0;
+2773                     ; 684   assert_param(IS_UART1_GET_IT_OK(UART1_IT));
+2775  0002 a30277        	cpw	x,#631
+2776  0005 271e          	jreq	L062
+2777  0007 a30266        	cpw	x,#614
+2778  000a 2719          	jreq	L062
+2779  000c a30255        	cpw	x,#597
+2780  000f 2714          	jreq	L062
+2781  0011 a30244        	cpw	x,#580
+2782  0014 270f          	jreq	L062
+2783  0016 a30235        	cpw	x,#565
+2784  0019 270a          	jreq	L062
+2785  001b a30346        	cpw	x,#838
+2786  001e 2705          	jreq	L062
+2787  0020 a30100        	cpw	x,#256
+2788  0023 2603          	jrne	L652
+2789  0025               L062:
+2790  0025 4f            	clr	a
+2791  0026 2010          	jra	L262
+2792  0028               L652:
+2793  0028 ae02ac        	ldw	x,#684
+2794  002b 89            	pushw	x
+2795  002c ae0000        	ldw	x,#0
+2796  002f 89            	pushw	x
+2797  0030 ae0008        	ldw	x,#L561
+2798  0033 cd0000        	call	_assert_failed
+2800  0036 5b04          	addw	sp,#4
+2801  0038               L262:
+2802                     ; 687   itpos = (uint8_t)((uint8_t)1 << (uint8_t)((uint8_t)UART1_IT & (uint8_t)0x0F));
+2804  0038 7b04          	ld	a,(OFST+2,sp)
+2805  003a a40f          	and	a,#15
+2806  003c 5f            	clrw	x
+2807  003d 97            	ld	xl,a
+2808  003e a601          	ld	a,#1
+2809  0040 5d            	tnzw	x
+2810  0041 2704          	jreq	L462
+2811  0043               L662:
+2812  0043 48            	sll	a
+2813  0044 5a            	decw	x
+2814  0045 26fc          	jrne	L662
+2815  0047               L462:
+2816  0047 6b01          	ld	(OFST-1,sp),a
+2818                     ; 689   itmask1 = (uint8_t)((uint8_t)UART1_IT >> (uint8_t)4);
+2820  0049 7b04          	ld	a,(OFST+2,sp)
+2821  004b 4e            	swap	a
+2822  004c a40f          	and	a,#15
+2823  004e 6b02          	ld	(OFST+0,sp),a
+2825                     ; 691   itmask2 = (uint8_t)((uint8_t)1 << itmask1);
+2827  0050 7b02          	ld	a,(OFST+0,sp)
+2828  0052 5f            	clrw	x
+2829  0053 97            	ld	xl,a
+2830  0054 a601          	ld	a,#1
+2831  0056 5d            	tnzw	x
+2832  0057 2704          	jreq	L072
+2833  0059               L272:
+2834  0059 48            	sll	a
+2835  005a 5a            	decw	x
+2836  005b 26fc          	jrne	L272
+2837  005d               L072:
+2838  005d 6b02          	ld	(OFST+0,sp),a
+2840                     ; 695   if (UART1_IT == UART1_IT_PE)
+2842  005f 1e03          	ldw	x,(OFST+1,sp)
+2843  0061 a30100        	cpw	x,#256
+2844  0064 261c          	jrne	L3311
+2845                     ; 698     enablestatus = (uint8_t)((uint8_t)UART1->CR1 & itmask2);
+2847  0066 c65234        	ld	a,21044
+2848  0069 1402          	and	a,(OFST+0,sp)
+2849  006b 6b02          	ld	(OFST+0,sp),a
+2851                     ; 701     if (((UART1->SR & itpos) != (uint8_t)0x00) && enablestatus)
+2853  006d c65230        	ld	a,21040
+2854  0070 1501          	bcp	a,(OFST-1,sp)
+2855  0072 270a          	jreq	L5311
+2857  0074 0d02          	tnz	(OFST+0,sp)
+2858  0076 2706          	jreq	L5311
+2859                     ; 704       pendingbitstatus = SET;
+2861  0078 a601          	ld	a,#1
+2862  007a 6b02          	ld	(OFST+0,sp),a
+2865  007c 2041          	jra	L1411
+2866  007e               L5311:
+2867                     ; 709       pendingbitstatus = RESET;
+2869  007e 0f02          	clr	(OFST+0,sp)
+2871  0080 203d          	jra	L1411
+2872  0082               L3311:
+2873                     ; 713   else if (UART1_IT == UART1_IT_LBDF)
+2875  0082 1e03          	ldw	x,(OFST+1,sp)
+2876  0084 a30346        	cpw	x,#838
+2877  0087 261c          	jrne	L3411
+2878                     ; 716     enablestatus = (uint8_t)((uint8_t)UART1->CR4 & itmask2);
+2880  0089 c65237        	ld	a,21047
+2881  008c 1402          	and	a,(OFST+0,sp)
+2882  008e 6b02          	ld	(OFST+0,sp),a
+2884                     ; 718     if (((UART1->CR4 & itpos) != (uint8_t)0x00) && enablestatus)
+2886  0090 c65237        	ld	a,21047
+2887  0093 1501          	bcp	a,(OFST-1,sp)
+2888  0095 270a          	jreq	L5411
+2890  0097 0d02          	tnz	(OFST+0,sp)
+2891  0099 2706          	jreq	L5411
+2892                     ; 721       pendingbitstatus = SET;
+2894  009b a601          	ld	a,#1
+2895  009d 6b02          	ld	(OFST+0,sp),a
+2898  009f 201e          	jra	L1411
+2899  00a1               L5411:
+2900                     ; 726       pendingbitstatus = RESET;
+2902  00a1 0f02          	clr	(OFST+0,sp)
+2904  00a3 201a          	jra	L1411
+2905  00a5               L3411:
+2906                     ; 732     enablestatus = (uint8_t)((uint8_t)UART1->CR2 & itmask2);
+2908  00a5 c65235        	ld	a,21045
+2909  00a8 1402          	and	a,(OFST+0,sp)
+2910  00aa 6b02          	ld	(OFST+0,sp),a
+2912                     ; 734     if (((UART1->SR & itpos) != (uint8_t)0x00) && enablestatus)
+2914  00ac c65230        	ld	a,21040
+2915  00af 1501          	bcp	a,(OFST-1,sp)
+2916  00b1 270a          	jreq	L3511
+2918  00b3 0d02          	tnz	(OFST+0,sp)
+2919  00b5 2706          	jreq	L3511
+2920                     ; 737       pendingbitstatus = SET;
+2922  00b7 a601          	ld	a,#1
+2923  00b9 6b02          	ld	(OFST+0,sp),a
+2926  00bb 2002          	jra	L1411
+2927  00bd               L3511:
+2928                     ; 742       pendingbitstatus = RESET;
+2930  00bd 0f02          	clr	(OFST+0,sp)
+2932  00bf               L1411:
+2933                     ; 747   return  pendingbitstatus;
+2935  00bf 7b02          	ld	a,(OFST+0,sp)
+2938  00c1 5b04          	addw	sp,#4
+2939  00c3 81            	ret
+2976                     ; 775 void UART1_ClearITPendingBit(UART1_IT_TypeDef UART1_IT)
+2976                     ; 776 {
+2977                     .text:	section	.text,new
+2978  0000               _UART1_ClearITPendingBit:
+2980  0000 89            	pushw	x
+2981       00000000      OFST:	set	0
+2984                     ; 777   assert_param(IS_UART1_CLEAR_IT_OK(UART1_IT));
+2986  0001 a30255        	cpw	x,#597
+2987  0004 2705          	jreq	L003
+2988  0006 a30346        	cpw	x,#838
+2989  0009 2603          	jrne	L672
+2990  000b               L003:
+2991  000b 4f            	clr	a
+2992  000c 2010          	jra	L203
+2993  000e               L672:
+2994  000e ae0309        	ldw	x,#777
+2995  0011 89            	pushw	x
+2996  0012 ae0000        	ldw	x,#0
+2997  0015 89            	pushw	x
+2998  0016 ae0008        	ldw	x,#L561
+2999  0019 cd0000        	call	_assert_failed
+3001  001c 5b04          	addw	sp,#4
+3002  001e               L203:
+3003                     ; 780   if (UART1_IT == UART1_IT_RXNE)
+3005  001e 1e01          	ldw	x,(OFST+1,sp)
+3006  0020 a30255        	cpw	x,#597
+3007  0023 2606          	jrne	L5711
+3008                     ; 782     UART1->SR = (uint8_t)~(UART1_SR_RXNE);
+3010  0025 35df5230      	mov	21040,#223
+3012  0029 2004          	jra	L7711
+3013  002b               L5711:
+3014                     ; 787     UART1->CR4 &= (uint8_t)~(UART1_CR4_LBDF);
+3016  002b 72195237      	bres	21047,#4
+3017  002f               L7711:
+3018                     ; 789 }
+3021  002f 85            	popw	x
+3022  0030 81            	ret
+3035                     	xdef	_UART1_ClearITPendingBit
+3036                     	xdef	_UART1_GetITStatus
+3037                     	xdef	_UART1_ClearFlag
+3038                     	xdef	_UART1_GetFlagStatus
+3039                     	xdef	_UART1_SetPrescaler
+3040                     	xdef	_UART1_SetGuardTime
+3041                     	xdef	_UART1_SetAddress
+3042                     	xdef	_UART1_SendBreak
+3043                     	xdef	_UART1_SendData9
+3044                     	xdef	_UART1_SendData8
+3045                     	xdef	_UART1_ReceiveData9
+3046                     	xdef	_UART1_ReceiveData8
+3047                     	xdef	_UART1_ReceiverWakeUpCmd
+3048                     	xdef	_UART1_WakeUpConfig
+3049                     	xdef	_UART1_SmartCardNACKCmd
+3050                     	xdef	_UART1_SmartCardCmd
+3051                     	xdef	_UART1_LINCmd
+3052                     	xdef	_UART1_LINBreakDetectionConfig
+3053                     	xdef	_UART1_IrDACmd
+3054                     	xdef	_UART1_IrDAConfig
+3055                     	xdef	_UART1_HalfDuplexCmd
+3056                     	xdef	_UART1_ITConfig
+3057                     	xdef	_UART1_Cmd
+3058                     	xdef	_UART1_Init
+3059                     	xdef	_UART1_DeInit
+3060                     	xref	_assert_failed
+3061                     	xref	_CLK_GetClockFreq
+3062                     	switch	.const
+3063  0008               L561:
+3064  0008 2e2e5c6c6962  	dc.b	"..\libs\src\stm8s_"
+3065  001a 75617274312e  	dc.b	"uart1.c",0
+3066                     	xref.b	c_lreg
+3067                     	xref.b	c_x
+3087                     	xref	c_lursh
+3088                     	xref	c_lsub
+3089                     	xref	c_smul
+3090                     	xref	c_ludv
+3091                     	xref	c_rtol
+3092                     	xref	c_llsh
+3093                     	xref	c_lcmp
+3094                     	xref	c_ltor
+3095                     	end
